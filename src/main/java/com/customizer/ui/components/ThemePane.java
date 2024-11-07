@@ -1,4 +1,4 @@
-package main.java.com.winCustoms.ui.components;
+package main.java.com.customizer.ui.components;
 
 public class ThemePane {
 
