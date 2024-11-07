@@ -1,4 +1,4 @@
-package main.java.com.winCustoms.features.themes;
+package main.java.com.customizer.features.themes;
 
 public class ThemeManager {
 
