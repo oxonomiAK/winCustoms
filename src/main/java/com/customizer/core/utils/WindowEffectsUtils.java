@@ -1,4 +1,4 @@
-package main.java.com.customizer.core.utils;
+package com.customizer.core.utils;
 
 public class WindowEffectsUtils {
 

@@ -1,4 +1,4 @@
-package main.java.com.customizer.ui;
+package com.customizer.ui;
 
 public class MainUI {
 

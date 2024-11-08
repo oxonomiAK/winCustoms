@@ -1,4 +1,4 @@
-package main.java.com.customizer.core;
+package com.customizer.core;
 
 public class AppConfig {
 

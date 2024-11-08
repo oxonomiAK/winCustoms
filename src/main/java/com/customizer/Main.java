@@ -1,4 +1,4 @@
-package main.java.com.customizer;
+package com.customizer;
 
 public class Main {
 

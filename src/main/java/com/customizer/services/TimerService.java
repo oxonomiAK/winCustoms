@@ -1,4 +1,4 @@
-package main.java.com.customizer.services;
+package com.customizer.services;
 
 public class TimerService {
 

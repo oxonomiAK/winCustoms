@@ -1,4 +1,4 @@
-package main.java.com.customizer.features.themes;
+package com.customizer.features.themes;
 
 public class ThemeController {
 

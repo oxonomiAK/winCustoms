@@ -1,4 +1,4 @@
-package main.java.com.customizer.features.widgets;
+package com.customizer.features.widgets;
 
 public class WidgetController {
 
