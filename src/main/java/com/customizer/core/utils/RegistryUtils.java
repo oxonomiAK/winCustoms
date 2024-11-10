@@ -5,4 +5,6 @@ import com.sun.jna.platform.win32.WinReg;
 
 public class RegistryUtils {
 
+
+    
 }
