@@ -18,12 +18,12 @@ public class WallpaperUtils {
         ExtendedUser32 INSTANCE = Native.load("user32", ExtendedUser32.class, W32APIOptions.DEFAULT_OPTIONS);
 
         // Определяем метод SystemParametersInfoW с поддержкой Unicode
-        boolean SystemParametersInfoW(int uiAction, int uiParam, String pvParam, int fWinIni);
+        boolean SystemParametersInfo(int uiAction, int uiParam, String pvParam, int fWinIni);
     }
 
     public static void setWallpaper(String imagePath) {
         // Передаем параметры в SystemParametersInfo для смены обоев
-        ExtendedUser32.INSTANCE.SystemParametersInfoW(
+        ExtendedUser32.INSTANCE.SystemParametersInfo(
                 SPI_SETDESKWALLPAPER,
                 0,
                 imagePath,
