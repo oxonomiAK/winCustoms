@@ -14,32 +14,31 @@ public class WallpaperUtils {
     public static final int SPIF_SENDCHANGE = 0x02;
 
     // Интерфейс для User32 с добавлением метода SystemParametersInfo
-    public interface ExtendedUser32 extends Library {
-        ExtendedUser32 INSTANCE = Native.load("user32", ExtendedUser32.class, W32APIOptions.DEFAULT_OPTIONS);
+    public interface User32 extends Library {
+        User32 INSTANCE = Native.load("user32", User32.class, W32APIOptions.DEFAULT_OPTIONS);
 
         // Определяем метод SystemParametersInfoW с поддержкой Unicode
-        boolean SystemParametersInfo(int uiAction, int uiParam, String pvParam, int fWinIni);
+        boolean SystemParametersInfoA(int uiAction, int uiParam, String pvParam, int fWinIni);
     }
 
     public static void setWallpaper(String imagePath) {
         // Передаем параметры в SystemParametersInfo для смены обоев
-        ExtendedUser32.INSTANCE.SystemParametersInfo(
+        User32.INSTANCE.SystemParametersInfoA(
                 SPI_SETDESKWALLPAPER,
                 0,
                 imagePath,
                 SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
     }
 
-    /*
-     * public static void setWallpaper(String imagePath) {
-     * // Передаем параметры в SystemParametersInfo для смены обоев
-     * // But changes will be temp. and we dont save it in registry, it means that
-     * after OS restart your changes will be cancelled
-     * ExtendedUser32.INSTANCE.SystemParametersInfoW(
-     * SPI_SETDESKWALLPAPER,
-     * 0,
-     * imagePath,
-     * 0);
-     * }
-     */
+    public static void setWallpaperWithoutUpdateInReg(String imagePath) {
+        // same with prev function
+        // But changes will be temp. and we dont save it in registry, it means that
+        // after OS restart your changes will be cancelled
+        User32.INSTANCE.SystemParametersInfoA(
+                SPI_SETDESKWALLPAPER,
+                0,
+                imagePath,
+                0);
+    }
+
 }
