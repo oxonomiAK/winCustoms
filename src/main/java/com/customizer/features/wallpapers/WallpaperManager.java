@@ -14,4 +14,9 @@ public class WallpaperManager {
         WallpaperUtils.setWallpaperWithoutUpdateInReg(imagePath);
     }
 
+    // get desktop wallpaper path
+    public static void getDeskWallpaperPath() {
+        WallpaperUtils.getWallpaperPathFromWinIni();
+    }
+
 }
