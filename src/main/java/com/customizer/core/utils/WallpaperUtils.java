@@ -1,6 +1,7 @@
 package com.customizer.core.utils;
 
 import com.customizer.core.User32F;
+import com.customizer.core.dwTemp;
 
 public class WallpaperUtils {
 
@@ -28,12 +29,12 @@ public class WallpaperUtils {
         // method to get desktop wallpapers path
         // wallpaper path saves in defaultWallpaper list of chars
 
-        char[] defaultWalppaper = new char[User32F.User32.MAX_PATH];
+        dwTemp.defaultWallpaper = new char[User32F.User32.MAX_PATH];
 
         User32F.User32.INSTANCE.SystemParametersInfoW(
                 User32F.User32.SPI_GETDESKWALLPAPER,
                 User32F.User32.MAX_PATH,
-                defaultWalppaper,
+                dwTemp.defaultWallpaper,
                 0);
 
     }
