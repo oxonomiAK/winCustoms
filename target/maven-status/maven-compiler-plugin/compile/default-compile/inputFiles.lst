@@ -14,7 +14,10 @@ C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\widgets\
 C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\Main.java
 C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\services\FileService.java
 C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\services\TimerService.java
-C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\components\ThemePane.java
-C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\components\TransparencyPane.java
-C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\components\WallpaperPane.java
-C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\MainUI.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\DashFX.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\DownloadedController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\IconsController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\MainUI.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\TaskBarController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\WallpapersController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\WidgetsController.java
