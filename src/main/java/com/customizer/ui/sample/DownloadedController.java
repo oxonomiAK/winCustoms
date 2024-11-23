@@ -124,7 +124,7 @@ public class DownloadedController {
 
         if(extension.equals("png")){
         File source = new File(imagePath);
-        File dest = new File("src/main/java/com/customizer/ui/resources/");
+        File dest = new File("src/main/java/com/customizer/ui/resources/test.png");
         try {   //Копирование файла в корневую папку проекта resources
             FileUtils.copyFile(source, dest, true);
         } catch (IOException e) {
