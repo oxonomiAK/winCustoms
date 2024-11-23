@@ -112,13 +112,17 @@ public class DownloadedController {
 
 
 
-     public void selectWallpaper() { //Функция открытия диалогового окна с выбором файла
+    public void selectWallpaper() { //Функция открытия диалогового окна с выбором файла
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose your wallpaper");//Имя окна
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png") );//Фильтр расширения файлов
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg") );//Фильтр расширения файлов
         File selectedFile = fileChooser.showOpenDialog(null);//Открытие диалогового окна с выбором файла
         imagePath = selectedFile.getAbsolutePath();//Получение абсолютного пути выбранной картинки
+        
+        String extension = FilenameUtils.getExtension(imagePath);
+        String copiedImage = null;
 
+        if(extension.equals("png")){
         File source = new File(imagePath);
         File dest = new File("src/main/java/com/customizer/ui/resources/test.png");
         try {   //Копирование файла в корневую папку проекта resources
@@ -126,7 +130,24 @@ public class DownloadedController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String copiedImage = "src/main/java/com/customizer/ui/resources/test.png";
+        copiedImage = "src/main/java/com/customizer/ui/resources/test.png";
+        System.out.println(extension);
+    }
+
+    else if(extension.equals("jpg")){
+        File source = new File(imagePath);
+        File dest = new File("src/main/java/com/customizer/ui/resources/test.jpg");
+        try {   //Копирование файла в корневую папку проекта resources
+            FileUtils.copyFile(source, dest, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(extension);
+        copiedImage = "src/main/java/com/customizer/ui/resources/test.jpg";
+    }
+
+
+        
         File f = new File(copiedImage);
         String absolute = f.getAbsolutePath(); 
         String absolutePathForImageInsert = "file:/"+ absolute.replace('\\', '/'); //Получение абсолютного пути для вставки кратинки из корневой папки resources 
