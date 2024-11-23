@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Vladislav\Desktop\winCustoms\src\main\java\com\customizer\core\AppConfig.java
 C:\Users\Vladislav\Desktop\winCustoms\src\main\java\com\customizer\core\ProfileManager.java
 C:\Users\Vladislav\Desktop\winCustoms\src\main\java\com\customizer\core\utils\RegistryUtils.java
@@ -18,3 +19,51 @@ C:\Users\Vladislav\Desktop\winCustoms\src\main\java\com\customizer\ui\components
 C:\Users\Vladislav\Desktop\winCustoms\src\main\java\com\customizer\ui\components\TransparencyPane.java
 C:\Users\Vladislav\Desktop\winCustoms\src\main\java\com\customizer\ui\components\WallpaperPane.java
 C:\Users\Vladislav\Desktop\winCustoms\src\main\java\com\customizer\ui\MainUI.java
+=======
+<<<<<<< HEAD
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\core\AppConfig.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\core\ProfileManager.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\core\utils\RegistryUtils.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\core\utils\WallpaperUtils.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\core\utils\WindowEffectsUtils.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\features\themes\ThemeController.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\features\themes\ThemeManager.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\features\transparency\TransparencyController.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\features\transparency\TransparencyManager.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\features\wallpapers\WallpaperController.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\features\wallpapers\WallpaperManager.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\features\widgets\WidgetController.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\features\widgets\WidgetManager.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\Main.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\services\FileService.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\services\TimerService.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\ui\components\ThemePane.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\ui\components\TransparencyPane.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\ui\components\WallpaperPane.java
+C:\Users\Arlive\Desktop\winCustoms\src\main\java\com\customizer\ui\MainUI.java
+=======
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\core\AppConfig.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\core\ProfileManager.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\core\utils\RegistryUtils.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\core\utils\WallpaperUtils.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\core\utils\WindowEffectsUtils.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\themes\ThemeController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\themes\ThemeManager.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\transparency\TransparencyController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\transparency\TransparencyManager.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\wallpapers\WallpaperController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\wallpapers\WallpaperManager.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\widgets\WidgetController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\features\widgets\WidgetManager.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\Main.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\services\FileService.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\services\TimerService.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\DashFX.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\DownloadedController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\IconsController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\MainUI.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\TaskBarController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\WallpapersController.java
+C:\Users\sishk\Desktop\winCustoms\src\main\java\com\customizer\ui\sample\WidgetsController.java
+>>>>>>> Vladmini
+>>>>>>> Vladmini
