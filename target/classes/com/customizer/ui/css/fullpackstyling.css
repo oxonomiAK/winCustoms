@@ -37,11 +37,11 @@
 }
 .button3:hover
 {
-    -fx-background-color : #f2ef9e ;
+    -fx-background-color : #424242 ;
 }
 .button3:pressed
 {
-    -fx-background-color : #f2ef9e ;
+    -fx-background-color : #272727 ;
 }
 
 .button4

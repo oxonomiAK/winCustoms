@@ -26,56 +26,66 @@
                         <Image url="@../resources/Taskbar.png" />
                      </image>
                   </ImageView>
-                  <Button alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="3.0" layoutY="68.0" mnemonicParsing="false" onAction="#BtnWidgetsClicked" prefHeight="54.0" prefWidth="159.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="    Widgets" textFill="WHITE">
+                  <Button fx:id="BtnWidgets" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="68.0" mnemonicParsing="false" onAction="#BtnWidgetsClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Widgets" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="3.0" layoutY="14.0" mnemonicParsing="false" onAction="#BtnWallpapersClicked" prefHeight="53.0" prefWidth="159.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="    Wallpapers" textFill="WHITE">
+                  <Button fx:id="BtnWallpapers" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="14.0" mnemonicParsing="false" onAction="#BtnWallpapersClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Wallpapers" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="3.0" layoutY="176.0" mnemonicParsing="false" onAction="#BtnDownloadedClicked" prefHeight="54.0" prefWidth="159.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="    Downlkkoaded" textFill="WHITE">
+                  <Button fx:id="BtnDownloaded" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="176.0" mnemonicParsing="false" onAction="#BtnDownloadedClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Downloaded" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="3.0" layoutY="122.0" mnemonicParsing="false" onAction="#BtnIconsClicked" prefHeight="54.0" prefWidth="159.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="    Icons" textFill="WHITE">
+                  <Button fx:id="BtnIcons" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="122.0" mnemonicParsing="false" onAction="#BtnIconsClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Icons" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="3.0" layoutY="230.0" mnemonicParsing="false" onAction="#BtnTaskBarClicked" prefHeight="54.0" prefWidth="159.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="    Task Bar" textFill="WHITE">
+                  <Button fx:id="BtnTaskBar" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="230.0" mnemonicParsing="false" onAction="#BtnTaskBarClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Task Bar" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <ImageView fitHeight="19.0" fitWidth="25.0" layoutX="9.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/Circle.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="25.0" layoutX="9.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/Circle.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="9.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/Circle.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="9.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/Circle.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="9.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/Circle.png" />
-                     </image>
-                  </ImageView>
                </children>
             </AnchorPane>
             <Text layoutX="463.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NewLook">
