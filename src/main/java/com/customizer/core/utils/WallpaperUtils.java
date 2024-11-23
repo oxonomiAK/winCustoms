@@ -7,7 +7,7 @@ public class WallpaperUtils {
 
     public static void setWallpaper(String imagePath) {
         // Передаем параметры в SystemParametersInfo для смены обоев
-        User32F.User32.INSTANCE.SystemParametersInfoA(
+        User32F.User32.INSTANCE.SystemParametersInfoW(
                 User32F.User32.SPI_SETDESKWALLPAPER,
                 0,
                 imagePath,
@@ -18,7 +18,7 @@ public class WallpaperUtils {
         // same with prev function
         // But changes will be temp. and we dont save it in registry, it means that
         // after OS restart changes will be cancelled
-        User32F.User32.INSTANCE.SystemParametersInfoA(
+        User32F.User32.INSTANCE.SystemParametersInfoW(
                 User32F.User32.SPI_SETDESKWALLPAPER,
                 0,
                 imagePath,

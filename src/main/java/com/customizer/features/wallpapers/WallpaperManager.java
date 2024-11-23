@@ -5,7 +5,7 @@ import com.customizer.core.utils.WallpaperUtils;
 public class WallpaperManager {
 
     // applying wallpaper with updating in Registry
-    public void applyWallpaper(String imagePath) {
+    public static void applyWallpaper(String imagePath) {
         WallpaperUtils.setWallpaper(imagePath);
     }
 
