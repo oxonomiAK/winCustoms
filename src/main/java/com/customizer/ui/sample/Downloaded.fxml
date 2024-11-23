@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="559.0" prefWidth="1007.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.401" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.sample.DownloadedController">
+<AnchorPane prefHeight="559.0" prefWidth="1007.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.431" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.sample.DownloadedController">
    <children>
       <AnchorPane prefHeight="616.0" prefWidth="958.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
          <children>
@@ -114,7 +114,7 @@
                   <Font name="Myanmar Text Bold" size="16.0" />
                </font>
             </Button>
-            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="227.0" layoutY="93.0" mnemonicParsing="false" prefHeight="174.0" prefWidth="243.0" style="-fx-background-radius: 10;" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Upload" textFill="WHITE">
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="227.0" layoutY="93.0" mnemonicParsing="false" onAction="#BtnUploadClicked" prefHeight="174.0" prefWidth="243.0" style="-fx-background-radius: 10;" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Upload" textFill="WHITE">
                <font>
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
@@ -126,10 +126,17 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="502.0" layoutY="93.0" mnemonicParsing="false" prefHeight="174.0" prefWidth="243.0" style="-fx-background-radius: 10;" styleClass="button1" stylesheets="@../css/fullpackstyling.css" textFill="WHITE">
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="502.0" layoutY="93.0" mnemonicParsing="false" prefHeight="174.0" prefWidth="243.0" style="-fx-background-radius: 10;" styleClass="button1" stylesheets="@../css/fullpackstyling.css" fx:id="Button1" text="" textFill="WHITE">
                <font>
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
+               <graphic>
+                  <ImageView fx:id="dynamicImageView" fitHeight="122.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@null" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="778.0" layoutY="93.0" mnemonicParsing="false" prefHeight="174.0" prefWidth="243.0" style="-fx-background-radius: 10;" styleClass="button1" stylesheets="@../css/fullpackstyling.css" textFill="WHITE">
                <font>

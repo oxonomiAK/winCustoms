@@ -3,6 +3,12 @@ package com.customizer.ui.sample;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import com.customizer.core.dwTemp;
+import com.customizer.core.utils.WallpaperUtils;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -48,54 +54,17 @@ public class WallpapersController {
 
       @FXML
     void getWallpaperInfo(ActionEvent event) {
-try {
-            // Команда для получения текущего обоя из реестра
-            String command = "reg query \"HKCU\\Control Panel\\Desktop\" /v Wallpaper";
-            
-            // Запуск команды
-            Process process = Runtime.getRuntime().exec(command);
-            
-            // Чтение результата команды
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            StringBuilder output = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
-            }
-            reader.close();
 
-            // Парсим результат, чтобы получить путь к файлу
-            String result = output.toString();
-            String wallpaperPath = parseWallpaperPath(result);
-
-            // Показываем путь в Alert
+            WallpaperUtils.getWallpaperPathFromWinIni();
+            String wallpaperPath = new String(dwTemp.defaultWallpaper);
+            
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Wallpaper Info");
             alert.setHeaderText("Current Wallpaper Path");
             alert.setContentText(wallpaperPath);
             alert.showAndWait();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Показываем ошибку в Alert
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Could not fetch wallpaper info");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-        }
-    }
-
-    // Метод для парсинга пути из результата команды
-    private String parseWallpaperPath(String regOutput) {
-        String[] lines = regOutput.split("\n");
-        for (String line : lines) {
-            if (line.contains("Wallpaper")) {
-                String[] parts = line.split("\\s{2,}"); // Разделение по пробелам
-                return parts[parts.length - 1]; // Путь к обоям
-            }
-        }
-        return "No wallpaper path found";
+        
     }
 
     @FXML
