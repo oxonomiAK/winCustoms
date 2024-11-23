@@ -23,7 +23,7 @@ public class User32F {
         final int MAX_PATH = 260;
 
         // Определяем метод SystemParametersInfoW с поддержкой Unicode
-        boolean SystemParametersInfoA(int uiAction, int uiParam, String pvParam, int fWinIni);
+        boolean SystemParametersInfoW(int uiAction, int uiParam, String pvParam, int fWinIni);
 
         boolean SystemParametersInfoW(int uiAction, int uiParam, char[] pvParam, int fWinIni);
     }
