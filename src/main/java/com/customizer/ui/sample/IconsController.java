@@ -1,5 +1,8 @@
 package com.customizer.ui.sample;
 
+
+import com.customizer.core.utils.RegistryUtils;
+
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -30,6 +33,9 @@ public class IconsController {
     private Button BtnApply;
 
     @FXML
+    private Button BtnDefaultSize;
+
+    @FXML
     private Button BtnWallpapers;
 
     @FXML
@@ -53,7 +59,7 @@ public class IconsController {
         setupButtonHoverEffect(BtnWallpapers);
         setupButtonHoverEffect(BtnWidgets);
 
-       // Инициализация ScrollBar и синхронизация с TextField
+     // Инициализация ScrollBar и синхронизация с TextField
     ScrollBarValue.setText(String.valueOf((int) IcnScrollBar.getValue()));
 
     // Обновляем TextField при изменении ScrollBar
@@ -64,16 +70,20 @@ public class IconsController {
     // Слушатель для TextField
     ScrollBarValue.textProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue.isEmpty()) {
-            return; // Если поле пустое, не делаем ничего
+            return; // Если поле пустое, ничего не делаем
         }
+
         try {
             int value = Integer.parseInt(newValue); // Пробуем преобразовать в число
-            if (value >= IcnScrollBar.getMin() && value <= IcnScrollBar.getMax()) {
-                IcnScrollBar.setValue(value); // Обновляем ScrollBar
-            } else {
-                // Если значение выходит за диапазон, ничего не делаем
-                ScrollBarValue.setText(oldValue);
+
+            if (value < IcnScrollBar.getMin()) {
+                value = (int) IcnScrollBar.getMin(); // Ограничиваем значение минимумом
+            } else if (value > IcnScrollBar.getMax()) {
+                value = (int) IcnScrollBar.getMax(); // Ограничиваем значение максимумом
             }
+
+            IcnScrollBar.setValue(value); // Устанавливаем значение ScrollBar
+            ScrollBarValue.setText(String.valueOf(value)); // Обновляем TextField
         } catch (NumberFormatException e) {
             // Если некорректное значение, возвращаем старое
             ScrollBarValue.setText(oldValue);
@@ -110,9 +120,17 @@ public class IconsController {
     }
 
     @FXML
+    void BtnSetDefaultSize(ActionEvent event) {
+        RegistryUtils.setIconSize(48);
+        RegistryUtils.restartExplorer();
+    }
+
+    @FXML
     void BtnSetIconSize(ActionEvent event) {
         int confirmedValue = (int) IcnScrollBar.getValue();
         System.out.println("Confirmed value: " + confirmedValue);
+        RegistryUtils.setIconSize(confirmedValue);
+        RegistryUtils.restartExplorer();
         // Здесь можно добавить дополнительную логику
     }
     

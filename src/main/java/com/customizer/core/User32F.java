@@ -14,17 +14,28 @@ public class User32F {
         // constant to set desktop wallpaper
         // constant to update it in registry
         // constant to notify other software about changes
+        // constant to change icon size
         final int SPI_SETDESKWALLPAPER = 0x0014;
         final int SPIF_UPDATEINIFILE = 0x01;
         final int SPIF_SENDCHANGE = 0x02;
-
+        
         // constant to get desktop wallpapers path
         final int SPI_GETDESKWALLPAPER = 0x0073;
         final int MAX_PATH = 260;
 
+        final int HWND_BROADCAST = 0xFFFF;
+
+        final int WM_SETTINGCHANGE = 0x001A;
+
+    
+
         // Определяем метод SystemParametersInfoW с поддержкой Unicode
         boolean SystemParametersInfoW(int uiAction, int uiParam, String pvParam, int fWinIni);
 
+        boolean SystemParametersInfoW(int uiAction, int uiParam, int pvParam, int fWinIni);
+
         boolean SystemParametersInfoW(int uiAction, int uiParam, char[] pvParam, int fWinIni);
+
+        void SendMessage(int hwndBroadcast, int wmSettingchange, int i, int j);
     }
 }

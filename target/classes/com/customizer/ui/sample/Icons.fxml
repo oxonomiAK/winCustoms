@@ -132,6 +132,7 @@
                   <TextField fx:id="ScrollBarValue" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onScrollBarValueChanged" prefHeight="25.0" prefWidth="49.0" text="1" />
                   <ScrollBar fx:id="IcnScrollBar" max="256.0" min="1.0" prefHeight="14.0" prefWidth="222.0" />
                   <Button fx:id="BtnApply" mnemonicParsing="false" onAction="#BtnSetIconSize" text="Apply" />
+                  <Button fx:id="BtnDefaultSize" mnemonicParsing="false" onAction="#BtnSetDefaultSize" prefHeight="25.0" prefWidth="111.0" text="Set to defoult" />
                </children>
             </VBox>
          </children>
