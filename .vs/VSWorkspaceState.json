@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\main\\java\\com",
+    "\\src\\main\\java\\com\\customizer",
+    "\\src\\main\\java\\com\\customizer\\core",
+    "\\src\\main\\java\\com\\customizer\\ui",
+    "\\src\\main\\java\\com\\customizer\\ui\\resources",
+    "\\src\\main\\java\\com\\customizer\\ui\\sample"
+  ],
+  "SelectedNode": "\\src\\main\\java\\com\\customizer\\ui\\sample\\MainUI.java",
+  "PreviewInSolutionExplorer": false
+}

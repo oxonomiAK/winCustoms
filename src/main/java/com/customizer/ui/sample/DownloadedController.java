@@ -112,7 +112,7 @@ public class DownloadedController {
 
 
 
-     public void selectWallpaper() { //Функция открытия диалогового окна с выбором файла
+    public void selectWallpaper() { //Функция открытия диалогового окна с выбором файла
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose your wallpaper");//Имя окна
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg") );//Фильтр расширения файлов

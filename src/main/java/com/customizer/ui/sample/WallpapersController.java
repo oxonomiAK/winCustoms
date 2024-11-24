@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.customizer.core.User32F;
 import com.customizer.core.dwTemp;
 import com.customizer.core.utils.WallpaperUtils;
 
@@ -119,14 +120,7 @@ void BtnWallpapers1Clicked(ActionEvent event) {
 
         // Добавляем обработчик события для новой кнопки
         setWallpaperButton.setOnAction(ev -> {
-
-
-        String copiedImage = "src/main/java/com/customizer/ui/resources/Horses.jpg";
-        File f = new File(copiedImage);
-        String absolute = f.getAbsolutePath(); 
-        System.out.println(absolute);
-        WallpaperUtils.setWallpaper(absolute); // Здесь можно добавить логику установки обоев
-
+            System.out.println("Set Wallpaper button clicked!"); // Здесь можно добавить логику установки обоев
         });
 
         // Добавляем кнопку в родительский контейнер   
@@ -170,6 +164,15 @@ void BtnWallpapers1Clicked(ActionEvent event) {
     scaleUp.play();
 }
 
+// Метод для смены обоев
+public static void setWallpaper(String imagePath) {
+    // Передаем параметры в SystemParametersInfo для смены обоев
+    User32F.User32.INSTANCE.SystemParametersInfoW(
+            User32F.User32.SPI_SETDESKWALLPAPER,
+            0,
+            imagePath,
+            User32F.User32.SPIF_UPDATEINIFILE | User32F.User32.SPIF_SENDCHANGE);
+}
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
@@ -193,7 +196,6 @@ void BtnWallpapers1Clicked(ActionEvent event) {
             alert.setContentText(wallpaperPath);
             alert.showAndWait();
 
-        
     }
 
     @FXML
