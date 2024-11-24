@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="559.0" prefWidth="1007.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.401" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.sample.IconsController">
+<AnchorPane prefHeight="559.0" prefWidth="1007.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.sample.IconsController">
    <children>
       <AnchorPane prefHeight="616.0" prefWidth="958.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
          <children>
@@ -124,6 +127,13 @@
                   <Font name="Myanmar Text Bold" size="16.0" />
                </font>
             </Button>
+            <VBox layoutX="617.0" layoutY="289.0" prefHeight="61.0" prefWidth="229.0">
+               <children>
+                  <TextField fx:id="ScrollBarValue" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onScrollBarValueChanged" prefHeight="25.0" prefWidth="49.0" text="1" />
+                  <ScrollBar fx:id="IcnScrollBar" max="256.0" min="1.0" prefHeight="14.0" prefWidth="222.0" />
+                  <Button fx:id="BtnApply" mnemonicParsing="false" onAction="#BtnSetIconSize" text="Apply" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>

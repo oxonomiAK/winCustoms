@@ -5,6 +5,8 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
 public class IconsController {
@@ -17,6 +19,15 @@ public class IconsController {
 
     @FXML
     private Button BtnTaskBar;
+
+    @FXML
+    private ScrollBar IcnScrollBar;
+
+    @FXML
+    private TextField ScrollBarValue;
+
+    @FXML
+    private Button BtnApply;
 
     @FXML
     private Button BtnWallpapers;
@@ -41,7 +52,36 @@ public class IconsController {
         setupButtonHoverEffect(BtnTaskBar);
         setupButtonHoverEffect(BtnWallpapers);
         setupButtonHoverEffect(BtnWidgets);
+
+       // Инициализация ScrollBar и синхронизация с TextField
+    ScrollBarValue.setText(String.valueOf((int) IcnScrollBar.getValue()));
+
+    // Обновляем TextField при изменении ScrollBar
+    IcnScrollBar.valueProperty().addListener((observable, oldValue, newValue) -> {
+        ScrollBarValue.setText(String.valueOf(newValue.intValue()));
+    });
+
+    // Слушатель для TextField
+    ScrollBarValue.textProperty().addListener((observable, oldValue, newValue) -> {
+        if (newValue.isEmpty()) {
+            return; // Если поле пустое, не делаем ничего
+        }
+        try {
+            int value = Integer.parseInt(newValue); // Пробуем преобразовать в число
+            if (value >= IcnScrollBar.getMin() && value <= IcnScrollBar.getMax()) {
+                IcnScrollBar.setValue(value); // Обновляем ScrollBar
+            } else {
+                // Если значение выходит за диапазон, ничего не делаем
+                ScrollBarValue.setText(oldValue);
+            }
+        } catch (NumberFormatException e) {
+            // Если некорректное значение, возвращаем старое
+            ScrollBarValue.setText(oldValue);
+        }
+    });
     }
+
+   
 
     private void setupButtonHoverEffect(Button button) {
         // Создаем анимацию увеличения
@@ -68,6 +108,34 @@ public class IconsController {
     void BtnIconsClicked(ActionEvent event) {
         mainApp.loadScene("Icons.fxml");
     }
+
+    @FXML
+    void BtnSetIconSize(ActionEvent event) {
+        int confirmedValue = (int) IcnScrollBar.getValue();
+        System.out.println("Confirmed value: " + confirmedValue);
+        // Здесь можно добавить дополнительную логику
+    }
+    
+
+    @FXML
+    void onScrollBarValueChanged(ActionEvent event) {
+        try {
+            String input = ScrollBarValue.getText();
+            if (input.isEmpty()) {
+                return; // Если поле пустое, не делаем ничего
+            }
+            int value = Integer.parseInt(input);
+            if (value >= IcnScrollBar.getMin() && value <= IcnScrollBar.getMax()) {
+                IcnScrollBar.setValue(value); // Обновляем ScrollBar
+            } else {
+                ScrollBarValue.setText(String.valueOf((int) IcnScrollBar.getValue())); // Возвращаем корректное значение
+            }
+        } catch (NumberFormatException e) {
+            ScrollBarValue.setText(String.valueOf((int) IcnScrollBar.getValue())); // Возвращаем последнее значение
+        }
+
+    }
+
 
     @FXML
     void BtnTaskBarClicked(ActionEvent event) {
