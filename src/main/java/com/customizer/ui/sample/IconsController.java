@@ -1,5 +1,9 @@
 package com.customizer.ui.sample;
 
+import java.io.IOException;
+
+import com.customizer.core.utils.RegistryUtils;
+
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -118,13 +122,19 @@ public class IconsController {
 
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
-
+        RegistryUtils.setIconSize(48);
+        RegistryUtils.restartExplorer();
+        int defaultValue = 48; // Значение по умолчанию
+        IcnScrollBar.setValue(defaultValue); // Устанавливаем значение на ползунке
+        ScrollBarValue.setText(String.valueOf(defaultValue)); // Обновляем текст в текстовом поле
     }
 
-    @FXML
+      @FXML
     void BtnSetIconSize(ActionEvent event) {
         int confirmedValue = (int) IcnScrollBar.getValue();
         System.out.println("Confirmed value: " + confirmedValue);
+        RegistryUtils.setIconSize(confirmedValue);
+        RegistryUtils.restartExplorer();
         // Здесь можно добавить дополнительную логику
     }
     
@@ -168,6 +178,8 @@ public class IconsController {
     void closeApp(ActionEvent event) {
         Platform.exit();
     }
+
+   
 }
 
 

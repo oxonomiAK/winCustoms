@@ -8,22 +8,23 @@ import com.sun.jna.platform.win32.WinReg;
 
 public class RegistryUtils {
 
-        public static void restartExplorer() {
-            try {
-                // Указываем путь к вашему батнику
-                String batFilePath = "src/main/java/com/customizer/RestartExplorer.bat";
-                
-                // Создаем процесс для запуска батника
-                Process process = new ProcessBuilder(batFilePath).start();
-                
-                // Ждем завершения процесса
-                process.waitFor();
-                
-                System.out.println("Explorer restarted via batch file.");
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-            }
+    public static void restartExplorer() {
+        try {
+            // Указываем путь к вашему батнику
+            String batFilePath = "src/main/java/com/customizer/RestartExplorer.bat";
+            
+            // Создаем процесс для запуска батника
+            Process process = new ProcessBuilder(batFilePath).start();
+            
+            // Ждем завершения процесса
+            process.waitFor();
+            
+            System.out.println("Explorer restarted via batch file.");
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
+    }
+
 
 
 
@@ -38,12 +39,8 @@ public class RegistryUtils {
             registryKey,
             iconSize
         );
-        User32.INSTANCE.SendMessage(
-            User32.HWND_BROADCAST,
-            User32.WM_SETTINGCHANGE,
-            0,
-            0
-        );
+      
+        
        
         
 
