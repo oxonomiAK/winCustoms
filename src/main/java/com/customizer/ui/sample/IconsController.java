@@ -123,6 +123,9 @@ public class IconsController {
     void BtnSetDefaultSize(ActionEvent event) {
         RegistryUtils.setIconSize(48);
         RegistryUtils.restartExplorer();
+        int defaultValue = 48; // Значение по умолчанию
+        IcnScrollBar.setValue(defaultValue); // Устанавливаем значение на ползунке
+        ScrollBarValue.setText(String.valueOf(defaultValue)); // Обновляем текст в текстовом поле
     }
 
     @FXML

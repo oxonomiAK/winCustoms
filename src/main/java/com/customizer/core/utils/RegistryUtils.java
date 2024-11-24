@@ -38,13 +38,6 @@ public class RegistryUtils {
             registryKey,
             iconSize
         );
-        User32.INSTANCE.SendMessage(
-            User32.HWND_BROADCAST,
-            User32.WM_SETTINGCHANGE,
-            0,
-            0
-        );
-       
         
 
 
