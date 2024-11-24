@@ -120,16 +120,10 @@ void BtnWallpapers1Clicked(ActionEvent event) {
 
         // Добавляем обработчик события для новой кнопки
         setWallpaperButton.setOnAction(ev -> {
-          String copiedImage = "src/main/java/com/customizer/ui/resources/Horses.jpg";
-        File f = new File(copiedImage);
-        String absolute = f.getAbsolutePath(); 
-        System.out.println(absolute);
-
-           WallpaperUtils.setWallpaper(absolute); // Здесь можно добавить логику установки обоев
-            
+            System.out.println("Set Wallpaper button clicked!"); // Здесь можно добавить логику установки обоев
         });
 
-        // Добавляем кнопку в родительский контейнер
+        // Добавляем кнопку в родительский контейнер   
         ((javafx.scene.layout.Pane) scene.getRoot()).getChildren().add(setWallpaperButton);
 
         // Создаем новую кнопку "Cancel"

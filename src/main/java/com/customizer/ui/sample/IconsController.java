@@ -1,5 +1,8 @@
 package com.customizer.ui.sample;
 
+
+import com.customizer.core.utils.RegistryUtils;
+
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -30,6 +33,9 @@ public class IconsController {
     private Button BtnApply;
 
     @FXML
+    private Button BtnDefaultSize;
+
+    @FXML
     private Button BtnWallpapers;
 
     @FXML
@@ -53,7 +59,11 @@ public class IconsController {
         setupButtonHoverEffect(BtnWallpapers);
         setupButtonHoverEffect(BtnWidgets);
 
+<<<<<<< HEAD
       // Инициализация ScrollBar и синхронизация с TextField
+=======
+     // Инициализация ScrollBar и синхронизация с TextField
+>>>>>>> sergo
     ScrollBarValue.setText(String.valueOf((int) IcnScrollBar.getValue()));
 
     // Обновляем TextField при изменении ScrollBar
@@ -114,9 +124,17 @@ public class IconsController {
     }
 
     @FXML
+    void BtnSetDefaultSize(ActionEvent event) {
+        RegistryUtils.setIconSize(48);
+        RegistryUtils.restartExplorer();
+    }
+
+    @FXML
     void BtnSetIconSize(ActionEvent event) {
         int confirmedValue = (int) IcnScrollBar.getValue();
         System.out.println("Confirmed value: " + confirmedValue);
+        RegistryUtils.setIconSize(confirmedValue);
+        RegistryUtils.restartExplorer();
         // Здесь можно добавить дополнительную логику
     }
     
