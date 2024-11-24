@@ -9,22 +9,21 @@ import com.sun.jna.platform.win32.WinReg;
 public class RegistryUtils {
 
         public static void restartExplorer() {
-        try {
-            
-            // Завершаем процесс explorer.exe
-            Process killExplorer = Runtime.getRuntime().exec("taskkill /F /IM explorer.exe");
-            killExplorer.waitFor(); // Ждём завершения процесса
-
-        
-            // Перезапускаем explorer.exe
-            Process startExplorer = Runtime.getRuntime().exec("explorer.exe");
-            startExplorer.waitFor(); // Ждём запуска процесса
-
-            System.out.println("Explorer restarted successfully.");
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            try {
+                // Указываем путь к вашему батнику
+                String batFilePath = "src/main/java/com/customizer/RestartExplorer.bat";
+                
+                // Создаем процесс для запуска батника
+                Process process = new ProcessBuilder(batFilePath).start();
+                
+                // Ждем завершения процесса
+                process.waitFor();
+                
+                System.out.println("Explorer restarted via batch file.");
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
 
 
