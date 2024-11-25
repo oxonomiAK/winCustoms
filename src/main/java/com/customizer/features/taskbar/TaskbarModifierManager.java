@@ -1,5 +1,5 @@
 package com.customizer.features.taskbar;
 
-public class TaskbarManager {
+public class TaskbarModifierManager {
 
 }
