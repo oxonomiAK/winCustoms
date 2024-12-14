@@ -7,27 +7,40 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.util.Duration;
 
-public class WidgetsController {
 
-      @FXML
-    private Button BtnDownloaded;
+public class BoostController {
+
+    @FXML
+    private Button BtnBoost;
+
+    @FXML
+    private Button BtnRocket;
+
+    @FXML
+    private Button BtnHome;
 
     @FXML
     private Button BtnIcons;
 
     @FXML
-    private Button BtnTaskBar;
+    private Button BtnPerformace;
+
+    @FXML
+    private Button BtnSettings;
+
+    @FXML
+    private Button BtnTemperature;
+
+    @FXML
+    private Button BtnVolume;
 
     @FXML
     private Button BtnWallpapers;
 
     @FXML
-    private Button BtnWidgets;
-
-    @FXML
     private Button closeButton;
 
-    private MainUI mainApp;
+     private MainUI mainApp;
 
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
@@ -36,11 +49,14 @@ public class WidgetsController {
     @FXML
     public void initialize() {
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
-        setupButtonHoverEffect(BtnDownloaded);
+        setupButtonHoverEffect(BtnBoost);
         setupButtonHoverEffect(BtnIcons);
-        setupButtonHoverEffect(BtnTaskBar);
         setupButtonHoverEffect(BtnWallpapers);
-        setupButtonHoverEffect(BtnWidgets);
+        setupButtonHoverEffect(BtnVolume);
+        setupButtonHoverEffect(BtnTemperature);
+        setupButtonHoverEffect(BtnPerformace);
+        setupButtonHoverEffect(BtnRocket);
+        setupButtonHoverEffect(BtnSettings);
     }
 
     private void setupButtonHoverEffect(Button button) {
@@ -59,9 +75,20 @@ public class WidgetsController {
         button.setOnMouseExited(e -> scaleDown.play()); // Анимация уменьшения при убирании мыши
     }
 
+
     @FXML
-    void BtnDownloadedClicked(ActionEvent event) {
-        mainApp.loadScene("Downloaded.fxml");
+    void BtnBoostClicked(ActionEvent event) {
+        mainApp.loadScene("Boost.fxml");
+    }
+
+    @FXML
+    void BtnRocketClicked(ActionEvent event) {
+        System.out.println("Boost Settings button clicked!");
+    }
+
+    @FXML
+    void BtnHomeClicked(ActionEvent event) {
+        mainApp.loadScene("Home.fxml");
     }
 
     @FXML
@@ -70,8 +97,23 @@ public class WidgetsController {
     }
 
     @FXML
-    void BtnTaskBarClicked(ActionEvent event) {
-        mainApp.loadScene("TaskBar.fxml");
+    void BtnPerformaceClicked(ActionEvent event) {
+        System.out.println("Performances button clicked!");
+    }
+
+    @FXML
+    void BtnSettingsClicked(ActionEvent event) {
+        mainApp.loadScene("Settings.fxml");
+    }
+
+    @FXML
+    void BtnTemperatureClicked(ActionEvent event) {
+        System.out.println("temp button clicked!");
+    }
+
+    @FXML
+    void BtnVolumeClicked(ActionEvent event) {
+        System.out.println("Volume button clicked!");
     }
 
     @FXML
@@ -80,14 +122,8 @@ public class WidgetsController {
     }
 
     @FXML
-    void BtnWidgetsClicked(ActionEvent event) {
-        mainApp.loadScene("Widgets.fxml");
-    }
-
-    @FXML
     void closeApp(ActionEvent event) {
         Platform.exit();
     }
+
 }
-
-

@@ -5,27 +5,18 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-public class TaskBarController {
-
-     @FXML
-    private Button BtnDownloaded;
-
-    @FXML
-    private Button BtnIcons;
-
-    @FXML
-    private Button BtnTaskBar;
+public class HomeController {
 
     @FXML
     private Button BtnWallpapers;
 
     @FXML
-    private Button BtnWidgets;
-
-    @FXML
     private Button closeButton;
+
 
     private MainUI mainApp;
 
@@ -36,11 +27,7 @@ public class TaskBarController {
     @FXML
     public void initialize() {
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
-        setupButtonHoverEffect(BtnDownloaded);
-        setupButtonHoverEffect(BtnIcons);
-        setupButtonHoverEffect(BtnTaskBar);
         setupButtonHoverEffect(BtnWallpapers);
-        setupButtonHoverEffect(BtnWidgets);
     }
 
     private void setupButtonHoverEffect(Button button) {
@@ -59,29 +46,10 @@ public class TaskBarController {
         button.setOnMouseExited(e -> scaleDown.play()); // Анимация уменьшения при убирании мыши
     }
 
-    @FXML
-    void BtnDownloadedClicked(ActionEvent event) {
-        mainApp.loadScene("Downloaded.fxml");
-    }
-
-    @FXML
-    void BtnIconsClicked(ActionEvent event) {
-        mainApp.loadScene("Icons.fxml");
-    }
-
-    @FXML
-    void BtnTaskBarClicked(ActionEvent event) {
-        mainApp.loadScene("TaskBar.fxml");
-    }
-
+   
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("Wallpapers.fxml");
-    }
-
-    @FXML
-    void BtnWidgetsClicked(ActionEvent event) {
-        mainApp.loadScene("Widgets.fxml");
     }
 
     @FXML
@@ -89,5 +57,3 @@ public class TaskBarController {
         Platform.exit();
     }
 }
-
-

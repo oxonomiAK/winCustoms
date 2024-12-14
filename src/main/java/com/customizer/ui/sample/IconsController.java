@@ -22,9 +22,6 @@ public class IconsController {
     private Button BtnIcons;
 
     @FXML
-    private Button BtnTaskBar;
-
-    @FXML
     private ScrollBar IcnScrollBar;
 
     @FXML
@@ -56,7 +53,6 @@ public class IconsController {
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         setupButtonHoverEffect(BtnDownloaded);
         setupButtonHoverEffect(BtnIcons);
-        setupButtonHoverEffect(BtnTaskBar);
         setupButtonHoverEffect(BtnWallpapers);
         setupButtonHoverEffect(BtnWidgets);
 
@@ -112,7 +108,7 @@ public class IconsController {
 
     @FXML
     void BtnDownloadedClicked(ActionEvent event) {
-        mainApp.loadScene("Downloaded.fxml");
+        mainApp.loadScene("Boost.fxml");
     }
 
     @FXML
@@ -159,10 +155,6 @@ public class IconsController {
     }
 
 
-    @FXML
-    void BtnTaskBarClicked(ActionEvent event) {
-        mainApp.loadScene("TaskBar.fxml");
-    }
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
