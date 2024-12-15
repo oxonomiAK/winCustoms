@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+
 public class MainUI extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
@@ -22,7 +24,7 @@ public class MainUI extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage; // Сохраняем основной Stage
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        loadScene("DashFX.fxml"); // Загружаем стартовую сцену
+        loadScene("Home.fxml"); // Загружаем стартовую сцену
     }
 
     // Универсальный метод для загрузки сцен
@@ -32,20 +34,23 @@ public class MainUI extends Application {
             Parent root = loader.load();
             Object controller = loader.getController();
            
-            if (controller instanceof DashFX) {
-                ((DashFX) controller).setMainApp(this);
+            if (controller instanceof HomeController) {
+                ((HomeController) controller).setMainApp(this);
             }  else if (controller instanceof WallpapersController) {
                 ((WallpapersController) controller).setMainApp(this);
-            } else if (controller instanceof WidgetsController) {
-                ((WidgetsController) controller).setMainApp(this);
             } else if (controller instanceof IconsController) {
                 ((IconsController) controller).setMainApp(this);
-            }else if (controller instanceof DownloadedController) {
-                ((DownloadedController) controller).setMainApp(this);
-            }else if (controller instanceof TaskBarController) {
-                ((TaskBarController) controller).setMainApp(this);
+            }else if (controller instanceof BoostController) {
+                ((BoostController) controller).setMainApp(this);
+            }else if (controller instanceof SettingsController) {
+                ((SettingsController) controller).setMainApp(this);
+            }else if (controller instanceof ProfileController) {
+                ((ProfileController) controller).setMainApp(this);
+            }else if (controller instanceof VolumeController) {
+                ((VolumeController) controller).setMainApp(this);
+            }else if (controller instanceof RocketController) {
+                ((RocketController) controller).setMainApp(this);
             }
-
 
             // Включаем обработку перемещения окна
             enableWindowDragging(root);
@@ -53,7 +58,7 @@ public class MainUI extends Application {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (IOException e) {
+            } catch (IOException e) {
             e.printStackTrace();
         }
     }
