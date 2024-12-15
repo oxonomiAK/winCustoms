@@ -21,12 +21,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class WallpapersController {
@@ -34,9 +36,11 @@ public class WallpapersController {
     @FXML
     private Button BtnBoost;
 
-
     @FXML
     private Button BtnWallpapers;
+
+    @FXML
+    private Button BtnProfile;
 
     @FXML
     private Button BtnSettings;
@@ -76,6 +80,7 @@ public class WallpapersController {
         wallpaperPaths.put(BtnWallpapers2, "src/main/java/com/customizer/ui/resources/gori.png");
         wallpaperPaths.put(BtnWallpapers3, "src/main/java/com/customizer/ui/resources/pole.png");
         wallpaperPaths.put(BtnWallpapers4, "src/main/java/com/customizer/ui/resources/japan.png");
+
     }
     
 
@@ -100,6 +105,8 @@ public class WallpapersController {
         mainApp.loadScene("Boost.fxml");
     }
     
+
+
    @FXML
 void BtnWallpapers1Clicked(ActionEvent event) {
     // Получаем текущую сцену
@@ -202,20 +209,14 @@ void BtnWallpapers1Clicked(ActionEvent event) {
 }
     
 
-
-// Метод для смены обоев
-public static void setWallpaper(String imagePath) {
-    // Передаем параметры в SystemParametersInfo для смены обоев
-    User32F.User32.INSTANCE.SystemParametersInfoW(
-            User32F.User32.SPI_SETDESKWALLPAPER,
-            0,
-            imagePath,
-            User32F.User32.SPIF_UPDATEINIFILE | User32F.User32.SPIF_SENDCHANGE);
-}
-
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("Wallpapers.fxml");
+    }
+
+    @FXML
+    void BtnProfileClicked(ActionEvent event) {
+        mainApp.loadScene("Profile.fxml");
     }
 
     @FXML

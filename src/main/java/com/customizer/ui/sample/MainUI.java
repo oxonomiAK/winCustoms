@@ -42,8 +42,15 @@ public class MainUI extends Application {
                 ((IconsController) controller).setMainApp(this);
             }else if (controller instanceof BoostController) {
                 ((BoostController) controller).setMainApp(this);
+            }else if (controller instanceof SettingsController) {
+                ((SettingsController) controller).setMainApp(this);
+            }else if (controller instanceof ProfileController) {
+                ((ProfileController) controller).setMainApp(this);
+            }else if (controller instanceof VolumeController) {
+                ((VolumeController) controller).setMainApp(this);
+            }else if (controller instanceof RocketController) {
+                ((RocketController) controller).setMainApp(this);
             }
-
 
             // Включаем обработку перемещения окна
             enableWindowDragging(root);
@@ -51,7 +58,7 @@ public class MainUI extends Application {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (IOException e) {
+            } catch (IOException e) {
             e.printStackTrace();
         }
     }

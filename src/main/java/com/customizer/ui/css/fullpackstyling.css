@@ -59,8 +59,6 @@
     -fx-background-radius :  20;
 }
 
-#anchor-pane {
-    -fx-background-radius: 30; /* Радиус закругления (аналогичный фото) */
-    -fx-background-color: transparent; /* Сделайте фон прозрачным */
-    -fx-border-radius: 30; /* Если есть рамки, они тоже закруглятся */
+.progress-bar {
+    -fx-accent: #00ff00; /* Зеленый цвет заполнения */
 }

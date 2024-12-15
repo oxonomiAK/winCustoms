@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -81,19 +82,23 @@
                   <Line endX="76.0" layoutX="120.0" layoutY="145.0" startX="-100.0" stroke="#585358" />
                   <Line endX="76.0" layoutX="120.0" layoutY="208.0" startX="-100.0" stroke="#585358" />
                   <Line endX="76.0" layoutX="120.0" layoutY="271.0" startX="-100.0" stroke="#585358" />
-                  <Button graphicTextGap="20.0" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="49.0" prefWidth="188.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Username" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="19.0" />
-                     </font>
-                  </Button>
                   <Line endX="100.0" layoutX="115.0" layoutY="82.0" startX="-106.0" stroke="#585358" />
+                  <StackPane alignment="TOP_CENTER" layoutX="20.0" layoutY="14.0" prefHeight="65.0" prefWidth="177.0">
+                     <children>
+                        <Button fx:id="BtnProfile" alignment="TOP_CENTER" graphicTextGap="20.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#BtnProfileClicked" prefHeight="58.0" prefWidth="204.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Username" textFill="WHITE">
+                           <font>
+                              <Font name="Myanmar Text Bold" size="19.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/user.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </StackPane>
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wallpapers">

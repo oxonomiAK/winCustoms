@@ -1,43 +1,38 @@
 package com.customizer.ui.sample;
 
+
+import com.customizer.core.CoreAudio;
+import com.customizer.core.User32F;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Slider;
 import javafx.util.Duration;
+import com.sun.jna.ptr.FloatByReference;
 
 
-public class BoostController {
+
+public class VolumeController {
 
     @FXML
     private Button BtnBoost;
 
     @FXML
-    private Button BtnProfile;
+    private Button ApplyButton;
 
     @FXML
-    private Button BtnRocket;
+    private Slider VolumeSlider;
+
+    @FXML
+    private Button BtnProfile;
 
     @FXML
     private Button BtnHome;
 
     @FXML
-    private Button BtnIcons;
-
-    @FXML
-    private Button BtnPerformace;
-
-    @FXML
     private Button BtnSettings;
-
-    @FXML
-    private Button BtnTemperature;
-
-    @FXML
-    private Button BtnVolume;
 
     @FXML
     private Button BtnWallpapers;
@@ -45,7 +40,7 @@ public class BoostController {
     @FXML
     private Button closeButton;
 
-     private MainUI mainApp;
+    private MainUI mainApp;
 
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
@@ -55,14 +50,15 @@ public class BoostController {
     public void initialize() {
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         setupButtonHoverEffect(BtnBoost);
-        setupButtonHoverEffect(BtnIcons);
         setupButtonHoverEffect(BtnWallpapers);
-        setupButtonHoverEffect(BtnVolume);
-        setupButtonHoverEffect(BtnTemperature);
-        setupButtonHoverEffect(BtnPerformace);
-        setupButtonHoverEffect(BtnRocket);
+        setupButtonHoverEffect(BtnHome);
         setupButtonHoverEffect(BtnSettings);
 
+         // Установить начальное значение громкости из системы
+         VolumeSlider.setValue(getSystemVolume() * 100);
+
+         // Обработчик нажатия кнопки "ОК"
+         //ApplyButton.setOnAction(event -> SetSystemVolume((float) VolumeSlider.getValue() / 100));
     }
 
     private void setupButtonHoverEffect(Button button) {
@@ -81,16 +77,9 @@ public class BoostController {
         button.setOnMouseExited(e -> scaleDown.play()); // Анимация уменьшения при убирании мыши
     }
 
-
     @FXML
     void BtnBoostClicked(ActionEvent event) {
         mainApp.loadScene("Boost.fxml");
-    }
-
-
-    @FXML
-    void BtnRocketClicked(ActionEvent event) {
-        mainApp.loadScene("Rocket.fxml");
     }
 
     @FXML
@@ -99,14 +88,39 @@ public class BoostController {
     }
 
     @FXML
-    void BtnIconsClicked(ActionEvent event) {
-        mainApp.loadScene("Icons.fxml");
+    void SetSystemVolume(ActionEvent event) {
+
     }
 
-    @FXML
-    void BtnPerformaceClicked(ActionEvent event) {
-        System.out.println("Performances button clicked!");
+    // Получить текущий уровень громкости
+    private float getSystemVolume() {
+        try {
+            CoreAudio.IAudioEndpointVolume audioEndpoint = getAudioEndpoint();
+            FloatByReference volumeRef = new FloatByReference();
+            audioEndpoint.GetMasterVolumeLevelScalar(volumeRef);
+            return volumeRef.getValue();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
+
+    // Установить громкость системы
+    private void SetSystemVolume(float volume) {
+        try {
+            CoreAudio.IAudioEndpointVolume audioEndpoint = getAudioEndpoint();
+            audioEndpoint.SetMasterVolumeLevelScalar(volume, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Получить IAudioEndpointVolume
+    private CoreAudio.IAudioEndpointVolume getAudioEndpoint() {
+        // Логика инициализации COM-объекта (например, через CoCreateInstance)
+        throw new UnsupportedOperationException("Добавьте реализацию получения IAudioEndpointVolume");
+    }
+    
 
     @FXML
     void BtnProfileClicked(ActionEvent event) {
@@ -116,16 +130,6 @@ public class BoostController {
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
         mainApp.loadScene("Settings.fxml");
-    }
-
-    @FXML
-    void BtnTemperatureClicked(ActionEvent event) {
-        System.out.println("temp button clicked!");
-    }
-
-    @FXML
-    void BtnVolumeClicked(ActionEvent event) {
-        mainApp.loadScene("Volume.fxml");
     }
 
     @FXML
