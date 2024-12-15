@@ -2,6 +2,7 @@ package com.customizer.ui.sample;
 
 
 import com.customizer.core.utils.RegistryUtils;
+import com.customizer.services.RestartExplorer;
 
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -122,7 +123,7 @@ public class IconsController {
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
         RegistryUtils.setIconSize(48);
-        RegistryUtils.restartExplorer();
+        RestartExplorer.restartExplorer();
         int defaultValue = 48; // Значение по умолчанию
         IcnScrollBar.setValue(defaultValue); // Устанавливаем значение на ползунке
         ScrollBarValue.setText(String.valueOf(defaultValue)); // Обновляем текст в текстовом поле
@@ -133,7 +134,7 @@ public class IconsController {
         int confirmedValue = (int) IcnScrollBar.getValue();
         System.out.println("Confirmed value: " + confirmedValue);
         RegistryUtils.setIconSize(confirmedValue);
-        RegistryUtils.restartExplorer();
+        RestartExplorer.restartExplorer();
         // Здесь можно добавить дополнительную логику
     }
     
