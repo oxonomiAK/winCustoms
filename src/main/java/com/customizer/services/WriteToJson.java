@@ -2,6 +2,7 @@ package com.customizer.services;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -9,27 +10,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class WriteToJson {
          // Создаем объект для записи
-    ;
 
-    static String filePath = "DeletedFileCount.json";
-    static File file = new File(filePath);
+    public static void WriteToJSON(String variableName ,int Value){
+        String fileName = "ProgrammVariables.json";
+        File file = new File(fileName);
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> jsonData = new HashMap<>();
 
-        // Пишем в JSON-файл
-    static ObjectMapper mapper = new ObjectMapper();
-
-    public static void WriteToJSON(int FileCount, String variableName) throws InterruptedException{
-        // Значение переменной
-         
         try {
-            Map<String, Object> jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
-            // Проверяем, существует ли файл
-            if (file.exists()) {
-                // Читаем JSON-файл в объект Data
-                jsonData.put(variableName, FileCount);
-            } else {
-                // Если файл не существует, создаем новый объект с начальным значением
-                jsonData.put(variableName, 0);
-            }
+            
+            if (file.exists() && file.length() > 0) 
+                jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
+            
+                jsonData.put(variableName, Value);
+           
 
             // Записываем измененный объект обратно в JSON-файл
             mapper.writerWithDefaultPrettyPrinter().writeValue(file, jsonData);

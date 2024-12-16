@@ -24,5 +24,19 @@ public class RegistryUtils {
 
 
     }
+
+    public static int getIconSize() {
+        String registryPath = "SOFTWARE\\Microsoft\\Windows\\Shell\\Bags\\1\\Desktop";
+        String registryKey = "IconSize";
+
+        
+        return Advapi32Util.registryGetIntValue(
+            WinReg.HKEY_CURRENT_USER,
+            registryPath,
+            registryKey    
+            );
+
+    }
+
     
 }

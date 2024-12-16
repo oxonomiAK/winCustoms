@@ -10,6 +10,9 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -209,50 +213,11 @@ public class ProfileController {
     }
 
     @FXML
-    void BtnChangePicture(ActionEvent event) {
-        selectPicture();
+    void BtnChangePicture(ActionEvent event) throws IOException {
+       
     }
 
-    public void selectPicture() { //Функция открытия диалогового окна с выбором файла
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Choose your profile picture");//Имя окна
-    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg")); //Фильтр расширения файлов
-    File selectedFile = fileChooser.showOpenDialog(null);//Открытие диалогового окна с выбором файла
-
-    if (selectedFile != null) {
-        String imagePath = selectedFile.getAbsolutePath(); //Получение абсолютного пути выбранной картинки
-        String extension = FilenameUtils.getExtension(imagePath);
-        String copiedImage = null;
-
-        if (extension.equals("png")) {
-            File source = new File(imagePath);
-            File dest = new File("src/main/java/com/customizer/ui/resources/test.png");
-            try {   //Копирование файла в корневую папку проекта resources
-                FileUtils.copyFile(source, dest, true);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            copiedImage = "src/main/java/com/customizer/ui/resources/test.png";
-            System.out.println(extension);
-        } else if (extension.equals("jpg")) {
-            File source = new File(imagePath);
-            File dest = new File("src/main/java/com/customizer/ui/resources/test.jpg");
-            try {   //Копирование файла в корневую папку проекта resources
-                FileUtils.copyFile(source, dest, true);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            copiedImage = "src/main/java/com/customizer/ui/resources/test.jpg";
-            System.out.println(extension);
-        }
-
-        File f = new File(copiedImage);
-        String absolute = f.getAbsolutePath(); 
-        String absolutePathForImageInsert = "file:/" + absolute.replace('\\', '/'); //Получение абсолютного пути для вставки картинки из корневой папки resources
-
-        setDynamicImage(absolutePathForImageInsert);
-    }
-}
+    
 
 @FXML
 private ImageView dynamicImageView, dynamicImageView1;
@@ -260,44 +225,13 @@ private ImageView dynamicImageView, dynamicImageView1;
 public void setDynamicImage(String imagePath) { //Функция установки картинки в ячейку
     // Проверяем наличие ссылки на ImageView
     if (dynamicImageView != null) {
-        setAdjustedImage(dynamicImageView, imagePath);
+        
     }
     if (dynamicImageView1 != null) {
-        setAdjustedImage(dynamicImageView1, imagePath);
+        
     }
 }
 
-private void setAdjustedImage(ImageView imageView, String imagePath) {
-    Image image = new Image(imagePath);
-    imageView.setImage(image);
-
-    // Устанавливаем размеры ImageView
-    imageView.setFitWidth(100); // Или задайте ширину динамически
-    imageView.setFitHeight(100); // Или задайте высоту динамически
-    imageView.setPreserveRatio(true);
-
-    // Получаем фактические размеры изображения
-    double imageWidth = image.getWidth();
-    double imageHeight = image.getHeight();
-
-    // Определяем радиус круга
-    double radius = Math.min(imageView.getFitWidth(), imageView.getFitHeight()) / 2;
-
-    // Создаем круг с центром, привязанным к центру изображения
-    Circle clip = new Circle(imageView.getFitWidth() / 2, imageView.getFitHeight() / 2, radius);
-
-    // Устанавливаем круговую обрезку
-    imageView.setClip(clip);
-
-    // Создаем изображение с прозрачным фоном для визуализации обрезки
-    SnapshotParameters parameters = new SnapshotParameters();
-    parameters.setFill(Color.TRANSPARENT);
-    Image roundedImage = imageView.snapshot(parameters, null);
-
-    // Сбрасываем clip и устанавливаем окончательное изображение
-    imageView.setClip(null);
-    imageView.setImage(roundedImage);
-}
 
 
 

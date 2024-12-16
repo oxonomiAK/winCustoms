@@ -15,6 +15,7 @@ import com.customizer.core.User32F;
 import com.customizer.core.dwTemp;
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.services.RestartExplorer;
+import com.customizer.services.WriteToJson;
 import com.customizer.core.utils.WallpaperUtils;
 
 import javafx.animation.ScaleTransition;
@@ -137,6 +138,7 @@ public class IconsController {
 
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
+        WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
         RegistryUtils.setIconSize(48);
         RestartExplorer.restartExplorer();
         int defaultValue = 48; // Значение по умолчанию
@@ -146,6 +148,7 @@ public class IconsController {
 
       @FXML
     void BtnSetIconSize(ActionEvent event) {
+        WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
         int confirmedValue = (int) IcnScrollBar1.getValue();
         System.out.println("Confirmed value: " + confirmedValue);
         RegistryUtils.setIconSize(confirmedValue);

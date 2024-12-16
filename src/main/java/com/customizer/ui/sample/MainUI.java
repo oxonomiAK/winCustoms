@@ -50,6 +50,8 @@ public class MainUI extends Application {
                 ((VolumeController) controller).setMainApp(this);
             }else if (controller instanceof RocketController) {
                 ((RocketController) controller).setMainApp(this);
+            }else if (controller instanceof ImageCropperController) {
+                ((ImageCropperController) controller).setMainApp(this);
             }
 
             // Включаем обработку перемещения окна

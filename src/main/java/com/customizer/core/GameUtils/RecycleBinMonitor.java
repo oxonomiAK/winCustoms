@@ -63,7 +63,7 @@ public class RecycleBinMonitor {
                 } 
                 // Сброс ключа и готовность для следующих событий
                 
-                WriteToJson.WriteToJSON(DeletedFileCount, "DeletedFileCount");
+                WriteToJson.WriteToJSON("DeletedFileCount", DeletedFileCount);
                 key.reset();
             }
 
