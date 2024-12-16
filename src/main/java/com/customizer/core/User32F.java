@@ -7,7 +7,7 @@ import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.win32.W32APIOptions;
 
 public class User32F {
-    // Интерфейс для User32 с добавлением метода SystemParametersInfo
+    // Interface for User32 with SystemParametersInfo methods
     public interface User32 extends Library {
         User32 INSTANCE = Native.load("user32", User32.class, W32APIOptions.DEFAULT_OPTIONS);
 
@@ -22,9 +22,16 @@ public class User32F {
         final int SPI_GETDESKWALLPAPER = 0x0073;
         final int MAX_PATH = 260;
 
-        // Определяем метод SystemParametersInfoW с поддержкой Unicode
+        // constant to set shadow
+        final int SPI_SETDROPSHADOW = 0x1025;
+
+        // Methodes SystemParametersInfoW with Unicode
+
         boolean SystemParametersInfoW(int uiAction, int uiParam, String pvParam, int fWinIni);
 
         boolean SystemParametersInfoW(int uiAction, int uiParam, char[] pvParam, int fWinIni);
+
+        boolean SystemParametersInfoW(int uiAction, int uiParam, boolean pvParam, int fWinIni);
+
     }
 }
