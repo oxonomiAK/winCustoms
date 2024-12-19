@@ -1,4 +1,4 @@
-package com.customizer.ui.sample;
+package com.customizer.ui.UIControllers;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;

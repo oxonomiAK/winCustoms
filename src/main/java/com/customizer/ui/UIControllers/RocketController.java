@@ -1,15 +1,17 @@
-package com.customizer.ui.sample;
+package com.customizer.ui.UIControllers;
 
+import java.io.IOException;
+import com.customizer.services.RequestAdmin;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 
 
-
-public class BoostController {
+public class RocketController {
 
     @FXML
     private Button BtnBoost;
@@ -17,23 +19,21 @@ public class BoostController {
     @FXML
     private Button BtnProfile;
 
+
     @FXML
-    private Button BtnRocket;
+    private Button BtnToolTip;
+
+    @FXML
+    private Tooltip ToolTip;
 
     @FXML
     private Button BtnHome;
 
     @FXML
-    private Button BtnIcons;
+    private Button BtnPerformances;
 
     @FXML
     private Button BtnSettings;
-
-    @FXML
-    private Button BtnCompComponents;
-
-    @FXML
-    private Button BtnVolume;
 
     @FXML
     private Button BtnWallpapers;
@@ -41,7 +41,7 @@ public class BoostController {
     @FXML
     private Button closeButton;
 
-     private MainUI mainApp;
+    private MainUI mainApp;
 
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
@@ -51,61 +51,43 @@ public class BoostController {
     public void initialize() {
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
-        HoverEffect.setupButtonHoverEffect(BtnIcons);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
-        HoverEffect.setupButtonHoverEffect(BtnVolume);
-        HoverEffect.setupButtonHoverEffect(BtnCompComponents);
-        HoverEffect.setupButtonHoverEffect(BtnRocket);
+        HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
+        // Устанавливаем Tooltip для BtnToolTip
+        ToolTip.setText("You need administrator rights to run it"); // Ваш текст подсказки
+        BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к Button
     }
-
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {
-        mainApp.loadScene("Boost.fxml");
-    }
-
-
-    @FXML
-    void BtnRocketClicked(ActionEvent event) {
-        mainApp.loadScene("Rocket.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML
     void BtnHomeClicked(ActionEvent event) {
-        mainApp.loadScene("Home.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
     }
-
-    @FXML
-    void BtnIconsClicked(ActionEvent event) {
-        mainApp.loadScene("Icons.fxml");
-    }
-
 
     @FXML
     void BtnProfileClicked(ActionEvent event) {
-        mainApp.loadScene("Profile.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
+    }
+
+    @FXML
+    void BtnPerformancesClicked(ActionEvent event) throws IOException {
+        RequestAdmin.RequestAdminRights();
     }
 
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
-        mainApp.loadScene("Settings.fxml");
-    }
-
-    @FXML
-    void BtnCompComponentsClicked(ActionEvent event) {
-        mainApp.loadScene("CompComponents.fxml");
-    }
-
-    @FXML
-    void BtnVolumeClicked(ActionEvent event) {
-        mainApp.loadScene("Volume.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Settings.fxml");
     }
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
-        mainApp.loadScene("Wallpapers.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
     }
 
     @FXML

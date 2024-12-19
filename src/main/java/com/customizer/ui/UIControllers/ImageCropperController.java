@@ -1,4 +1,4 @@
-package com.customizer.ui.sample;
+package com.customizer.ui.UIControllers;
 
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
@@ -133,9 +133,11 @@ public class ImageCropperController {
 
             File outputFile = new File("src/main/java/com/customizer/ui/resources/user.png");
             ImageIO.write(SwingFXUtils.fromFXImage(croppedImage, null), "png", outputFile);
-            mainApp.loadScene("Profile.fxml");
-            System.out.println("Image saved: " + outputFile.getAbsolutePath());
             ProfileController.changeprofpic("com\\customizer\\ui\\resources\\user.png");
+            System.out.println("Image saved: " + outputFile.getAbsolutePath());
+            Thread.sleep(600);
+            mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

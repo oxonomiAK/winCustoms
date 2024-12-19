@@ -1,4 +1,4 @@
-package com.customizer.ui.sample;
+package com.customizer.ui.UIControllers;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class MainUI extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage; // Сохраняем основной Stage
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        loadScene("Home.fxml"); // Загружаем стартовую сцену
+        loadScene("/com/customizer/ui/fxml/Home.fxml"); // Загружаем стартовую сцену
     }
 
     // Универсальный метод для загрузки сцен
