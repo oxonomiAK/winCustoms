@@ -27,24 +27,24 @@ public class RequestAdmin {
                 "-ArgumentList", "'-jar', '" + path + "'",
                 "-Verb", "RunAs"
             };
-
             // Создание процесса для запуска с правами администратора
             ProcessBuilder pb = new ProcessBuilder(command);
             pb.inheritIO(); // Выводить stdout и stderr в консоль для отладки
 
             // Запуск команды и завершение текущего процесса
             pb.start();
+            
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-            return;
+            
         }
-
+        if(isAdmin()){
         // Если программа уже запущена с правами администратора
-        System.out.println("Программа запущена с правами администратора.");
-        
+            System.out.println("Программа запущена с правами администратора.");
         // Ваш функционал
-        runFunctionality();
+            runFunctionality();
+        }
     }
 
 
@@ -69,9 +69,9 @@ public class RequestAdmin {
             String systemPropertiesPath = "C:\\Windows\\System32\\SystemPropertiesPerformance.exe";
             ProcessBuilder sysPropPb = new ProcessBuilder(systemPropertiesPath);
             sysPropPb.inheritIO(); // Выводить stdout и stderr
-            @SuppressWarnings("unused")
-            Process sysPropProcess = sysPropPb.start();
             
+            Process sysPropProcess = sysPropPb.start();
+            sysPropProcess.waitFor();
 
             System.out.println("SystemPropertiesPerformance завершён.");
         } catch (Exception e) {

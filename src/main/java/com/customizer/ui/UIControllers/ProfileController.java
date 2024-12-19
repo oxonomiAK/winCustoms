@@ -244,9 +244,7 @@ public class ProfileController {
     public static void changeprofpic(String imagePath) {
         if (dynamicImageView != null) {
             dynamicImageView.setImage(new Image(imagePath));
-        } else {
-            System.err.println("Ошибка: dynamicImageView не инициализирован!");
-        }
+        } 
     }
 
     @FXML

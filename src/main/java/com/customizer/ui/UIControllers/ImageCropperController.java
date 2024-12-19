@@ -133,10 +133,10 @@ public class ImageCropperController {
 
             File outputFile = new File("src/main/java/com/customizer/ui/resources/user.png");
             ImageIO.write(SwingFXUtils.fromFXImage(croppedImage, null), "png", outputFile);
-            Thread.sleep(470);
-            mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
             ProfileController.changeprofpic("com\\customizer\\ui\\resources\\user.png");
             System.out.println("Image saved: " + outputFile.getAbsolutePath());
+            Thread.sleep(600);
+            mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
             
         } catch (Exception e) {
             e.printStackTrace();
