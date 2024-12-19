@@ -1,6 +1,8 @@
 package com.customizer.ui.sample;
 
+import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -9,17 +11,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
-import javafx.scene.*;
 import javafx.scene.effect.*;
-import javafx.scene.paint.*;
-import javafx.scene.shape.*;
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-
 import java.io.File;
-import java.io.IOException;
 
 
 public class ImageCropperController {
@@ -28,16 +23,13 @@ public class ImageCropperController {
     private Canvas canvas;
 
     @FXML
+    private Button closeButton;
+    
+    @FXML
     private Button chooseImageButton;
 
     @FXML
     private Button saveImageButton;
-
-    private MainUI mainApp;
-
-    public void setMainApp(MainUI mainApp) {
-        this.mainApp = mainApp;
-    }
 
     private double imageX = 0, imageY = 0; // Координаты изображения
     private double dragStartX, dragStartY; // Начало перемещения
@@ -45,6 +37,12 @@ public class ImageCropperController {
     private Image image;
 
     private final double CIRCLE_RADIUS = 150; // Радиус круга обрезки
+    
+    private MainUI mainApp;
+
+    public void setMainApp(MainUI mainApp) {
+        this.mainApp = mainApp;
+    }
 
     @FXML
     private void initialize() {
@@ -133,14 +131,16 @@ public class ImageCropperController {
 
 
 
-            File outputFile = new File("src/main/java/com/customizer/ui/resources/ProfilePicture.png");
+            File outputFile = new File("src/main/java/com/customizer/ui/resources/user.png");
             ImageIO.write(SwingFXUtils.fromFXImage(croppedImage, null), "png", outputFile);
+            mainApp.loadScene("Profile.fxml");
             System.out.println("Image saved: " + outputFile.getAbsolutePath());
+            ProfileController.changeprofpic("com\\customizer\\ui\\resources\\user.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+   
     public void draw(GraphicsContext gc) {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
@@ -166,5 +166,9 @@ public class ImageCropperController {
 
         // Восстанавливаем режим наложения
         gc.setGlobalBlendMode(BlendMode.SRC_OVER);
+    }
+     @FXML
+    void closeApp(ActionEvent event) {
+        Platform.exit();
     }
 }

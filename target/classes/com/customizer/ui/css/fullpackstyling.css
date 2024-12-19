@@ -1,17 +1,19 @@
 .button1
 {
--fx-background-color : linear-gradient(to top left, #484646, #252424);
+-fx-background-color :  #837d85;
 -fx-background-radius :  10;
 }
 .button1:hover
 {
--fx-background-color : #f2ef9e ;
--fx-background-radius :  30 0 0 30;
+-fx-background-color : #252225 ;
+-fx-text-fill: #ffffff;
+
 }
 .button1:pressed
 {
--fx-background-color : #f2ef9e ;
--fx-background-radius :  30 0 0 30;
+-fx-background-color : #222022 ;
+-fx-text-fill: #ffffff;
+
 }
 
 .button2
@@ -59,6 +61,87 @@
     -fx-background-radius :  20;
 }
 
+.button5
+{
+-fx-background-color :  #2d2b2e;
+-fx-background-radius :  10;
+-fx-text-fill: #ffffff;
+}
+.button5:hover
+{
+-fx-background-color : #252225 ;
+-fx-text-fill: #ffffff;
+
+}
+.button5:pressed
+{
+-fx-background-color : #222022 ;
+-fx-text-fill: #ffffff;
+
+}
+
 .progress-bar {
     -fx-accent: #00ff00; /* Зеленый цвет заполнения */
+}
+
+
+/* Стили для ScrollBar */
+.scroll-bar {
+    -fx-background-color: #f1f1f100; /* Цвет фона ScrollBar */
+    -fx-border-color: #d1d1d1; /* Цвет границы ScrollBar */
+    -fx-border-radius: 10; /* Скругление углов */
+    -fx-pref-width: 250px; /* Ширина ScrollBar */
+}
+
+/* Стили для "ползунка" (thumb) в ScrollBar */
+.scroll-bar .thumb {
+    -fx-background-color: #5b289e; /* Цвет ползунка */
+    -fx-background-radius: 10; /* Скругление углов ползунка */
+}
+
+/* Стили для стрелок прокрутки */
+.scroll-bar .increment-arrow-button, 
+.scroll-bar .decrement-arrow-button {
+    -fx-background-color: #ffffff; /* Цвет фона стрелок */
+    -fx-border-color: #0078d7; /* Цвет границы стрелок */
+    -fx-border-radius: 5; /* Скругление углов стрелок */
+}
+
+/* Стили для области track (полосы прокрутки) */
+.scroll-bar .track {
+    -fx-background-color: #e0e0e0da; /* Цвет полосы прокрутки */
+    -fx-background-radius: 10; /* Скругление углов полосы прокрутки */
+}
+
+
+/* Стили для TextField */
+.text-field {
+    -fx-background-color: #e0e0e0da; /* Цвет фона */
+    -fx-border-color: #665f6500; /* Цвет границы */
+    -fx-border-radius: 15; /* Скругление углов */
+    -fx-border-width: 1px; /* Толщина границы */
+    -fx-padding: 5px; /* Отступы внутри поля */
+    -fx-font-size: 14px; /* Размер шрифта */
+    -fx-text-fill: #000000; /* Цвет текста */
+}
+
+/* Стили для фокуса (когда поле в фокусе) */
+.text-field:focused {
+    -fx-background-color: #e0e0e0da; /* Цвет фона при фокусе */
+    -fx-border-color: #665f65; /* Цвет границы при фокусе */
+}
+
+/* Стили для текста при вводе */
+.text-field .text {
+    -fx-font-family: Myanmar Text; /* Шрифт текста */
+}
+
+/* Стили для пустого поля */
+.text-field:empty {
+    -fx-text-fill: #ffffff; /* Цвет текста, когда поле пустое */
+}
+
+/* Стили для места для ввода текста (promptText) */
+.text-field .prompt-text {
+    -fx-text-fill: #000000; /* Цвет текста подсказки */
 }

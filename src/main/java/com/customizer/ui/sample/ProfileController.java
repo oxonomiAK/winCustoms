@@ -1,19 +1,13 @@
 package com.customizer.ui.sample;
 
-import java.io.File;
-import java.io.IOException;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
+import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+
 import javafx.animation.KeyFrame;
-import javafx.animation.ScaleTransition;
+
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -21,10 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -78,86 +68,120 @@ public class ProfileController {
     @FXML
     private StackPane root;
 
-    private MainUI mainApp;
+    @FXML
+    private ImageView AchImage;
 
+    @FXML
+    private Label TextLable;
+
+    @FXML
+    private Label TitleLable;
+
+    @FXML
+    private Button btnArentYouBored;
+
+    @FXML
+    private Button btnBoostAch;
+
+    @FXML
+    private static ImageView dynamicImageView, dynamicImageView1;
+    
+    @FXML
+    private Button btnCutOnce;
+    
+    @FXML
+    private Button btnIndianaJones;
+    
+    @FXML
+    private Button btnMaxLvl;
+    
+    @FXML
+    private Button btnMeasureTwice;
+    
+    @FXML
+    private Button btnNewFace;
+    
+    @FXML
+    private Button btnRecycler;
+    
+    @FXML
+    private Button btnRefresh;
+    
+    @FXML
+    private Button btnSizeDoesntMatter;
+    
+    @FXML
+    private Button btnSizeWizard;
+    
+    @FXML
+    private Button btnYouHaveTaste;
+    
+    private MainUI mainApp;
+    
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
     }
-
+    
     @FXML
     public void initialize() {
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
-        setupButtonHoverEffect(BtnBoost);
-        setupButtonHoverEffect(BtnWallpapers);
-        setupButtonHoverEffect(BtnHome);
-        setupButtonHoverEffect(BtnSettings);
-
+        HoverEffect.setupButtonHoverEffect(BtnBoost);
+        HoverEffect.setupButtonHoverEffect(BtnWallpapers);
+        HoverEffect.setupButtonHoverEffect(BtnHome);
+        HoverEffect.setupButtonHoverEffect(BtnSettings);
+    
         // Устанавливаем начальное значение опыта
         ExperienceBar.setProgress(currentProgress);
-
-
+    
+    
         // Получение имени пользователя из ОС
         String username = System.getProperty("user.name");
         // Установка имени пользователя как текста кнопки
         BtnUsername.setText(username);
-        
+            
         textField = new TextField();
         textField.setPromptText("Введите текст...");
         textField.setOnAction(event -> onTextEntered()); // Обработка нажатия Enter
         textField.setVisible(false);
-        
+            
         // Добавление TextField в родительский контейнер кнопки
         ((StackPane) BtnUsername.getParent()).getChildren().add(textField);
-
+    
     }
+    
 
-    private void setupButtonHoverEffect(Button button) {
-        // Создаем анимацию увеличения
-        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(150), button);
-        scaleUp.setToX(1.05); // Увеличение по оси X
-        scaleUp.setToY(1.05); // Увеличение по оси Y
-
-        // Создаем анимацию уменьшения
-        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(150), button);
-        scaleDown.setToX(1.0); // Возврат к исходному размеру по оси X
-        scaleDown.setToY(1.0); // Возврат к исходному размеру по оси Y
-
-        // Устанавливаем обработчики событий
-        button.setOnMouseEntered(e -> scaleUp.play()); // Анимация увеличения при наведении
-        button.setOnMouseExited(e -> scaleDown.play()); // Анимация уменьшения при убирании мыши
-    }
-
-
+    
+    
     @FXML
     void BtnBoostClicked(ActionEvent event) {
         mainApp.loadScene("Boost.fxml");
     }
-
+    
     @FXML
     void onIncreaseProgressClicked(ActionEvent event) {
         gainExperienceWithRanks(0.10); // Увеличиваем прогресс на 10% с анимацией
     }
-     
+         
     private int currentRank = 0; // Индекс текущего ранга
     private final String[] ranks = {"Beginner", "Apprentice", "Explorer", "Adept", "Master", "Expert", "Professional", "Virtuoso", "Grandmaster", "Legend"}; // Список рангов
-
+    
     public void gainExperienceWithRanks(double amount) {
     double targetProgress = Math.min(currentProgress + amount, 1.0); // Целевой прогресс для текущей шкалы
-
+    
     Timeline timeline = new Timeline(
         new KeyFrame(
             Duration.millis(20), // Обновление каждые 20 мс
             event -> {
                 if (currentProgress < targetProgress) {
                     currentProgress += 0.01;
-
+    
                     // Исправление для точного достижения 100%
                     if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
                         currentProgress = targetProgress;
                     }
-
+    
                     ExperienceBar.setProgress(currentProgress);
-
+    
                     // Когда шкала полностью заполнена
                     if (currentProgress >= 1.0) {
                         if (currentRank < ranks.length - 1) {
@@ -175,65 +199,55 @@ public class ProfileController {
             }
         )
     );
-
+    
     // Устанавливаем количество шагов
     timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
     timeline.play();
-}
-
-
+    }
+    
+    
     @FXML
     void BtnChangeUsername(ActionEvent event) {
-       if (!isTextFieldVisible) {
+        if (!isTextFieldVisible) {
             // Позиционируем TextField поверх кнопки
             textField.setLayoutX(BtnUsername.getLayoutX());
             textField.setLayoutY(BtnUsername.getLayoutY());
             textField.setPrefWidth(BtnUsername.getWidth()); // Ширина текстового поля как у кнопки
             textField.setPrefHeight(BtnUsername.getHeight()); // Высота текстового поля как у кнопки
-            
+                
             textField.setText(BtnUsername.getText()); // Заполняем текущим текстом кнопки
             textField.setVisible(true);
             textField.requestFocus(); // Фокус на текстовом поле
             isTextFieldVisible = true;
         }
     }
-
+    
     private void onTextEntered() {
         // Изменяем текст кнопки на введенный текст
         BtnUsername.setText(textField.getText());
-
+    
         // Скрываем TextField
         textField.setVisible(false);
         isTextFieldVisible = false;
     }
-
+    
     @FXML
     void BtnHomeClicked(ActionEvent event) {
         mainApp.loadScene("Home.fxml");
     }
-
-    @FXML
-    void BtnChangePicture(ActionEvent event) throws IOException {
-       
-    }
-
     
-
-@FXML
-private ImageView dynamicImageView, dynamicImageView1;
-
-public void setDynamicImage(String imagePath) { //Функция установки картинки в ячейку
-    // Проверяем наличие ссылки на ImageView
-    if (dynamicImageView != null) {
+    @FXML
+    void BtnChangePicture(ActionEvent event) {
+        mainApp.loadScene("ImageCropper.fxml");    
         
     }
-    if (dynamicImageView1 != null) {
-        
+    public static void changeprofpic(String imagePath) {
+        if (dynamicImageView != null) {
+            dynamicImageView.setImage(new Image(imagePath));
+        } else {
+            System.err.println("Ошибка: dynamicImageView не инициализирован!");
+        }
     }
-}
-
-
-
 
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
@@ -250,4 +264,76 @@ public void setDynamicImage(String imagePath) { //Функция установ�
         Platform.exit();
     }
 
+    @FXML
+    void btnArentYouBoredClicked(ActionEvent event) {
+        updateContent("Aren`t You Bored?", "You have changed the wallpaper 100 times!", "com\\customizer\\ui\\resources\\Wallpaper100.png");
+    }
+
+    @FXML
+    void btnBoostAchClicked(ActionEvent event) {
+        updateContent("Boost!", "You changed the performance settings!", "com\\customizer\\ui\\resources\\boostach.png");
+    }
+
+    @FXML
+    void btnCutOnceClicked(ActionEvent event) {
+        updateContent("...Cut Once", "You resized the icons back to their original size!", "com\\customizer\\ui\\resources\\icondefault.png");
+    }
+
+    @FXML
+    void btnIndianaJonesClicked(ActionEvent event) {
+        updateContent("Indiana Jones", "Unlock all wallpapers!", "com\\customizer\\ui\\resources\\adventurer.png");
+    }
+
+    @FXML
+    void btnMaxLvlClicked(ActionEvent event) {
+        updateContent("Fashionista?", "You reached the maximum level!", "com\\customizer\\ui\\resources\\maxlvl.png");
+    }
+
+    @FXML
+    void btnMeasureTwiceClicked(ActionEvent event) {
+        updateContent("Measure Twice...", "You resized the icons!", "com\\customizer\\ui\\resources\\iconchange.png");
+    }
+
+    @FXML
+    void btnNewFaceClicked(ActionEvent event) {
+        updateContent("New Face", "You have changed your profile picture!", "com\\customizer\\ui\\resources\\ProfilePic.png");
+    }
+
+    @FXML
+    void btnRecyclerClicked(ActionEvent event) {
+        updateContent("Recycler", "You have emptied the recycle garbage can!", "com\\customizer\\ui\\resources\\bin.png");
+    }
+
+    @FXML
+    void btnRefreshClicked(ActionEvent event) {
+        updateContent("Refresh", "You have installed a new wallpaper!", "com\\customizer\\ui\\resources\\Wallpaper1.png");
+    }
+
+    @FXML
+    void btnSizeDoesntMatterClicked(ActionEvent event) {
+        updateContent("Size Doesn't Matter", "You resized the icons to the minimum possible size!", "com\\customizer\\ui\\resources\\growdown.png");
+    }
+
+    @FXML
+    void btnSizeWizardClicked(ActionEvent event) {
+        updateContent("Size Wizard", "You resized the icons to the maximum possible size!", "com\\customizer\\ui\\resources\\growdown.png");
+    }
+
+    @FXML
+    void btnYouHaveTasteClicked(ActionEvent event) {
+        updateContent("You Have Taste", "You have changed the wallpaper 10 times", "com\\customizer\\ui\\resources\\Wallpaper10.png");
+    }
+
+     /**
+     * Обновление текста и изображения.
+     *
+     * @param title Текст для `TitleLabel`.
+     * @param text Текст для `TextLabel`.
+     * @param imagePath Путь к изображению.
+     */
+    private void updateContent(String title, String text, String imagePath) {
+        TitleLable.setText(title);
+        TextLable.setText(text);
+        AchImage.setImage(new Image(imagePath));
+    }
 }

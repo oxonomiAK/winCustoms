@@ -117,9 +117,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="BtnRocket" contentDisplay="TOP" layoutX="305.0" layoutY="143.0" mnemonicParsing="false" onAction="#BtnRocketClicked" prefHeight="72.0" prefWidth="80.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Boost" textFill="WHITE">
+            <Button fx:id="BtnRocket" contentDisplay="TOP" layoutX="343.0" layoutY="154.0" mnemonicParsing="false" onAction="#BtnRocketClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Boost" textFill="WHITE">
                <graphic>
-                  <ImageView fitHeight="69.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/shuttle.png" />
                      </image>
@@ -129,9 +129,9 @@
                   <Font name="Myanmar Text" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="BtnVolume" contentDisplay="TOP" layoutX="438.0" layoutY="143.0" mnemonicParsing="false" onAction="#BtnVolumeClicked" prefHeight="72.0" prefWidth="80.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Volume" textFill="WHITE">
+            <Button fx:id="BtnVolume" contentDisplay="TOP" layoutX="343.0" layoutY="426.0" mnemonicParsing="false" onAction="#BtnVolumeClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Volume" textFill="WHITE">
                <graphic>
-                  <ImageView fitHeight="69.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/microphone.png" />
                      </image>
@@ -141,11 +141,11 @@
                   <Font name="Myanmar Text" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="BtnPerformace" contentDisplay="TOP" layoutX="577.0" layoutY="143.0" mnemonicParsing="false" onAction="#BtnPerformaceClicked" prefHeight="72.0" prefWidth="80.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Settings" textFill="WHITE">
+            <Button fx:id="BtnCompComponents" contentDisplay="TOP" layoutX="734.0" layoutY="154.0" mnemonicParsing="false" onAction="#BtnCompComponentsClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Computer components" textFill="WHITE">
                <graphic>
-                  <ImageView fitHeight="69.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/admin.png" />
+                        <Image url="@../resources/Computer.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -153,23 +153,11 @@
                   <Font name="Myanmar Text" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="BtnTemperature" contentDisplay="TOP" layoutX="711.0" layoutY="143.0" mnemonicParsing="false" onAction="#BtnTemperatureClicked" prefHeight="72.0" prefWidth="80.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text=" °C" textFill="WHITE">
+            <Button fx:id="BtnIcons" contentDisplay="TOP" layoutX="734.0" layoutY="426.0" mnemonicParsing="false" onAction="#BtnIconsClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Icons" textFill="WHITE">
                <graphic>
-                  <ImageView fitHeight="69.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/thermometer.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Myanmar Text" size="19.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnIcons" contentDisplay="TOP" layoutX="844.0" layoutY="143.0" mnemonicParsing="false" onAction="#BtnIconsClicked" prefHeight="72.0" prefWidth="80.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Icons" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="69.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/admin.png" />
+                        <Image url="@../resources/icons.png" />
                      </image>
                   </ImageView>
                </graphic>
