@@ -88,6 +88,21 @@
                   <Image url="@../resources/big.png" />
                </image>
             </ImageView>
+            <Text fill="WHITE" layoutX="883.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interactive Achievements:">
+               <font>
+                  <Font name="Myanmar Text Bold" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="836.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Get achievements and increase your level by using the functionality of our software." textAlignment="CENTER" wrappingWidth="299.724609375">
+               <font>
+                  <Font name="Myanmar Text Bold" size="15.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="102.0" fitWidth="107.0" layoutX="935.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/achivement.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

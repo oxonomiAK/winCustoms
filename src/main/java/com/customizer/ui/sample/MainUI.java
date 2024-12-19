@@ -29,39 +29,49 @@ public class MainUI extends Application {
 
     // Универсальный метод для загрузки сцен
     public void loadScene(String fxmlFile) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent root = loader.load();
-            Object controller = loader.getController();
-           
-            if (controller instanceof HomeController) {
-                ((HomeController) controller).setMainApp(this);
-            }  else if (controller instanceof WallpapersController) {
-                ((WallpapersController) controller).setMainApp(this);
-            } else if (controller instanceof IconsController) {
-                ((IconsController) controller).setMainApp(this);
-            }else if (controller instanceof BoostController) {
-                ((BoostController) controller).setMainApp(this);
-            }else if (controller instanceof SettingsController) {
-                ((SettingsController) controller).setMainApp(this);
-            }else if (controller instanceof ProfileController) {
-                ((ProfileController) controller).setMainApp(this);
-            }else if (controller instanceof VolumeController) {
-                ((VolumeController) controller).setMainApp(this);
-            }else if (controller instanceof RocketController) {
-                ((RocketController) controller).setMainApp(this);
-            }
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        Parent root = loader.load();
+        Object controller = loader.getController();
 
-            // Включаем обработку перемещения окна
-            enableWindowDragging(root);
+        if (controller instanceof HomeController) {
+            ((HomeController) controller).setMainApp(this);
+        } else if (controller instanceof WallpapersController) {
+            ((WallpapersController) controller).setMainApp(this);
+        } else if (controller instanceof IconsController) {
+            ((IconsController) controller).setMainApp(this);
+        } else if (controller instanceof BoostController) {
+            ((BoostController) controller).setMainApp(this);
+        } else if (controller instanceof SettingsController) {
+            ((SettingsController) controller).setMainApp(this);
+        } else if (controller instanceof ProfileController) {
+            ((ProfileController) controller).setMainApp(this);
+        } else if (controller instanceof VolumeController) {
+            ((VolumeController) controller).setMainApp(this);
+        } else if (controller instanceof RocketController) {
+            ((RocketController) controller).setMainApp(this);
+        } else if (controller instanceof CompComponentsController) {
+            ((CompComponentsController) controller).setMainApp(this);
+        } else if (controller instanceof ImageCropperController) {
+            ((ImageCropperController) controller).setMainApp(this);
 
+            // Пропускаем вызов enableWindowDragging для ImageCropper
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
-            } catch (IOException e) {
-            e.printStackTrace();
+            return;
         }
+
+        // Включаем обработку перемещения окна для всех других контроллеров
+        enableWindowDragging(root);
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     // Универсальный метод для обработки перемещения окна
     private void enableWindowDragging(Parent root) {
