@@ -1,37 +1,15 @@
 package com.customizer.ui.sample;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import com.customizer.core.User32F;
-import com.customizer.core.dwTemp;
 import com.customizer.core.utils.RegistryUtils;
-import com.customizer.core.utils.WallpaperUtils;
+import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 
-import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
+
 
 public class IconsController {
 
@@ -74,10 +52,13 @@ public class IconsController {
     @FXML
     public void initialize() {
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
-        setupButtonHoverEffect(BtnBoost);
-        setupButtonHoverEffect(BtnWallpapers);
-        setupButtonHoverEffect(BtnHome);
-        setupButtonHoverEffect(BtnSettings);
+        HoverEffect.setupButtonHoverEffect(BtnBoost);
+        HoverEffect.setupButtonHoverEffect(BtnWallpapers);
+        HoverEffect.setupButtonHoverEffect(BtnHome);
+        HoverEffect.setupButtonHoverEffect(BtnSettings);
+
+        IcnScrollBar1.getStyleClass().add("scroll-bar");
+        ScrollBarValue1.getStyleClass().add("text-field");
 
          // Инициализация ScrollBar и синхронизация с TextField
     ScrollBarValue1.setText(String.valueOf((int) IcnScrollBar1.getValue()));
@@ -112,22 +93,6 @@ public class IconsController {
 }
 
     
-
-    private void setupButtonHoverEffect(Button button) {
-        // Создаем анимацию увеличения
-        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(150), button);
-        scaleUp.setToX(1.05); // Увеличение по оси X
-        scaleUp.setToY(1.05); // Увеличение по оси Y
-
-        // Создаем анимацию уменьшения
-        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(150), button);
-        scaleDown.setToX(1.0); // Возврат к исходному размеру по оси X
-        scaleDown.setToY(1.0); // Возврат к исходному размеру по оси Y
-
-        // Устанавливаем обработчики событий
-        button.setOnMouseEntered(e -> scaleUp.play()); // Анимация увеличения при наведении
-        button.setOnMouseExited(e -> scaleDown.play()); // Анимация уменьшения при убирании мыши
-    }
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {

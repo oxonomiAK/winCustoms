@@ -123,7 +123,7 @@
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall1" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/Horses.jpg" />
                      </image>
@@ -133,12 +133,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="BtnWallpapers2" UserData="src/main/java/com/customizer/ui/resources/gori.png" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="716.0" layoutY="100.0" mnemonicParsing="false" onAction="#BtnWallpapers1Clicked" prefHeight="238.0" prefWidth="370.0" style="-fx-background-radius: 10;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Mountains" textFill="WHITE">
+            <Button fx:id="BtnWallpapers2" UserData="src/main/java/com/customizer/ui/resources/gori.png" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="716.0" layoutY="100.0" mnemonicParsing="false" onAction="#BtnWallpapers2Clicked" prefHeight="238.0" prefWidth="370.0" style="-fx-background-radius: 10;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Mountains" textFill="WHITE">
                <font>
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="207.0" fitWidth="341.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall2" fitHeight="207.0" fitWidth="341.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/gori.png" />
                      </image>
@@ -148,12 +148,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="BtnWallpapers3" UserData="src/main/java/com/customizer/ui/resources/pole.png" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="716.0" layoutY="372.0" mnemonicParsing="false" onAction="#BtnWallpapers1Clicked" prefHeight="238.0" prefWidth="370.0" style="-fx-background-radius: 10;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Field" textFill="WHITE">
+            <Button fx:id="BtnWallpapers3" UserData="src/main/java/com/customizer/ui/resources/pole.png" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="716.0" layoutY="372.0" mnemonicParsing="false" onAction="#BtnWallpapers3Clicked" prefHeight="238.0" prefWidth="370.0" style="-fx-background-radius: 10;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Field" textFill="WHITE">
                <font>
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="239.0" fitWidth="345.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall4" fitHeight="239.0" fitWidth="345.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/pole.png" />
                      </image>
@@ -163,12 +163,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="BtnWallpapers4" UserData="src/main/java/com/customizer/ui/resources/japan.png" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="281.0" layoutY="370.0" mnemonicParsing="false" onAction="#BtnWallpapers1Clicked" prefHeight="238.0" prefWidth="370.0" style="-fx-background-radius: 10;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Samurai" textFill="WHITE">
+            <Button fx:id="BtnWallpapers4" UserData="src/main/java/com/customizer/ui/resources/japan.png" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="281.0" layoutY="370.0" mnemonicParsing="false" onAction="#BtnWallpapers4Clicked" prefHeight="238.0" prefWidth="370.0" style="-fx-background-radius: 10;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Samurai" textFill="WHITE">
                <font>
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="280.0" fitWidth="351.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall3" fitHeight="280.0" fitWidth="351.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/japan.png" />
                      </image>
