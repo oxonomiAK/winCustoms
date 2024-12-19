@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollBar?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="662.0" prefWidth="1185.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.sample.IconsController">
+<AnchorPane prefHeight="662.0" prefWidth="1185.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.UIControllers.VolumeController">
    <children>
       <ImageView fitHeight="684.0" fitWidth="1220.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -103,7 +101,7 @@
                   </StackPane>
                </children>
             </AnchorPane>
-            <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Icons">
+            <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume">
                <font>
                   <Font name="Myanmar Text Bold" size="26.0" />
                </font>
@@ -120,24 +118,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="402.0" layoutY="105.0" prefHeight="101.0" prefWidth="493.0" text="You can change the size of the icons from 1 to 256" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font name="Calibri Bold Italic" size="23.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="221.0" fitWidth="343.0" layoutX="479.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/big.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="BtnApply1" layoutX="524.0" layoutY="423.0" mnemonicParsing="false" onAction="#BtnSetIconSize" prefHeight="25.0" prefWidth="111.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Apply" />
-            <ScrollBar fx:id="IcnScrollBar1" layoutX="524.0" layoutY="392.0" max="256.0" min="1.0" prefHeight="1.0" prefWidth="292.0" stylesheets="@../css/fullpackstyling.css" />
-            <TextField fx:id="ScrollBarValue1" layoutX="625.0" layoutY="342.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onScrollBarValueChanged" prefHeight="34.0" prefWidth="47.0" stylesheets="@../css/fullpackstyling.css" text="1">
-               <font>
-                  <Font name="Myanmar Text" size="12.0" />
-               </font>
-            </TextField>
-            <Button fx:id="BtnDefaultSize1" layoutX="663.0" layoutY="423.0" mnemonicParsing="false" onAction="#BtnSetDefaultSize" prefHeight="25.0" prefWidth="111.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Set to defoult" />
+            <Slider fx:id="VolumeSlider" layoutX="323.0" layoutY="253.0" prefHeight="14.0" prefWidth="214.0" />
+            <Button fx:id="ApplyButton" layoutX="404.0" layoutY="289.0" mnemonicParsing="false" onAction="#SetSystemVolume" text="Button" />
          </children>
       </AnchorPane>
    </children>

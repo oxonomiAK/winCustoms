@@ -1,4 +1,4 @@
-package com.customizer.ui.sample;
+package com.customizer.ui.UIControllers;
 
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 
@@ -154,7 +154,7 @@ public class ProfileController {
     
     @FXML
     void BtnBoostClicked(ActionEvent event) {
-        mainApp.loadScene("Boost.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
     
     @FXML
@@ -233,12 +233,12 @@ public class ProfileController {
     
     @FXML
     void BtnHomeClicked(ActionEvent event) {
-        mainApp.loadScene("Home.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
     }
     
     @FXML
     void BtnChangePicture(ActionEvent event) {
-        mainApp.loadScene("ImageCropper.fxml");    
+        mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");    
         
     }
     public static void changeprofpic(String imagePath) {
@@ -251,12 +251,12 @@ public class ProfileController {
 
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
-        mainApp.loadScene("Settings.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Settings.fxml");
     }
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
-        mainApp.loadScene("Wallpapers.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
     }
 
     @FXML

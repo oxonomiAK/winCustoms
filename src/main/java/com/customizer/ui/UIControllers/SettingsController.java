@@ -1,4 +1,4 @@
-package com.customizer.ui.sample;
+package com.customizer.ui.UIControllers;
 
 
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
@@ -49,27 +49,27 @@ public class SettingsController {
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {
-        mainApp.loadScene("Boost.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML
     void BtnHomeClicked(ActionEvent event) {
-        mainApp.loadScene("Home.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
     }
 
     @FXML
     void BtnProfileClicked(ActionEvent event) {
-        mainApp.loadScene("Profile.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
     }
 
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
-        mainApp.loadScene("Settings.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Settings.fxml");
     }
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
-        mainApp.loadScene("Wallpapers.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
     }
 
     @FXML

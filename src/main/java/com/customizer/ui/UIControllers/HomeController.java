@@ -1,4 +1,4 @@
-package com.customizer.ui.sample;
+package com.customizer.ui.UIControllers;
 
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 
@@ -31,7 +31,7 @@ public class HomeController {
    
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
-        mainApp.loadScene("Wallpapers.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
     }
 
     @FXML

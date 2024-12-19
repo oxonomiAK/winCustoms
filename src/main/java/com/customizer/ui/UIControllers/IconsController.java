@@ -1,4 +1,4 @@
-package com.customizer.ui.sample;
+package com.customizer.ui.UIControllers;
 
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
@@ -69,7 +69,7 @@ public class IconsController {
     });
 
     // Слушатель для TextField
-    ScrollBarValue1.textProperty().addListener((observable, oldValue, newValue) -> {
+    ScrollBarValue1.textProperty().addListener((observable, oldValue, newValue) -> { //addListner требует использование лямбда функции
         if (newValue.isEmpty()) {
             return; // Если поле пустое, ничего не делаем
         }
@@ -96,7 +96,7 @@ public class IconsController {
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {
-        mainApp.loadScene("Boost.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML
@@ -139,23 +139,23 @@ public class IconsController {
     
     @FXML
     void BtnProfileClicked(ActionEvent event) {
-        mainApp.loadScene("Profile.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
     }
     
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
-        mainApp.loadScene("Wallpapers.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
     }
 
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
-        mainApp.loadScene("Settings.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Settings.fxml");
     }
 
     @FXML
     void BtnHomeClicked(ActionEvent event) {
-        mainApp.loadScene("Home.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
     }
 
     @FXML
