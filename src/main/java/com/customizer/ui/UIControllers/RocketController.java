@@ -54,10 +54,13 @@ public class RocketController {
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
-
-        // Устанавливаем Tooltip для BtnToolTip
+    
+        // Устанавливаем Tooltip для BtnToolTip с задержкой 50 мс
         ToolTip.setText("You need administrator rights to run it"); // Ваш текст подсказки
-        BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к Button
+        ToolTip.setShowDelay(javafx.util.Duration.millis(200)); // Устанавливаем задержку 50 мс
+        ToolTip.setShowDuration(javafx.util.Duration.seconds(3)); // Время отображения 2 секунды
+        ToolTip.setHideDelay(javafx.util.Duration.millis(100)); // Задержка перед скрытием 100 мс
+        BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к кнопке
     }
 
     @FXML
