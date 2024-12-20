@@ -107,7 +107,7 @@ public class WallpapersController {
     }
     
     private void handleWallpaperButtonClick(Button button, ImageView wall, ActionEvent event) {
-        // Получаем текущую сцену
+        // Получаем текущую сцену.
         javafx.scene.Scene scene = button.getScene();
     
         // Сохраняем исходные координаты кнопки
