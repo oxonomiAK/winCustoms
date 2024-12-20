@@ -4,7 +4,6 @@ import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.services.RestartExplorer;
 import com.customizer.services.WriteToJson;
-import com.customizer.core.utils.WallpaperUtils;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -70,20 +69,21 @@ public class IconsController {
             ScrollBarValue1.setText(String.valueOf(newValue.intValue()));
         });
 
-    // Слушатель для TextField
-    ScrollBarValue1.textProperty().addListener((observable, oldValue, newValue) -> { //addListner требует использование лямбда функции
-        if (newValue.isEmpty()) {
-            return; // Если поле пустое, ничего не делаем
-        }
-
-        try {
-            int value = Integer.parseInt(newValue); // Пробуем преобразовать в число
-
-            if (value < IcnScrollBar1.getMin()) {
-                value = (int) IcnScrollBar1.getMin(); // Ограничиваем значение минимумом
-            } else if (value > IcnScrollBar1.getMax()) {
-                value = (int) IcnScrollBar1.getMax(); // Ограничиваем значение максимумом
+        // Слушатель для TextField
+        ScrollBarValue1.textProperty().addListener((observable, oldValue, newValue) -> { // addListner требует
+                                                                                         // использование лямбда функции
+            if (newValue.isEmpty()) {
+                return; // Если поле пустое, ничего не делаем
             }
+
+            try {
+                int value = Integer.parseInt(newValue); // Пробуем преобразовать в число
+
+                if (value < IcnScrollBar1.getMin()) {
+                    value = (int) IcnScrollBar1.getMin(); // Ограничиваем значение минимумом
+                } else if (value > IcnScrollBar1.getMax()) {
+                    value = (int) IcnScrollBar1.getMax(); // Ограничиваем значение максимумом
+                }
 
                 IcnScrollBar1.setValue(value); // Устанавливаем значение ScrollBar
                 ScrollBarValue1.setText(String.valueOf(value)); // Обновляем TextField

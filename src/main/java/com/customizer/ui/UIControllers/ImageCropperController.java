@@ -11,20 +11,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
-<<<<<<< HEAD:src/main/java/com/customizer/ui/sample/ImageCropperController.java
-
-import javafx.scene.effect.*;
-
-import javax.imageio.ImageIO;
-
-import java.io.File;
-=======
 import javafx.scene.effect.*;
 import javax.imageio.ImageIO;
 
 import java.io.File;
-
->>>>>>> sergo:src/main/java/com/customizer/ui/UIControllers/ImageCropperController.java
 
 public class ImageCropperController {
 
@@ -33,7 +23,7 @@ public class ImageCropperController {
 
     @FXML
     private Button closeButton;
-    
+
     @FXML
     private Button chooseImageButton;
 
@@ -46,7 +36,7 @@ public class ImageCropperController {
     private Image image;
 
     private final double CIRCLE_RADIUS = 150; // Радиус круга обрезки
-    
+
     private MainUI mainApp;
 
     public void setMainApp(MainUI mainApp) {
@@ -139,26 +129,18 @@ public class ImageCropperController {
                 }
             }
 
-<<<<<<< HEAD:src/main/java/com/customizer/ui/sample/ImageCropperController.java
-            File outputFile = new File("src/main/java/com/customizer/ui/resources/ProfilePicture.png");
-=======
-
-
-
-
             File outputFile = new File("src/main/java/com/customizer/ui/resources/user.png");
->>>>>>> sergo:src/main/java/com/customizer/ui/UIControllers/ImageCropperController.java
             ImageIO.write(SwingFXUtils.fromFXImage(croppedImage, null), "png", outputFile);
             ProfileController.changeprofpic("com\\customizer\\ui\\resources\\user.png");
             System.out.println("Image saved: " + outputFile.getAbsolutePath());
             Thread.sleep(600);
             mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-   
+
     public void draw(GraphicsContext gc) {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
@@ -185,7 +167,8 @@ public class ImageCropperController {
         // Восстанавливаем режим наложения
         gc.setGlobalBlendMode(BlendMode.SRC_OVER);
     }
-     @FXML
+
+    @FXML
     void closeApp(ActionEvent event) {
         Platform.exit();
     }

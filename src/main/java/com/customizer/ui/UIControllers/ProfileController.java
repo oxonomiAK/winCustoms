@@ -12,11 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
-
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
-
 import javafx.util.Duration;
 
 public class ProfileController {
@@ -86,43 +84,43 @@ public class ProfileController {
 
     @FXML
     private static ImageView dynamicImageView, dynamicImageView1;
-    
+
     @FXML
     private Button btnCutOnce;
-    
+
     @FXML
     private Button btnIndianaJones;
-    
+
     @FXML
     private Button btnMaxLvl;
-    
+
     @FXML
     private Button btnMeasureTwice;
-    
+
     @FXML
     private Button btnNewFace;
-    
+
     @FXML
     private Button btnRecycler;
-    
+
     @FXML
     private Button btnRefresh;
-    
+
     @FXML
     private Button btnSizeDoesntMatter;
-    
+
     @FXML
     private Button btnSizeWizard;
-    
+
     @FXML
     private Button btnYouHaveTaste;
-    
+
     private MainUI mainApp;
-    
+
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
     }
-    
+
     @FXML
     public void initialize() {
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
@@ -130,83 +128,77 @@ public class ProfileController {
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
-    
+
         // Устанавливаем начальное значение опыта
         ExperienceBar.setProgress(currentProgress);
-    
-    
+
         // Получение имени пользователя из ОС
         String username = System.getProperty("user.name");
         // Установка имени пользователя как текста кнопки
         BtnUsername.setText(username);
-            
+
         textField = new TextField();
         textField.setPromptText("Введите текст...");
         textField.setOnAction(event -> onTextEntered()); // Обработка нажатия Enter
         textField.setVisible(false);
-            
+
         // Добавление TextField в родительский контейнер кнопки
         ((StackPane) BtnUsername.getParent()).getChildren().add(textField);
-    
-    }
-    
 
-    
-    
+    }
+
     @FXML
     void BtnBoostClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
-    
+
     @FXML
     void onIncreaseProgressClicked(ActionEvent event) {
         gainExperienceWithRanks(0.10); // Увеличиваем прогресс на 10% с анимацией
     }
-         
+
     private int currentRank = 0; // Индекс текущего ранга
-    private final String[] ranks = {"Beginner", "Apprentice", "Explorer", "Adept", "Master", "Expert", "Professional", "Virtuoso", "Grandmaster", "Legend"}; // Список рангов
-    
+    private final String[] ranks = { "Beginner", "Apprentice", "Explorer", "Adept", "Master", "Expert", "Professional",
+            "Virtuoso", "Grandmaster", "Legend" }; // Список рангов
+
     public void gainExperienceWithRanks(double amount) {
-    double targetProgress = Math.min(currentProgress + amount, 1.0); // Целевой прогресс для текущей шкалы
-    
-    Timeline timeline = new Timeline(
-        new KeyFrame(
-            Duration.millis(20), // Обновление каждые 20 мс
-            event -> {
-                if (currentProgress < targetProgress) {
-                    currentProgress += 0.01;
-    
-                    // Исправление для точного достижения 100%
-                    if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
-                        currentProgress = targetProgress;
-                    }
-    
-                    ExperienceBar.setProgress(currentProgress);
-    
-                    // Когда шкала полностью заполнена
-                    if (currentProgress >= 1.0) {
-                        if (currentRank < ranks.length - 1) {
-                            // Повышаем ранг
-                            currentRank++;
-                            currentProgress = 0; // Сбрасываем прогресс
-                            ExperienceBar.setProgress(currentProgress);
-                            ProgressLabel.setText(ranks[currentRank]);
-                        } else {
-                            // Достигнут последний ранг
-                            ProgressLabel.setText(ranks[currentRank] + " (Max)");
-                        }
-                    }
-                }
-            }
-        )
-    );
-    
-    // Устанавливаем количество шагов
-    timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
-    timeline.play();
+        double targetProgress = Math.min(currentProgress + amount, 1.0); // Целевой прогресс для текущей шкалы
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(
+                        Duration.millis(20), // Обновление каждые 20 мс
+                        event -> {
+                            if (currentProgress < targetProgress) {
+                                currentProgress += 0.01;
+
+                                // Исправление для точного достижения 100%
+                                if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
+                                    currentProgress = targetProgress;
+                                }
+
+                                ExperienceBar.setProgress(currentProgress);
+
+                                // Когда шкала полностью заполнена
+                                if (currentProgress >= 1.0) {
+                                    if (currentRank < ranks.length - 1) {
+                                        // Повышаем ранг
+                                        currentRank++;
+                                        currentProgress = 0; // Сбрасываем прогресс
+                                        ExperienceBar.setProgress(currentProgress);
+                                        ProgressLabel.setText(ranks[currentRank]);
+                                    } else {
+                                        // Достигнут последний ранг
+                                        ProgressLabel.setText(ranks[currentRank] + " (Max)");
+                                    }
+                                }
+                            }
+                        }));
+
+        // Устанавливаем количество шагов
+        timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
+        timeline.play();
     }
-    
-    
+
     @FXML
     void BtnChangeUsername(ActionEvent event) {
         if (!isTextFieldVisible) {
@@ -215,37 +207,38 @@ public class ProfileController {
             textField.setLayoutY(BtnUsername.getLayoutY());
             textField.setPrefWidth(BtnUsername.getWidth()); // Ширина текстового поля как у кнопки
             textField.setPrefHeight(BtnUsername.getHeight()); // Высота текстового поля как у кнопки
-                
+
             textField.setText(BtnUsername.getText()); // Заполняем текущим текстом кнопки
             textField.setVisible(true);
             textField.requestFocus(); // Фокус на текстовом поле
             isTextFieldVisible = true;
         }
     }
-    
+
     private void onTextEntered() {
         // Изменяем текст кнопки на введенный текст
         BtnUsername.setText(textField.getText());
-    
+
         // Скрываем TextField
         textField.setVisible(false);
         isTextFieldVisible = false;
     }
-    
+
     @FXML
     void BtnHomeClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
     }
-    
+
     @FXML
     void BtnChangePicture(ActionEvent event) {
-        mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");    
-        
+        mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");
+
     }
+
     public static void changeprofpic(String imagePath) {
         if (dynamicImageView != null) {
             dynamicImageView.setImage(new Image(imagePath));
-        } 
+        }
     }
 
     @FXML
@@ -265,17 +258,20 @@ public class ProfileController {
 
     @FXML
     void btnArentYouBoredClicked(ActionEvent event) {
-        updateContent("Aren`t You Bored?", "You have changed the wallpaper 100 times!", "com\\customizer\\ui\\resources\\Wallpaper100.png");
+        updateContent("Aren`t You Bored?", "You have changed the wallpaper 100 times!",
+                "com\\customizer\\ui\\resources\\Wallpaper100.png");
     }
 
     @FXML
     void btnBoostAchClicked(ActionEvent event) {
-        updateContent("Boost!", "You changed the performance settings!", "com\\customizer\\ui\\resources\\boostach.png");
+        updateContent("Boost!", "You changed the performance settings!",
+                "com\\customizer\\ui\\resources\\boostach.png");
     }
 
     @FXML
     void btnCutOnceClicked(ActionEvent event) {
-        updateContent("...Cut Once", "You resized the icons back to their original size!", "com\\customizer\\ui\\resources\\icondefault.png");
+        updateContent("...Cut Once", "You resized the icons back to their original size!",
+                "com\\customizer\\ui\\resources\\icondefault.png");
     }
 
     @FXML
@@ -295,39 +291,45 @@ public class ProfileController {
 
     @FXML
     void btnNewFaceClicked(ActionEvent event) {
-        updateContent("New Face", "You have changed your profile picture!", "com\\customizer\\ui\\resources\\ProfilePic.png");
+        updateContent("New Face", "You have changed your profile picture!",
+                "com\\customizer\\ui\\resources\\ProfilePic.png");
     }
 
     @FXML
     void btnRecyclerClicked(ActionEvent event) {
-        updateContent("Recycler", "You have emptied the recycle garbage can!", "com\\customizer\\ui\\resources\\bin.png");
+        updateContent("Recycler", "You have emptied the recycle garbage can!",
+                "com\\customizer\\ui\\resources\\bin.png");
     }
 
     @FXML
     void btnRefreshClicked(ActionEvent event) {
-        updateContent("Refresh", "You have installed a new wallpaper!", "com\\customizer\\ui\\resources\\Wallpaper1.png");
+        updateContent("Refresh", "You have installed a new wallpaper!",
+                "com\\customizer\\ui\\resources\\Wallpaper1.png");
     }
 
     @FXML
     void btnSizeDoesntMatterClicked(ActionEvent event) {
-        updateContent("Size Doesn't Matter", "You resized the icons to the minimum possible size!", "com\\customizer\\ui\\resources\\growdown.png");
+        updateContent("Size Doesn't Matter", "You resized the icons to the minimum possible size!",
+                "com\\customizer\\ui\\resources\\growdown.png");
     }
 
     @FXML
     void btnSizeWizardClicked(ActionEvent event) {
-        updateContent("Size Wizard", "You resized the icons to the maximum possible size!", "com\\customizer\\ui\\resources\\growdown.png");
+        updateContent("Size Wizard", "You resized the icons to the maximum possible size!",
+                "com\\customizer\\ui\\resources\\growdown.png");
     }
 
     @FXML
     void btnYouHaveTasteClicked(ActionEvent event) {
-        updateContent("You Have Taste", "You have changed the wallpaper 10 times", "com\\customizer\\ui\\resources\\Wallpaper10.png");
+        updateContent("You Have Taste", "You have changed the wallpaper 10 times",
+                "com\\customizer\\ui\\resources\\Wallpaper10.png");
     }
 
-     /**
+    /**
      * Обновление текста и изображения.
      *
-     * @param title Текст для `TitleLabel`.
-     * @param text Текст для `TextLabel`.
+     * @param title     Текст для `TitleLabel`.
+     * @param text      Текст для `TextLabel`.
      * @param imagePath Путь к изображению.
      */
     private void updateContent(String title, String text, String imagePath) {
