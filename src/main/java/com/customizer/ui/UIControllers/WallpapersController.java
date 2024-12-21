@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -19,6 +20,9 @@ public class WallpapersController {
 
     @FXML
     private Button BtnBoost;
+
+    @FXML
+    private Button BtnArrowRight;
 
     @FXML
     private Button BtnWallpapers;
@@ -34,6 +38,9 @@ public class WallpapersController {
 
     @FXML
     private ImageView Wall4;
+
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private Button BtnProfile;
@@ -107,7 +114,7 @@ public class WallpapersController {
     }
     
     private void handleWallpaperButtonClick(Button button, ImageView wall, ActionEvent event) {
-        // Получаем текущую сцену
+        // Получаем текущую сцену.
         javafx.scene.Scene scene = button.getScene();
     
         // Сохраняем исходные координаты кнопки
@@ -123,6 +130,7 @@ public class WallpapersController {
         BtnWallpapers2.setVisible(button == BtnWallpapers2);
         BtnWallpapers3.setVisible(button == BtnWallpapers3);
         BtnWallpapers4.setVisible(button == BtnWallpapers4);
+        BtnArrowRight.setVisible(button == BtnArrowRight);
     
         // Получаем путь к изображению из UserData
         String imagePath = (String) button.getUserData();
@@ -162,10 +170,15 @@ public class WallpapersController {
                 File f = new File(imagePath);
                 String absolutePath = f.getAbsolutePath();
                 System.out.println("Устанавливаем обои: " + absolutePath);
-    
-                // Устанавливаем изображение в область обоев
+        
                 if (wall != null) {
-                   WallpaperUtils.setWallpaper(absolutePath); // Здесь вызываем логику установки обоев
+                   WallpaperUtils.setWallpaper(absolutePath); 
+                }
+        
+                // Начисляем монеты
+                if (mainApp != null) {
+                    mainApp.addCoins(10);
+                    updateCoinsDisplay(); // Обновляем Label
                 }
             });
     
@@ -186,6 +199,7 @@ public class WallpapersController {
                     BtnWallpapers2.setVisible(true);
                     BtnWallpapers3.setVisible(true);
                     BtnWallpapers4.setVisible(true);
+                    BtnArrowRight.setVisible(true);
     
                     // Удаляем кнопки "Go Back" и "Set Wallpaper"
                     ((javafx.scene.layout.Pane) scene.getRoot()).getChildren().remove(goBackButton);
@@ -205,7 +219,15 @@ public class WallpapersController {
         scaleUp.play();
     }
     
+    public void updateCoinsDisplay() {
+        if (coinsLabel != null && mainApp != null) {
+            coinsLabel.setText("Coins: " + mainApp.getCoins());
+            System.out.println("Сохранение монет в файл: " + new File("coins.txt").getAbsolutePath());
 
+        } else {
+            System.err.println("coinsLabel или mainApp не инициализирован!");
+        }
+    }
     
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
@@ -226,6 +248,13 @@ public class WallpapersController {
     void BtnHomeClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
     }
+    
+    
+    @FXML
+    void BtnArrowRightClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers2.fxml");
+    }
+
 
     @FXML
     void closeApp(ActionEvent event) {
