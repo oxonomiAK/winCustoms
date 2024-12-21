@@ -1,6 +1,5 @@
 package com.customizer.ui.UIControllers;
 
-import java.io.IOException;
 import com.customizer.services.RequestAdmin;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 
@@ -76,7 +75,7 @@ public class RocketController {
     }
 
     @FXML
-    void BtnPerformancesClicked(ActionEvent event) throws IOException {
+    void BtnPerformancesClicked(ActionEvent event) throws Exception {
         RequestAdmin.RequestAdminRights();
     }
 

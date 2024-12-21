@@ -7,7 +7,7 @@ import com.customizer.services.WriteToJson;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import com.customizer.core.PlatformInfo;
+
 import com.customizer.core.PlatformVersionInfo;
 import com.customizer.core.acTemp;
 import com.customizer.features.themes.ThemeManager;
@@ -16,7 +16,6 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
         
-        System.out.println(PlatformInfo.GetCpuInfo());
-        System.out.println(PlatformInfo.GetGpuInfo());
+
     }
 }
