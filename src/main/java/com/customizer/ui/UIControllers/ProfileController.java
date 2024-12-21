@@ -159,11 +159,11 @@ public class ProfileController {
     
     @FXML
     void onIncreaseProgressClicked(ActionEvent event) {
-        gainExperienceWithRanks(0.10); // Увеличиваем прогресс на 10% с анимацией
+        gainExperienceWithRanks(0.5); // Увеличиваем прогресс на 10% с анимацией
     }
          
     private int currentRank = 0; // Индекс текущего ранга
-    private final String[] ranks = {"Beginner", "Apprentice", "Explorer", "Adept", "Master", "Expert", "Professional", "Virtuoso", "Grandmaster", "Legend"}; // Список рангов
+    private final String[] ranks = {"Beginner", "Adept", "Master", "Expert", "Professional", "Legend"}; // Список рангов
     
     public void gainExperienceWithRanks(double amount) {
     double targetProgress = Math.min(currentProgress + amount, 1.0); // Целевой прогресс для текущей шкалы
