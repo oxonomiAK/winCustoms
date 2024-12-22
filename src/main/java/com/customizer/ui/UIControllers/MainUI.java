@@ -105,7 +105,8 @@ public class MainUI extends Application {
         });
     }
 
-    private int coins = 0; // Счетчик монет
+    CoinsController controller = new CoinsController();
+    private int coins = controller.getCoins(); // Счетчик монет
 
     public int getCoins() {
         return coins;

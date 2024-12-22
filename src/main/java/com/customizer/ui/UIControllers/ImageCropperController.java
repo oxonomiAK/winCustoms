@@ -75,7 +75,7 @@ public class ImageCropperController {
         });
 
         // Выбор изображения
-        String profilePicPath = chooseImage();
+        String profilePicPath = ProfileController.picImage;
         image = new Image(profilePicPath);
         imageX = (canvas.getWidth() - image.getWidth()) / 2;
         imageY = (canvas.getHeight() - image.getHeight()) / 2;
@@ -85,19 +85,17 @@ public class ImageCropperController {
         saveImageButton.setOnAction(event -> saveCroppedImage());
     }
 
-    private String chooseImage() {
-        // FileChooser fileChooser = new FileChooser();
-        // fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
-        // File file = fileChooser.showOpenDialog(canvas.getScene().getWindow());
+    public static String chooseImage() {
         
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("Choose your profile picture");//Имя окна
     fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg")); //Фильтр расширения файлов
     File selectedFile = fileChooser.showOpenDialog(null);//Открытие диалогового окна с выбором файла
-    
-    
-        String absolute = selectedFile.getAbsolutePath(); 
-        String absolutePathForImageInsert = "file:/" + absolute.replace('\\', '/');
+    if(selectedFile == null){
+        return null;
+    }
+    String absolute = selectedFile.getAbsolutePath(); 
+    String absolutePathForImageInsert = "file:/" + absolute.replace('\\', '/');
     return absolutePathForImageInsert;
         
     }

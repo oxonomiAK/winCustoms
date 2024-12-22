@@ -19,7 +19,8 @@ import javafx.util.Duration;
 
 
 public class ProfileController {
-
+    boolean isWindowOpened;
+    public static String picImage;
     @FXML
     private Button BtnBoost;
 
@@ -238,8 +239,13 @@ public class ProfileController {
     
     @FXML
     void BtnChangePicture(ActionEvent event) {
-        mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");    
-        
+        if(!isWindowOpened){
+            isWindowOpened = true;
+            picImage = ImageCropperController.chooseImage();
+            isWindowOpened = false;
+            if(picImage != null)
+                mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");
+        }
     }
     public static void changeprofpic(String imagePath) {
         if (dynamicImageView != null) {

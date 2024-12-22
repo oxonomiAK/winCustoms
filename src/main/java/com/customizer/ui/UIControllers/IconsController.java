@@ -2,6 +2,9 @@ package com.customizer.ui.UIControllers;
 
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.services.RestartExplorer;
+import com.customizer.services.WriteToJson;
+import com.customizer.core.utils.WallpaperUtils;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -101,8 +104,9 @@ public class IconsController {
 
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
+        WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
         RegistryUtils.setIconSize(48);
-        RegistryUtils.restartExplorer();
+        RestartExplorer.restartExplorer();
         int defaultValue = 48; // Значение по умолчанию
         IcnScrollBar1.setValue(defaultValue); // Устанавливаем значение на ползунке
         ScrollBarValue1.setText(String.valueOf(defaultValue)); // Обновляем текст в текстовом поле
@@ -110,10 +114,11 @@ public class IconsController {
 
       @FXML
     void BtnSetIconSize(ActionEvent event) {
+        WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
         int confirmedValue = (int) IcnScrollBar1.getValue();
         System.out.println("Confirmed value: " + confirmedValue);
         RegistryUtils.setIconSize(confirmedValue);
-        RegistryUtils.restartExplorer();
+        RestartExplorer.restartExplorer();
         // Здесь можно добавить дополнительную логику
     }
 
