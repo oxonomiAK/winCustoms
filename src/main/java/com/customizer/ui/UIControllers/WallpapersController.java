@@ -157,14 +157,16 @@ public class WallpapersController {
             goBackButton.setPrefHeight(35);
             goBackButton.setLayoutX(newX + 55);
             goBackButton.setLayoutY(newY + 285);
-    
+            goBackButton.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white;"); // Стиль button2 и белый текст
+            
             // Создаем кнопку "Set Wallpaper"
             Button setWallpaperButton = new Button("Set Wallpaper");
             setWallpaperButton.setPrefWidth(100);
             setWallpaperButton.setPrefHeight(35);
             setWallpaperButton.setLayoutX(newX + 235);
             setWallpaperButton.setLayoutY(newY + 285);
-    
+            setWallpaperButton.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white;"); // Стиль button2 и белый текст
+        
             // Обработчик для кнопки "Set Wallpaper"
             setWallpaperButton.setOnAction(ev -> {
                 File f = new File(imagePath);
@@ -181,35 +183,35 @@ public class WallpapersController {
                     updateCoinsDisplay(); // Обновляем Label
                 }
             });
-    
+        
             // Обработчик для кнопки "Go Back"
             goBackButton.setOnAction(ev -> {
                 // Анимация уменьшения кнопки обратно
                 ScaleTransition scaleDown = new ScaleTransition(Duration.millis(300), button);
                 scaleDown.setToX(1.0);
                 scaleDown.setToY(1.0);
-    
+        
                 scaleDown.setOnFinished(animationEvent -> {
                     // Возвращаем кнопку на исходные координаты
                     button.setLayoutX(originalX);
                     button.setLayoutY(originalY);
-    
+        
                     // Показываем скрытые кнопки
                     BtnWallpapers1.setVisible(true);
                     BtnWallpapers2.setVisible(true);
                     BtnWallpapers3.setVisible(true);
                     BtnWallpapers4.setVisible(true);
                     BtnArrowRight.setVisible(true);
-    
+        
                     // Удаляем кнопки "Go Back" и "Set Wallpaper"
                     ((javafx.scene.layout.Pane) scene.getRoot()).getChildren().remove(goBackButton);
                     ((javafx.scene.layout.Pane) scene.getRoot()).getChildren().remove(setWallpaperButton);
                 });
-    
+        
                 // Запуск уменьшения кнопки
                 scaleDown.play();
             });
-    
+        
             // Добавляем кнопки "Go Back" и "Set Wallpaper" на сцену
             ((javafx.scene.layout.Pane) scene.getRoot()).getChildren().add(goBackButton);
             ((javafx.scene.layout.Pane) scene.getRoot()).getChildren().add(setWallpaperButton);

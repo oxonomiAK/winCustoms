@@ -133,6 +133,19 @@ public class MainUI extends Application {
         }
     }
 
+    public void changeWindowSize(double width, double height) {
+        // Устанавливаем максимальные размеры окна
+        primaryStage.setMaxWidth(width);
+        primaryStage.setMaxHeight(height);
+        
+        // Устанавливаем минимальные размеры окна (чтобы окно не могло быть меньше заданного размера)
+        primaryStage.setMinWidth(width);
+        primaryStage.setMinHeight(height);
+        
+        // Переустанавливаем текущие размеры окна
+        primaryStage.setWidth(width);
+        primaryStage.setHeight(height);
+    }
     
     
 
