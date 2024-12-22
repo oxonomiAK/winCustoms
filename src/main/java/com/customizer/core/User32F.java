@@ -24,7 +24,7 @@ public class User32F {
         final int MAX_PATH = 260;
 
         final int HWND_BROADCAST = 0xFFFF;
-
+        final int SPI_GETICONMETRICS =0x002D;
         final int WM_SETTINGCHANGE = 0x001A;
 
     
