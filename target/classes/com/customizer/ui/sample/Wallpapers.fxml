@@ -180,5 +180,6 @@
             </Button>
          </children>
       </AnchorPane>
-   </children>
+      </children>
+      <ImageView fx:id="wallpaperPreview" layoutX="50" layoutY="50" fitWidth="400" fitHeight="300" visible="false" />
 </AnchorPane>

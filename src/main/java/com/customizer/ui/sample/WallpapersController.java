@@ -68,20 +68,26 @@ public class WallpapersController {
         this.mainApp = mainApp;
     }
 
-    @FXML
-    public void initialize() {
-        // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
-        setupButtonHoverEffect(BtnBoost);
-        setupButtonHoverEffect(BtnWallpapers);
-        setupButtonHoverEffect(BtnHome);
-        setupButtonHoverEffect(BtnSettings);
+    private double initialX;
+private double initialY;
 
-        wallpaperPaths.put(BtnWallpapers1, "src/main/java/com/customizer/ui/resources/Horses.jpg");
-        wallpaperPaths.put(BtnWallpapers2, "src/main/java/com/customizer/ui/resources/gori.png");
-        wallpaperPaths.put(BtnWallpapers3, "src/main/java/com/customizer/ui/resources/pole.png");
-        wallpaperPaths.put(BtnWallpapers4, "src/main/java/com/customizer/ui/resources/japan.png");
+@FXML
+public void initialize() {
+    // Сохраняем начальные координаты кнопки BtnWallpapers1
+    initialX = BtnWallpapers1.getLayoutX();
+    initialY = BtnWallpapers1.getLayoutY();
 
-    }
+    setupButtonHoverEffect(BtnBoost);
+    setupButtonHoverEffect(BtnWallpapers);
+    setupButtonHoverEffect(BtnHome);
+    setupButtonHoverEffect(BtnSettings);
+
+    wallpaperPaths.put(BtnWallpapers1, "src/main/java/com/customizer/ui/resources/Horses.jpg");
+    wallpaperPaths.put(BtnWallpapers2, "src/main/java/com/customizer/ui/resources/gori.png");
+    wallpaperPaths.put(BtnWallpapers3, "src/main/java/com/customizer/ui/resources/pole.png");
+    wallpaperPaths.put(BtnWallpapers4, "src/main/java/com/customizer/ui/resources/japan.png");
+}
+
     
 
     private void setupButtonHoverEffect(Button button) {
@@ -113,12 +119,12 @@ void BtnWallpapers1Clicked(ActionEvent event) {
     javafx.scene.Scene scene = BtnWallpapers1.getScene();
 
     // Вычисляем координаты центра экрана
-    double centerX = scene.getWidth() / 2 - BtnWallpapers1.getWidth() / 2;
-    double centerY = scene.getHeight() / 2 - BtnWallpapers1.getHeight() / 2;
+    double newX = 500; // Замените на желаемое значение X
+    double newY = 220; // Замените на желаемое значение Y
 
     // Перемещаем кнопку в центр экрана
-    BtnWallpapers1.setLayoutX(centerX);
-    BtnWallpapers1.setLayoutY(centerY);
+    BtnWallpapers1.setLayoutX(newX);
+    BtnWallpapers1.setLayoutY(newY);
 
     // Прячем остальные кнопки
     BtnWallpapers2.setVisible(false);
@@ -138,18 +144,18 @@ void BtnWallpapers1Clicked(ActionEvent event) {
 
     // Анимация увеличения кнопки
     ScaleTransition scaleUp = new ScaleTransition(Duration.millis(300), BtnWallpapers1);
-    scaleUp.setToX(2.0); // Увеличение по оси X
-    scaleUp.setToY(2.0); // Увеличение по оси Y
+    scaleUp.setToX(1.2); // Увеличение по оси X
+    scaleUp.setToY(1.2); // Увеличение по оси Y
 
     scaleUp.setOnFinished(e -> {
         // Создаем новую кнопку "Set Wallpaper"
         Button setWallpaperButton = new Button("Set Wallpaper");
 
         // Задаем размеры и координаты новой кнопки
-        setWallpaperButton.setPrefWidth(150);
-        setWallpaperButton.setPrefHeight(50);
-        setWallpaperButton.setLayoutX(centerX + 150); // Смещаем по оси X
-        setWallpaperButton.setLayoutY(centerY + 275); // По той же оси Y, что и увеличенная кнопка
+        setWallpaperButton.setPrefWidth(100);
+        setWallpaperButton.setPrefHeight(35);
+        setWallpaperButton.setLayoutX(newX + 235); // Смещаем по оси X
+        setWallpaperButton.setLayoutY(newY + 285); // По той же оси Y, что и увеличенная кнопка
 
         // Добавляем обработчик события для новой кнопки
         setWallpaperButton.setOnAction(ev -> {
@@ -169,36 +175,36 @@ void BtnWallpapers1Clicked(ActionEvent event) {
         Button setGoBackButton = new Button("Go Back");
 
         // Задаем размеры и координаты новой кнопки
-        setGoBackButton.setPrefWidth(150);
-        setGoBackButton.setPrefHeight(50);
-        setGoBackButton.setLayoutX(centerX - 50); // Смещаем по оси X
-        setGoBackButton.setLayoutY(centerY + 275); // По той же оси Y, что и увеличенная кнопка
+        setGoBackButton.setPrefWidth(100);
+        setGoBackButton.setPrefHeight(35);
+        setGoBackButton.setLayoutX(newX + 55); // Смещаем по оси X
+        setGoBackButton.setLayoutY(newY + 285); // По той же оси Y, что и увеличенная кнопка
 
-        // Добавляем обработчик события для кнопки "Go Back"
         setGoBackButton.setOnAction(ev -> {
             // Анимация уменьшения кнопки обратно в исходное состояние
             ScaleTransition scaleDown = new ScaleTransition(Duration.millis(300), BtnWallpapers1);
             scaleDown.setToX(1.0); // Возврат к исходному размеру по оси X
             scaleDown.setToY(1.0); // Возврат к исходному размеру по оси Y
-
+        
             scaleDown.setOnFinished(animationEvent -> {
                 // Показываем скрытые кнопки снова
                 BtnWallpapers2.setVisible(true);
                 BtnWallpapers3.setVisible(true);
                 BtnWallpapers4.setVisible(true);
-
+        
                 // Возвращаем кнопку в изначальные координаты
-                BtnWallpapers1.setLayoutX(235); // Изначальные координаты X
-                BtnWallpapers1.setLayoutY(93); // Изначальные координаты Y
-
+                BtnWallpapers1.setLayoutX(initialX);
+                BtnWallpapers1.setLayoutY(initialY);
+        
                 // Удаляем кнопки "Set Wallpaper" и "Go Back"
                 ((javafx.scene.layout.Pane) scene.getRoot()).getChildren().removeIf(node -> 
                     node instanceof Button && ("Set Wallpaper".equals(((Button) node).getText()) || "Go Back".equals(((Button) node).getText())));
             });
-
+        
             // Запуск анимации уменьшения
             scaleDown.play();
         });
+        
 
         // Добавляем кнопку "Go Back" в родительский контейнер
         ((javafx.scene.layout.Pane) scene.getRoot()).getChildren().add(setGoBackButton);
@@ -234,5 +240,3 @@ void BtnWallpapers1Clicked(ActionEvent event) {
         Platform.exit();
     }
 }
-
-
