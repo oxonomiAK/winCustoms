@@ -1,15 +1,18 @@
 package com.customizer.ui.UIControllers;
 
+import java.io.File;
+
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 import com.customizer.services.RestartExplorer;
 import com.customizer.services.WriteToJson;
-import com.customizer.core.utils.WallpaperUtils;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 
@@ -18,6 +21,9 @@ public class IconsController {
 
     @FXML
     private Button BtnBoost;
+
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private ScrollBar IcnScrollBar1;
@@ -95,7 +101,10 @@ public class IconsController {
     });
 }
 
-    
+   UpdateCoins updateCoins = new UpdateCoins();
+    public void updateCoinsDisplay() {
+       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
+    }
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {
@@ -110,6 +119,10 @@ public class IconsController {
         int defaultValue = 48; // Значение по умолчанию
         IcnScrollBar1.setValue(defaultValue); // Устанавливаем значение на ползунке
         ScrollBarValue1.setText(String.valueOf(defaultValue)); // Обновляем текст в текстовом поле
+        if (mainApp != null) {
+            mainApp.addCoins(10);
+            updateCoinsDisplay();
+        }
     }
 
       @FXML
@@ -119,7 +132,10 @@ public class IconsController {
         System.out.println("Confirmed value: " + confirmedValue);
         RegistryUtils.setIconSize(confirmedValue);
         RestartExplorer.restartExplorer();
-        // Здесь можно добавить дополнительную логику
+        if (mainApp != null) {
+            mainApp.addCoins(10);
+            updateCoinsDisplay();
+        }    
     }
 
 

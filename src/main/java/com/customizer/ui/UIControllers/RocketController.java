@@ -1,12 +1,16 @@
 package com.customizer.ui.UIControllers;
 
+import java.io.File;
+
 import com.customizer.services.RequestAdmin;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 
 
@@ -17,7 +21,9 @@ public class RocketController {
 
     @FXML
     private Button BtnProfile;
-
+   
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private Button BtnToolTip;
@@ -62,6 +68,11 @@ public class RocketController {
         BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к кнопке
     }
 
+     UpdateCoins updateCoins = new UpdateCoins();
+    public void updateCoinsDisplay() {
+       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
+    }
+
     @FXML
     void BtnBoostClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
@@ -80,6 +91,10 @@ public class RocketController {
     @FXML
     void BtnPerformancesClicked(ActionEvent event) throws Exception {
         RequestAdmin.RequestAdminRights();
+        if (mainApp != null) {
+            mainApp.addCoins(10);
+            updateCoinsDisplay();
+        }
     }
 
     @FXML

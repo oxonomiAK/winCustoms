@@ -1,12 +1,16 @@
 package com.customizer.ui.UIControllers;
 
 
+
+
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 
 
@@ -14,6 +18,9 @@ public class SettingsController {
 
     @FXML
     private Button BtnBoost;
+       
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private Button BtnProfile;
@@ -45,7 +52,11 @@ public class SettingsController {
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
     }
-
+    
+    UpdateCoins updateCoins = new UpdateCoins();
+    public void updateCoinsDisplay() {
+       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
+    }
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {

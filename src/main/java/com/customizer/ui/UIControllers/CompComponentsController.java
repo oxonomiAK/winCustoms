@@ -1,7 +1,10 @@
 package com.customizer.ui.UIControllers;
 
+import java.io.File;
+
 import com.customizer.core.SystemInfoExample;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -15,6 +18,9 @@ public class CompComponentsController {
 
     @FXML
     private Button BtnBoost;
+
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private Button BtnProfile;
@@ -75,6 +81,11 @@ public class CompComponentsController {
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
+    }
+
+    UpdateCoins updateCoins = new UpdateCoins();
+    public void updateCoinsDisplay() {
+       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
 
     @FXML

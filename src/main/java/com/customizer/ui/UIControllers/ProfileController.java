@@ -1,6 +1,9 @@
 package com.customizer.ui.UIControllers;
 
+import java.io.File;
+
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
 import javafx.animation.KeyFrame;
 
@@ -23,6 +26,9 @@ public class ProfileController {
     public static String picImage;
     @FXML
     private Button BtnBoost;
+
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private ProgressBar ExperienceBar;
@@ -191,6 +197,10 @@ public class ProfileController {
                             currentProgress = 0; // Сбрасываем прогресс
                             ExperienceBar.setProgress(currentProgress);
                             ProgressLabel.setText(ranks[currentRank]);
+                            if (mainApp != null) {
+                                mainApp.addCoins(10);
+                                updateCoinsDisplay();
+                            }
                         } else {
                             // Достигнут последний ранг
                             ProgressLabel.setText(ranks[currentRank] + " (Max)");
@@ -206,7 +216,10 @@ public class ProfileController {
     timeline.play();
     }
     
-    
+    UpdateCoins updateCoins = new UpdateCoins();
+    public void updateCoinsDisplay() {
+       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
+    }
     @FXML
     void BtnChangeUsername(ActionEvent event) {
         if (!isTextFieldVisible) {

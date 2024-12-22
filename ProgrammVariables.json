@@ -1,3 +1,4 @@
 {
-  "Coins" : 80
+  "Coins" : 560,
+  "defaultIconSize" : 48
 }

@@ -1,10 +1,5 @@
 package com.customizer.ui.UIControllers;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import com.customizer.ui.ButtonEffectUtils.CoinsController;
@@ -51,24 +46,33 @@ public class MainUI extends Application {
                 ((WallpapersController) controller).updateCoinsDisplay(); // Обновляем монеты
             } else if (controller instanceof WallpapersController2) {
                 ((WallpapersController2) controller).setMainApp(this);
+                ((WallpapersController2) controller).updateCoinsDisplay();
             } else if (controller instanceof WallpapersController3) {
                 ((WallpapersController3) controller).setMainApp(this);
+                ((WallpapersController3) controller).updateCoinsDisplay();
             } else if (controller instanceof WallpapersController4) {
                 ((WallpapersController4) controller).setMainApp(this);
+                ((WallpapersController4) controller).updateCoinsDisplay();
             } else if (controller instanceof IconsController) {
                 ((IconsController) controller).setMainApp(this);
+                ((IconsController) controller).updateCoinsDisplay();
             } else if (controller instanceof BoostController) {
                 ((BoostController) controller).setMainApp(this);
+                ((BoostController) controller).updateCoinsDisplay();
             } else if (controller instanceof SettingsController) {
                 ((SettingsController) controller).setMainApp(this);
+                ((SettingsController) controller).updateCoinsDisplay();
             } else if (controller instanceof ProfileController) {
                 ((ProfileController) controller).setMainApp(this);
+                ((ProfileController) controller).updateCoinsDisplay();
             } else if (controller instanceof VolumeController) {
                 ((VolumeController) controller).setMainApp(this);
             } else if (controller instanceof RocketController) {
                 ((RocketController) controller).setMainApp(this);
+                ((RocketController) controller).updateCoinsDisplay();
             } else if (controller instanceof CompComponentsController) {
                 ((CompComponentsController) controller).setMainApp(this);
+                ((CompComponentsController) controller).updateCoinsDisplay();
             } else if (controller instanceof ImageCropperController) {
                 ((ImageCropperController) controller).setMainApp(this);
     
@@ -161,11 +165,11 @@ public class MainUI extends Application {
            
         CoinsController controller = new CoinsController();
 
-        // Добавляем монеты
-        controller.addCoins(10);
-
         // Сохраняем монеты
         controller.saveCoins();
+
+        // Добавляем монеты
+        controller.addCoins(controller.getCoins());
 
         // Получаем текущее количество монет
         System.out.println("Всего монет: " + controller.getCoins());
