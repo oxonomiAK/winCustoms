@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-public class WallpapersController3 {
+public class WallpapersController3  {
 
     @FXML
     private Button BtnBoost;

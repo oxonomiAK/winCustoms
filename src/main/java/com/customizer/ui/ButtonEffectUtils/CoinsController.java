@@ -6,11 +6,11 @@ public class CoinsController {
 
     public CoinsController() {
         this.coinsManager = new CoinsManager();
-        coinsManager.loadCoinsFromFile(); 
+        coinsManager.loadCoins(); 
     }
 
     public void saveCoins() {
-        coinsManager.saveCoinsToFile();
+        coinsManager.saveCoins();
     }
 
     public void addCoins(int amount) {

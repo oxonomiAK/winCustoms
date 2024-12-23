@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
 import java.io.File;
 
 
-public class ImageCropperController {
+public class ImageCropperController  {
 
     @FXML
     private Canvas canvas;

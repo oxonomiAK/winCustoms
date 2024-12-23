@@ -14,10 +14,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-public class WallpapersController2 {
+public class WallpapersController2  {
 
     @FXML
     private Button BtnBoost;
@@ -99,6 +100,7 @@ public class WallpapersController2 {
         buttonStates.put(BtnWallpapers2, false);
         buttonStates.put(BtnWallpapers3, false);
         buttonStates.put(BtnWallpapers4, false);
+
     }
     
         private final Map<Button, Boolean> buttonStates = new HashMap<>();

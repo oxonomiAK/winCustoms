@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 
 
 
-public class SettingsController {
+public class SettingsController  {
 
     @FXML
     private Button BtnBoost;

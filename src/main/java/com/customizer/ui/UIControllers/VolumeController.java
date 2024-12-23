@@ -12,7 +12,7 @@ import com.sun.jna.ptr.FloatByReference;
 
 
 
-public class VolumeController {
+public class VolumeController  {
 
     @FXML
     private Button BtnBoost;

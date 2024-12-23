@@ -1,6 +1,5 @@
 package com.customizer.ui.UIControllers;
 
-import java.io.File;
 
 import com.customizer.core.SystemInfoExample;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
@@ -14,7 +13,7 @@ import javafx.scene.control.Label;
 
 
 
-public class CompComponentsController {
+public class CompComponentsController  {
 
     @FXML
     private Button BtnBoost;

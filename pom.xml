@@ -47,7 +47,11 @@
             <artifactId>commons-io</artifactId>
             <version>2.18.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230227</version>
+        </dependency>
 
         <dependency>
             <groupId>com.github.oshi</groupId>

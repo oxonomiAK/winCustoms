@@ -1,7 +1,5 @@
 package com.customizer.ui.UIControllers;
 
-import java.io.File;
-
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
@@ -17,7 +15,7 @@ import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 
 
-public class IconsController {
+public class IconsController  {
 
     @FXML
     private Button BtnBoost;

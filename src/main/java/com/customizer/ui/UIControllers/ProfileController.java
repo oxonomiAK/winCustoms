@@ -1,6 +1,5 @@
 package com.customizer.ui.UIControllers;
 
-import java.io.File;
 
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
@@ -21,7 +20,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 
-public class ProfileController {
+public class ProfileController  {
     boolean isWindowOpened;
     public static String picImage;
     @FXML

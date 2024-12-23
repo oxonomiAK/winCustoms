@@ -66,6 +66,8 @@ public class WallpapersController {
     private Button BtnWallpapers4; // Кнопка, которая будет увеличиваться
 
     private final Map<Button, String> wallpaperPaths = new HashMap<>();
+    private final Map<Button, Boolean> buttonStates = new HashMap<>();
+    private final Map<Button, Double[]> originalPositions = new HashMap<>();
 
     private MainUI mainApp;
 
@@ -98,9 +100,6 @@ public class WallpapersController {
         buttonStates.put(BtnWallpapers3, false);
         buttonStates.put(BtnWallpapers4, false);
     }
-
-    private final Map<Button, Boolean> buttonStates = new HashMap<>();
-    private final Map<Button, Double[]> originalPositions = new HashMap<>();
     
 
     @FXML
@@ -195,9 +194,8 @@ public class WallpapersController {
                     WallpaperUtils.setWallpaper(absolutePath);
                 }
                 
-                CoinsController coinsController = new CoinsController();
-                if (coinsController != null) {
-                    coinsController.addCoins(10);
+                if (mainApp != null) {
+                    mainApp.addCoins(10);
                     updateCoinsDisplay();
                 }
             });
@@ -268,6 +266,8 @@ public class WallpapersController {
        updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
     
+    
+
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");

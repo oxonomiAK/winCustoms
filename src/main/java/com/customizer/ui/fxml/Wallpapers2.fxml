@@ -112,6 +112,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
+                  <Button fx:id="BtnOpenWallpapers" layoutX="80.0" layoutY="488.0" mnemonicParsing="false" text="Button" />
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wallpapers">
@@ -138,7 +139,7 @@
                <graphic>
                   <ImageView fx:id="Wall1" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/anime.png" />
+                        <Image url="@../resources/lock.png" />
                      </image>
                      <viewport>
                         <Rectangle2D />

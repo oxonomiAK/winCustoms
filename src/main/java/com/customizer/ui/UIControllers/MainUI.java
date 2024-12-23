@@ -118,7 +118,7 @@ public class MainUI extends Application {
 
     public void addCoins(int amount) {
         coins += amount;
-        System.out.println("Монет добавлено: " + amount + ". Всего монет: " + coins);
+        controller.addCoins(amount);
         updateCoinsLabel(); // Обновляем Label
     }
     
@@ -167,9 +167,6 @@ public class MainUI extends Application {
 
         // Сохраняем монеты
         controller.saveCoins();
-
-        // Добавляем монеты
-        controller.addCoins(controller.getCoins());
 
         // Получаем текущее количество монет
         System.out.println("Всего монет: " + controller.getCoins());

@@ -1,7 +1,5 @@
 package com.customizer.ui.UIControllers;
 
-import java.io.File;
-
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -13,7 +11,7 @@ import javafx.scene.control.Label;
 
 
 
-public class BoostController {
+public class BoostController  {
 
     @FXML
     private Button BtnBoost;
