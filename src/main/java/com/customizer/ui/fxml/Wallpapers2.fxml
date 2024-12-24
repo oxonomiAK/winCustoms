@@ -139,7 +139,7 @@
                <graphic>
                   <ImageView fx:id="Wall1" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/lock.png" />
+                        <Image url="@../resources/anime.png" />
                      </image>
                      <viewport>
                         <Rectangle2D />

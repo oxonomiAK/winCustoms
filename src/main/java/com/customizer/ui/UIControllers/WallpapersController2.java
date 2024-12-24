@@ -2,6 +2,7 @@ package com.customizer.ui.UIControllers;
 
 
 import java.io.File;
+import java.lang.reflect.AnnotatedArrayType;
 import java.util.HashMap;
 import java.util.Map;
 import com.customizer.core.utils.WallpaperUtils;
@@ -9,8 +10,11 @@ import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.LockManager;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -81,16 +85,30 @@ public class WallpapersController2  {
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
     }
+        int AnimeCond = 10;
+        int PinkVilageCond = 20;
+        int RetroCond = 30;
+        int RabbitCond = 40;
 
+        boolean AnimeUnlocked = LockManager.CheckForLock("WallpaperAnime", "Coins", AnimeCond);
+        boolean PinkVilageUnlocked = LockManager.CheckForLock("WallpaperPinkVilage", "Coins", PinkVilageCond);
+        boolean RetroUnlocked = LockManager.CheckForLock("WallpaperRetro", "Coins", RetroCond);
+        boolean RabbitUnlocked = LockManager.CheckForLock("WallpaperRabbit", "Coins", RabbitCond);
     @FXML
     public void initialize() {
+        String lockIncon = "com/customizer/ui/resources/lock.png";
+        if(!AnimeUnlocked) Wall1.setImage(new Image(lockIncon));
+        if(!PinkVilageUnlocked) Wall2.setImage(new Image(lockIncon));
+        if(!RetroUnlocked) Wall3.setImage(new Image(lockIncon));
+        if(!RabbitUnlocked) Wall4.setImage(new Image(lockIncon));
+        
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-        wallpaperPaths.put(BtnWallpapers1, "src/main/java/com/customizer/ui/resources/anime.png");
+        wallpaperPaths.put(BtnWallpapers1, "src/main/java/com/customizer/ui/resources/anime.png" );
         wallpaperPaths.put(BtnWallpapers2, "src/main/java/com/customizer/ui/resources/PinkVilage.png");
         wallpaperPaths.put(BtnWallpapers3, "src/main/java/com/customizer/ui/resources/Retro.png");
         wallpaperPaths.put(BtnWallpapers4, "src/main/java/com/customizer/ui/resources/Rabbit.png");
@@ -120,52 +138,75 @@ public class WallpapersController2  {
 
     @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
-        if (LockManager.CheckForLock("WallpaperAnime", "Coins", 100)) {
+        if (AnimeUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
-        } else {
-            // Показываем уведомление, что нужно 100 монет
-            showNotification("Необходимо 100 монет для разблокировки!");
-        }
+        else 
+            showNotification("Необходимо "+ AnimeCond +" монет для разблокировки!");
     }
     
     @FXML
     void BtnWallpapers2Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
+        if (PinkVilageUnlocked) 
+            handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
+         else 
+            showNotification("Необходимо "+ PinkVilageCond +" монет для разблокировки!");
     }
     
     @FXML
     void BtnWallpapers3Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
+        if (RetroUnlocked) 
+            handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
+        else 
+            showNotification("Необходимо "+ RetroCond +" монет для разблокировки!");
     }
     
     @FXML
     void BtnWallpapers4Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
+        if (RabbitUnlocked)
+            handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
+        else 
+            showNotification("Необходимо "+ RabbitCond +" монет для разблокировки!");
     }
-
-    private void showNotification(String message) {
-    Label notification = new Label(message);
-    notification.setStyle("-fx-background-color: rgba(0, 0, 0, 0.7); -fx-text-fill: white; "
-            + "-fx-padding: 10px; -fx-font-size: 14px; -fx-border-radius: 10; -fx-background-radius: 10;");
-    notification.setAlignment(Pos.CENTER);
-    notification.setPrefWidth(450);
     
-    Scene scene = BtnWallpapers1.getScene(); // Получаем текущую сцену
-    Pane rootPane = (Pane) scene.getRoot(); // Корневой узел
+        private void showNotification(String message) {
+            Label notification = new Label(message);
+            
+            notification.setStyle("-fx-background-color: rgba(0, 0, 0, 0.7); -fx-text-fill: white; "
+                    + "-fx-padding: 10px; -fx-font-size: 14px; -fx-border-radius: 10; -fx-background-radius: 10;");
+            notification.setAlignment(Pos.CENTER);
+            notification.setPrefWidth(450);
 
-    notification.setLayoutX((scene.getWidth() - notification.getPrefWidth()) / 2);
-    notification.setLayoutY(scene.getHeight() - 60); // Располагаем внизу экрана
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), notification);
+                fadeIn.setFromValue(0.0);
+                fadeIn.setToValue(1.0);
 
-    rootPane.getChildren().add(notification);
+            PauseTransition pause = new PauseTransition(Duration.millis(1500));
 
-    // Убираем уведомление через 5 секунд
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), ev -> {
-        rootPane.getChildren().remove(notification);
-    }));
-    timeline.setCycleCount(1);
-    timeline.play();
-}
-    
+            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), notification);
+                fadeOut.setFromValue(1.0);
+                fadeOut.setToValue(0.0);
+
+            SequentialTransition sequentialTransition = new SequentialTransition(fadeIn, pause, fadeOut);
+                sequentialTransition.play();
+            
+            
+
+            Scene scene = BtnWallpapers1.getScene(); // Получаем текущую сцену
+            Pane rootPane = (Pane) scene.getRoot(); // Корневой узел
+
+            notification.setLayoutX((scene.getWidth() - notification.getPrefWidth()) / 2);
+            notification.setLayoutY(scene.getHeight() - 60); // Располагаем внизу экрана
+
+            rootPane.getChildren().add(notification);
+
+            // Убираем уведомление через 5 секунд
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ev -> {
+                rootPane.getChildren().remove(notification);
+            }));
+            timeline.setCycleCount(1);
+            timeline.play();
+        }
+
     private void handleWallpaperButtonClick(Button button, ImageView wall, ActionEvent event) {
         boolean isEnlarged = buttonStates.getOrDefault(button, false);
     
@@ -216,25 +257,26 @@ public class WallpapersController2  {
             goBackButton.setLayoutX(newX + 55);
             goBackButton.setLayoutY(newY + 285);
             goBackButton.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-family: 'Myanmar Text'; -fx-font-size: 12px; -fx-font-weight: bold;");
-    
-            Button setWallpaperButton = new Button("Set Wallpaper");
-            setWallpaperButton.setPrefWidth(100);
-            setWallpaperButton.setPrefHeight(35);
-            setWallpaperButton.setLayoutX(newX + 235);
-            setWallpaperButton.setLayoutY(newY + 285);
-            setWallpaperButton.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-family: 'Myanmar Text'; -fx-font-size: 12px; -fx-font-weight: bold;");
-    
-            setWallpaperButton.setOnAction(ev -> {
-                File f = new File(imagePath);
-                String absolutePath = f.getAbsolutePath();
-                System.out.println("Устанавливаем обои: " + absolutePath);
-    
-                if (wall != null) {
-                    WallpaperUtils.setWallpaper(absolutePath);
-                }
-    
+            
+            
+                Button setWallpaperButton = new Button("Set Wallpaper");                
+                setWallpaperButton.setPrefWidth(100);
+                setWallpaperButton.setPrefHeight(35);
+                setWallpaperButton.setLayoutX(newX + 235);
+                setWallpaperButton.setLayoutY(newY + 285);
+                setWallpaperButton.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-family: 'Myanmar Text'; -fx-font-size: 12px; -fx-font-weight: bold;");
+                
+                setWallpaperButton.setOnAction(ev -> {
+                    File f = new File(imagePath);
+                    String absolutePath = f.getAbsolutePath();
+                    System.out.println("Устанавливаем обои: " + absolutePath);
+                
+                    if (wall != null) {
+                        WallpaperUtils.setWallpaper(absolutePath);
+                    }
+                
             });
-    
+            
             goBackButton.setOnAction(ev -> {
                 resetButton(button);
                 buttonStates.put(button, false);
@@ -248,6 +290,7 @@ public class WallpapersController2  {
         });
     
         scaleUp.play();
+    
     }
     
     private void blockButtonClicks(boolean block) {
@@ -265,8 +308,9 @@ public class WallpapersController2  {
     }
     private void resetButton(Button button) {
         Double[] originalPosition = originalPositions.get(button);
-    
+
         if (originalPosition == null) {
+            
             System.err.println("Исходные координаты для кнопки не найдены!");
             return;
         }
