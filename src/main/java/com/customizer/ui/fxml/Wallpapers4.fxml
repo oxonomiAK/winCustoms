@@ -151,7 +151,7 @@
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="Wall2" fitHeight="207.0" fitWidth="341.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall2" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/Flover.png" />
                      </image>
@@ -166,7 +166,7 @@
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="Wall4" fitHeight="239.0" fitWidth="345.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall4" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/squirrel.png" />
                      </image>
@@ -176,12 +176,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="BtnWallpapers4" UserData="src/main/java/com/customizer/ui/resources/Sunset.png" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="308.0" layoutY="372.0" mnemonicParsing="false" onAction="#BtnWallpapers4Clicked" prefHeight="238.0" prefWidth="370.0" style="-fx-background-radius: 10;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Sunset" textFill="WHITE">
+            <Button fx:id="BtnWallpapers4" UserData="src/main/java/com/customizer/ui/resources/Sunset.png" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="308.0" layoutY="373.0" mnemonicParsing="false" onAction="#BtnWallpapers4Clicked" prefHeight="238.0" prefWidth="370.0" style="-fx-background-radius: 10;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Sunset" textFill="WHITE">
                <font>
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="Wall3" fitHeight="280.0" fitWidth="351.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall3" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/Sunset.png" />
                      </image>

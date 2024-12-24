@@ -152,7 +152,7 @@
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="Wall2" fitHeight="207.0" fitWidth="341.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall2" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/PinkVilage.png" />
                      </image>
@@ -167,7 +167,7 @@
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="Wall4" fitHeight="239.0" fitWidth="345.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall4" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/Retro.png" />
                      </image>
@@ -182,7 +182,7 @@
                   <Font name="Myanmar Text Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="Wall3" fitHeight="280.0" fitWidth="351.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Wall3" fitHeight="197.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/Rabbit.png" />
                      </image>

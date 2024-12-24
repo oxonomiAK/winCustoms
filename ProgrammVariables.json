@@ -1,9 +1,9 @@
 {
-  "Coins" : 80,
+  "Coins" : 10,
   "defaultIconSize" : 48,
+  "notFirstLaunch" : false,
   "WallpaperAnime" : true,
-  "WallpaperPinkVilage" : true,
-  "WallpaperRetro" : true,
-  "WallpaperRabbit" : true,
-  "notFirstLaunch" : true
+  "WallpaperPinkVilage" : false,
+  "WallpaperRetro" : false,
+  "WallpaperRabbit" : false
 }
