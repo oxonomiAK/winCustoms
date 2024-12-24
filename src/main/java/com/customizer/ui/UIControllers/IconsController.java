@@ -3,6 +3,7 @@ package com.customizer.ui.UIControllers;
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.services.ReadFromJson;
 import com.customizer.services.RestartExplorer;
 import com.customizer.services.WriteToJson;
 
@@ -109,12 +110,18 @@ public class IconsController  {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
+    final private boolean notFirstLaunch = ReadFromJson.ReadFromJsonJSONBoolean("notFirstLaunch");
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
-        WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
-        RegistryUtils.setIconSize(48);
+        if(!notFirstLaunch) {
+            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
+            WriteToJson.WriteToJSON("notFirstLaunch", true);
+        }
+        int defaultIconSize = ReadFromJson.ReadFromJsonJSON("defaultIconSize");
+
+        RegistryUtils.setIconSize(defaultIconSize);
         RestartExplorer.restartExplorer();
-        int defaultValue = 48; // Значение по умолчанию
+        int defaultValue = defaultIconSize; // Значение по умолчанию
         IcnScrollBar1.setValue(defaultValue); // Устанавливаем значение на ползунке
         ScrollBarValue1.setText(String.valueOf(defaultValue)); // Обновляем текст в текстовом поле
         if (mainApp != null) {
@@ -125,7 +132,10 @@ public class IconsController  {
 
       @FXML
     void BtnSetIconSize(ActionEvent event) {
-        WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
+        if(!notFirstLaunch) {
+            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
+            WriteToJson.WriteToJSON("notFirstLaunch", true);
+        }
         int confirmedValue = (int) IcnScrollBar1.getValue();
         System.out.println("Confirmed value: " + confirmedValue);
         RegistryUtils.setIconSize(confirmedValue);
