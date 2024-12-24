@@ -1,8 +1,5 @@
 {
   "Coins" : 70,
   "defaultIconSize" : 48,
-  "wallpaper1": false,
-  "wallpaper2": false,
-  "wallpaper3": true,
-  "wallpaper4": true
+  "WallpaperAnime" : false
 }

@@ -6,16 +6,22 @@ import java.util.HashMap;
 import java.util.Map;
 import com.customizer.core.utils.WallpaperUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.LockManager;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class WallpapersController2  {
@@ -114,7 +120,12 @@ public class WallpapersController2  {
 
     @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
+        if (LockManager.CheckForLock("WallpaperAnime", "Coins", 100)) {
+            handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
+        } else {
+            // Показываем уведомление, что нужно 100 монет
+            showNotification("Необходимо 100 монет для разблокировки!");
+        }
     }
     
     @FXML
@@ -131,6 +142,29 @@ public class WallpapersController2  {
     void BtnWallpapers4Clicked(ActionEvent event) {
         handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
     }
+
+    private void showNotification(String message) {
+    Label notification = new Label(message);
+    notification.setStyle("-fx-background-color: rgba(0, 0, 0, 0.7); -fx-text-fill: white; "
+            + "-fx-padding: 10px; -fx-font-size: 14px; -fx-border-radius: 10; -fx-background-radius: 10;");
+    notification.setAlignment(Pos.CENTER);
+    notification.setPrefWidth(450);
+    
+    Scene scene = BtnWallpapers1.getScene(); // Получаем текущую сцену
+    Pane rootPane = (Pane) scene.getRoot(); // Корневой узел
+
+    notification.setLayoutX((scene.getWidth() - notification.getPrefWidth()) / 2);
+    notification.setLayoutY(scene.getHeight() - 60); // Располагаем внизу экрана
+
+    rootPane.getChildren().add(notification);
+
+    // Убираем уведомление через 5 секунд
+    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), ev -> {
+        rootPane.getChildren().remove(notification);
+    }));
+    timeline.setCycleCount(1);
+    timeline.play();
+}
     
     private void handleWallpaperButtonClick(Button button, ImageView wall, ActionEvent event) {
         boolean isEnlarged = buttonStates.getOrDefault(button, false);

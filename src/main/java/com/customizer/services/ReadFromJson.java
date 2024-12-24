@@ -3,9 +3,8 @@ package com.customizer.services;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,8 +34,7 @@ public class ReadFromJson {
         return 0;
     }
 
-    // Метод для чтения коллекций
-    public static Set<String> ReadSetFromJson(String variableName) {
+    public static boolean ReadFromJsonJSONBoolean(String variableName) {
         String filePath = "ProgrammVariables.json";
         File file = new File(filePath);
         ObjectMapper mapper = new ObjectMapper();
@@ -47,14 +45,15 @@ public class ReadFromJson {
             }
 
             if (!jsonData.containsKey(variableName)) {
-                WriteToJson.WriteToJSON(variableName, new HashSet<>());
-                return new HashSet<>();
+                WriteToJson.WriteToJSON(variableName, false);
+                return false;
             }
 
-            return mapper.convertValue(jsonData.get(variableName), new TypeReference<Set<String>>() {});
+            String data = jsonData.get(variableName).toString();
+            return Boolean.parseBoolean(data);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new HashSet<>();
+        return false;
     }
 }
