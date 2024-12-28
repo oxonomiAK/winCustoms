@@ -125,13 +125,10 @@ public class MainUI extends Application {
     }
     
     public void spendCoins(int amount) {
-        if (coins >= amount) {
             coins -= amount;
+            controller.spendCoins(amount);
             System.out.println("Монет потрачено: " + amount + ". Осталось монет: " + coins);
             updateCoinsLabel(); // Обновляем Label
-        } else {
-            System.out.println("Недостаточно монет!");
-        }
     }
 
     public void updateCoinsLabel() {

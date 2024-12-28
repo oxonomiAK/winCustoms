@@ -23,10 +23,6 @@ public class User32F {
         final int SPI_GETDESKWALLPAPER = 0x0073;
         final int MAX_PATH = 260;
 
-        final int HWND_BROADCAST = 0xFFFF;
-        final int SPI_GETICONMETRICS =0x002D;
-        final int WM_SETTINGCHANGE = 0x001A;
-
     
 
         // Определяем метод SystemParametersInfoW с поддержкой Unicode
@@ -36,6 +32,5 @@ public class User32F {
 
         boolean SystemParametersInfoW(int uiAction, int uiParam, char[] pvParam, int fWinIni);
 
-        void SendMessage(int hwndBroadcast, int wmSettingchange, int i, int j);
     }
 }

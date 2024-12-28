@@ -21,4 +21,7 @@ public class CoinsController {
         return coinsManager.getCoins();
     }
     
+    public void spendCoins(int amount){
+        coinsManager.spendCoins(amount);
+    }
 }
