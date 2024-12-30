@@ -30,4 +30,8 @@ public class CoinsManager {
         System.out.println("Монет добавлено: " + amount + ". Всего монет: " + coins);
     }
     
+    public void spendCoins(int amount){
+        coins -= amount;
+        saveCoinsToFile();
+    }
 }

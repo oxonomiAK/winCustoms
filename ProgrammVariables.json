@@ -1,9 +1,17 @@
 {
+<<<<<<< HEAD
   "Coins" : 60,
+=======
+  "Coins" : 0,
+>>>>>>> sergo
   "defaultIconSize" : 48,
   "notFirstLaunch" : false,
   "WallpaperAnime" : true,
   "WallpaperPinkVilage" : true,
   "WallpaperRetro" : true,
+<<<<<<< HEAD
   "WallpaperRabbit" : true
+=======
+  "WallpaperRabbit" : false
+>>>>>>> sergo
 }

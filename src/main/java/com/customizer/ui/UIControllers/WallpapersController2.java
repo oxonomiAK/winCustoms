@@ -6,6 +6,7 @@ import java.lang.reflect.AnnotatedArrayType;
 import java.util.HashMap;
 import java.util.Map;
 import com.customizer.core.utils.WallpaperUtils;
+import com.customizer.services.ReadFromJson;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.LockManager;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
@@ -90,10 +91,15 @@ public class WallpapersController2  {
         int RetroCond = 30;
         int RabbitCond = 40;
 
-        boolean AnimeUnlocked = LockManager.CheckForLock("WallpaperAnime", "Coins", AnimeCond);
-        boolean PinkVilageUnlocked = LockManager.CheckForLock("WallpaperPinkVilage", "Coins", PinkVilageCond);
-        boolean RetroUnlocked = LockManager.CheckForLock("WallpaperRetro", "Coins", RetroCond);
-        boolean RabbitUnlocked = LockManager.CheckForLock("WallpaperRabbit", "Coins", RabbitCond);
+        boolean AnimeStatus = LockManager.CanUnlock("WallpaperAnime", "Coins", AnimeCond);
+        boolean PinkVilageStatus = LockManager.CanUnlock("WallpaperPinkVilage", "Coins", PinkVilageCond);
+        boolean RetroStatus = LockManager.CanUnlock("WallpaperRetro", "Coins", RetroCond);
+        boolean RabbitStatus = LockManager.CanUnlock("WallpaperRabbit", "Coins", RabbitCond);
+
+        boolean AnimeUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperAnime");
+        boolean PinkVilageUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperPinkVilage");
+        boolean RetroUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperRetro");
+        boolean RabbitUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperRabbit");
     @FXML
     public void initialize() {
         String lockIncon = "com/customizer/ui/resources/lock.png";
@@ -142,14 +148,21 @@ public class WallpapersController2  {
 
     @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
-        if (AnimeUnlocked) 
+        
+        LockManager.CheckAndUnlock(AnimeStatus, AnimeUnlocked, AnimeCond, "WallpaperAnime", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
+
+        if (AnimeUnlocked){
             handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
+        }
         else 
             showNotification("Необходимо "+ AnimeCond +" монет для разблокировки!");
     }
     
     @FXML
     void BtnWallpapers2Clicked(ActionEvent event) {
+
+        LockManager.CheckAndUnlock(PinkVilageStatus, PinkVilageUnlocked, PinkVilageCond, "WallpaperPinkVilage", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
+
         if (PinkVilageUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
          else 
@@ -158,6 +171,9 @@ public class WallpapersController2  {
     
     @FXML
     void BtnWallpapers3Clicked(ActionEvent event) {
+
+        LockManager.CheckAndUnlock(RetroStatus, RetroUnlocked, RetroCond, "WallpaperRetro", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
+        
         if (RetroUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
         else 
@@ -166,6 +182,9 @@ public class WallpapersController2  {
     
     @FXML
     void BtnWallpapers4Clicked(ActionEvent event) {
+
+        LockManager.CheckAndUnlock(RabbitStatus, RabbitUnlocked, RabbitCond, "WallpaperRabbit", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
+
         if (RabbitUnlocked)
             handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
         else 
