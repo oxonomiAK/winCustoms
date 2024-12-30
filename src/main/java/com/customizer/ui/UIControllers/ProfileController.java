@@ -91,6 +91,9 @@ public class ProfileController  {
 
     @FXML
     private static ImageView dynamicImageView, dynamicImageView1;
+
+    @FXML
+    private Button BtnProfile;
     
     @FXML
     private Button btnCutOnce;
@@ -153,6 +156,10 @@ public class ProfileController  {
         // Добавление TextField в родительский контейнер кнопки
         ((StackPane) BtnUsername.getParent()).getChildren().add(textField);
     
+        // Получение имени пользователя из ОС
+        String username1 = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username1);        
     }
     
 
@@ -273,6 +280,11 @@ public class ProfileController  {
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
+    }
+
+    @FXML
+    void BtnProfileClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
     }
 
     @FXML

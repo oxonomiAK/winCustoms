@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 
 
@@ -37,6 +38,9 @@ public class SettingsController  {
     @FXML
     private Button closeButton;
 
+    @FXML
+    private CheckBox CheckBoxAch;
+
     private MainUI mainApp;
 
     public void setMainApp(MainUI mainApp) {
@@ -51,6 +55,12 @@ public class SettingsController  {
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
+        CheckBoxAch.getStyleClass().add("check-box");
+
+        // Получение имени пользователя из ОС
+        String username = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username);
     }
     
     UpdateCoins updateCoins = new UpdateCoins();
@@ -81,6 +91,17 @@ public class SettingsController  {
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
+    }
+
+    @FXML
+    void CheckBoxAchClicked(ActionEvent event) {
+        if (CheckBoxAch.isSelected()) {
+            System.out.println("CheckBox выбрано!");
+            // Действие для состояния "выбрано"
+        } else {
+            System.out.println("CheckBox снято!");
+            // Действие для состояния "снято"
+        }
     }
 
     @FXML

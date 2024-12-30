@@ -66,6 +66,11 @@ public class RocketController {
         ToolTip.setShowDuration(javafx.util.Duration.seconds(3)); // Время отображения 2 секунды
         ToolTip.setHideDelay(javafx.util.Duration.millis(100)); // Задержка перед скрытием 100 мс
         BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к кнопке
+
+        // Получение имени пользователя из ОС
+        String username = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username);
     }
 
      UpdateCoins updateCoins = new UpdateCoins();

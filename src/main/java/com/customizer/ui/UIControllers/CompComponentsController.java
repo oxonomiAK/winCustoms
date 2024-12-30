@@ -55,6 +55,11 @@ public class CompComponentsController  {
     
         
         SystemInfoArea.setText(SystemInfoExample.displaySystemInfo()); //Обращение к файлу SystemInfoExample
+
+        // Получение имени пользователя из ОС
+        String username = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username);
     }
     
     @FXML

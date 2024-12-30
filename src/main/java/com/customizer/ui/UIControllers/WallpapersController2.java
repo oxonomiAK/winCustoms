@@ -125,6 +125,10 @@ public class WallpapersController2  {
         buttonStates.put(BtnWallpapers3, false);
         buttonStates.put(BtnWallpapers4, false);
 
+        // Получение имени пользователя из ОС
+        String username = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username);
     }
     
         private final Map<Button, Boolean> buttonStates = new HashMap<>();

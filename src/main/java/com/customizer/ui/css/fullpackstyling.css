@@ -145,3 +145,23 @@
 .text-field .prompt-text {
     -fx-text-fill: #000000; /* Цвет текста подсказки */
 }
+
+
+
+
+/* Стили для обычного состояния CheckBox */
+.check-box {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff;
+}
+
+/* Стили для состояния "выбрано" */
+.check-box:selected {
+    -fx-mark-color: #2a9d8f; /* Цвет галочки */
+    -fx-border-color: #2a9d8f; /* Цвет рамки */
+}
+
+/* Стили при наведении */
+.check-box:hover {
+    -fx-background-color: #f4a261;
+}

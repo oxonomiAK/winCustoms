@@ -98,6 +98,11 @@ public class IconsController  {
             ScrollBarValue1.setText(oldValue);
         }
     });
+
+        // Получение имени пользователя из ОС
+        String username = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username);
 }
 
    UpdateCoins updateCoins = new UpdateCoins();
