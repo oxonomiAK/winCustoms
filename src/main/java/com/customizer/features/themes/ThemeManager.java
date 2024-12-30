@@ -1,5 +1,7 @@
 package com.customizer.features.themes;
 
-public class ThemeManager {
+import com.customizer.core.utils.RegistryUtils;
 
+public class ThemeManager {
+    
 }

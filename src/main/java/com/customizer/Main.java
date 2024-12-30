@@ -1,16 +1,19 @@
 package com.customizer;
 
-import com.customizer.core.dwTemp;
 
-import com.customizer.core.PlatformVersionInfo;
+
+import com.customizer.ui.ButtonEffectUtils.CoinsController;
+
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
-        
+        CoinsController controller = new CoinsController();
 
-        System.out.print("Path of default wallpaper: ");
-        System.out.println(dwTemp.defaultWallpaper);
-        PlatformVersionInfo.PlatformInfo();
+        // Добавляем монеты
+        controller.addCoins(10);
+
+        // Сохраняем монеты
+        controller.saveCoins();
     }
 }

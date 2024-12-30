@@ -1,6 +1,6 @@
 .button1
 {
--fx-background-color :  #837d85;
+-fx-background-color :  #d6c7db;
 -fx-background-radius :  10;
 }
 .button1:hover
@@ -144,4 +144,24 @@
 /* Стили для места для ввода текста (promptText) */
 .text-field .prompt-text {
     -fx-text-fill: #000000; /* Цвет текста подсказки */
+}
+
+
+
+
+/* Стили для обычного состояния CheckBox */
+.check-box {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff;
+}
+
+/* Стили для состояния "выбрано" */
+.check-box:selected {
+    -fx-mark-color: #2a9d8f; /* Цвет галочки */
+    -fx-border-color: #2a9d8f; /* Цвет рамки */
+}
+
+/* Стили при наведении */
+.check-box:hover {
+    -fx-background-color: #f4a261;
 }
