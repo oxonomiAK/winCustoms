@@ -1,16 +1,14 @@
 package com.customizer.ui.sample;
 
-import com.customizer.core.CoreAudio;
+import com.customizer.core.DeviceInfo;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
-import com.sun.jna.ptr.FloatByReference;
-
-
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import java.io.IOException;
 
 public class VolumeController {
 
@@ -19,9 +17,6 @@ public class VolumeController {
 
     @FXML
     private Button ApplyButton;
-
-    @FXML
-    private Slider VolumeSlider;
 
     @FXML
     private Button BtnProfile;
@@ -34,6 +29,27 @@ public class VolumeController {
 
     @FXML
     private Button BtnWallpapers;
+
+    @FXML
+    private Label ConectedDevices;
+
+    @FXML
+    private Label ConectedDevices1;
+
+    @FXML
+    private Label ConectedDevices2;
+
+    @FXML
+    private Label ConectedDevices3;
+
+    @FXML
+    private Label ConectedDevices4;
+
+    @FXML
+    private Button DeviseSettings;
+
+    @FXML
+    private CheckBox Headphones;
 
     @FXML
     private Button closeButton;
@@ -52,12 +68,16 @@ public class VolumeController {
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-         // Установить начальное значение громкости из системы
-         VolumeSlider.setValue(getSystemVolume() * 100);
 
-         // Обработчик нажатия кнопки "ОК"
-         //ApplyButton.setOnAction(event -> SetSystemVolume((float) VolumeSlider.getValue() / 100));
+         // Привязываем действие к кнопке ApplyButton
+         ApplyButton.setOnAction(event -> openMicrophoneSettings());
+
+            ConectedDevices.setText(DeviceInfo.getHeadphonesInfo());
+            ConectedDevices1.setText(DeviceInfo.getMicrophoneInfo());
+
     }
+    
+
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {
@@ -74,49 +94,31 @@ public class VolumeController {
 
     }
 
-    // Получить текущий уровень громкости
-    private float getSystemVolume() {
+    // Метод для открытия вкладки "Запись" и свойств микрофона
+    private void openMicrophoneSettings() {
         try {
-            CoreAudio.IAudioEndpointVolume audioEndpoint = getAudioEndpoint();
-            FloatByReference volumeRef = new FloatByReference();
-            audioEndpoint.GetMasterVolumeLevelScalar(volumeRef);
-            return volumeRef.getValue();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
-
-    // Установить громкость системы
-    private void SetSystemVolume(float volume) {
-        try {
-            CoreAudio.IAudioEndpointVolume audioEndpoint = getAudioEndpoint();
-            audioEndpoint.SetMasterVolumeLevelScalar(volume, null);
-        } catch (Exception e) {
+            // Открытие окна настроек звука и переход на вкладку "Запись"
+            String command = "control mmsys.cpl,,1"; // Это открывает вкладку записи устройства
+            Runtime.getRuntime().exec(command);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    // Получить IAudioEndpointVolume
-    private CoreAudio.IAudioEndpointVolume getAudioEndpoint() {
-        // Логика инициализации COM-объекта (например, через CoCreateInstance)
-        throw new UnsupportedOperationException("Добавьте реализацию получения IAudioEndpointVolume");
-    }
-    
 
     @FXML
     void BtnProfileClicked(ActionEvent event) {
         mainApp.loadScene("Profile.fxml");
     }
-
-    @FXML
-    void BtnSettingsClicked(ActionEvent event) {
-        mainApp.loadScene("Settings.fxml");
-    }
+    
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("Wallpapers.fxml");
+    }
+
+    @FXML
+    void BtnSettingsClicked(ActionEvent event) {
+        mainApp.loadScene("Settings.fxml");
     }
 
     @FXML

@@ -129,7 +129,7 @@
                   <Font name="Myanmar Text" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="BtnVolume" contentDisplay="TOP" layoutX="343.0" layoutY="426.0" mnemonicParsing="false" onAction="#BtnVolumeClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Volume" textFill="WHITE">
+            <Button fx:id="BtnVolume" contentDisplay="TOP" layoutX="343.0" layoutY="426.0" mnemonicParsing="false" onAction="#BtnVolumeClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Connected devices" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
