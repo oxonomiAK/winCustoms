@@ -10,7 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import java.io.IOException;
 
-public class VolumeController  {
+public class VolumeController {
 
     @FXML
     private Button BtnBoost;
@@ -113,7 +113,7 @@ public class VolumeController  {
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
-        mainApp.loadScene("Wallpapers.fxml");
+        mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
     }
 
     @FXML
@@ -122,14 +122,6 @@ public class VolumeController  {
     }
 
     @FXML
-<<<<<<< HEAD:src/main/java/com/customizer/ui/sample/VolumeController.java
-=======
-    void BtnWallpapersClicked(ActionEvent event) {
-        mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
-    }
-
-    @FXML
->>>>>>> Vladmini:src/main/java/com/customizer/ui/UIControllers/VolumeController.java
     void closeApp(ActionEvent event) {
         Platform.exit();
     }

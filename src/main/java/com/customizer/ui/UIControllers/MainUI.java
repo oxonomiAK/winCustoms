@@ -174,5 +174,3 @@ public class MainUI extends Application {
     
     }
 }
-
-
