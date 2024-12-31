@@ -2,12 +2,15 @@ package com.customizer.ui.UIControllers;
 
 import com.customizer.core.CoreAudio;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.image.ImageView;
+
 import com.sun.jna.ptr.FloatByReference;
 
 
@@ -34,6 +37,9 @@ public class VolumeController  {
 
     @FXML
     private Button BtnWallpapers;
+    
+    @FXML
+    private ImageView dynamicImageView1;
 
     @FXML
     private Button closeButton;
@@ -46,6 +52,7 @@ public class VolumeController  {
 
     @FXML
     public void initialize() {
+        ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);

@@ -45,8 +45,8 @@ public class ReadFromJson {
             }
 
             if (!jsonData.containsKey(variableName)) {
-                WriteToJson.WriteToJSON(variableName, false);
-                return false;
+                WriteToJson.WriteToJSON(variableName, true);
+                return true;
             }
 
             String data = jsonData.get(variableName).toString();
@@ -55,5 +55,28 @@ public class ReadFromJson {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static String ReadFromJsonJSONString(String variableName) {
+        String filePath = "ProgrammVariables.json";
+        File file = new File(filePath);
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> jsonData = new HashMap<>();
+        try {
+            if (file.exists() && file.length() > 0) {
+                jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
+            }
+
+            if (!jsonData.containsKey(variableName)) {
+                WriteToJson.WriteToJSON(variableName, null);
+                return null;
+            }
+
+            return jsonData.get(variableName).toString();
+             
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

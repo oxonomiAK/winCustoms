@@ -9,6 +9,7 @@ import com.customizer.core.utils.WallpaperUtils;
 import com.customizer.services.ReadFromJson;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.LockManager;
+import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
 import javafx.animation.FadeTransition;
@@ -63,6 +64,9 @@ public class WallpapersController2  {
 
     @FXML
     private Button BtnHome;
+    
+    @FXML
+    private ImageView dynamicImageView1;
 
     @FXML
     private Button closeButton;
@@ -102,6 +106,7 @@ public class WallpapersController2  {
         boolean RabbitUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperRabbit");
     @FXML
     public void initialize() {
+        ProfilePicController.CheckProfilePic(dynamicImageView1);
         String lockIncon = "com/customizer/ui/resources/lock.png";
         if(!AnimeUnlocked) Wall1.setImage(new Image(lockIncon));
         if(!PinkVilageUnlocked) Wall2.setImage(new Image(lockIncon));
@@ -187,44 +192,36 @@ public class WallpapersController2  {
             showNotification("Необходимо "+ RabbitCond +" монет для разблокировки!");
     }
     
-        private void showNotification(String message) {
-            Label notification = new Label(message);
-            
-            notification.setStyle("-fx-background-color: rgba(0, 0, 0, 0.7); -fx-text-fill: white; "
-                    + "-fx-padding: 10px; -fx-font-size: 14px; -fx-border-radius: 10; -fx-background-radius: 10;");
-            notification.setAlignment(Pos.CENTER);
-            notification.setPrefWidth(450);
-
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), notification);
-                fadeIn.setFromValue(0.0);
-                fadeIn.setToValue(1.0);
-
-            PauseTransition pause = new PauseTransition(Duration.millis(1500));
-
-            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), notification);
-                fadeOut.setFromValue(1.0);
-                fadeOut.setToValue(0.0);
-
-            SequentialTransition sequentialTransition = new SequentialTransition(fadeIn, pause, fadeOut);
-                sequentialTransition.play();
-            
-            
-
-            Scene scene = BtnWallpapers1.getScene(); // Получаем текущую сцену
-            Pane rootPane = (Pane) scene.getRoot(); // Корневой узел
-
-            notification.setLayoutX((scene.getWidth() - notification.getPrefWidth()) / 2);
-            notification.setLayoutY(scene.getHeight() - 60); // Располагаем внизу экрана
-
-            rootPane.getChildren().add(notification);
-
-            // Убираем уведомление через 5 секунд
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ev -> {
-                rootPane.getChildren().remove(notification);
-            }));
-            timeline.setCycleCount(1);
-            timeline.play();
-        }
+    private void showNotification(String message) {
+        Label notification = new Label(message);
+        
+        notification.setStyle("-fx-background-color: rgba(0, 0, 0, 0.7); -fx-text-fill: white; "
+                + "-fx-padding: 10px; -fx-font-size: 14px; -fx-border-radius: 10; -fx-background-radius: 10;");
+        notification.setAlignment(Pos.CENTER);
+        notification.setPrefWidth(450);
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(500), notification);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+        PauseTransition pause = new PauseTransition(Duration.millis(1500));
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), notification);
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+        SequentialTransition sequentialTransition = new SequentialTransition(fadeIn, pause, fadeOut);
+            sequentialTransition.play();
+        
+        
+        Scene scene = BtnWallpapers1.getScene(); // Получаем текущую сцену
+        Pane rootPane = (Pane) scene.getRoot(); // Корневой узел
+        notification.setLayoutX((scene.getWidth() - notification.getPrefWidth()) / 2);
+        notification.setLayoutY(scene.getHeight() - 60); // Располагаем внизу экрана
+        rootPane.getChildren().add(notification);
+        // Убираем уведомление через 5 секунд
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ev -> {
+            rootPane.getChildren().remove(notification);
+        }));
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
 
     private void handleWallpaperButtonClick(Button button, ImageView wall, ActionEvent event) {
         boolean isEnlarged = buttonStates.getOrDefault(button, false);

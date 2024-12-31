@@ -1,6 +1,9 @@
 package com.customizer.ui.UIControllers;
 
 
+import java.io.File;
+
+import com.customizer.services.ReadFromJson;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -90,7 +93,7 @@ public class ProfileController  {
     private Button btnBoostAch;
 
     @FXML
-    private static ImageView dynamicImageView, dynamicImageView1;
+    private ImageView dynamicImageView, dynamicImageView1;
     
     @FXML
     private Button btnCutOnce;
@@ -130,6 +133,9 @@ public class ProfileController  {
     
     @FXML
     public void initialize() {
+        if(!MainUI.FirstProfilePicChange)
+        dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic));
+        dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
@@ -138,7 +144,7 @@ public class ProfileController  {
     
         // Устанавливаем начальное значение опыта
         ExperienceBar.setProgress(currentProgress);
-    
+        
     
         // Получение имени пользователя из ОС
         String username = System.getProperty("user.name");
@@ -257,13 +263,10 @@ public class ProfileController  {
             isWindowOpened = false;
             if(picImage != null)
                 mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");
+
         }
     }
-    public static void changeprofpic(String imagePath) {
-        if (dynamicImageView != null) {
-            dynamicImageView.setImage(new Image(imagePath));
-        } 
-    }
+
 
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
@@ -282,62 +285,62 @@ public class ProfileController  {
 
     @FXML
     void btnArentYouBoredClicked(ActionEvent event) {
-        updateContent("Aren`t You Bored?", "You have changed the wallpaper 100 times!", "com\\customizer\\ui\\resources\\Wallpaper100.png");
+        updateContent("Aren`t You Bored?", "You have changed the wallpaper 100 times!", "com/customizer/ui/resources/Wallpaper100.png");
     }
 
     @FXML
     void btnBoostAchClicked(ActionEvent event) {
-        updateContent("Boost!", "You changed the performance settings!", "com\\customizer\\ui\\resources\\boostach.png");
+        updateContent("Boost!", "You changed the performance settings!", "com/customizer/ui/resources/boostach.png");
     }
 
     @FXML
     void btnCutOnceClicked(ActionEvent event) {
-        updateContent("...Cut Once", "You resized the icons back to their original size!", "com\\customizer\\ui\\resources\\icondefault.png");
+        updateContent("...Cut Once", "You resized the icons back to their original size!", "com/customizer/ui/resources/icondefault.png");
     }
 
     @FXML
     void btnIndianaJonesClicked(ActionEvent event) {
-        updateContent("Indiana Jones", "Unlock all wallpapers!", "com\\customizer\\ui\\resources\\adventurer.png");
+        updateContent("Indiana Jones", "Unlock all wallpapers!", "com/customizer/ui/resources/adventurer.png");
     }
 
     @FXML
     void btnMaxLvlClicked(ActionEvent event) {
-        updateContent("Fashionista?", "You reached the maximum level!", "com\\customizer\\ui\\resources\\maxlvl.png");
+        updateContent("Fashionista?", "You reached the maximum level!", "com/customizer/ui/resources/maxlvl.png");
     }
 
     @FXML
     void btnMeasureTwiceClicked(ActionEvent event) {
-        updateContent("Measure Twice...", "You resized the icons!", "com\\customizer\\ui\\resources\\iconchange.png");
+        updateContent("Measure Twice...", "You resized the icons!", "com/customizer/ui/resources/iconchange.png");
     }
 
     @FXML
     void btnNewFaceClicked(ActionEvent event) {
-        updateContent("New Face", "You have changed your profile picture!", "com\\customizer\\ui\\resources\\ProfilePic.png");
+        updateContent("New Face", "You have changed your profile picture!", "com/customizer/ui/resources/ProfilePic.png");
     }
 
     @FXML
     void btnRecyclerClicked(ActionEvent event) {
-        updateContent("Recycler", "You have emptied the recycle garbage can!", "com\\customizer\\ui\\resources\\bin.png");
+        updateContent("Recycler", "You have emptied the recycle garbage can!", "com/customizer/ui/resources/bin.png");
     }
 
     @FXML
     void btnRefreshClicked(ActionEvent event) {
-        updateContent("Refresh", "You have installed a new wallpaper!", "com\\customizer\\ui\\resources\\Wallpaper1.png");
+        updateContent("Refresh", "You have installed a new wallpaper!", "com/customizer/ui/resources/Wallpaper1.png");
     }
 
     @FXML
     void btnSizeDoesntMatterClicked(ActionEvent event) {
-        updateContent("Size Doesn't Matter", "You resized the icons to the minimum possible size!", "com\\customizer\\ui\\resources\\growdown.png");
+        updateContent("Size Doesn't Matter", "You resized the icons to the minimum possible size!", "com/customizer/ui/resources/growdown.png");
     }
 
     @FXML
     void btnSizeWizardClicked(ActionEvent event) {
-        updateContent("Size Wizard", "You resized the icons to the maximum possible size!", "com\\customizer\\ui\\resources\\growdown.png");
+        updateContent("Size Wizard", "You resized the icons to the maximum possible size!", "com/customizer/ui/resources/growdown.png");
     }
 
     @FXML
     void btnYouHaveTasteClicked(ActionEvent event) {
-        updateContent("You Have Taste", "You have changed the wallpaper 10 times", "com\\customizer\\ui\\resources\\Wallpaper10.png");
+        updateContent("You Have Taste", "You have changed the wallpaper 10 times", "com/customizer/ui/resources/Wallpaper10.png");
     }
 
      /**
