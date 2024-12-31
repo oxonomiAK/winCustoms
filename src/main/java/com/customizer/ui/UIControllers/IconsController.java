@@ -116,7 +116,7 @@ public class IconsController  {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
-    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJsonJSONBoolean("FirstIconsControllerLaunch");
+    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJsonJSONBooleanT("FirstIconsControllerLaunch");
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
         if(FirstIconsControllerLaunch) {

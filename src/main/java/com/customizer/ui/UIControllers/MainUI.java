@@ -22,7 +22,7 @@ import javafx.stage.StageStyle;
 public class MainUI extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
-    public static boolean FirstProfilePicChange = ReadFromJson.ReadFromJsonJSONBoolean("FirstProfilePicChange");
+    public static boolean FirstProfilePicChange = ReadFromJson.ReadFromJsonJSONBooleanT("FirstProfilePicChange");
 
     private Stage primaryStage; // Используем один основной Stage
     @FXML

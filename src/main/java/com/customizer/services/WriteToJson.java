@@ -10,21 +10,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class WriteToJson {
     // Метод для записи числовых значений
+    private static File JsonFile = new File("NewLookResources/ProgrammVariables.json");
+    private static File folder = new File("NewLookResources");
+    private static void CheckForExist(){
+        if(!folder.exists())
+        folder.mkdirs();
+    }
     public static void WriteToJSON(String variableName, int value) {
-        String filePath = "ProgrammVariables.json";
-        File file = new File(filePath);
+
+        CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
 
         try {
-            if (file.exists() && file.length() > 0) {
-                jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
             }
 
             jsonData.put(variableName, value);
 
             // Записываем измененный объект обратно в JSON-файл
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, jsonData);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(JsonFile, jsonData);
             System.out.println("Значение обновлено и сохранено в файл.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,20 +38,19 @@ public class WriteToJson {
     }
 
     public static void WriteToJSON(String variableName, boolean value) {
-        String filePath = "ProgrammVariables.json";
-        File file = new File(filePath);
+        CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
 
         try {
-            if (file.exists() && file.length() > 0) {
-                jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
             }
 
             jsonData.put(variableName, value);
 
             // Записываем измененный объект обратно в JSON-файл
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, jsonData);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(JsonFile, jsonData);
             System.out.println("Значение обновлено и сохранено в файл.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,20 +59,19 @@ public class WriteToJson {
 
 
     public static void WriteToJSON(String variableName, String value) {
-        String filePath = "ProgrammVariables.json";
-        File file = new File(filePath);
+        CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
 
         try {
-            if (file.exists() && file.length() > 0) {
-                jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
             }
 
             jsonData.put(variableName, value);
 
             // Записываем измененный объект обратно в JSON-файл
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, jsonData);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(JsonFile, jsonData);
             System.out.println("Значение обновлено и сохранено в файл.");
         } catch (IOException e) {
             e.printStackTrace();

@@ -10,15 +10,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ReadFromJson {
-    // Метод для чтения числовых значений
+    // Метод для чтения числовых значени
+    private static File folder = new File("NewLookResources");
+    private static File JsonFile = new File("NewLookResources/ProgrammVariables.json");
+    private static void CheckForExist(){
+        if(!folder.exists())
+        folder.mkdirs();
+    }
+
     public static int ReadFromJsonJSON(String variableName) {
-        String filePath = "ProgrammVariables.json";
-        File file = new File(filePath);
+        CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
         try {
-            if (file.exists() && file.length() > 0) {
-                jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
             }
 
             if (!jsonData.containsKey(variableName)) {
@@ -34,14 +40,13 @@ public class ReadFromJson {
         return 0;
     }
 
-    public static boolean ReadFromJsonJSONBoolean(String variableName) {
-        String filePath = "ProgrammVariables.json";
-        File file = new File(filePath);
+    public static boolean ReadFromJsonJSONBooleanT(String variableName) {
+        CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
         try {
-            if (file.exists() && file.length() > 0) {
-                jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
             }
 
             if (!jsonData.containsKey(variableName)) {
@@ -57,14 +62,34 @@ public class ReadFromJson {
         return false;
     }
 
-    public static String ReadFromJsonJSONString(String variableName) {
-        String filePath = "ProgrammVariables.json";
-        File file = new File(filePath);
+    public static boolean ReadFromJsonJSONBooleanF(String variableName) {
+        CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
         try {
-            if (file.exists() && file.length() > 0) {
-                jsonData = mapper.readValue(file, new TypeReference<Map<String, Object>>() {});
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
+            }
+
+            if (!jsonData.containsKey(variableName)) {
+                WriteToJson.WriteToJSON(variableName, false);
+                return false;
+            }
+
+            String data = jsonData.get(variableName).toString();
+            return Boolean.parseBoolean(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static String ReadFromJsonJSONString(String variableName) {
+        CheckForExist();
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> jsonData = new HashMap<>();
+        try {
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
             }
 
             if (!jsonData.containsKey(variableName)) {

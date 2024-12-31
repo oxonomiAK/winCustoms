@@ -100,10 +100,10 @@ public class WallpapersController2  {
         boolean RetroStatus = LockManager.CanUnlock("WallpaperRetro", "Coins", RetroCond);
         boolean RabbitStatus = LockManager.CanUnlock("WallpaperRabbit", "Coins", RabbitCond);
 
-        boolean AnimeUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperAnime");
-        boolean PinkVilageUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperPinkVilage");
-        boolean RetroUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperRetro");
-        boolean RabbitUnlocked = ReadFromJson.ReadFromJsonJSONBoolean("WallpaperRabbit");
+        boolean AnimeUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperAnime");
+        boolean PinkVilageUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperPinkVilage");
+        boolean RetroUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperRetro");
+        boolean RabbitUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperRabbit");
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);

@@ -133,9 +133,10 @@ public class ProfileController  {
     
     @FXML
     public void initialize() {
-        if(!MainUI.FirstProfilePicChange)
-        dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic));
-        dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));
+        if(!MainUI.FirstProfilePicChange){
+            dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic));
+            dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));
+        }
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
