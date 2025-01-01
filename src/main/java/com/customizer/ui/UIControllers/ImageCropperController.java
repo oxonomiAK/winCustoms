@@ -14,6 +14,9 @@ import javafx.stage.FileChooser;
 import javafx.scene.effect.*;
 import javax.imageio.ImageIO;
 
+
+import com.customizer.services.WriteToJson;
+
 import java.io.File;
 
 
@@ -35,11 +38,10 @@ public class ImageCropperController  {
     private double dragStartX, dragStartY; // Начало перемещения
     private double scale = 1.0; // Масштаб изображения
     private Image image;
-
+    static File outputFile = new File("NewLookResources/user.png");
     private final double CIRCLE_RADIUS = 150; // Радиус круга обрезки
-    
+    public static String UserProfilePic = outputFile.toURI().toString();;
     private MainUI mainApp;
-
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
     }
@@ -127,13 +129,19 @@ public class ImageCropperController  {
 
 
 
+            if(!outputFile.exists())
+            outputFile.mkdirs();
 
 
-            File outputFile = new File("src/main/java/com/customizer/ui/resources/user.png");
             ImageIO.write(SwingFXUtils.fromFXImage(croppedImage, null), "png", outputFile);
-            ProfileController.changeprofpic("com\\customizer\\ui\\resources\\user.png");
+
+            if(MainUI.FirstProfilePicChange){
+                WriteToJson.WriteToJSON("FirstProfilePicChange", false);
+                MainUI.FirstProfilePicChange = false;
+            }
             System.out.println("Image saved: " + outputFile.getAbsolutePath());
             Thread.sleep(600);
+            UserProfilePic = outputFile.toURI().toString();
             mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
             
         } catch (Exception e) {

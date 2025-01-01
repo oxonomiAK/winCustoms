@@ -1,9 +1,10 @@
 {
-  "Coins" : 0,
+  "Coins" : 420,
   "defaultIconSize" : 48,
-  "notFirstLaunch" : true,
-  "WallpaperAnime" : false,
+  "WallpaperAnime" : true,
   "WallpaperPinkVilage" : true,
-  "WallpaperRetro" : false,
-  "WallpaperRabbit" : false
+  "WallpaperRetro" : true,
+  "WallpaperRabbit" : true,
+  "FirstIconsControllerLaunch" : false,
+  "FirstProfilePicChange" : false
 }

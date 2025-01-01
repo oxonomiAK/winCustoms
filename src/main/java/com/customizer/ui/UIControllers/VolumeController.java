@@ -29,6 +29,9 @@ public class VolumeController {
 
     @FXML
     private Button BtnWallpapers;
+    
+    @FXML
+    private ImageView dynamicImageView1;
 
     @FXML
     private Label ConectedDevices;
@@ -62,6 +65,7 @@ public class VolumeController {
 
     @FXML
     public void initialize() {
+        ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);

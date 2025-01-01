@@ -7,6 +7,7 @@ import java.util.Map;
 import com.customizer.core.utils.WallpaperUtils;
 import com.customizer.ui.ButtonEffectUtils.CoinsController;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
 import javafx.animation.ScaleTransition;
@@ -52,6 +53,9 @@ public class WallpapersController {
 
     @FXML
     private Button BtnHome;
+    
+    @FXML
+    private ImageView dynamicImageView1;
 
     @FXML
     private Button closeButton;
@@ -77,6 +81,7 @@ public class WallpapersController {
 
     @FXML
     public void initialize() {
+        ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);

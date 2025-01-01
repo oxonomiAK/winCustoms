@@ -22,6 +22,7 @@ import javafx.stage.StageStyle;
 public class MainUI extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
+    public static boolean FirstProfilePicChange = ReadFromJson.ReadFromJsonJSONBooleanT("FirstProfilePicChange");
 
     private Stage primaryStage; // Используем один основной Stage
     @FXML
@@ -158,10 +159,8 @@ public class MainUI extends Application {
         Platform.exit();
     }
     
-
+    
     public static void main(String[] args) {
-        if(!ReadFromJson.ReadFromJsonJSONBoolean("notFirstLaunch"))
-        WriteToJson.WriteToJSON("notFirstLaunch", false);
         launch(args);
            
         CoinsController controller = new CoinsController();

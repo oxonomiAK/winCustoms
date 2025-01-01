@@ -2,6 +2,7 @@ package com.customizer.ui.UIControllers;
 
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 import com.customizer.services.ReadFromJson;
 import com.customizer.services.RestartExplorer;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 
 public class IconsController  {
@@ -44,6 +46,9 @@ public class IconsController  {
 
     @FXML
     private Button BtnSettings;
+    
+    @FXML
+    private ImageView dynamicImageView1;
 
     @FXML
     private Button BtnHome;
@@ -59,6 +64,7 @@ public class IconsController  {
 
     @FXML
     public void initialize() {
+        ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
@@ -115,12 +121,13 @@ public class IconsController  {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
-    final private boolean notFirstLaunch = ReadFromJson.ReadFromJsonJSONBoolean("notFirstLaunch");
+    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJsonJSONBooleanT("FirstIconsControllerLaunch");
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
-        if(!notFirstLaunch) {
+        if(FirstIconsControllerLaunch) {
             WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
-            WriteToJson.WriteToJSON("notFirstLaunch", true);
+            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
+            FirstIconsControllerLaunch = false;
         }
         int defaultIconSize = ReadFromJson.ReadFromJsonJSON("defaultIconSize");
 
@@ -137,9 +144,10 @@ public class IconsController  {
 
       @FXML
     void BtnSetIconSize(ActionEvent event) {
-        if(!notFirstLaunch) {
+        if(FirstIconsControllerLaunch) {
             WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
-            WriteToJson.WriteToJSON("notFirstLaunch", true);
+            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
+            FirstIconsControllerLaunch = false;
         }
         int confirmedValue = (int) IcnScrollBar1.getValue();
         System.out.println("Confirmed value: " + confirmedValue);

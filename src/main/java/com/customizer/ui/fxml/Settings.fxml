@@ -91,7 +91,7 @@
                               <Font name="Myanmar Text Bold" size="19.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="dynamicImageView1" fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/user.png" />
                                  </image>

@@ -4,6 +4,7 @@ import java.io.File;
 
 import com.customizer.services.RequestAdmin;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
 import javafx.application.Platform;
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 
 
 public class RocketController {
@@ -42,6 +44,9 @@ public class RocketController {
 
     @FXML
     private Button BtnWallpapers;
+    
+    @FXML
+    private ImageView dynamicImageView1;
 
     @FXML
     private Button closeButton;
@@ -54,6 +59,7 @@ public class RocketController {
 
     @FXML
     public void initialize() {
+        ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
