@@ -13,4 +13,3 @@ public interface CoreAudio extends Library {
         int GetMasterVolumeLevelScalar(FloatByReference pfLevel);
     }
 }
-
