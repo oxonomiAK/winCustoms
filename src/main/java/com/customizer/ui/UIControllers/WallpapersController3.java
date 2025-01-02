@@ -157,13 +157,23 @@ public class WallpapersController3 {
             goBackButton.setPrefHeight(35);
             goBackButton.setLayoutX(newX + 55);
             goBackButton.setLayoutY(newY + 285);
-    
+            goBackButton.setStyle("-fx-background-color: #2a2a2a; " +
+                      "-fx-text-fill: white; " +
+                      "-fx-font-family: 'Myanmar Text'; " +
+                      "-fx-font-size: 12px; " +
+                      "-fx-font-weight: bold;"); 
+            
             // Создаем кнопку "Set Wallpaper"
             Button setWallpaperButton = new Button("Set Wallpaper");
             setWallpaperButton.setPrefWidth(100);
             setWallpaperButton.setPrefHeight(35);
             setWallpaperButton.setLayoutX(newX + 235);
             setWallpaperButton.setLayoutY(newY + 285);
+            setWallpaperButton.setStyle("-fx-background-color: #2a2a2a; " +
+                             "-fx-text-fill: white; " +
+                             "-fx-font-family: 'Myanmar Text'; " +
+                             "-fx-font-size: 12px; " +
+                             "-fx-font-weight: bold;"); 
     
             // Обработчик для кнопки "Set Wallpaper"
             setWallpaperButton.setOnAction(ev -> {
