@@ -145,7 +145,7 @@
             </ImageView>
             <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="792.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/headphones.png" />
+                  <Image url="@../resources/headphone.png" />
                </image>
             </ImageView>
          </children>

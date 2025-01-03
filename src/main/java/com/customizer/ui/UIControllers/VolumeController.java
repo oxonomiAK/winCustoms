@@ -75,6 +75,11 @@ public class VolumeController {
             ConectedDevices.setText(DeviceInfo.getHeadphonesInfo());
             ConectedDevices1.setText(DeviceInfo.getMicrophoneInfo());
 
+        // Получение имени пользователя из ОС
+        String username = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username);
+
     }
     
 
