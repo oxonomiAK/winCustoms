@@ -90,10 +90,10 @@ public class WallpapersController4  {
         boolean squirrelStatus = LockManager.CanUnlock("Wallpapersquirrel", "Coins", squirrelCond);
         boolean SunsetStatus = LockManager.CanUnlock("WallpaperSunset", "Coins", SunsetCond);
 
-        boolean WorkSpaseUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperWorkSpase");
-        boolean FloverUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperFlover");
-        boolean squirrelUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("Wallpapersquirrel");
-        boolean SunsetUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperSunset");
+        boolean WorkSpaseUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperWorkSpase");
+        boolean FloverUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperFlover");
+        boolean squirrelUnlocked = ReadFromJson.ReadFromJSONBooleanF("Wallpapersquirrel");
+        boolean SunsetUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperSunset");
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);

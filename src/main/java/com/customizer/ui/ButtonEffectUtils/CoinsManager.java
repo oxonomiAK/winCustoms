@@ -15,7 +15,7 @@ public class CoinsManager {
     }
     
     public void loadCoinsFromFile() {
-        coins = ReadFromJson.ReadFromJsonJSON("Coins");
+        coins = ReadFromJson.ReadFromJSONint("Coins");
         System.out.println("Монеты успешно загружены: " + coins);
     }
     
