@@ -44,15 +44,6 @@ public class VolumeController {
     private Label ConectedDevices1;
 
     @FXML
-    private Label ConectedDevices2;
-
-    @FXML
-    private Label ConectedDevices3;
-
-    @FXML
-    private Label ConectedDevices4;
-
-    @FXML
     private Button DeviseSettings;
 
     @FXML
