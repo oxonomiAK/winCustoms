@@ -121,7 +121,7 @@ public class IconsController  {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
-    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJsonJSONBooleanT("FirstIconsControllerLaunch");
+    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch");
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
         if(FirstIconsControllerLaunch) {
@@ -129,7 +129,7 @@ public class IconsController  {
             WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
             FirstIconsControllerLaunch = false;
         }
-        int defaultIconSize = ReadFromJson.ReadFromJsonJSON("defaultIconSize");
+        int defaultIconSize = ReadFromJson.ReadFromJSONint("defaultIconSize");
 
         RegistryUtils.setIconSize(defaultIconSize);
         RestartExplorer.restartExplorer();

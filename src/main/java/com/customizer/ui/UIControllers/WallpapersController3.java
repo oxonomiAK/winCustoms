@@ -93,10 +93,10 @@ public class WallpapersController3  {
         boolean MoonStatus = LockManager.CanUnlock("WallpaperMoon", "Coins", MoonCond);
         boolean RailsStatus = LockManager.CanUnlock("WallpaperRails", "Coins", RailsCond);
 
-        boolean milkyWayUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpapermilkyWay");
-        boolean RaccoonUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperRaccoon");
-        boolean MoonUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperMoon");
-        boolean RailsUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperRails");
+        boolean milkyWayUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpapermilkyWay");
+        boolean RaccoonUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperRaccoon");
+        boolean MoonUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperMoon");
+        boolean RailsUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperRails");
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);

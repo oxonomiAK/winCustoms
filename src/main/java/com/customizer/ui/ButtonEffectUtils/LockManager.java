@@ -17,9 +17,9 @@ public class LockManager {
     }
 
     public static boolean CanUnlock(String wallpaperName, String conditionVariableName, int howMuchForUnlock){
-        int currentValue = ReadFromJson.ReadFromJsonJSON(conditionVariableName);
+        int currentValue = ReadFromJson.ReadFromJSONint(conditionVariableName);
 
-        boolean isLocked = ReadFromJson.ReadFromJsonJSONBooleanF(wallpaperName);
+        boolean isLocked = ReadFromJson.ReadFromJSONBooleanF(wallpaperName);
 
         if(((currentValue >= howMuchForUnlock) && (!isLocked)) || isLocked)
             return true;

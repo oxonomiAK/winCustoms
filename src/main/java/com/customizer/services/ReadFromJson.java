@@ -18,7 +18,7 @@ public class ReadFromJson {
         folder.mkdirs();
     }
 
-    public static int ReadFromJsonJSON(String variableName) {
+    public static int ReadFromJSONint(String variableName) {
         CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
@@ -40,7 +40,7 @@ public class ReadFromJson {
         return 0;
     }
 
-    public static boolean ReadFromJsonJSONBooleanT(String variableName) {
+    public static boolean ReadFromJSONBooleanT(String variableName) {
         CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
@@ -62,7 +62,7 @@ public class ReadFromJson {
         return false;
     }
 
-    public static boolean ReadFromJsonJSONBooleanF(String variableName) {
+    public static boolean ReadFromJSONBooleanF(String variableName) {
         CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
@@ -83,7 +83,7 @@ public class ReadFromJson {
         }
         return false;
     }
-    public static String ReadFromJsonJSONString(String variableName) {
+    public static String ReadFromJSONString(String variableName) {
         CheckForExist();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> jsonData = new HashMap<>();
