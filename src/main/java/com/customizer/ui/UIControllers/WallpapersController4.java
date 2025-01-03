@@ -5,7 +5,10 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import com.customizer.core.utils.WallpaperUtils;
+import com.customizer.services.ReadFromJson;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.LockManager;
+import com.customizer.ui.ButtonEffectUtils.NotificationManager;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -15,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -76,10 +80,29 @@ public class WallpapersController4  {
         this.mainApp = mainApp;
     }
 
+        int WorkSpaseCond = 10;
+        int FloverCond = 20;
+        int squirrelCond = 30;
+        int SunsetCond = 40;
+
+        boolean WorkSpaseStatus = LockManager.CanUnlock("WallpaperWorkSpase", "Coins", WorkSpaseCond);
+        boolean FloverStatus = LockManager.CanUnlock("WallpaperFlover", "Coins", FloverCond);
+        boolean squirrelStatus = LockManager.CanUnlock("Wallpapersquirrel", "Coins", squirrelCond);
+        boolean SunsetStatus = LockManager.CanUnlock("WallpaperSunset", "Coins", SunsetCond);
+
+        boolean WorkSpaseUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperWorkSpase");
+        boolean FloverUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperFlover");
+        boolean squirrelUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("Wallpapersquirrel");
+        boolean SunsetUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperSunset");
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
+        String lockIncon = "com/customizer/ui/resources/lock.png";
+        if(!WorkSpaseUnlocked) Wall1.setImage(new Image(lockIncon));
+        if(!FloverUnlocked) Wall2.setImage(new Image(lockIncon));
+        if(!squirrelUnlocked) Wall3.setImage(new Image(lockIncon));
+        if(!SunsetUnlocked) Wall4.setImage(new Image(lockIncon));
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
@@ -118,24 +141,48 @@ public class WallpapersController4  {
     }
     
 
-    @FXML
+     @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
+
+        LockManager.CheckAndUnlock(WorkSpaseStatus, WorkSpaseUnlocked, WorkSpaseCond, "WallpaperWorkSpase", true, "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
+
+        if (WorkSpaseUnlocked){
+            handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
+        }
+        else 
+            NotificationManager.showNotification("Необходимо "+ WorkSpaseCond +" монет для разблокировки!", BtnWallpapers1);
     }
     
     @FXML
     void BtnWallpapers2Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
+        LockManager.CheckAndUnlock(FloverStatus, FloverUnlocked, FloverCond, "WallpaperFlover", true, "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
+
+        if (FloverUnlocked) 
+            handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
+        else 
+            NotificationManager.showNotification("Необходимо "+ FloverCond +" монет для разблокировки!", BtnWallpapers1);
     }
+    
     
     @FXML
     void BtnWallpapers3Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
+        LockManager.CheckAndUnlock(squirrelStatus, squirrelUnlocked, squirrelCond, "Wallpapersquirrel", true, "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
+        
+        if (squirrelUnlocked) 
+            handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
+        else 
+            NotificationManager.showNotification("Необходимо "+ squirrelCond +" монет для разблокировки!", BtnWallpapers1); 
+
     }
     
     @FXML
     void BtnWallpapers4Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
+        LockManager.CheckAndUnlock(SunsetStatus, SunsetUnlocked, SunsetCond, "WallpaperSunset", true, "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
+
+        if (SunsetUnlocked)
+            handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
+        else 
+            NotificationManager.showNotification("Необходимо "+ SunsetCond +" монет для разблокировки!", BtnWallpapers1);
     }
     
     private void handleWallpaperButtonClick(Button button, ImageView wall, ActionEvent event) {

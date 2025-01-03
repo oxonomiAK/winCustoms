@@ -5,7 +5,10 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import com.customizer.core.utils.WallpaperUtils;
+import com.customizer.services.ReadFromJson;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.LockManager;
+import com.customizer.ui.ButtonEffectUtils.NotificationManager;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -15,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -79,10 +83,30 @@ public class WallpapersController3  {
         this.mainApp = mainApp;
     }
 
+        int milkyWayCond = 10;
+        int RaccoonCond = 20;
+        int MoonCond = 30;
+        int RailsCond = 40;
+
+        boolean milkyWayStatus = LockManager.CanUnlock("WallpapermilkyWay", "Coins", milkyWayCond);
+        boolean RaccoonStatus = LockManager.CanUnlock("WallpaperRaccoon", "Coins", RaccoonCond);
+        boolean MoonStatus = LockManager.CanUnlock("WallpaperMoon", "Coins", MoonCond);
+        boolean RailsStatus = LockManager.CanUnlock("WallpaperRails", "Coins", RailsCond);
+
+        boolean milkyWayUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpapermilkyWay");
+        boolean RaccoonUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperRaccoon");
+        boolean MoonUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperMoon");
+        boolean RailsUnlocked = ReadFromJson.ReadFromJsonJSONBooleanF("WallpaperRails");
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
+        String lockIncon = "com/customizer/ui/resources/lock.png";
+        if(!milkyWayUnlocked) Wall1.setImage(new Image(lockIncon));
+        if(!RaccoonUnlocked) Wall2.setImage(new Image(lockIncon));
+        if(!MoonUnlocked) Wall3.setImage(new Image(lockIncon));
+        if(!RailsUnlocked) Wall4.setImage(new Image(lockIncon));
+
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
@@ -123,22 +147,46 @@ public class WallpapersController3  {
 
     @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
+
+        LockManager.CheckAndUnlock(milkyWayStatus, milkyWayUnlocked, milkyWayCond, "WallpapermilkyWay", true, "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
+
+        if (milkyWayUnlocked){
+            handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
+        }
+        else 
+            NotificationManager.showNotification("Необходимо "+ milkyWayCond +" монет для разблокировки!", BtnWallpapers1);
     }
     
     @FXML
     void BtnWallpapers2Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
+        LockManager.CheckAndUnlock(RaccoonStatus, RaccoonUnlocked, RaccoonCond, "WallpaperRaccoon", true, "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
+
+        if (RaccoonUnlocked) 
+            handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
+        else 
+            NotificationManager.showNotification("Необходимо "+ RaccoonCond +" монет для разблокировки!", BtnWallpapers1);
     }
+    
     
     @FXML
     void BtnWallpapers3Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
+        LockManager.CheckAndUnlock(MoonStatus, MoonUnlocked, MoonCond, "WallpaperMoon", true, "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
+        
+        if (MoonUnlocked) 
+            handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
+        else 
+            NotificationManager.showNotification("Необходимо "+ MoonCond +" монет для разблокировки!", BtnWallpapers1); 
+
     }
     
     @FXML
     void BtnWallpapers4Clicked(ActionEvent event) {
-        handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
+        LockManager.CheckAndUnlock(RailsStatus, RailsUnlocked, RailsCond, "WallpaperRails", true, "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
+
+        if (RailsUnlocked)
+            handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
+        else 
+            NotificationManager.showNotification("Необходимо "+ RailsCond +" монет для разблокировки!", BtnWallpapers1);
     }
     
     private void handleWallpaperButtonClick(Button button, ImageView wall, ActionEvent event) {
