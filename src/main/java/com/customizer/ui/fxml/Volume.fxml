@@ -132,11 +132,11 @@
                   <Image url="@../resources/big.png" />
                </image>
             </ImageView>
-            <Label fx:id="ConectedDevices" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="709.0" layoutY="304.0" prefHeight="173.0" prefWidth="271.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP">
+            <Label fx:id="ConectedDevices" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="709.0" layoutY="304.0" prefHeight="173.0" prefWidth="271.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font size="8.0" />
                </font></Label>
-            <Label fx:id="ConectedDevices1" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="383.0" layoutY="304.0" prefHeight="173.0" prefWidth="262.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP">
+            <Label fx:id="ConectedDevices1" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="383.0" layoutY="304.0" prefHeight="173.0" prefWidth="262.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font size="8.0" />
                </font>
