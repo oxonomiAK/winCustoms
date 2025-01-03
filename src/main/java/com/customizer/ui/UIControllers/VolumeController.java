@@ -70,6 +70,7 @@ public class VolumeController {
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
+        BtnProfile.setText(System.getProperty("user.name"));
 
          // Привязываем действие к кнопке ApplyButton
          ApplyButton.setOnAction(event -> openMicrophoneSettings());

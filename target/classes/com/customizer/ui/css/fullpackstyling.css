@@ -149,19 +149,34 @@
 
 
 
-/* Стили для обычного состояния CheckBox */
-.check-box {
-    -fx-font-size: 16px;
-    -fx-text-fill: #ffffff;
+/* Убираем фон ScrollPane */
+.scroll-pane {
+    -fx-background: transparent; /* Прозрачный фон */
+    -fx-background-color: transparent; /* Прозрачный цвет фона */
+    -fx-border-color: transparent; /* Прозрачная граница */
 }
 
-/* Стили для состояния "выбрано" */
-.check-box:selected {
-    -fx-mark-color: #2a9d8f; /* Цвет галочки */
-    -fx-border-color: #2a9d8f; /* Цвет рамки */
+/* Полосы прокрутки остаются видимыми */
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent; /* Прозрачный фон полос прокрутки */
 }
 
-/* Стили при наведении */
-.check-box:hover {
-    -fx-background-color: #f4a261;
+.scroll-pane .thumb {
+    -fx-background-color: #ffffff; /* Цвет ползунка */
+    -fx-background-radius: 5px; /* Закругление ползунка */
+}
+
+/* Стилизация горизонтальной полосы прокрутки */
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent; /* Цвет полосы */
+    -fx-pref-height: 12px; /* Высота полосы */
+}
+
+/* Стилизация вертикальной полосы прокрутки */
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent; /* Цвет полосы */
+    -fx-pref-width: 12px; /* Ширина полосы */
+}
+.scroll-pane .track {
+    -fx-background-color: transparent; /* Прозрачный трек полосы прокрутки */
 }

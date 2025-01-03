@@ -70,14 +70,14 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnSettings" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#BtnSettingsClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Settings" textFill="WHITE">
+                  <Button fx:id="BtnSettings" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#BtnSettingsClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="About" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/settings.png" />
+                              <Image url="@../resources/about.png" />
                            </image>
                         </ImageView>
                      </graphic>
