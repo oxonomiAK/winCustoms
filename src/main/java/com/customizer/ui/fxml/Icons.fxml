@@ -152,5 +152,14 @@
             <Button fx:id="BtnDefaultSize1" layoutX="663.0" layoutY="423.0" mnemonicParsing="false" onAction="#BtnSetDefaultSize" prefHeight="25.0" prefWidth="111.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Set to defoult" />
          </children>
       </AnchorPane>
-   </children>
-</AnchorPane>
+      <Button fx:id="BtnGoBack" layoutX="220.0" layoutY="85.0" mnemonicParsing="false" onAction="#BtnGoBackClicked" prefHeight="80.0" prefWidth="77.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css">
+         <graphic>
+            <ImageView fitHeight="75.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@../resources/arrow.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      </children>
+   </AnchorPane>

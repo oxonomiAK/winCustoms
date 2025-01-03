@@ -17,6 +17,10 @@ import javafx.scene.image.ImageView;
 
 public class CompComponentsController  {
 
+
+    @FXML
+    private Button BtnGoBack;
+
     @FXML
     private Button BtnBoost;
 
@@ -96,6 +100,11 @@ public class CompComponentsController  {
     UpdateCoins updateCoins = new UpdateCoins();
     public void updateCoinsDisplay() {
        updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
+    }
+
+    @FXML
+    void BtnGoBackClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML

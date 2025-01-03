@@ -20,6 +20,9 @@ public class VolumeController {
     private Button BtnBoost;
 
     @FXML
+    private Button BtnGoBack;
+    
+    @FXML
     private Button ApplyButton;
 
     @FXML
@@ -123,6 +126,11 @@ public class VolumeController {
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Settings.fxml");
+    }
+
+    @FXML
+    void BtnGoBackClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML

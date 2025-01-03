@@ -110,7 +110,7 @@
                            </image>
                         </ImageView>
                      </graphic>
-                  </Label>
+                 </Label>
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Computer Components">
@@ -130,12 +130,21 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="356.0" fitWidth="547.0" layoutX="240.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="418.0" fitWidth="605.0" layoutX="410.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/big.png" />
                </image>
             </ImageView>
-            <Label fx:id="SystemInfoArea" alignment="CENTER" layoutX="253.0" layoutY="103.0" prefHeight="339.0" prefWidth="523.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" />
+            <Label fx:id="SystemInfoArea" alignment="CENTER" layoutX="402.0" layoutY="193.0" prefHeight="339.0" prefWidth="621.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" />
+            <Button fx:id="BtnGoBack" layoutX="220.0" layoutY="85.0" mnemonicParsing="false" onAction="#BtnGoBackClicked" prefHeight="80.0" prefWidth="77.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css">
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@../resources/arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

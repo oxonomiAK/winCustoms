@@ -1,6 +1,5 @@
 package com.customizer.ui.UIControllers;
 
-import java.io.File;
 
 import com.customizer.services.RequestAdmin;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
@@ -20,6 +19,9 @@ public class RocketController {
 
     @FXML
     private Button BtnBoost;
+
+    @FXML
+    private Button BtnGoBack;
 
     @FXML
     private Button BtnProfile;
@@ -116,6 +118,11 @@ public class RocketController {
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
+    }
+
+    @FXML
+    void BtnGoBackClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML

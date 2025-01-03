@@ -2,7 +2,6 @@ package com.customizer.ui.UIControllers;
 
 
 import java.io.File;
-import java.lang.reflect.AnnotatedArrayType;
 import java.util.HashMap;
 import java.util.Map;
 import com.customizer.core.utils.WallpaperUtils;
@@ -13,22 +12,14 @@ import com.customizer.ui.ButtonEffectUtils.NotificationManager;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class WallpapersController2  {

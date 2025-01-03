@@ -21,6 +21,9 @@ import javafx.scene.image.ImageView;
 public class IconsController  {
 
     @FXML
+    private Button BtnGoBack;
+
+    @FXML
     private Button BtnBoost;
 
     @FXML
@@ -198,6 +201,11 @@ public class IconsController  {
     @FXML
     void BtnHomeClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
+    }
+
+    @FXML
+    void BtnGoBackClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML

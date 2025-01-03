@@ -5,7 +5,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import com.customizer.core.utils.WallpaperUtils;
-import com.customizer.ui.ButtonEffectUtils.CoinsController;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;

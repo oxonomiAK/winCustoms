@@ -1,9 +1,5 @@
 package com.customizer.ui.UIControllers;
 
-
-import java.io.File;
-
-import com.customizer.services.ReadFromJson;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
