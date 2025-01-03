@@ -93,10 +93,7 @@ public class ProfileController  {
     private Button btnBoostAch;
 
     @FXML
-    private static ImageView dynamicImageView, dynamicImageView1;
-
-    @FXML
-    private Button BtnProfile;
+    private ImageView dynamicImageView, dynamicImageView1;
     
     @FXML
     private Button btnCutOnce;
@@ -106,6 +103,9 @@ public class ProfileController  {
     
     @FXML
     private Button btnMaxLvl;
+
+    @FXML
+    private Button BtnProfile;
     
     @FXML
     private Button btnMeasureTwice;
@@ -154,6 +154,11 @@ public class ProfileController  {
         String username = System.getProperty("user.name");
         // Установка имени пользователя как текста кнопки
         BtnUsername.setText(username);
+
+        // Получение имени пользователя из ОС
+        String username1 = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username1); 
             
         textField = new TextField();
         textField.setPromptText("Введите текст...");
@@ -163,10 +168,6 @@ public class ProfileController  {
         // Добавление TextField в родительский контейнер кнопки
         ((StackPane) BtnUsername.getParent()).getChildren().add(textField);
     
-        // Получение имени пользователя из ОС
-        String username1 = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username1);        
     }
     
 
@@ -287,18 +288,13 @@ public class ProfileController  {
     }
 
     @FXML
-    void BtnProfileClicked(ActionEvent event) {
-        mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
-    }
-
-    @FXML
     void closeApp(ActionEvent event) {
         Platform.exit();
     }
 
     @FXML
     void btnArentYouBoredClicked(ActionEvent event) {
-        updateContent("Aren`t You Bored?", "You have changed the wallpaper 100 times!", "com/customizer/ui/resources/Wallpaper100.png");
+        updateContent("Aren`t You Bored?", "You have changed the wallpaper 16 times!", "com/customizer/ui/resources/Wallpaper100.png");
     }
 
     @FXML

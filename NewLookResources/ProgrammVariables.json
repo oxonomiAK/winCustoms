@@ -1,8 +1,9 @@
 {
   "FirstProfilePicChange" : false,
   "Coins" : 0,
-  "WallpaperAnime" : true,
-  "WallpaperPinkVilage" : true,
-  "WallpaperRetro" : true,
-  "WallpaperRabbit" : true
+  "WallpaperAnime" : false,
+  "WallpaperPinkVilage" : false,
+  "WallpaperRetro" : false,
+  "WallpaperRabbit" : false,
+  "FirstIconsControllerLaunch" : true
 }

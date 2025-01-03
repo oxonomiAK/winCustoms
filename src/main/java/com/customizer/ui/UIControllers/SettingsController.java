@@ -1,8 +1,6 @@
 package com.customizer.ui.UIControllers;
 
 
-
-
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
@@ -10,10 +8,12 @@ import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+
+
 
 
 
@@ -36,15 +36,14 @@ public class SettingsController  {
 
     @FXML
     private Button BtnWallpapers;
-    
-    @FXML
-    private ImageView dynamicImageView1;
 
     @FXML
     private Button closeButton;
 
+
     @FXML
-    private CheckBox CheckBoxAch;
+    private ImageView dynamicImageView1;
+    
 
     private MainUI mainApp;
 
@@ -53,21 +52,19 @@ public class SettingsController  {
     }
 
     @FXML
-    public void initialize() {
-        ProfilePicController.CheckProfilePic(dynamicImageView1);
-        // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
-        HoverEffect.setupButtonHoverEffect(BtnBoost);
-        HoverEffect.setupButtonHoverEffect(BtnWallpapers);
-        HoverEffect.setupButtonHoverEffect(BtnHome);
-        HoverEffect.setupButtonHoverEffect(BtnSettings);
+public void initialize() {
+    ProfilePicController.CheckProfilePic(dynamicImageView1);
+    // Добавляем эффект увеличения при наведении
+    HoverEffect.setupButtonHoverEffect(BtnBoost);
+    HoverEffect.setupButtonHoverEffect(BtnWallpapers);
+    HoverEffect.setupButtonHoverEffect(BtnHome);
+    HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-        CheckBoxAch.getStyleClass().add("check-box");
+    // Установка имени пользователя на кнопку профиля
+    BtnProfile.setText(System.getProperty("user.name"));
 
-        // Получение имени пользователя из ОС
-        String username = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username);
-    }
+}
+
     
     UpdateCoins updateCoins = new UpdateCoins();
     public void updateCoinsDisplay() {
@@ -99,16 +96,6 @@ public class SettingsController  {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
     }
 
-    @FXML
-    void CheckBoxAchClicked(ActionEvent event) {
-        if (CheckBoxAch.isSelected()) {
-            System.out.println("CheckBox выбрано!");
-            // Действие для состояния "выбрано"
-        } else {
-            System.out.println("CheckBox снято!");
-            // Действие для состояния "снято"
-        }
-    }
 
     @FXML
     void closeApp(ActionEvent event) {
