@@ -17,6 +17,9 @@ import javafx.scene.control.TextField;
 
 
 public class IconsController  {
+    
+    @FXML
+    private Button BtnGoBack;
 
     @FXML
     private Button BtnBoost;
@@ -170,7 +173,11 @@ public class IconsController  {
     void BtnProfileClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
     }
-    
+
+    @FXML
+    void BtnGoBackClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
+    }
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {

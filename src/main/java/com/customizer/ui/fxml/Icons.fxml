@@ -132,25 +132,34 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="402.0" layoutY="105.0" prefHeight="101.0" prefWidth="493.0" text="You can change the size of the icons from 1 to 256" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="447.0" layoutY="99.0" prefHeight="101.0" prefWidth="493.0" text="You can change the size of the icons from 1 to 256" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold Italic" size="23.0" />
                </font>
             </Label>
-            <ImageView fitHeight="221.0" fitWidth="343.0" layoutX="479.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="221.0" fitWidth="343.0" layoutX="524.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/big.png" />
                </image>
             </ImageView>
-            <Button fx:id="BtnApply1" layoutX="524.0" layoutY="423.0" mnemonicParsing="false" onAction="#BtnSetIconSize" prefHeight="25.0" prefWidth="111.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Apply" />
-            <ScrollBar fx:id="IcnScrollBar1" layoutX="524.0" layoutY="392.0" max="256.0" min="1.0" prefHeight="1.0" prefWidth="292.0" stylesheets="@../css/fullpackstyling.css" />
-            <TextField fx:id="ScrollBarValue1" layoutX="625.0" layoutY="342.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onScrollBarValueChanged" prefHeight="34.0" prefWidth="47.0" stylesheets="@../css/fullpackstyling.css" text="1">
+            <Button fx:id="BtnApply1" layoutX="569.0" layoutY="342.0" mnemonicParsing="false" onAction="#BtnSetIconSize" prefHeight="25.0" prefWidth="111.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Apply" />
+            <ScrollBar fx:id="IcnScrollBar1" layoutX="569.0" layoutY="302.0" max="256.0" min="1.0" prefHeight="1.0" prefWidth="292.0" stylesheets="@../css/fullpackstyling.css" />
+            <TextField fx:id="ScrollBarValue1" layoutX="670.0" layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onScrollBarValueChanged" prefHeight="34.0" prefWidth="47.0" stylesheets="@../css/fullpackstyling.css" text="1">
                <font>
                   <Font name="Myanmar Text" size="12.0" />
                </font>
             </TextField>
-            <Button fx:id="BtnDefaultSize1" layoutX="663.0" layoutY="423.0" mnemonicParsing="false" onAction="#BtnSetDefaultSize" prefHeight="25.0" prefWidth="111.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Set to defoult" />
+            <Button fx:id="BtnDefaultSize1" layoutX="708.0" layoutY="342.0" mnemonicParsing="false" onAction="#BtnSetDefaultSize" prefHeight="25.0" prefWidth="111.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Set to defoult" />
          </children>
       </AnchorPane>
+      <Button fx:id="BtnGoBack" layoutX="230.0" layoutY="95.0" mnemonicParsing="false" onAction="#BtnGoBackClicked" prefHeight="80.0" prefWidth="77.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css">
+         <graphic>
+            <ImageView fitHeight="75.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@../resources/arrow.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

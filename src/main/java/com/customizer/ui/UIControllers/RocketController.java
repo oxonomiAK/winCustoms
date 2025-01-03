@@ -17,6 +17,9 @@ import javafx.scene.control.Tooltip;
 public class RocketController {
 
     @FXML
+    private Button BtnGoBack;
+
+    @FXML
     private Button BtnBoost;
 
     @FXML
@@ -105,6 +108,11 @@ public class RocketController {
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
+    }
+    
+    @FXML
+    void BtnGoBackClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML
