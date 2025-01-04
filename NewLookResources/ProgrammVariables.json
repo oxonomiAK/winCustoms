@@ -1,7 +1,7 @@
 {
   "FirstProfilePicChange" : false,
-  "Coins" : 0,
-  "WallpaperAnime" : false,
+  "Coins" : 60,
+  "WallpaperAnime" : true,
   "WallpaperPinkVilage" : false,
   "WallpaperRetro" : false,
   "WallpaperRabbit" : false,
@@ -10,8 +10,9 @@
   "WallpaperMoon" : false,
   "WallpaperRails" : false,
   "WallpaperWorkSpase" : false,
-  "WallpaperFlover" : false,
+  "WallpaperFlover" : true,
   "Wallpapersquirrel" : false,
-  "WallpaperSunset" : false,
-  "FirstIconsControllerLaunch" : true
+  "WallpaperSunset" : true,
+  "FirstIconsControllerLaunch" : false,
+  "defaultIconSize" : 48
 }

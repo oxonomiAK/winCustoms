@@ -14,6 +14,7 @@ public class DeviceInfo {
         SystemInfo systemInfo = new SystemInfo();
         HardwareAbstractionLayer hardware = systemInfo.getHardware();
         StringBuilder info = new StringBuilder();
+        
 
         info.append("Microphones:\n");
         for (UsbDevice device : hardware.getUsbDevices(false)) {

@@ -41,9 +41,6 @@ public class SettingsController {
     private Button closeButton;
 
     @FXML
-    private Label InfoLabel; // Устаревшее. Заменяем на TextFlow ниже.
-
-    @FXML
     private ImageView dynamicImageView1;
 
     private MainUI mainApp;
@@ -132,10 +129,10 @@ public class SettingsController {
         subheading2.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
     
         Text paragraph3 = new Text(
-                "Create a unique desktop by selecting wallpapers from the gallery or opening hidden backgrounds. For completing Achievements you get coins that can be used to buy exclusive wallpapers.\n\n");
+                "Create a unique desktop by selecting wallpapers from the gallery and opening hidden wallpapers. For completing Achievements you get coins that can be used to buy exclusive wallpapers.\n\n");
         paragraph3.setStyle("-fx-fill: white;");
     
-        Text subheading3 = new Text("Boost\n");
+        Text subheading3 = new Text("Control Center\n");
         subheading3.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
     
         Text paragraph4 = new Text(
@@ -151,18 +148,28 @@ public class SettingsController {
                 "3. Microphone Control - quickly adjust the microphone volume through the app.\n");
         paragraph7.setStyle("-fx-fill: white;");
         Text paragraph8 = new Text(
-                "4. Icon resizing - customize the size of your desktop icons from 1 to 256 pixels.\n");
+                "4. Icon resizing - customize the size of your desktop icons from 1 to 256 pixels.\n\n");
         paragraph8.setStyle("-fx-fill: white;");
     
         Text subheading4 = new Text("Levels, Achievements and Coins\n");
         subheading4.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
     
         Text paragraph9 = new Text(
-                "NewLook makes using your computer fun. By completing tasks and earning Achievements, you level up and earn coins that can be spent on unique wallpapers. The more you explore the program's features, the more rewards and personalization become available!\n");
+                "NewLook makes using your computer fun. By completing tasks and earning Achievements, you level up and earn coins that can be spent on unique wallpapers. The more you explore the program's features, the more rewards and personalization become available!\n\n");
         paragraph9.setStyle("-fx-fill: white;");
     
+        Text subheading5 = new Text("About developers\n");
+        subheading5.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
+
+        Text paragraph10 = new Text(
+                "We are a small team of students who are studying at RTU in Liepaja. We have been developing the application for 3 months. It was a very interesting experience for us, which we would be happy to share.\n\n");
+        paragraph10.setStyle("-fx-fill: white;");
+
+        Text subheading6 = new Text("Application version: 0.0.1");
+        subheading6.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
+
         // Добавляем текст в TextFlow
-        formattedInfo.getChildren().addAll(title, paragraph1, subheading1, paragraph2, subheading2, paragraph3, subheading3, paragraph4, paragraph5, paragraph6, paragraph7, paragraph8, subheading4, paragraph9);
+        formattedInfo.getChildren().addAll(title, paragraph1, subheading1, paragraph2, subheading2, paragraph3, subheading3, paragraph4, paragraph5, paragraph6, paragraph7, paragraph8, subheading4, paragraph9, subheading5, paragraph10, subheading6);
     
         // Обеспечиваем перенос текста и задаем общие стили
         formattedInfo.setStyle("-fx-font-size: 14px; -fx-line-spacing: 5px;");

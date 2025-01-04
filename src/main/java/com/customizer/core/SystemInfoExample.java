@@ -5,7 +5,10 @@ import oshi.hardware.ComputerSystem;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
 import oshi.hardware.GraphicsCard;
+import oshi.hardware.HardwareAbstractionLayer;
+import oshi.hardware.PhysicalMemory;
 import oshi.software.os.OperatingSystem;
+import oshi.util.FormatUtil;
 
 import java.util.List;
 
@@ -25,11 +28,32 @@ public class SystemInfoExample {
 
         // Информация об оперативной памяти
         GlobalMemory memory = systemInfo.getHardware().getMemory();
-        info.append("  Total RAM: ").append(memory.getTotal() / 1024 / 1024 / 1024 + 1  ).append(" GB\n");
+        info.append("\nTotal RAM: ").append(memory.getTotal() / 1024 / 1024 / 1024 + 1  ).append(" GB\n");
+         HardwareAbstractionLayer hardware = systemInfo.getHardware();
+        GlobalMemory globalMemory = hardware.getMemory();
+
+        List<PhysicalMemory> physicalMemories = globalMemory.getPhysicalMemory();
+        for (PhysicalMemory physicalMemory : physicalMemories) {
+            info.append("\nManufacturer: " + physicalMemory.getManufacturer());
+            info.append("\nMemory type: " + physicalMemory.getMemoryType());
+            break;
+        } 
+        info.append("\nBank/slot label: "); 
+        for (int i = 0; i < physicalMemories.size(); i++) {
+            info.append(physicalMemories.get(i).getBankLabel());
+            if (i < physicalMemories.size() - 1) {
+                info.append(" | "); // Добавляем запятую, если это не последний элемент
+            }
+        }
+        for (PhysicalMemory physicalMemory : physicalMemories) {
+            info.append("\nCapacity: " + FormatUtil.formatBytes(physicalMemory.getCapacity()));
+            info.append("\nClock speed: " + FormatUtil.formatHertz(physicalMemory.getClockSpeed()));
+            break;
+        }
 
         // Информация о материнской плате
         ComputerSystem computerSystem = systemInfo.getHardware().getComputerSystem();
-        info.append("\nMotherboard:\n");
+        info.append("\n\nMotherboard:\n");
         info.append("  Manufacturer: ").append(computerSystem.getBaseboard().getManufacturer()).append("\n");
         info.append("  Model: ").append(computerSystem.getBaseboard().getModel()).append("\n");
         info.append("  Serial Number: ").append(computerSystem.getBaseboard().getSerialNumber()).append("\n");

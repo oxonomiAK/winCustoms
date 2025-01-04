@@ -31,7 +31,7 @@
                         <Image url="@../resources/leftside.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="BtnWallpapers" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="153.0" mnemonicParsing="false" onAction="#BtnWallpapersClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Wallpapers" textFill="WHITE">
+                  <Button fx:id="BtnWallpapers" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="153.0" mnemonicParsing="false" onAction="#BtnWallpapersClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Wallpapers" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -43,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnBoost" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="217.0" mnemonicParsing="false" onAction="#BtnBoostClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Boost" textFill="WHITE">
+                  <Button fx:id="BtnBoost" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="217.0" mnemonicParsing="false" onAction="#BtnBoostClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Control Center" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -55,7 +55,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnHome" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="89.0" mnemonicParsing="false" onAction="#BtnHomeClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Home" textFill="WHITE">
+                  <Button fx:id="BtnHome" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="89.0" mnemonicParsing="false" onAction="#BtnHomeClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -67,7 +67,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnSettings" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#BtnSettingsClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="About" textFill="WHITE">
+                  <Button fx:id="BtnSettings" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#BtnSettingsClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="About" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
