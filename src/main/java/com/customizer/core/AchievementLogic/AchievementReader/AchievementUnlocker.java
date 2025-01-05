@@ -9,29 +9,35 @@ import java.io.OutputStreamWriter;
 public class AchievementUnlocker {
     private BufferedWriter writer;
     private BufferedReader reader;
+
     private Process process;
 
     public AchievementUnlocker() throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("C:\\Users\\kirill\\Desktop\\DBemulation\\dbemulation.exe");
 
         process = processBuilder.start();
-
-        writer = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
         reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
+        writer = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
     }
 
-    public void AunlockAchievement(int achievementId) throws IOException {
-        writer.write("CHANGE_STATUS ach" + achievementId + "\"true\"" + "\n");
+    public void unlockAchievement(int achievementId) throws IOException {
+        writer.write("CHANGE_STATUS ach " + achievementId + " true" + "\n");
         writer.flush();
+
+        String response = reader.readLine();
+
+        if (response != null) {
+            response = response.replaceAll("\"", "").trim();
+            System.out.println("Server response: " + response);
+        }
     }
 
     public void close() throws IOException {
+        writer.write("EXIT\n");
+        writer.flush();
 
         if (writer != null)
             writer.close();
-        if (reader != null)
-            reader.close();
 
         if (process != null)
             process.destroy();

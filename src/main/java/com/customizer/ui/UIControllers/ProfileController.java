@@ -138,8 +138,6 @@ public class ProfileController {
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
         // Set the initial value of the experience
-
-        // Set the initial value of the experience
         ExperienceBar.setProgress(currentProgress);
 
         // Getting current Windows Username and setting it into profile name in case
@@ -158,12 +156,7 @@ public class ProfileController {
         textField.setPromptText("Enter text...");
         textField.setOnAction(event -> onTextEntered()); // Processing of pressing Enter
 
-        textField.setPromptText("Enter text...");
-        textField.setOnAction(event -> onTextEntered()); // Processing of pressing Enter
-
         textField.setVisible(false);
-
-        // Add TextField to the parent container of the button
 
         // Add TextField to the parent container of the button
         ((StackPane) BtnUsername.getParent()).getChildren().add(textField);
@@ -184,58 +177,7 @@ public class ProfileController {
     private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // List of
                                                                                                           // ranks
 
-    // @FXML
-    // void onIncreaseProgressClicked(ActionEvent event) {
-    // gainExperienceWithRanks(0.5); // Увеличиваем прогресс на 10% с анимацией
-    // }
-
-    private int currentRank = ReadFromJson.ReadFromJSONint("currentRank"); // Current rank index
-    private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // List of
-                                                                                                          // ranks
-
     public void gainExperienceWithRanks(double amount) {
-        double targetProgress = Math.min(currentProgress + amount, 1.0); // Current progress target for the current
-                                                                         // scale
-
-        Timeline timeline = new Timeline(
-                new KeyFrame(
-                        Duration.millis(20), // Update every 20 ms
-                        event -> {
-                            if (currentProgress < targetProgress) {
-                                currentProgress += 0.01;
-
-                                // Corrects for accurate achievement of 100%
-                                if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
-                                    currentProgress = targetProgress;
-                                }
-
-                                ExperienceBar.setProgress(currentProgress);
-
-                                // When the scale is completely filled
-                                if (currentProgress >= 1.0) {
-                                    if (currentRank < ranks.length - 1) {
-                                        // Raise the rank
-                                        currentRank++;
-                                        currentProgress = 0; // Reset progress
-                                        ExperienceBar.setProgress(currentProgress);
-                                        ProgressLabel.setText(ranks[currentRank]);
-                                        WriteToJson.WriteToJSON("currentRank", currentRank);
-                                        if (mainApp != null) {
-                                            mainApp.addCoins(10);
-                                            updateCoinsDisplay();
-                                        }
-                                    } else {
-                                        // The last rank has been reached
-                                        ProgressLabel.setText(ranks[currentRank] + " (Max)");
-                                    }
-                                }
-                            }
-                        }));
-
-        // Set the number of steps
-        timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
-        timeline.play();
-        timeline.setOnFinished(event -> WriteToJson.WriteToJSON("currentProgress", currentProgress)); // ceрый
         double targetProgress = Math.min(currentProgress + amount, 1.0); // Current progress target for the current
                                                                          // scale
 
@@ -292,11 +234,6 @@ public class ProfileController {
             // Position the TextField on top of the button
             textField.setLayoutX(BtnUsername.getLayoutX());
             textField.setLayoutY(BtnUsername.getLayoutY());
-            textField.setPrefWidth(BtnUsername.getWidth()); // The width of the text field is the same as for the button
-            textField.setPrefHeight(BtnUsername.getHeight()); // The height of the text field is the same as for the
-                                                              // button
-
-            textField.setText(BtnUsername.getText()); // Fill with the current button text
             textField.setPrefWidth(BtnUsername.getWidth()); // The width of the text field is the same as for the button
             textField.setPrefHeight(BtnUsername.getHeight()); // The height of the text field is the same as for the
                                                               // button

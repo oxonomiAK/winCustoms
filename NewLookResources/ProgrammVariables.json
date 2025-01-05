@@ -17,5 +17,6 @@
   "FirstIconsControllerLaunch" : false,
   "currentProgress" : 0.223543,
   "currentRank" : 0,
-  "defaultIconSize" : 48
+  "defaultIconSize" : 48,
+  "FirstLaunch" : false
 }

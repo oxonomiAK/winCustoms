@@ -27,10 +27,18 @@ public class AchievementChecker {
         writer.flush();
 
         String response = reader.readLine();
-        return "true".equals(response);
+
+        if (response != null) {
+            response = response.replaceAll("\"", "").trim();
+        }
+
+        boolean ans = Boolean.parseBoolean(response);
+        return ans;
     }
 
     public void close() throws IOException {
+        writer.write("EXIT\n");
+        writer.flush();
 
         if (writer != null)
             writer.close();

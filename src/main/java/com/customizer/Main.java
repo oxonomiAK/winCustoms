@@ -1,25 +1,54 @@
 package com.customizer;
 
-import com.customizer.core.GameUtils.RecycleBinMonitor;
-import com.customizer.services.ReadFromJson;
-import com.customizer.services.WriteToJson;
-import com.customizer.ui.ButtonEffectUtils.CoinsController;
+import java.io.IOException;
+
+import com.customizer.core.FirstLaunchManager;
+import com.customizer.core.AchievementLogic.AchievementReader.AchReqChecker;
+import com.customizer.core.AchievementLogic.AchievementReader.AchievementChecker;
+import com.customizer.core.AchievementLogic.AchievementReader.AchievementUnlocker;
+import com.customizer.core.AchievementLogic.AchievementReader.CreateTable;
+import com.customizer.core.AchievementLogic.AchievementReader.InsertAch;
+import com.customizer.core.AchievementLogic.AchievementReader.XpParser;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
-        if (ReadFromJson.ReadFromJSONBooleanT("FirstLaunch")) {
+        CreateTable crTable = new CreateTable();
 
-            WriteToJson.WriteToJSON("FirstLaunch", false);
-        }
+        crTable.createTable();
+        crTable.close();
 
-        RecycleBinMonitor.StartMonitoring();
-        CoinsController controller = new CoinsController();
+        // InsertAch insAch = new InsertAch();
+        // insAch.insertAchs();
+        // insAch.close();
 
-        // Добавляем монеты
-        controller.addCoins(10);
+        XpParser xpparser = new XpParser();
+        System.out.println(xpparser.getXp(7));
+        xpparser.close();
 
-        // Сохраняем монеты
-        controller.saveCoins();
+        XpParser xpparserr = new XpParser();
+        System.out.println(xpparserr.getXp(1));
+        xpparser.close();
+
+        AchReqChecker reqCh = new AchReqChecker();
+        System.out.println(reqCh.isReqComplited(1));
+        reqCh.close();
+
+        AchReqChecker reqChe = new AchReqChecker();
+        System.out.println(reqChe.isReqComplited(2));
+        reqChe.close();
+
+        AchievementChecker achCh = new AchievementChecker();
+        System.out.println(achCh.isAchEarned(1));
+        achCh.close();
+
+        AchievementUnlocker achUnl = new AchievementUnlocker();
+        achUnl.unlockAchievement(1);
+        achUnl.close();
+
+        AchievementChecker achChe = new AchievementChecker();
+        System.out.println(achChe.isAchEarned(1));
+        achChe.close();
+
     }
 }

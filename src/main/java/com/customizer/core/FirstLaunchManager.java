@@ -3,11 +3,15 @@ package com.customizer.core;
 import com.customizer.services.ReadFromJson;
 import com.customizer.services.WriteToJson;
 
-public class FirstLaunchManager {
-    public static void ifFisrtLaunch(){
-        if(ReadFromJson.ReadFromJSONBooleanT("FirstLaunch")){
+import java.io.IOException;
 
-        WriteToJson.WriteToJSON("FirstLaunch", false);
+import com.customizer.core.AchievementLogic.AchievementReader.CreateTable;
+
+public class FirstLaunchManager {
+    public static void ifFisrtLaunch() throws IOException {
+        if (ReadFromJson.ReadFromJSONBooleanT("FirstLaunch")) {
+
+            WriteToJson.WriteToJSON("FirstLaunch", false);
         }
     }
 }

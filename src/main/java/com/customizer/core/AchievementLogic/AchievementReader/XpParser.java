@@ -20,7 +20,7 @@ public class XpParser {
     public static int progressParser = 0;
 
     public XpParser() throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder("C:\\Users\\kirill\\Desktop\\DBemulation\\dbemulation.exe");
+        ProcessBuilder processBuilder = new ProcessBuilder("C:/Users/kirill/Desktop/DBemulation/dbemulation.exe");
 
         process = processBuilder.start();
 
@@ -29,11 +29,15 @@ public class XpParser {
 
     }
 
-    public int getXp(int achievementId) throws IOException {
+    public double getXp(int achievementId) throws IOException {
         writer.write("CHECK_XP ach " + achievementId + "\n");
         writer.flush();
         String response = reader.readLine();
-        int xp = Integer.parseInt(response);
+
+        if (response != null) {
+            response = response.replaceAll("\"", "").trim();
+        }
+        double xp = Double.parseDouble(response);
         return xp;
     }
 
