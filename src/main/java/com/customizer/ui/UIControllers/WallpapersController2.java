@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import com.customizer.core.WallpaperApply;
 import com.customizer.services.ReadFromJson;
-import com.customizer.ui.ButtonEffectUtils.DesktopNotificationManager;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.LockManager;
 import com.customizer.ui.ButtonEffectUtils.NotificationManager;
