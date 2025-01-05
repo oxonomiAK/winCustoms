@@ -93,8 +93,8 @@ public class ReadFromJson {
             }
 
             if (!jsonData.containsKey(variableName)) {
-                WriteToJson.WriteToJSON(variableName, null);
-                return null;
+                WriteToJson.WriteToJSON(variableName, "null");
+                return "null";
             }
 
             return jsonData.get(variableName).toString();
@@ -103,5 +103,27 @@ public class ReadFromJson {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static double ReadFromJSONDouble(String variableName) {
+        CheckForExist();
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> jsonData = new HashMap<>();
+        try {
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
+            }
+
+            if (!jsonData.containsKey(variableName)) {
+                WriteToJson.WriteToJSON(variableName, 0);
+                return 0;
+            }
+
+            String data = jsonData.get(variableName).toString();
+            return Double.parseDouble(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

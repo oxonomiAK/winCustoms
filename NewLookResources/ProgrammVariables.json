@@ -1,7 +1,14 @@
 {
+<<<<<<< HEAD
   "FirstProfilePicChange" : false,
   "Coins" : 70,
   "WallpaperAnime" : true,
+=======
+  "FirstProfilePicChange" : true,
+  "Coins" : 60,
+  "Username" : "null",
+  "WallpaperAnime" : false,
+>>>>>>> sergo
   "WallpaperPinkVilage" : false,
   "WallpaperRetro" : false,
   "WallpaperRabbit" : false,
@@ -10,9 +17,9 @@
   "WallpaperMoon" : false,
   "WallpaperRails" : false,
   "WallpaperWorkSpase" : false,
-  "WallpaperFlover" : true,
+  "WallpaperFlover" : false,
   "Wallpapersquirrel" : false,
-  "WallpaperSunset" : true,
-  "FirstIconsControllerLaunch" : false,
-  "defaultIconSize" : 48
+  "WallpaperSunset" : false,
+  "currentProgress" : 1.0,
+  "currentRank" : 5
 }

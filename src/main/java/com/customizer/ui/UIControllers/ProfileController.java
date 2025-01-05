@@ -1,5 +1,7 @@
 package com.customizer.ui.UIControllers;
 
+import com.customizer.services.ReadFromJson;
+import com.customizer.services.WriteToJson;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -31,20 +33,7 @@ public class ProfileController  {
     @FXML
     private ProgressBar ExperienceBar;
 
-        // Хранит текущее значение опыта (от 0.0 до 1.0)
-        private double currentProgress = 0.0;
-
-        // Метод, который увеличивает прогресс опыта
-        public void gainExperience(double amount) {
-            // Увеличиваем прогресс, не превышая 1.0
-            currentProgress = Math.min(currentProgress + amount, 1.0);
-            ExperienceBar.setProgress(currentProgress);
-    
-            // Проверяем, если шкала заполнена
-            if (currentProgress >= 1.0) {
-                System.out.println("Level up!");
-            }
-        }
+    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress");
 
     @FXML
     private Button BtnHome;
@@ -136,6 +125,10 @@ public class ProfileController  {
             dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic));
             dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));
         }
+        if(ranks[currentRank].contains("Legend") && currentProgress >= 1.0)
+            ProgressLabel.setText(ranks[currentRank] + " (Max)");
+        else
+            ProgressLabel.setText(ranks[currentRank]);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
@@ -145,20 +138,22 @@ public class ProfileController  {
         // Устанавливаем начальное значение опыта
         ExperienceBar.setProgress(currentProgress);
         
-    
-        // Получение имени пользователя из ОС
-        String username = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnUsername.setText(username);
+        if(ReadFromJson.ReadFromJSONString("Username").equals("null")){
 
-        // Получение имени пользователя из ОС
-        String username1 = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username1); 
-            
+            String username = System.getProperty("user.name");
+            BtnUsername.setText(username);
+            BtnProfile.setText(username); 
+        }
+        else{
+            String username = ReadFromJson.ReadFromJSONString("Username");
+            BtnProfile.setText(username);
+            BtnUsername.setText(username);
+        }
+        
         textField = new TextField();
         textField.setPromptText("Введите текст...");
         textField.setOnAction(event -> onTextEntered()); // Обработка нажатия Enter
+        
         textField.setVisible(false);
             
         // Добавление TextField в родительский контейнер кнопки
@@ -179,7 +174,7 @@ public class ProfileController  {
         gainExperienceWithRanks(0.5); // Увеличиваем прогресс на 10% с анимацией
     }
          
-    private int currentRank = 0; // Индекс текущего ранга
+    private int currentRank = ReadFromJson.ReadFromJSONint("currentRank"); // Индекс текущего ранга
     private final String[] ranks = {"Beginner", "Adept", "Master", "Expert", "Professional", "Legend"}; // Список рангов
     
     public void gainExperienceWithRanks(double amount) {
@@ -191,14 +186,14 @@ public class ProfileController  {
             event -> {
                 if (currentProgress < targetProgress) {
                     currentProgress += 0.01;
-    
+                    
                     // Исправление для точного достижения 100%
                     if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
                         currentProgress = targetProgress;
                     }
     
                     ExperienceBar.setProgress(currentProgress);
-    
+                    
                     // Когда шкала полностью заполнена
                     if (currentProgress >= 1.0) {
                         if (currentRank < ranks.length - 1) {
@@ -207,6 +202,7 @@ public class ProfileController  {
                             currentProgress = 0; // Сбрасываем прогресс
                             ExperienceBar.setProgress(currentProgress);
                             ProgressLabel.setText(ranks[currentRank]);
+                            WriteToJson.WriteToJSON("currentRank", currentRank);
                             if (mainApp != null) {
                                 mainApp.addCoins(10);
                                 updateCoinsDisplay();
@@ -224,6 +220,7 @@ public class ProfileController  {
     // Устанавливаем количество шагов
     timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
     timeline.play();
+    timeline.setOnFinished(event -> WriteToJson.WriteToJSON("currentProgress", currentProgress));
     }
     
     UpdateCoins updateCoins = new UpdateCoins();
@@ -248,8 +245,10 @@ public class ProfileController  {
     
     private void onTextEntered() {
         // Изменяем текст кнопки на введенный текст
-        BtnUsername.setText(textField.getText());
-    
+        String username = textField.getText();
+        BtnUsername.setText(username);
+        BtnProfile.setText(username);
+        WriteToJson.WriteToJSON("Username", username);
         // Скрываем TextField
         textField.setVisible(false);
         isTextFieldVisible = false;
