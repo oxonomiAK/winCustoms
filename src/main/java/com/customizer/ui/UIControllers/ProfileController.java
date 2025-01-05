@@ -342,7 +342,7 @@ public class ProfileController  {
 
     @FXML
     void btnSizeWizardClicked(ActionEvent event) {
-        updateContent("Size Wizard", "You resized the icons to the maximum possible size!", "com/customizer/ui/resources/growdown.png");
+        updateContent("Size Wizard", "You resized the icons to the maximum possible size!", "com/customizer/ui/resources/growup.png");
     }
 
     @FXML

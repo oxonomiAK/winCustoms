@@ -23,10 +23,19 @@ public class DesktopNotification extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Добавляем достижения в очередь
-        addAchievement("First Blood", "You unlocked the First Blood achievement!");
-        addAchievement("Double Kill", "You achieved a Double Kill!");
-        addAchievement("Triple Kill", "You achieved a Triple Kill!");
-        addAchievement("Victory", "Congratulations on your victory!");
+        addAchievement("Recycler", "You have emptied the recycle garbage can!");
+        addAchievement("Aren`t You Bored?", "You have changed the wallpaper 16 times!");
+        addAchievement("Boost!", "You changed the performance settings!");
+        addAchievement("Measure Twice...", "You resized the icons!");
+        addAchievement("...Cut Once", "You resized the icons back to their original size!");
+        addAchievement("Indiana Jones", "Unlock all wallpapers!");
+        addAchievement("Fashionista?", "You reached the maximum level!");
+        addAchievement("New Face", "You have changed your profile picture!");
+        addAchievement("Refresh", "You have installed a new wallpaper!");
+        addAchievement("Size Doesn't Matter", "You resized the icons to the minimum possible size!");
+        addAchievement("Size Wizard", "You resized the icons to the maximum possible size!");
+        addAchievement("You Have Taste", "You have changed the wallpaper 10 times");
+
 
         // Показываем уведомления
         showNextAchievement();
@@ -52,12 +61,13 @@ public class DesktopNotification extends Application {
 
         // Контент уведомления
         Label label = new Label(title + "\n" + message);
+        label.setWrapText(true);
         label.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-padding: 20; -fx-font-size: 14; -fx-border-radius: 10; -fx-background-radius: 10;");
 
         StackPane root = new StackPane(label);
         root.setStyle("-fx-background-color: transparent;"); // Прозрачный фон контейнера
 
-        Scene scene = new Scene(root, 300, 100);
+        Scene scene = new Scene(root, 350, 150);
         scene.setFill(null); // Убираем фон сцены
         stage.setScene(scene);
 
@@ -69,8 +79,8 @@ public class DesktopNotification extends Application {
         // Устанавливаем позицию окна в правом нижнем углу
         double notificationWidth = 300; // Ширина уведомления
         double notificationHeight = 100; // Высота уведомления
-        stage.setX(screenBounds.getMinX() + screenWidth - notificationWidth - 10); // 10 px отступ от края
-        stage.setY(screenBounds.getMinY() + screenHeight - notificationHeight - 10); // 10 px отступ от края
+        stage.setX(screenBounds.getMinX() + screenWidth - notificationWidth - 50); // 10 px отступ от края
+        stage.setY(screenBounds.getMinY() + screenHeight - notificationHeight - 50); // 10 px отступ от края
 
         // Анимация появления (Fade In)
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), root);
