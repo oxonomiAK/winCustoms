@@ -1,8 +1,12 @@
 package com.customizer.ui.UIControllers;
 
 import java.io.IOException;
+
+import com.customizer.core.GameUtils.RecycleBinMonitor;
 import com.customizer.services.ReadFromJson;
 import com.customizer.ui.ButtonEffectUtils.CoinsController;
+import com.customizer.ui.ButtonEffectUtils.DesktopNotificationManager;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -132,10 +136,14 @@ public class MainUI extends Application {
     }
     
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        RecycleBinMonitor.StartMonitoring();
+
+
+        DesktopNotificationManager.SendNotif("1234", "3123");
         launch(args);
         CoinsController controller = new CoinsController();
-
+        // RecycleBinMonitor.stop();
         // Save the coins
         controller.saveCoins();
     }

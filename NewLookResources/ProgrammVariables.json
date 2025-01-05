@@ -17,5 +17,18 @@
   "FirstIconsControllerLaunch" : false,
   "currentProgress" : 0.223543,
   "currentRank" : 0,
-  "defaultIconSize" : 48
+  "defaultIconSize" : 48,
+  "Wallpaper100Ach" : false,
+  "growdownAch" : false,
+  "binAch" : false,
+  "Wallpaper1Ach" : false,
+  "growupAch" : false,
+  "Wallpaper10Ach" : false,
+  "adventurerAch" : false,
+  "maxlvlAch" : false,
+  "iconchangeAch" : false,
+  "boostAch" : false,
+  "icondefaultAch" : false,
+  "ProfilePicAch" : false,
+  "DeletedFileCount" : 0
 }

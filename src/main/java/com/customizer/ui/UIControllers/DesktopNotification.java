@@ -2,7 +2,6 @@ package com.customizer.ui.UIControllers;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
-import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -15,36 +14,18 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DesktopNotification extends Application {
+public class DesktopNotification {
 
-    private List<Achievement> achievements = new ArrayList<>(); // Очередь достижений
+    private final List<Achievement> achievements = new ArrayList<>(); // Очередь достижений
     private boolean isShowing = false; // Флаг отображения уведомления
 
-    @Override
-    public void start(Stage primaryStage) {
-        // Добавляем достижения в очередь
-        addAchievement("Recycler", "You have emptied the recycle garbage can!");
-        addAchievement("Aren`t You Bored?", "You have changed the wallpaper 16 times!");
-        addAchievement("Boost!", "You changed the performance settings!");
-        addAchievement("Measure Twice...", "You resized the icons!");
-        addAchievement("...Cut Once", "You resized the icons back to their original size!");
-        addAchievement("Indiana Jones", "Unlock all wallpapers!");
-        addAchievement("Fashionista?", "You reached the maximum level!");
-        addAchievement("New Face", "You have changed your profile picture!");
-        addAchievement("Refresh", "You have installed a new wallpaper!");
-        addAchievement("Size Doesn't Matter", "You resized the icons to the minimum possible size!");
-        addAchievement("Size Wizard", "You resized the icons to the maximum possible size!");
-        addAchievement("You Have Taste", "You have changed the wallpaper 10 times");
-
-
-        // Показываем уведомления
+    // Метод для добавления уведомления в очередь
+    public void getAchievement(String title, String message) {
+        achievements.add(new Achievement(title, message));
         showNextAchievement();
     }
 
-    public void addAchievement(String title, String message) {
-        achievements.add(new Achievement(title, message));
-    }
-
+    // Метод для отображения следующего уведомления
     private void showNextAchievement() {
         if (isShowing || achievements.isEmpty()) return;
 
@@ -53,6 +34,7 @@ public class DesktopNotification extends Application {
         showNotification(achievement.getTitle(), achievement.getMessage());
     }
 
+    // Метод для отображения одного уведомления
     public void showNotification(String title, String message) {
         // Создание нового окна для уведомления
         Stage stage = new Stage();
@@ -79,8 +61,8 @@ public class DesktopNotification extends Application {
         // Устанавливаем позицию окна в правом нижнем углу
         double notificationWidth = 300; // Ширина уведомления
         double notificationHeight = 100; // Высота уведомления
-        stage.setX(screenBounds.getMinX() + screenWidth - notificationWidth - 50); // 10 px отступ от края
-        stage.setY(screenBounds.getMinY() + screenHeight - notificationHeight - 50); // 10 px отступ от края
+        stage.setX(screenBounds.getMinX() + screenWidth - notificationWidth - 50); // 50 px отступ от края
+        stage.setY(screenBounds.getMinY() + screenHeight - notificationHeight - 50); // 50 px отступ от края
 
         // Анимация появления (Fade In)
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), root);
@@ -112,10 +94,6 @@ public class DesktopNotification extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     // Класс для хранения достижений
     static class Achievement {
         private final String title;
@@ -135,4 +113,3 @@ public class DesktopNotification extends Application {
         }
     }
 }
-

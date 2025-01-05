@@ -182,7 +182,7 @@
                      <children>
                         <Button fx:id="btnRecycler" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnRecyclerClicked" prefHeight="53.0" prefWidth="96.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Recycler" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="bin" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/bin.png" />
                                  </image>
@@ -194,7 +194,7 @@
                         </Button>
                         <Button fx:id="btnRefresh" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="100.0" prefWidth="88.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Refresh" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="Wallpaper1" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/Wallpaper1.png" />
                                  </image>
@@ -206,7 +206,7 @@
                         </Button>
                         <Button fx:id="btnYouHaveTaste" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnYouHaveTasteClicked" prefHeight="100.0" prefWidth="115.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="You have taste" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="Wallpaper10" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/Wallpaper10.png" />
                                  </image>
@@ -218,7 +218,7 @@
                         </Button>
                         <Button fx:id="btnArentYouBored" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnArentYouBoredClicked" prefHeight="100.0" prefWidth="145.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Aren't you bored?" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="Wallpaper100" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/Wallpaper100.png" />
                                  </image>
@@ -230,7 +230,7 @@
                         </Button>
                         <Button fx:id="btnMeasureTwice" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnMeasureTwiceClicked" prefHeight="100.0" prefWidth="131.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Measure twice..." textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="iconchange" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/iconchange.png" />
                                  </image>
@@ -242,7 +242,7 @@
                         </Button>
                         <Button fx:id="btnCutOnce" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnCutOnceClicked" prefHeight="53.0" prefWidth="96.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="...cut once" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="icondefault" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/icondefault.png" />
                                  </image>
@@ -258,7 +258,7 @@
                      <children>
                         <Button fx:id="btnSizeWizard" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnSizeWizardClicked" prefHeight="53.0" prefWidth="96.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Size Wizard" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="growup" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/growup.png" />
                                  </image>
@@ -270,7 +270,7 @@
                         </Button>
                         <Button fx:id="btnSizeDoesntMatter" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnSizeDoesntMatterClicked" prefHeight="100.0" prefWidth="147.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Size doesn't matter" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="growdown" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/growdown.png" />
                                  </image>
@@ -282,7 +282,7 @@
                         </Button>
                         <Button fx:id="btnIndianaJones" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnIndianaJonesClicked" prefHeight="100.0" prefWidth="124.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Indiana Jones" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="adventurer" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/adventurer.png" />
                                  </image>
@@ -294,7 +294,7 @@
                         </Button>
                         <Button fx:id="btnMaxLvl" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnMaxLvlClicked" prefHeight="100.0" prefWidth="103.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Fashionista?" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="maxlvl" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/maxlvl.png" />
                                  </image>
@@ -306,7 +306,7 @@
                         </Button>
                         <Button fx:id="btnBoostAch" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnBoostAchClicked" prefHeight="53.0" prefWidth="96.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Boost!" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="boostach" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/boostach.png" />
                                  </image>
@@ -318,7 +318,7 @@
                         </Button>
                         <Button fx:id="btnNewFace" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnNewFaceClicked" prefHeight="100.0" prefWidth="100.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="New face" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ProfilePic" fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/ProfilePic.png" />
                                  </image>

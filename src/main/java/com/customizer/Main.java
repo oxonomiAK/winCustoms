@@ -6,18 +6,20 @@ import com.customizer.core.GameUtils.RecycleBinMonitor;
 import com.customizer.services.ReadFromJson;
 import com.customizer.services.WriteToJson;
 import com.customizer.ui.ButtonEffectUtils.CoinsController;
+import com.customizer.ui.UIControllers.DesktopNotification;
+
+import javafx.application.Platform;
 
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        if(ReadFromJson.ReadFromJSONBooleanT("FirstLaunch")){
-
-
-
-
-            WriteToJson.WriteToJSON("FirstLaunch", false);
-        }
+     DesktopNotification desktopNotification = new DesktopNotification();
+        Platform.runLater(() -> {
+        desktopNotification.getAchievement("Уведомление 2", "Это текст второго уведомления.");
+    });
+    
+     
 
         RecycleBinMonitor.StartMonitoring();
         CoinsController controller = new CoinsController();
