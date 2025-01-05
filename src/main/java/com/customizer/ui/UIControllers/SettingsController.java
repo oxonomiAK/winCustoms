@@ -1,6 +1,7 @@
 package com.customizer.ui.UIControllers;
 
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 import javafx.application.Platform;
@@ -63,7 +64,7 @@ public class SettingsController {
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
         // Установка имени пользователя на кнопку профиля
-        BtnProfile.setText(System.getProperty("user.name"));
+        ProfileNameController.ProfileName(BtnProfile);
 
         InfoPane.getStyleClass().add("scroll-pane");
 

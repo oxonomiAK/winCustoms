@@ -2,6 +2,7 @@ package com.customizer.ui.UIControllers;
 
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 import com.customizer.services.ReadFromJson;
@@ -108,10 +109,7 @@ public class IconsController  {
         }
     });
 
-        // Получение имени пользователя из ОС
-        String username = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username);
+        ProfileNameController.ProfileName(BtnProfile);
 }
 
    UpdateCoins updateCoins = new UpdateCoins();

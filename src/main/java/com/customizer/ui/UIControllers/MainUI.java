@@ -3,6 +3,7 @@ package com.customizer.ui.UIControllers;
 import java.io.IOException;
 
 import com.customizer.services.ReadFromJson;
+import com.customizer.services.WriteToJson;
 import com.customizer.ui.ButtonEffectUtils.CoinsController;
 
 import javafx.application.Application;
@@ -161,7 +162,6 @@ public class MainUI extends Application {
     
     public static void main(String[] args) {
         launch(args);
-           
         CoinsController controller = new CoinsController();
 
         // Сохраняем монеты
