@@ -32,7 +32,7 @@
                         <Image url="@../resources/leftside.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="BtnWallpapers" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="153.0" mnemonicParsing="false" onAction="#BtnWallpapersClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Wallpapers" textFill="WHITE">
+                  <Button fx:id="BtnWallpapers" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="153.0" mnemonicParsing="false" onAction="#BtnWallpapersClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Wallpapers" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -44,7 +44,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnBoost" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="217.0" mnemonicParsing="false" onAction="#BtnBoostClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Boost" textFill="WHITE">
+                  <Button fx:id="BtnBoost" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="217.0" mnemonicParsing="false" onAction="#BtnBoostClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Control Center" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -56,7 +56,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnHome" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="89.0" mnemonicParsing="false" onAction="#BtnHomeClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Home" textFill="WHITE">
+                  <Button fx:id="BtnHome" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="89.0" mnemonicParsing="false" onAction="#BtnHomeClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -68,14 +68,14 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnSettings" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#BtnSettingsClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Settings" textFill="WHITE">
+                  <Button fx:id="BtnSettings" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#BtnSettingsClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="About" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/settings.png" />
+                              <Image url="@../resources/about.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -91,7 +91,7 @@
                               <Font name="Myanmar Text Bold" size="19.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="dynamicImageView1" fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/user.png" />
                                  </image>
@@ -100,6 +100,27 @@
                         </Button>
                      </children>
                   </StackPane>
+                  <Label fx:id="coinsLabel" layoutX="67.0" layoutY="633.0" text="Coins:" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text Bold" size="15.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/coin.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Button fx:id="BtnGoBack" layoutX="230.0" layoutY="95.0" mnemonicParsing="false" onAction="#BtnGoBackClicked" prefHeight="80.0" prefWidth="77.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css">
+                     <graphic>
+                        <ImageView fitHeight="75.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                           <image>
+                              <Image url="@../resources/arrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Performance">

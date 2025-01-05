@@ -145,3 +145,38 @@
 .text-field .prompt-text {
     -fx-text-fill: #000000; /* Цвет текста подсказки */
 }
+
+
+
+
+/* Убираем фон ScrollPane */
+.scroll-pane {
+    -fx-background: transparent; /* Прозрачный фон */
+    -fx-background-color: transparent; /* Прозрачный цвет фона */
+    -fx-border-color: transparent; /* Прозрачная граница */
+}
+
+/* Полосы прокрутки остаются видимыми */
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent; /* Прозрачный фон полос прокрутки */
+}
+
+.scroll-pane .thumb {
+    -fx-background-color: #ffffff; /* Цвет ползунка */
+    -fx-background-radius: 5px; /* Закругление ползунка */
+}
+
+/* Стилизация горизонтальной полосы прокрутки */
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent; /* Цвет полосы */
+    -fx-pref-height: 12px; /* Высота полосы */
+}
+
+/* Стилизация вертикальной полосы прокрутки */
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent; /* Цвет полосы */
+    -fx-pref-width: 12px; /* Ширина полосы */
+}
+.scroll-pane .track {
+    -fx-background-color: transparent; /* Прозрачный трек полосы прокрутки */
+}

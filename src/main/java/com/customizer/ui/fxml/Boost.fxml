@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,12 +26,12 @@
          <children>
             <AnchorPane layoutX="-9.0" prefHeight="684.0" prefWidth="223.0">
                <children>
-                  <ImageView fitHeight="684.0" fitWidth="224.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="684.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/leftside.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="BtnBoost" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="217.0" mnemonicParsing="false" onAction="#BtnBoostClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Boost" textFill="WHITE">
+                  <Button fx:id="BtnBoost" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="217.0" mnemonicParsing="false" onAction="#BtnBoostClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Control Center" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -42,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnHome" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="89.0" mnemonicParsing="false" onAction="#BtnHomeClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Home" textFill="WHITE">
+                  <Button fx:id="BtnHome" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="89.0" mnemonicParsing="false" onAction="#BtnHomeClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -54,14 +55,14 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnSettings" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#BtnSettingsClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Settings" textFill="WHITE">
+                  <Button fx:id="BtnSettings" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#BtnSettingsClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="About" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/settings.png" />
+                              <Image url="@../resources/about.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -70,7 +71,7 @@
                   <Line endX="76.0" layoutX="120.0" layoutY="208.0" startX="-100.0" stroke="#585358" />
                   <Line endX="76.0" layoutX="120.0" layoutY="271.0" startX="-100.0" stroke="#585358" />
                   <Line endX="100.0" layoutX="115.0" layoutY="82.0" startX="-106.0" stroke="#585358" />
-                  <Button fx:id="BtnWallpapers" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="153.0" mnemonicParsing="false" onAction="#BtnWallpapersClicked" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Wallpapers" textFill="WHITE">
+                  <Button fx:id="BtnWallpapers" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="153.0" mnemonicParsing="false" onAction="#BtnWallpapersClicked" prefHeight="47.0" prefWidth="177.0" style="-fx-background-radius: 15;" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Wallpapers" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="16.0" />
                      </font>
@@ -89,7 +90,7 @@
                               <Font name="Myanmar Text Bold" size="19.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="dynamicImageView1" fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/user.png" />
                                  </image>
@@ -98,9 +99,21 @@
                         </Button>
                      </children>
                   </StackPane>
+                  <Label fx:id="coinsLabel" layoutX="67.0" layoutY="633.0" text="Coins:" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text Bold" size="15.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/coin.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
                </children>
             </AnchorPane>
-            <Text fill="WHITE" layoutX="234.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boost">
+            <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boost">
                <font>
                   <Font name="Myanmar Text Bold" size="26.0" />
                </font>
@@ -117,7 +130,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="BtnRocket" contentDisplay="TOP" layoutX="343.0" layoutY="154.0" mnemonicParsing="false" onAction="#BtnRocketClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Boost" textFill="WHITE">
+            <Button fx:id="BtnRocket" contentDisplay="TOP" layoutX="343.0" layoutY="154.0" mnemonicParsing="false" onAction="#BtnRocketClicked" prefHeight="188.0" prefWidth="304.0" style="-fx-background-radius: 15;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Boost" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -129,11 +142,11 @@
                   <Font name="Myanmar Text" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="BtnVolume" contentDisplay="TOP" layoutX="343.0" layoutY="426.0" mnemonicParsing="false" onAction="#BtnVolumeClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Volume" textFill="WHITE">
+            <Button fx:id="BtnVolume" contentDisplay="TOP" layoutX="343.0" layoutY="426.0" mnemonicParsing="false" onAction="#BtnVolumeClicked" prefHeight="188.0" prefWidth="304.0" style="-fx-background-radius: 15;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Connected devices" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/microphone.png" />
+                        <Image url="@../resources/usb.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -141,7 +154,7 @@
                   <Font name="Myanmar Text" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="BtnCompComponents" contentDisplay="TOP" layoutX="734.0" layoutY="154.0" mnemonicParsing="false" onAction="#BtnCompComponentsClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Computer components" textFill="WHITE">
+            <Button fx:id="BtnCompComponents" contentDisplay="TOP" layoutX="734.0" layoutY="154.0" mnemonicParsing="false" onAction="#BtnCompComponentsClicked" prefHeight="188.0" prefWidth="304.0" style="-fx-background-radius: 15;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Computer components" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -153,7 +166,7 @@
                   <Font name="Myanmar Text" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="BtnIcons" contentDisplay="TOP" layoutX="734.0" layoutY="426.0" mnemonicParsing="false" onAction="#BtnIconsClicked" prefHeight="188.0" prefWidth="304.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Icons" textFill="WHITE">
+            <Button fx:id="BtnIcons" contentDisplay="TOP" layoutX="734.0" layoutY="426.0" mnemonicParsing="false" onAction="#BtnIconsClicked" prefHeight="188.0" prefWidth="304.0" style="-fx-background-radius: 15;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Icons" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="88.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>

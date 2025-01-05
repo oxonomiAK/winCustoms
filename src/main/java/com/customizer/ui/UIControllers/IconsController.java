@@ -2,6 +2,9 @@ package com.customizer.ui.UIControllers;
 
 import com.customizer.core.utils.RegistryUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
+import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.services.ReadFromJson;
 import com.customizer.services.RestartExplorer;
 import com.customizer.services.WriteToJson;
 
@@ -9,13 +12,21 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class IconsController {
 
     @FXML
+    private Button BtnGoBack;
+
+    @FXML
     private Button BtnBoost;
+
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private ScrollBar IcnScrollBar1;
@@ -39,6 +50,9 @@ public class IconsController {
     private Button BtnSettings;
 
     @FXML
+    private ImageView dynamicImageView1;
+
+    @FXML
     private Button BtnHome;
 
     @FXML
@@ -52,6 +66,7 @@ public class IconsController {
 
     @FXML
     public void initialize() {
+        ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
@@ -92,6 +107,17 @@ public class IconsController {
                 ScrollBarValue1.setText(oldValue);
             }
         });
+
+        // Получение имени пользователя из ОС
+        String username = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username);
+    }
+
+    UpdateCoins updateCoins = new UpdateCoins();
+
+    public void updateCoinsDisplay() {
+        updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
 
     @FXML
@@ -99,24 +125,45 @@ public class IconsController {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
+    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch");
+
+    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch");
+
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
-        WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
-        RegistryUtils.setIconSize(48);
+        if (FirstIconsControllerLaunch) {
+            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
+            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
+            FirstIconsControllerLaunch = false;
+        }
+        int defaultIconSize = ReadFromJson.ReadFromJSONint("defaultIconSize");
+
+        RegistryUtils.setIconSize(defaultIconSize);
         RestartExplorer.restartExplorer();
-        int defaultValue = 48; // Значение по умолчанию
+        int defaultValue = defaultIconSize; // Значение по умолчанию
         IcnScrollBar1.setValue(defaultValue); // Устанавливаем значение на ползунке
         ScrollBarValue1.setText(String.valueOf(defaultValue)); // Обновляем текст в текстовом поле
+        if (mainApp != null) {
+            mainApp.addCoins(10);
+            updateCoinsDisplay();
+        }
     }
 
     @FXML
     void BtnSetIconSize(ActionEvent event) {
-        WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
+        if (FirstIconsControllerLaunch) {
+            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
+            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
+            FirstIconsControllerLaunch = false;
+        }
         int confirmedValue = (int) IcnScrollBar1.getValue();
         System.out.println("Confirmed value: " + confirmedValue);
         RegistryUtils.setIconSize(confirmedValue);
         RestartExplorer.restartExplorer();
-        // Здесь можно добавить дополнительную логику
+        if (mainApp != null) {
+            mainApp.addCoins(10);
+            updateCoinsDisplay();
+        }
     }
 
     @FXML
@@ -157,6 +204,11 @@ public class IconsController {
     @FXML
     void BtnHomeClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
+    }
+
+    @FXML
+    void BtnGoBackClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML

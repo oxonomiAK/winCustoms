@@ -1,14 +1,18 @@
 package com.customizer.ui.UIControllers;
 
-import java.io.IOException;
+
 import com.customizer.services.RequestAdmin;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
+import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 
 
 public class RocketController {
@@ -17,8 +21,13 @@ public class RocketController {
     private Button BtnBoost;
 
     @FXML
-    private Button BtnProfile;
+    private Button BtnGoBack;
 
+    @FXML
+    private Button BtnProfile;
+   
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private Button BtnToolTip;
@@ -37,6 +46,9 @@ public class RocketController {
 
     @FXML
     private Button BtnWallpapers;
+    
+    @FXML
+    private ImageView dynamicImageView1;
 
     @FXML
     private Button closeButton;
@@ -49,15 +61,29 @@ public class RocketController {
 
     @FXML
     public void initialize() {
+        ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
-
-        // Устанавливаем Tooltip для BtnToolTip
+    
+        // Устанавливаем Tooltip для BtnToolTip с задержкой 50 мс
         ToolTip.setText("You need administrator rights to run it"); // Ваш текст подсказки
-        BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к Button
+        ToolTip.setShowDelay(javafx.util.Duration.millis(200)); // Устанавливаем задержку 50 мс
+        ToolTip.setShowDuration(javafx.util.Duration.seconds(3)); // Время отображения 2 секунды
+        ToolTip.setHideDelay(javafx.util.Duration.millis(100)); // Задержка перед скрытием 100 мс
+        BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к кнопке
+
+        // Получение имени пользователя из ОС
+        String username = System.getProperty("user.name");
+        // Установка имени пользователя как текста кнопки
+        BtnProfile.setText(username);
+    }
+
+     UpdateCoins updateCoins = new UpdateCoins();
+    public void updateCoinsDisplay() {
+       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
 
     @FXML
@@ -76,8 +102,12 @@ public class RocketController {
     }
 
     @FXML
-    void BtnPerformancesClicked(ActionEvent event) throws IOException {
+    void BtnPerformancesClicked(ActionEvent event) throws Exception {
         RequestAdmin.RequestAdminRights();
+        if (mainApp != null) {
+            mainApp.addCoins(10);
+            updateCoinsDisplay();
+        }
     }
 
     @FXML
@@ -88,6 +118,11 @@ public class RocketController {
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");
+    }
+
+    @FXML
+    void BtnGoBackClicked(ActionEvent event) {
+        mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
     @FXML

@@ -14,6 +14,8 @@ import javafx.stage.FileChooser;
 import javafx.scene.effect.*;
 import javax.imageio.ImageIO;
 
+import com.customizer.services.WriteToJson;
+
 import java.io.File;
 
 public class ImageCropperController {
@@ -34,9 +36,9 @@ public class ImageCropperController {
     private double dragStartX, dragStartY; // Начало перемещения
     private double scale = 1.0; // Масштаб изображения
     private Image image;
-
+    static File outputFile = new File("NewLookResources/user.png");
     private final double CIRCLE_RADIUS = 150; // Радиус круга обрезки
-
+    public static String UserProfilePic = outputFile.toURI().toString();;
     private MainUI mainApp;
 
     public void setMainApp(MainUI mainApp) {
@@ -74,7 +76,7 @@ public class ImageCropperController {
         });
 
         // Выбор изображения
-        String profilePicPath = chooseImage();
+        String profilePicPath = ProfileController.picImage;
         image = new Image(profilePicPath);
         imageX = (canvas.getWidth() - image.getWidth()) / 2;
         imageY = (canvas.getHeight() - image.getHeight()) / 2;
@@ -84,11 +86,7 @@ public class ImageCropperController {
         saveImageButton.setOnAction(event -> saveCroppedImage());
     }
 
-    private String chooseImage() {
-        // FileChooser fileChooser = new FileChooser();
-        // fileChooser.getExtensionFilters().add(new
-        // FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
-        // File file = fileChooser.showOpenDialog(canvas.getScene().getWindow());
+    public static String chooseImage() {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose your profile picture");// Имя окна
@@ -96,7 +94,9 @@ public class ImageCropperController {
                                                                                                                       // расширения
                                                                                                                       // файлов
         File selectedFile = fileChooser.showOpenDialog(null);// Открытие диалогового окна с выбором файла
-
+        if (selectedFile == null) {
+            return null;
+        }
         String absolute = selectedFile.getAbsolutePath();
         String absolutePathForImageInsert = "file:/" + absolute.replace('\\', '/');
         return absolutePathForImageInsert;
@@ -129,11 +129,18 @@ public class ImageCropperController {
                 }
             }
 
-            File outputFile = new File("src/main/java/com/customizer/ui/resources/user.png");
+            if (!outputFile.exists())
+                outputFile.mkdirs();
+
             ImageIO.write(SwingFXUtils.fromFXImage(croppedImage, null), "png", outputFile);
-            ProfileController.changeprofpic("com\\customizer\\ui\\resources\\user.png");
+
+            if (MainUI.FirstProfilePicChange) {
+                WriteToJson.WriteToJSON("FirstProfilePicChange", false);
+                MainUI.FirstProfilePicChange = false;
+            }
             System.out.println("Image saved: " + outputFile.getAbsolutePath());
             Thread.sleep(600);
+            UserProfilePic = outputFile.toURI().toString();
             mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
 
         } catch (Exception e) {
