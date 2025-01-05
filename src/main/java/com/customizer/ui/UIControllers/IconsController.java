@@ -18,8 +18,7 @@ import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-
-public class IconsController  {
+public class IconsController {
 
     @FXML
     private Button BtnGoBack;
@@ -50,7 +49,7 @@ public class IconsController  {
 
     @FXML
     private Button BtnSettings;
-    
+
     @FXML
     private ImageView dynamicImageView1;
 
@@ -83,16 +82,17 @@ public class IconsController  {
 
         // Update TextField when ScrollBar is changed
         IcnScrollBar1.valueProperty().addListener((observable, oldValue, newValue) -> {
-        ScrollBarValue1.setText(String.valueOf(newValue.intValue()));
+            ScrollBarValue1.setText(String.valueOf(newValue.intValue()));
         });
 
         // Listener for TextField
-        ScrollBarValue1.textProperty().addListener((observable, oldValue, newValue) -> { //addListner requires the use of a lambda function
-        if (newValue.isEmpty()) {
-            return; // If the field is empty, do nothing
-        }
+        ScrollBarValue1.textProperty().addListener((observable, oldValue, newValue) -> { // addListner requires the use
+                                                                                         // of a lambda function
+            if (newValue.isEmpty()) {
+                return; // If the field is empty, do nothing
+            }
 
-        try {
+            try {
                 int value = Integer.parseInt(newValue); // Try to convert to a number
 
                 if (value < IcnScrollBar1.getMin()) {
@@ -112,30 +112,33 @@ public class IconsController  {
         ProfileNameController.ProfileName(BtnProfile);
     }
 
-   UpdateCoins updateCoins = new UpdateCoins();
+    UpdateCoins updateCoins = new UpdateCoins();
+
     public void updateCoinsDisplay() {
-       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
+        updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
-    //Check if the icons have ever been resized to get it original size
-    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch"); 
+
+    // Check if the icons have ever been resized to get it original size
+    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch");
+
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
-        //Getting original icon size before changing
-        if(FirstIconsControllerLaunch) {
+        // Getting original icon size before changing
+        if (FirstIconsControllerLaunch) {
             WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
             WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
             FirstIconsControllerLaunch = false;
         }
-        //Getting original icon size
+        // Getting original icon size
         int defaultIconSize = ReadFromJson.ReadFromJSONint("defaultIconSize");
-        //Setting default size
+        // Setting default size
         RegistryUtils.setIconSize(defaultIconSize);
-        //Restarting explorer.exe to see chachges
+        // Restarting explorer.exe to see chachges
         RestartExplorer.restartExplorer();
         int defaultValue = defaultIconSize; // Default value
         IcnScrollBar1.setValue(defaultValue); // Set the value on the slider
@@ -146,26 +149,25 @@ public class IconsController  {
         }
     }
 
-      @FXML
+    @FXML
     void BtnSetIconSize(ActionEvent event) {
-        //Getting original icon size before changing
-        if(FirstIconsControllerLaunch) {
+        // Getting original icon size before changing
+        if (FirstIconsControllerLaunch) {
             WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
             WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
             FirstIconsControllerLaunch = false;
         }
 
-        int confirmedValue = (int) IcnScrollBar1.getValue(); 
-        //Setting new size value
+        int confirmedValue = (int) IcnScrollBar1.getValue();
+        // Setting new size value
         RegistryUtils.setIconSize(confirmedValue);
-        //Restarting explorer.exe to see chachges
+        // Restarting explorer.exe to see chachges
         RestartExplorer.restartExplorer();
         if (mainApp != null) {
             mainApp.addCoins(10);
             updateCoinsDisplay();
-        }    
+        }
     }
-
 
     @FXML
     void onScrollBarValueChanged(ActionEvent event) {
@@ -185,12 +187,11 @@ public class IconsController  {
         }
 
     }
-    
+
     @FXML
     void BtnProfileClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
     }
-    
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
@@ -217,5 +218,3 @@ public class IconsController  {
         Platform.exit();
     }
 }
-
-

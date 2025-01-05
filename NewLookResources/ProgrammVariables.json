@@ -18,6 +18,7 @@
   "currentProgress" : 0.223543,
   "currentRank" : 0,
   "defaultIconSize" : 48,
+<<<<<<< HEAD
   "Wallpaper100Ach" : false,
   "growdownAch" : false,
   "binAch" : false,
@@ -31,4 +32,7 @@
   "icondefaultAch" : false,
   "ProfilePicAch" : false,
   "DeletedFileCount" : 0
+=======
+  "FirstLaunch" : false
+>>>>>>> kirill
 }

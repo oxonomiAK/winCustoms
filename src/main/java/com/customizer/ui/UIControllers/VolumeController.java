@@ -21,7 +21,7 @@ public class VolumeController {
 
     @FXML
     private Button BtnGoBack;
-    
+
     @FXML
     private Button ApplyButton;
 
@@ -39,7 +39,7 @@ public class VolumeController {
 
     @FXML
     private Button BtnWallpapers;
-    
+
     @FXML
     private ImageView dynamicImageView1;
 
@@ -80,11 +80,9 @@ public class VolumeController {
         String username = System.getProperty("user.name");
         // Set the user name as the button text
         BtnProfile.setText(username);
-        
+
         ProfileNameController.ProfileName(BtnProfile);
     }
-    
-
 
     @FXML
     void BtnBoostClicked(ActionEvent event) {
@@ -107,17 +105,15 @@ public class VolumeController {
             // Open the audio settings window and switch to the ‘Record’ tab
             String command = "control mmsys.cpl,,1"; // This opens the device record tab
             Runtime.getRuntime().exec(command);
-        } catch (IOException e) { //Error handling
+        } catch (IOException e) { // Error handling
             e.printStackTrace();
         }
     }
-
 
     @FXML
     void BtnProfileClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
     }
-    
 
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
@@ -135,10 +131,10 @@ public class VolumeController {
     }
 
     UpdateCoins updateCoins = new UpdateCoins();
+
     public void updateCoinsDisplay() {
-       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
+        updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
-    
 
     @FXML
     void closeApp(ActionEvent event) {

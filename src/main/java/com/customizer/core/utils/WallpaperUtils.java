@@ -12,6 +12,7 @@ public class WallpaperUtils {
                 0,
                 imagePath,
                 User32F.User32.SPIF_UPDATEINIFILE | User32F.User32.SPIF_SENDCHANGE);
+
     }
 
     public static void setWallpaperWithoutUpdateInReg(String imagePath) {

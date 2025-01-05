@@ -16,15 +16,14 @@ import javax.imageio.ImageIO;
 import com.customizer.services.WriteToJson;
 import java.io.File;
 
-
-public class ImageCropperController  {
+public class ImageCropperController {
 
     @FXML
     private Canvas canvas;
 
     @FXML
     private Button closeButton;
-    
+
     @FXML
     private Button chooseImageButton;
 
@@ -39,6 +38,7 @@ public class ImageCropperController  {
     private final double CIRCLE_RADIUS = 150; // Cutting circle radius
     public static String UserProfilePic = outputFile.toURI().toString();;
     private MainUI mainApp;
+
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
     }
@@ -83,33 +83,36 @@ public class ImageCropperController  {
         // Saving the image
         saveImageButton.setOnAction(event -> saveCroppedImage());
         saveImageButton.setStyle("-fx-background-color: #5853583b; -fx-text-fill: white; "
-        + "-fx-font-size: 14px; -fx-background-radius: 10;");
+                + "-fx-font-size: 14px; -fx-background-radius: 10;");
         saveImageButton.setOnMouseEntered(event -> {
             saveImageButton.setStyle("-fx-background-color: #424242; -fx-text-fill: white; "
-        + "-fx-font-size: 14px; -fx-background-radius: 10;");
+                    + "-fx-font-size: 14px; -fx-background-radius: 10;");
         });
         saveImageButton.setOnMouseExited(event -> {
             saveImageButton.setStyle("-fx-background-color: #5853583b; -fx-text-fill: white; "
-        + "-fx-font-size: 14px; -fx-background-radius: 10;");
+                    + "-fx-font-size: 14px; -fx-background-radius: 10;");
         });
     }
 
     public static String chooseImage() {
-        
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Choose your profile picture");//Window name
-    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg")); //File extension filter
-    File selectedFile = fileChooser.showOpenDialog(null);//Open dialog box with file selection
-    if(selectedFile == null){
-        return null;
-    }
-    String absolute = selectedFile.getAbsolutePath(); 
-    String absolutePathForImageInsert = "file:/" + absolute.replace('\\', '/');
-    return absolutePathForImageInsert;
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose your profile picture");// Window name
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg")); // File
+                                                                                                                      // extension
+                                                                                                                      // filter
+        File selectedFile = fileChooser.showOpenDialog(null);// Open dialog box with file selection
+        if (selectedFile == null) {
+            return null;
+        }
+        String absolute = selectedFile.getAbsolutePath();
+        String absolutePathForImageInsert = "file:/" + absolute.replace('\\', '/');
+        return absolutePathForImageInsert;
     }
 
     public void saveCroppedImage() {
-        if (image == null) return;
+        if (image == null)
+            return;
 
         try {
             // Calculate the center of the canvas
@@ -118,7 +121,7 @@ public class ImageCropperController  {
 
             // Create an image from the current state of the canvas
             WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
-            canvas.snapshot(null, writableImage); 
+            canvas.snapshot(null, writableImage);
 
             // Create a cut-out circular image
             WritableImage croppedImage = new WritableImage((int) (2 * CIRCLE_RADIUS), (int) (2 * CIRCLE_RADIUS));
@@ -141,16 +144,15 @@ public class ImageCropperController  {
                 }
             }
 
-
             // Check if the output folder exists and create it if necessary
-            if(!outputFile.exists())
-            outputFile.mkdirs();
+            if (!outputFile.exists())
+                outputFile.mkdirs();
 
             // Save the cut image to a file
             ImageIO.write(SwingFXUtils.fromFXImage(croppedImage, null), "png", outputFile);
 
             // If this is the first time the user changes the profile picture
-            if(MainUI.FirstProfilePicChange){
+            if (MainUI.FirstProfilePicChange) {
                 WriteToJson.WriteToJSON("FirstProfilePicChange", false);// Update the value in JSON
                 MainUI.FirstProfilePicChange = false; // Update the variable in the program
             }
@@ -159,12 +161,12 @@ public class ImageCropperController  {
             // Update user profile image
             UserProfilePic = outputFile.toURI().toString();
             mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-   
+
     public void draw(GraphicsContext gc) {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
@@ -176,7 +178,7 @@ public class ImageCropperController  {
         }
 
         // Semi-transparent background
-        gc.setFill(Color.color(0, 0, 0, 0.5)); 
+        gc.setFill(Color.color(0, 0, 0, 0.5));
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         // Transparent circle in the center
@@ -191,7 +193,8 @@ public class ImageCropperController  {
         // Restore the blending mode
         gc.setGlobalBlendMode(BlendMode.SRC_OVER);
     }
-     @FXML
+
+    @FXML
     void closeApp(ActionEvent event) {
         Platform.exit();
     }

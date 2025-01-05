@@ -20,8 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-
-public class ProfileController  {
+public class ProfileController {
     boolean isWindowOpened;
     public static String picImage;
     @FXML
@@ -57,11 +56,11 @@ public class ProfileController  {
     @FXML
     private ProgressBar ExperienceBar;
 
-    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress"); 
+    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress");
 
     @FXML
     private Button BtnHome;
-       
+
     @FXML
     private Label ProgressLabel;
 
@@ -103,42 +102,42 @@ public class ProfileController  {
 
     @FXML
     private ImageView dynamicImageView, dynamicImageView1;
-    
+
     @FXML
     private Button btnCutOnce;
-    
+
     @FXML
     private Button btnIndianaJones;
-    
+
     @FXML
     private Button btnMaxLvl;
 
     @FXML
     private Button BtnProfile;
-    
+
     @FXML
     private Button btnMeasureTwice;
-    
+
     @FXML
     private Button btnNewFace;
-    
+
     @FXML
     private Button btnRecycler;
-    
+
     @FXML
     private Button btnRefresh;
-    
+
     @FXML
     private Button btnSizeDoesntMatter;
-    
+
     @FXML
     private Button btnSizeWizard;
-    
+
     @FXML
     private Button btnYouHaveTaste;
-    
+
     private MainUI mainApp;
-    
+
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
     }
@@ -189,106 +188,108 @@ public class ProfileController  {
             dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic)); 
             dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));
         }
-        //Check if the last rank has been reached
-        if(ranks[currentRank].contains("Legend") && currentProgress >= 1.0) 
-            ProgressLabel.setText(ranks[currentRank] + " (Max)"); 
+        // Check if the last rank has been reached
+        if (ranks[currentRank].contains("Legend") && currentProgress >= 1.0)
+            ProgressLabel.setText(ranks[currentRank] + " (Max)");
         else
-            ProgressLabel.setText(ranks[currentRank]); 
-  
+            ProgressLabel.setText(ranks[currentRank]);
+
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
-    
+
         // Set the initial value of the experience
         ExperienceBar.setProgress(currentProgress);
 
-        //Getting current Windows Username and setting it into profile name in case that name have never been changed
-        if(ReadFromJson.ReadFromJSONString("Username").equals("null")){
+        // Getting current Windows Username and setting it into profile name in case
+        // that name have never been changed
+        if (ReadFromJson.ReadFromJSONString("Username").equals("null")) {
             String username = System.getProperty("user.name");
             BtnUsername.setText(username);
-            BtnProfile.setText(username); 
-        }
-        else{
+            BtnProfile.setText(username);
+        } else {
             String username = ReadFromJson.ReadFromJSONString("Username");
             BtnProfile.setText(username);
             BtnUsername.setText(username);
         }
-        
+
         textField = new TextField();
         textField.setPromptText("Enter text...");
         textField.setOnAction(event -> onTextEntered()); // Processing of pressing Enter
-        
+
         textField.setVisible(false);
-            
+
         // Add TextField to the parent container of the button
         ((StackPane) BtnUsername.getParent()).getChildren().add(textField);
-    
+
     }
-    
+
     @FXML
     void BtnBoostClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
-    
+
     // @FXML
     // void onIncreaseProgressClicked(ActionEvent event) {
-    //     gainExperienceWithRanks(0.5); // Увеличиваем прогресс на 10% с анимацией  
+    // gainExperienceWithRanks(0.5); // Увеличиваем прогресс на 10% с анимацией
     // }
-         
+
     private int currentRank = ReadFromJson.ReadFromJSONint("currentRank"); // Current rank index
-    private final String[] ranks = {"Beginner", "Adept", "Master", "Expert", "Professional", "Legend"}; // List of ranks
-    
+    private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // List of
+                                                                                                          // ranks
+
     public void gainExperienceWithRanks(double amount) {
-    double targetProgress = Math.min(currentProgress + amount, 1.0); // Current progress target for the current scale
-    
-    Timeline timeline = new Timeline(
-        new KeyFrame(
-            Duration.millis(20), // Update every 20 ms
-            event -> {
-                if (currentProgress < targetProgress) {
-                    currentProgress += 0.01;
-                    
-                    // Corrects for accurate achievement of 100%
-                    if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
-                        currentProgress = targetProgress;
-                    }
-    
-                    ExperienceBar.setProgress(currentProgress);
-                    
-                    // When the scale is completely filled
-                    if (currentProgress >= 1.0) {
-                        if (currentRank < ranks.length - 1) {
-                            // Raise the rank
-                            currentRank++;
-                            currentProgress = 0; // Reset progress
-                            ExperienceBar.setProgress(currentProgress);
-                            ProgressLabel.setText(ranks[currentRank]);
-                            WriteToJson.WriteToJSON("currentRank", currentRank);
-                            if (mainApp != null) {
-                                mainApp.addCoins(10);
-                                updateCoinsDisplay();
+        double targetProgress = Math.min(currentProgress + amount, 1.0); // Current progress target for the current
+                                                                         // scale
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(
+                        Duration.millis(20), // Update every 20 ms
+                        event -> {
+                            if (currentProgress < targetProgress) {
+                                currentProgress += 0.01;
+
+                                // Corrects for accurate achievement of 100%
+                                if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
+                                    currentProgress = targetProgress;
+                                }
+
+                                ExperienceBar.setProgress(currentProgress);
+
+                                // When the scale is completely filled
+                                if (currentProgress >= 1.0) {
+                                    if (currentRank < ranks.length - 1) {
+                                        // Raise the rank
+                                        currentRank++;
+                                        currentProgress = 0; // Reset progress
+                                        ExperienceBar.setProgress(currentProgress);
+                                        ProgressLabel.setText(ranks[currentRank]);
+                                        WriteToJson.WriteToJSON("currentRank", currentRank);
+                                        if (mainApp != null) {
+                                            mainApp.addCoins(10);
+                                            updateCoinsDisplay();
+                                        }
+                                    } else {
+                                        // The last rank has been reached
+                                        ProgressLabel.setText(ranks[currentRank] + " (Max)");
+                                    }
+                                }
                             }
-                        } else {
-                            // The last rank has been reached
-                            ProgressLabel.setText(ranks[currentRank] + " (Max)");
-                        }
-                    }
-                }
-            }
-        )
-    );
-    
-    // Set the number of steps
-    timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
-    timeline.play();
-    timeline.setOnFinished(event -> WriteToJson.WriteToJSON("currentProgress", currentProgress)); //ceрый
+                        }));
+
+        // Set the number of steps
+        timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
+        timeline.play();
+        timeline.setOnFinished(event -> WriteToJson.WriteToJSON("currentProgress", currentProgress)); // ceрый
     }
-    
+
     UpdateCoins updateCoins = new UpdateCoins();
+
     public void updateCoinsDisplay() {
-       updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
+        updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
+
     @FXML
     void BtnChangeUsername(ActionEvent event) {
         if (!isTextFieldVisible) {
@@ -296,46 +297,46 @@ public class ProfileController  {
             textField.setLayoutX(BtnUsername.getLayoutX());
             textField.setLayoutY(BtnUsername.getLayoutY());
             textField.setPrefWidth(BtnUsername.getWidth()); // The width of the text field is the same as for the button
-            textField.setPrefHeight(BtnUsername.getHeight()); // The height of the text field is the same as for the button
-                
+            textField.setPrefHeight(BtnUsername.getHeight()); // The height of the text field is the same as for the
+                                                              // button
+
             textField.setText(BtnUsername.getText()); // Fill with the current button text
             textField.setVisible(true);
             textField.requestFocus(); // Focus on the text field
             isTextFieldVisible = true;
         }
     }
-    
+
     private void onTextEntered() {
         // Change the button text to the entered text
         String username = textField.getText();
         BtnUsername.setText(username);
         BtnProfile.setText(username);
-        //Write to .json file new username
+        // Write to .json file new username
         WriteToJson.WriteToJSON("Username", username);
         // Hide TextField
         textField.setVisible(false);
         isTextFieldVisible = false;
     }
-    
+
     @FXML
     void BtnHomeClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Home.fxml");
     }
-    
+
     @FXML
     void BtnChangePicture(ActionEvent event) {
-        //Preventing from opening multiple logs with image choosing
-        if(!isWindowOpened){
+        // Preventing from opening multiple logs with image choosing
+        if (!isWindowOpened) {
             isWindowOpened = true;
             picImage = ImageCropperController.chooseImage();
             isWindowOpened = false;
-        //Do not proceed if the user has not selected anything
-            if(picImage != null)
+            // Do not proceed if the user has not selected anything
+            if (picImage != null)
                 mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");
 
         }
     }
-
 
     @FXML
     void BtnSettingsClicked(ActionEvent event) {
