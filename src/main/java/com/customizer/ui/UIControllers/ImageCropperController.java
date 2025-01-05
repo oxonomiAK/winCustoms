@@ -116,7 +116,7 @@ public class ImageCropperController  {
             double centerX = canvas.getWidth() / 2;
             double centerY = canvas.getHeight() / 2;
 
-            // Создаём изображение из текущего состояния холста
+            // Create an image from the current state of the canvas
             WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
             canvas.snapshot(null, writableImage); 
 

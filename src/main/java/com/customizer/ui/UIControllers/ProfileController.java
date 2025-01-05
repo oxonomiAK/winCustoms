@@ -248,7 +248,7 @@ public class ProfileController  {
         String username = textField.getText();
         BtnUsername.setText(username);
         BtnProfile.setText(username);
-        WriteToJson.WriteToJSON("Username", username); //серый
+        WriteToJson.WriteToJSON("Username", username); 
         // Hide TextField
         textField.setVisible(false);
         isTextFieldVisible = false;

@@ -111,18 +111,18 @@ public class MainUI extends Application {
     CoinsController controller = new CoinsController();
     private int coins = controller.getCoins(); // Coin counter
 
-    public int getCoins() {//серый
-        return coins;//серый
+    public int getCoins() {
+        return coins;
     }
 
-    public void addCoins(int amount) {//серый
-        coins += amount;//серый
-        controller.addCoins(amount);//серый
+    public void addCoins(int amount) {
+        coins += amount;
+        controller.addCoins(amount);
     }
     
-    public void spendCoins(int amount) {//серый
-            coins -= amount;//серый
-            controller.spendCoins(amount);//серый
+    public void spendCoins(int amount) {
+            coins -= amount;
+            controller.spendCoins(amount);
     }
     
 
