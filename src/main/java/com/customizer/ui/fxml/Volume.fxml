@@ -118,36 +118,28 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="ApplyButton" layoutX="540.0" layoutY="542.0" mnemonicParsing="false" onAction="#SetSystemVolume" prefHeight="47.0" prefWidth="262.0" style="-fx-background-radius: 15;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Configure Microphone and Audio devices" textFill="WHITE" />
-            <ImageView fitHeight="193.0" fitWidth="327.0" layoutX="366.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/big.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="193.0" fitWidth="303.0" layoutX="683.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/big.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="ConectedDevices" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="696.0" layoutY="304.0" prefHeight="173.0" prefWidth="271.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP">
+            <Button fx:id="ApplyButton" layoutX="265.0" layoutY="596.0" mnemonicParsing="false" onAction="#SetSystemVolume" prefHeight="47.0" prefWidth="262.0" style="-fx-background-radius: 15;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Configure Microphone and Audio devices" textFill="WHITE" />
+            <Label fx:id="ConectedDevices" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="770.0" layoutY="221.0" lineSpacing="1.0" prefHeight="321.0" prefWidth="227.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font size="8.0" />
                </font></Label>
-            <Label fx:id="ConectedDevices1" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="383.0" layoutY="304.0" prefHeight="173.0" prefWidth="262.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP">
+            <Label fx:id="ConectedDevices1" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="382.0" layoutY="221.0" lineSpacing="1.0" prefHeight="321.0" prefWidth="227.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font size="8.0" />
                </font>
             </Label>
-            <ImageView fitHeight="80.0" fitWidth="88.0" layoutX="478.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="88.0" layoutX="456.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/Micro.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="792.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="841.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/headphone.png" />
                </image>
             </ImageView>
+            <Line endX="110.0" layoutX="518.0" layoutY="207.0" startX="-155.0" stroke="#585358" />
+            <Line endX="110.0" layoutX="903.0" layoutY="207.0" startX="-155.0" stroke="#585358" />
          </children>
       </AnchorPane>
    </children>

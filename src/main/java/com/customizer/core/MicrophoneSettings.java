@@ -6,10 +6,10 @@ public class MicrophoneSettings {
 
     public static void openMicrophoneProperties() {
         try {
-            // Открытие вкладки "Запись" в настройках звука
-            String command = "control mmsys.cpl,,1";
+            // Opening the ‘Recording’ tab in the sound settings
+            String command = "control mmsys.cpl,,1"; // This opens the device record tab
             Runtime.getRuntime().exec(command);
-        } catch (IOException e) {
+        } catch (IOException e) { //Error handling
             e.printStackTrace();
         }
     }
