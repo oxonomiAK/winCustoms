@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="662.0" prefWidth="1185.0" xmlns="http://javafx.com/javafx/8.0.401" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.UIControllers.VolumeController">
+<AnchorPane prefHeight="662.0" prefWidth="1185.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.UIControllers.VolumeController">
    <children>
       <ImageView fitHeight="684.0" fitWidth="1220.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -99,6 +99,18 @@
                         </Button>
                      </children>
                   </StackPane>
+                  <Label fx:id="coinsLabel" layoutX="67.0" layoutY="633.0" text="Coins:" textFill="WHITE">
+                     <font>
+                        <Font name="Myanmar Text Bold" size="15.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/coin.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connected devices">
@@ -118,39 +130,28 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="ApplyButton" layoutX="535.0" layoutY="544.0" mnemonicParsing="false" onAction="#SetSystemVolume" prefHeight="58.0" prefWidth="288.0" style="-fx-background-radius: 15;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Configure Microphone and Audio devices" textFill="WHITE">
+            <Button fx:id="ApplyButton" layoutX="265.0" layoutY="596.0" mnemonicParsing="false" onAction="#SetSystemVolume" prefHeight="47.0" prefWidth="262.0" style="-fx-background-radius: 15;" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="Configure Microphone and Audio devices" textFill="WHITE" />
+            <Label fx:id="ConectedDevices" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="770.0" layoutY="221.0" lineSpacing="1.0" prefHeight="321.0" prefWidth="227.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                <font>
-                  <Font name="Myanmar Text Bold" size="13.0" />
-               </font></Button>
-            <ImageView fitHeight="193.0" fitWidth="327.0" layoutX="366.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/big.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="193.0" fitWidth="303.0" layoutX="696.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/big.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="ConectedDevices" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="709.0" layoutY="304.0" prefHeight="173.0" prefWidth="271.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP" wrapText="true">
-               <font>
-                  <Font name="Arial" size="8.0" />
+                  <Font size="8.0" />
                </font></Label>
-            <Label fx:id="ConectedDevices1" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="383.0" layoutY="304.0" prefHeight="173.0" prefWidth="262.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+            <Label fx:id="ConectedDevices1" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="382.0" layoutY="221.0" lineSpacing="1.0" prefHeight="321.0" prefWidth="227.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-font-weight: bold;" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font size="8.0" />
                </font>
             </Label>
-            <ImageView fitHeight="80.0" fitWidth="88.0" layoutX="478.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="88.0" layoutX="456.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/Micro.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="804.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="841.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/headphones.png" />
                </image>
             </ImageView>
+            <Line endX="110.0" layoutX="518.0" layoutY="207.0" startX="-155.0" stroke="#585358" />
+            <Line endX="110.0" layoutX="903.0" layoutY="207.0" startX="-155.0" stroke="#585358" />
             <Button fx:id="BtnGoBack" layoutX="220.0" layoutY="85.0" mnemonicParsing="false" onAction="#BtnGoBackClicked" prefHeight="80.0" prefWidth="77.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css">
                <graphic>
                   <ImageView fitHeight="75.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
