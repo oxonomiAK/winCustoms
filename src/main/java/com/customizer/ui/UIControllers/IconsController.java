@@ -121,19 +121,22 @@ public class IconsController  {
     void BtnBoostClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
-
-    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch"); //серый
+    //Check if the icons have ever been resized to get it original size
+    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch"); 
     @FXML
-    void BtnSetDefaultSize(ActionEvent event) {//серый
-        if(FirstIconsControllerLaunch) {//серый
-            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());//серый
-            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);//серый
-            FirstIconsControllerLaunch = false;//серый
+    void BtnSetDefaultSize(ActionEvent event) {
+        //Getting original icon size before changing
+        if(FirstIconsControllerLaunch) {
+            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
+            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
+            FirstIconsControllerLaunch = false;
         }
-        int defaultIconSize = ReadFromJson.ReadFromJSONint("defaultIconSize");//серый
-
-        RegistryUtils.setIconSize(defaultIconSize);//серый
-        RestartExplorer.restartExplorer();//серый
+        //Getting original icon size
+        int defaultIconSize = ReadFromJson.ReadFromJSONint("defaultIconSize");
+        //Setting default size
+        RegistryUtils.setIconSize(defaultIconSize);
+        //Restarting explorer.exe to see chachges
+        RestartExplorer.restartExplorer();
         int defaultValue = defaultIconSize; // Default value
         IcnScrollBar1.setValue(defaultValue); // Set the value on the slider
         ScrollBarValue1.setText(String.valueOf(defaultValue)); // Update the text in the text field
@@ -145,15 +148,18 @@ public class IconsController  {
 
       @FXML
     void BtnSetIconSize(ActionEvent event) {
-        if(FirstIconsControllerLaunch) {//серый
-            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());//серый
-            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);//серый
-            FirstIconsControllerLaunch = false;//серый
-        }//серый
-        int confirmedValue = (int) IcnScrollBar1.getValue(); //серый
-        System.out.println("Confirmed value: " + confirmedValue);//серый
-        RegistryUtils.setIconSize(confirmedValue);//серый
-        RestartExplorer.restartExplorer();//серый
+        //Getting original icon size before changing
+        if(FirstIconsControllerLaunch) {
+            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
+            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
+            FirstIconsControllerLaunch = false;
+        }
+
+        int confirmedValue = (int) IcnScrollBar1.getValue(); 
+        //Setting new size value
+        RegistryUtils.setIconSize(confirmedValue);
+        //Restarting explorer.exe to see chachges
+        RestartExplorer.restartExplorer();
         if (mainApp != null) {
             mainApp.addCoins(10);
             updateCoinsDisplay();

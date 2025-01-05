@@ -83,16 +83,19 @@ public class WallpapersController2  {
     public void setMainApp(MainUI mainApp) {
         this.mainApp = mainApp;
     }
+        //Wallpapers prices
         int AnimeCond = 10;
         int PinkVilageCond = 20;
         int RetroCond = 30;
         int RabbitCond = 40;
 
+        //Can be wallpapers unlocked
         boolean AnimeStatus = LockManager.CanUnlock("WallpaperAnime", "Coins", AnimeCond);
         boolean PinkVilageStatus = LockManager.CanUnlock("WallpaperPinkVilage", "Coins", PinkVilageCond);
         boolean RetroStatus = LockManager.CanUnlock("WallpaperRetro", "Coins", RetroCond);
         boolean RabbitStatus = LockManager.CanUnlock("WallpaperRabbit", "Coins", RabbitCond);
-
+        
+        //Current lock status of wallpapers
         boolean AnimeUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperAnime");
         boolean PinkVilageUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperPinkVilage");
         boolean RetroUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperRetro");
@@ -101,6 +104,7 @@ public class WallpapersController2  {
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);
+        //Replace wallpaper with lock icon if hasn't been purhcased
         String lockIncon = "com/customizer/ui/resources/lock.png";
         if(!AnimeUnlocked) Wall1.setImage(new Image(lockIncon));
         if(!PinkVilageUnlocked) Wall2.setImage(new Image(lockIncon));
@@ -142,9 +146,9 @@ public class WallpapersController2  {
 
     @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
-        
+        //Unlocking wallpapers
         LockManager.CheckAndUnlock(AnimeStatus, AnimeUnlocked, AnimeCond, "WallpaperAnime", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
-
+        //Get notigication if wallpapers are locked
         if (AnimeUnlocked){
             handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
         }

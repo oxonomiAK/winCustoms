@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class ProfilePicController {
+    //Method to take profile picture from another location
     public static void CheckProfilePic(ImageView dynamicImageView1){
         if(!MainUI.FirstProfilePicChange)
             dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));

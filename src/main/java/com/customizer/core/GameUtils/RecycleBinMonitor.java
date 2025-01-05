@@ -7,63 +7,56 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.customizer.core.utils.GetSID;
+import com.customizer.services.ReadFromJson;
 import com.customizer.services.WriteToJson;
 
 public class RecycleBinMonitor {
 
-    public static void main(String[] args) throws InterruptedException {
-        // Получаем SID текущего пользователя
+    public static void StartMonitoring() throws InterruptedException {
+        // Get SID of current user
         String currentSID = GetSID.GetCurrentSID();
-        if (currentSID == null) {
-            System.out.println("Не удалось определить SID текущего пользователя.");
-            return;
-        }
 
-        // Определяем путь к корзине для текущего пользователя
+        // Define path to recycle bin of current user
         String recycleBinPath = System.getenv("SystemDrive") + "\\$Recycle.Bin\\" + currentSID;
         File recycleBin = new File(recycleBinPath);
 
-        // Проверяем, существует ли корзина
-        if (recycleBin.exists() && recycleBin.isDirectory()) {
-            System.out.println("Мониторинг корзины на изменения...");
-            monitorRecycleBin(recycleBin);
-        } else {
-            System.out.println("Корзина не найдена или ОС не поддерживается.");
-        }
+        //Starting recycle bin monitoring
+        monitorRecycleBin(recycleBin);
     }
 
 
-    // Метод для мониторинга корзины
+    // Method for recycle bin monitoring
     public static void monitorRecycleBin(File recycleBin) throws InterruptedException {
+        //Define class path with path of recycle bin for further methods
         Path path = recycleBin.toPath();
 
         try {
-
-            int DeletedFileCount = 0;
+            //Variable for counting deleted files
+            int DeletedFileCount = ReadFromJson.ReadFromJSONint("DeletedFileCount");
+            //Creating new object watchService for further monitoring
             WatchService watchService = FileSystems.getDefault().newWatchService();
+            //Define that we need to monitor changes in directory "path" and watch for deletions only
             path.register(watchService, StandardWatchEventKinds.ENTRY_DELETE);
-            
-    
-            while (!((DeletedFileCount) >= 100)) {
+            //Start cycle for monitoring
+            while (!(DeletedFileCount >= 100)) {
+                //Event listener
                 WatchKey key = watchService.take();
+                //Little pause to let program take more than 1 event
                 Thread.sleep(100);
 
+                //Watch only files that starts with "$R"
                 Pattern pattern = Pattern.compile("^\\$R.*", Pattern.CASE_INSENSITIVE);
                    
-                // Обрабатываем события
-
+                //Handle events
                 for (WatchEvent<?> event : key.pollEvents()) {
                         Matcher matcher = pattern.matcher(event.context().toString());
-                        if(matcher.matches()) {
+                        if(matcher.matches()) 
                             ++DeletedFileCount;
-                            System.out.println(DeletedFileCount);
-
-                        }
-                        
                 } 
-                // Сброс ключа и готовность для следующих событий
                 
+                //Writing to .json file how many files has been deleted
                 WriteToJson.WriteToJSON("DeletedFileCount", DeletedFileCount);
+                //reset listener for taking new events
                 key.reset();
             }
 

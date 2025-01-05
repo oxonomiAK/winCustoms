@@ -12,28 +12,23 @@ public class WallpaperTransfer {
     public static void Transfer(String wallpaperPath, String wallpaperName){
         
         String destinationPath = "NewLookResources/"+wallpaperName+".jpg";
-
+        //Getting file as inputStream
         try (InputStream inputStream = Main.class.getResourceAsStream(wallpaperPath)) {
             if (inputStream == null) {
-                throw new FileNotFoundException("Файл не найден в ресурсах!");
+                throw new FileNotFoundException("File not found in resources");
             }
 
-            // Создаем целевую папку, если её нет
+            // Creating folder if it not exist
             Files.createDirectories(Paths.get(destinationPath).getParent());
 
-            // Копируем файл из ресурса
+            // Copying file from internal resources
             try (FileOutputStream outputStream = new FileOutputStream(destinationPath)) {
                 byte[] buffer = new byte[1024];
                 int bytesRead;
-                int count = 0;
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     outputStream.write(buffer, 0, bytesRead);
-                    count++;
                 }
-                System.out.println(count);
             }
-
-            System.out.println("Файл успешно скопирован в: " + destinationPath);
         } catch (IOException e) {
             e.printStackTrace();
         }

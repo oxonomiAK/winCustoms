@@ -6,38 +6,28 @@ import java.io.File;
 
 public class RequestAdmin {
     
-
     public static void RequestAdminRights() throws Exception {
         if (!isAdmin()) {
-            System.out.println("Запуск с повышенными правами...");
-            
-            // Получение пути к текущему JAR-файлу
+            //Getting the path to the current EXE-file
             String path = new File(System.getProperty("java.class.path")).getAbsolutePath();
             path = path.replace(";", "");
-            path = path.replace("'", "''"); // Экранирование кавычек для PowerShell
+            path = path.replace("'", "''"); //Shielding quotes for PowerShell
     
-            // Команда PowerShell для запуска с повышенными правами
-            String[] command = {
-                "powershell",
-                "Start-Process", "\"" + path + "\"", "-Verb", "RunAs"
-            };
-    
-           
-    
+            // PowerShell command to run with elevated permissions
+            String[] command = {"powershell", "Start-Process", "\"" + path + "\"", "-Verb", "RunAs"};
+            
+            //Creating new process with elevated permissions and closing old process
             ProcessBuilder pb = new ProcessBuilder(command);
-            pb.inheritIO(); // Выводить stdout и stderr в консоль для отладки
             pb.start().waitFor();
-
-            System.exit(0); // Возвращение в вызывающий метод (не завершая процесс принудительно)
+            System.exit(0); 
         }
         
-        // Если программа уже запущена с правами администратора
-        System.out.println("Программа запущена с правами администратора.");
+        // If program already with elevated permissions
         runFunctionality();
     }
 
 
-    // Проверка на права администратора
+    // Checking for administrator rights
     private static boolean isAdmin() {
         try {
             Process process = Runtime.getRuntime().exec("net session");
@@ -51,19 +41,14 @@ public class RequestAdmin {
     // Основной функционал программы
     public static void runFunctionality() {
         try {
-            System.out.println("Выполняется основной функционал программы...");
-            
-            // Пример: запуск SystemPropertiesPerformance.exe
             String systemPropertiesPath = "C:\\Windows\\System32\\SystemPropertiesPerformance.exe";
             ProcessBuilder sysPropPb = new ProcessBuilder(systemPropertiesPath);
-            sysPropPb.inheritIO(); // Выводить stdout и stderr
             
+            //Starting SystemPropertiesPerformance.exe
             Process sysPropProcess = sysPropPb.start();
             sysPropProcess.waitFor();
 
-            System.out.println("SystemPropertiesPerformance завершён.");
         } catch (Exception e) {
-            System.err.println("Ошибка выполнения основного функционала: " + e.getMessage());
             e.printStackTrace();
         }
     }
