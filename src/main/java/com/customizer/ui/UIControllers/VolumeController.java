@@ -4,12 +4,11 @@ import com.customizer.core.DeviceInfo;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-
+import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
@@ -28,6 +27,9 @@ public class VolumeController {
 
     @FXML
     private Button BtnProfile;
+
+    @FXML
+    private Label coinsLabel;
 
     @FXML
     private Button BtnHome;
@@ -51,9 +53,6 @@ public class VolumeController {
     private Button DeviseSettings;
 
     @FXML
-    private CheckBox Headphones;
-
-    @FXML
     private Button closeButton;
 
     private MainUI mainApp;
@@ -71,11 +70,16 @@ public class VolumeController {
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-        // Привязываем действие к кнопке ApplyButton
+        // Bind the action to the ApplyButton
         ApplyButton.setOnAction(event -> openMicrophoneSettings());
 
         ConectedDevices.setText(DeviceInfo.getHeadphonesInfo());
         ConectedDevices1.setText(DeviceInfo.getMicrophoneInfo());
+
+        // Getting username from OS
+        String username = System.getProperty("user.name");
+        // Set the user name as the button text
+        BtnProfile.setText(username);
 
         ProfileNameController.ProfileName(BtnProfile);
     }
@@ -95,13 +99,13 @@ public class VolumeController {
 
     }
 
-    // Метод для открытия вкладки "Запись" и свойств микрофона
+    // Method to open the ‘Record’ tab and microphone properties
     private void openMicrophoneSettings() {
         try {
-            // Открытие окна настроек звука и переход на вкладку "Запись"
-            String command = "control mmsys.cpl,,1"; // Это открывает вкладку записи устройства
+            // Open the audio settings window and switch to the ‘Record’ tab
+            String command = "control mmsys.cpl,,1"; // This opens the device record tab
             Runtime.getRuntime().exec(command);
-        } catch (IOException e) {
+        } catch (IOException e) { // Error handling
             e.printStackTrace();
         }
     }
@@ -124,6 +128,12 @@ public class VolumeController {
     @FXML
     void BtnGoBackClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
+    }
+
+    UpdateCoins updateCoins = new UpdateCoins();
+
+    public void updateCoinsDisplay() {
+        updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
 
     @FXML

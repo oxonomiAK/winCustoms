@@ -58,16 +58,15 @@ public class CompComponentsController  {
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);
-        // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
+        
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
-    
-        
-        SystemInfoArea.setText(SystemInfoExample.displaySystemInfo()); //Обращение к файлу SystemInfoExample
+        //Request to the SystemInfoExample file
+        SystemInfoArea.setText(SystemInfoExample.displaySystemInfo()); 
 
-    ProfileNameController.ProfileName(BtnProfile);
+        ProfileNameController.ProfileName(BtnProfile);
     }
     
     @FXML

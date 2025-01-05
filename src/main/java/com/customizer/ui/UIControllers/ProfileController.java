@@ -32,7 +32,7 @@ public class ProfileController {
     @FXML
     private ProgressBar ExperienceBar;
 
-    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress"); // серый
+    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress");
 
     @FXML
     private Button BtnHome;
@@ -120,14 +120,17 @@ public class ProfileController {
 
     @FXML
     public void initialize() {
+
+        // Functions to take profile picture from another location
         if (!MainUI.FirstProfilePicChange) {
-            dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic)); // Серый
-            dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));// Серый
+            dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic));
+            dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));
         }
-        if (ranks[currentRank].contains("Legend") && currentProgress >= 1.0) // Серый
-            ProgressLabel.setText(ranks[currentRank] + " (Max)"); // Серый
-        else// Серый
-            ProgressLabel.setText(ranks[currentRank]); // Серый
+        // Check if the last rank has been reached
+        if (ranks[currentRank].contains("Legend") && currentProgress >= 1.0)
+            ProgressLabel.setText(ranks[currentRank] + " (Max)");
+        else
+            ProgressLabel.setText(ranks[currentRank]);
 
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
@@ -135,24 +138,32 @@ public class ProfileController {
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
         // Set the initial value of the experience
+
+        // Set the initial value of the experience
         ExperienceBar.setProgress(currentProgress);
 
-        if (ReadFromJson.ReadFromJSONString("Username").equals("null")) {// Серый
-
-            String username = System.getProperty("user.name");// Серый
-            BtnUsername.setText(username);// Серый
-            BtnProfile.setText(username); // Серый
+        // Getting current Windows Username and setting it into profile name in case
+        // that name have never been changed
+        if (ReadFromJson.ReadFromJSONString("Username").equals("null")) {
+            String username = System.getProperty("user.name");
+            BtnUsername.setText(username);
+            BtnProfile.setText(username);
         } else {
-            String username = ReadFromJson.ReadFromJSONString("Username");// Серый
-            BtnProfile.setText(username);// Серый
-            BtnUsername.setText(username);// Серый
-        } // Серый
+            String username = ReadFromJson.ReadFromJSONString("Username");
+            BtnProfile.setText(username);
+            BtnUsername.setText(username);
+        }
 
         textField = new TextField();
         textField.setPromptText("Enter text...");
         textField.setOnAction(event -> onTextEntered()); // Processing of pressing Enter
 
+        textField.setPromptText("Enter text...");
+        textField.setOnAction(event -> onTextEntered()); // Processing of pressing Enter
+
         textField.setVisible(false);
+
+        // Add TextField to the parent container of the button
 
         // Add TextField to the parent container of the button
         ((StackPane) BtnUsername.getParent()).getChildren().add(textField);
@@ -173,7 +184,58 @@ public class ProfileController {
     private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // List of
                                                                                                           // ranks
 
+    // @FXML
+    // void onIncreaseProgressClicked(ActionEvent event) {
+    // gainExperienceWithRanks(0.5); // Увеличиваем прогресс на 10% с анимацией
+    // }
+
+    private int currentRank = ReadFromJson.ReadFromJSONint("currentRank"); // Current rank index
+    private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // List of
+                                                                                                          // ranks
+
     public void gainExperienceWithRanks(double amount) {
+        double targetProgress = Math.min(currentProgress + amount, 1.0); // Current progress target for the current
+                                                                         // scale
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(
+                        Duration.millis(20), // Update every 20 ms
+                        event -> {
+                            if (currentProgress < targetProgress) {
+                                currentProgress += 0.01;
+
+                                // Corrects for accurate achievement of 100%
+                                if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
+                                    currentProgress = targetProgress;
+                                }
+
+                                ExperienceBar.setProgress(currentProgress);
+
+                                // When the scale is completely filled
+                                if (currentProgress >= 1.0) {
+                                    if (currentRank < ranks.length - 1) {
+                                        // Raise the rank
+                                        currentRank++;
+                                        currentProgress = 0; // Reset progress
+                                        ExperienceBar.setProgress(currentProgress);
+                                        ProgressLabel.setText(ranks[currentRank]);
+                                        WriteToJson.WriteToJSON("currentRank", currentRank);
+                                        if (mainApp != null) {
+                                            mainApp.addCoins(10);
+                                            updateCoinsDisplay();
+                                        }
+                                    } else {
+                                        // The last rank has been reached
+                                        ProgressLabel.setText(ranks[currentRank] + " (Max)");
+                                    }
+                                }
+                            }
+                        }));
+
+        // Set the number of steps
+        timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
+        timeline.play();
+        timeline.setOnFinished(event -> WriteToJson.WriteToJSON("currentProgress", currentProgress)); // ceрый
         double targetProgress = Math.min(currentProgress + amount, 1.0); // Current progress target for the current
                                                                          // scale
 
@@ -235,6 +297,11 @@ public class ProfileController {
                                                               // button
 
             textField.setText(BtnUsername.getText()); // Fill with the current button text
+            textField.setPrefWidth(BtnUsername.getWidth()); // The width of the text field is the same as for the button
+            textField.setPrefHeight(BtnUsername.getHeight()); // The height of the text field is the same as for the
+                                                              // button
+
+            textField.setText(BtnUsername.getText()); // Fill with the current button text
             textField.setVisible(true);
             textField.requestFocus(); // Focus on the text field
             isTextFieldVisible = true;
@@ -246,7 +313,8 @@ public class ProfileController {
         String username = textField.getText();
         BtnUsername.setText(username);
         BtnProfile.setText(username);
-        WriteToJson.WriteToJSON("Username", username); // серый
+        // Write to .json file new username
+        WriteToJson.WriteToJSON("Username", username);
         // Hide TextField
         textField.setVisible(false);
         isTextFieldVisible = false;
@@ -259,12 +327,14 @@ public class ProfileController {
 
     @FXML
     void BtnChangePicture(ActionEvent event) {
-        if (!isWindowOpened) {// серый
-            isWindowOpened = true;// серый
-            picImage = ImageCropperController.chooseImage();// серый
-            isWindowOpened = false;// серый
-            if (picImage != null)// серый
-                mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");// серый
+        // Preventing from opening multiple logs with image choosing
+        if (!isWindowOpened) {
+            isWindowOpened = true;
+            picImage = ImageCropperController.chooseImage();
+            isWindowOpened = false;
+            // Do not proceed if the user has not selected anything
+            if (picImage != null)
+                mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");
 
         }
     }

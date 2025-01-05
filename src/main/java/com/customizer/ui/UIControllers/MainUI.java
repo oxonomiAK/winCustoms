@@ -1,11 +1,8 @@
 package com.customizer.ui.UIControllers;
 
 import java.io.IOException;
-
 import com.customizer.services.ReadFromJson;
-import com.customizer.services.WriteToJson;
 import com.customizer.ui.ButtonEffectUtils.CoinsController;
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -24,7 +21,8 @@ public class MainUI extends Application {
     private double yOffset = 0;
     public static boolean FirstProfilePicChange = ReadFromJson.ReadFromJSONBooleanT("FirstProfilePicChange");
 
-    private Stage primaryStage; // Используем один основной Stage
+    private Stage primaryStage; // Use one main Stage
+   
     @FXML
     private Label coinsLabel;
 
@@ -32,21 +30,21 @@ public class MainUI extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        loadScene("/com/customizer/ui/fxml/Home.fxml");
+        loadScene("/com/customizer/ui/fxml/Home.fxml"); //Loading the first scene
     }
 
-    // Универсальный метод для загрузки сцен
+    // Universal method for loading scenes
     public void loadScene(String fxmlFile) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
             Object controller = loader.getController();
     
-            if (controller instanceof HomeController) {
+            if (controller instanceof HomeController) { // Checks if the controller object is an instance of HomeController. 
                 ((HomeController) controller).setMainApp(this);
             } else if (controller instanceof WallpapersController) {
                 ((WallpapersController) controller).setMainApp(this);
-                ((WallpapersController) controller).updateCoinsDisplay(); // Обновляем монеты
+                ((WallpapersController) controller).updateCoinsDisplay(); // Update the coins
             } else if (controller instanceof WallpapersController2) {
                 ((WallpapersController2) controller).setMainApp(this);
                 ((WallpapersController2) controller).updateCoinsDisplay();
@@ -70,6 +68,7 @@ public class MainUI extends Application {
                 ((ProfileController) controller).updateCoinsDisplay();
             } else if (controller instanceof VolumeController) {
                 ((VolumeController) controller).setMainApp(this);
+                ((VolumeController) controller).updateCoinsDisplay();
             } else if (controller instanceof RocketController) {
                 ((RocketController) controller).setMainApp(this);
                 ((RocketController) controller).updateCoinsDisplay();
@@ -90,16 +89,13 @@ public class MainUI extends Application {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
     
-            // Обновляем отображение монет
-            updateCoinsLabel();
-    
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Универсальный метод для обработки перемещения окна
+    // Universal method for handling window movement
     private void enableWindowDragging(Parent root) {
         root.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
@@ -113,7 +109,7 @@ public class MainUI extends Application {
     }
 
     CoinsController controller = new CoinsController();
-    private int coins = controller.getCoins(); // Счетчик монет
+    private int coins = controller.getCoins(); // Coin counter
 
     public int getCoins() {
         return coins;
@@ -122,36 +118,12 @@ public class MainUI extends Application {
     public void addCoins(int amount) {
         coins += amount;
         controller.addCoins(amount);
-        updateCoinsLabel(); // Обновляем Label
     }
     
     public void spendCoins(int amount) {
             coins -= amount;
             controller.spendCoins(amount);
-            System.out.println("Монет потрачено: " + amount + ". Осталось монет: " + coins);
-            updateCoinsLabel(); // Обновляем Label
     }
-
-    public void updateCoinsLabel() {
-        if (coinsLabel != null) {
-            coinsLabel.setText("Монеты: " + coins);
-        }
-    }
-
-    public void changeWindowSize(double width, double height) {
-        // Устанавливаем максимальные размеры окна
-        primaryStage.setMaxWidth(width);
-        primaryStage.setMaxHeight(height);
-        
-        // Устанавливаем минимальные размеры окна (чтобы окно не могло быть меньше заданного размера)
-        primaryStage.setMinWidth(width);
-        primaryStage.setMinHeight(height);
-        
-        // Переустанавливаем текущие размеры окна
-        primaryStage.setWidth(width);
-        primaryStage.setHeight(height);
-    }
-    
     
 
     @FXML
@@ -164,11 +136,7 @@ public class MainUI extends Application {
         launch(args);
         CoinsController controller = new CoinsController();
 
-        // Сохраняем монеты
+        // Save the coins
         controller.saveCoins();
-
-        // Получаем текущее количество монет
-        System.out.println("Всего монет: " + controller.getCoins());
-    
     }
 }

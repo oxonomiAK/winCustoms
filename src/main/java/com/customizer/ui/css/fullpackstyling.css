@@ -1,20 +1,21 @@
 .button1
 {
--fx-background-color :  #d6c7db;
--fx-background-radius :  10;
+    -fx-background-color :  #d6c7db;
+    -fx-background-radius :  10;
 }
 .button1:hover
 {
--fx-background-color : #252225 ;
--fx-text-fill: #ffffff;
+    -fx-background-color : #252225 ;
+    -fx-text-fill: #ffffff;
 
 }
 .button1:pressed
 {
--fx-background-color : #222022 ;
--fx-text-fill: #ffffff;
+    -fx-background-color : #222022 ;
+    -fx-text-fill: #ffffff;
 
 }
+
 
 .button2
 {
@@ -31,6 +32,7 @@
     -fx-background-color : #272727 ;
 }
 
+
 .button3
 {
     -fx-background-color : #6c6c6c00;
@@ -44,6 +46,7 @@
 {
     -fx-background-color : #272727 ;
 }
+
 
 .button4
 {
@@ -61,122 +64,117 @@
     -fx-background-radius :  20;
 }
 
+
 .button5
 {
--fx-background-color :  #2d2b2e;
--fx-background-radius :  10;
--fx-text-fill: #ffffff;
+    -fx-background-color :  #2d2b2e;
+    -fx-background-radius :  10;
+    -fx-text-fill: #ffffff;
 }
+
 .button5:hover
 {
--fx-background-color : #252225 ;
--fx-text-fill: #ffffff;
+    -fx-background-color : #252225 ;
+    -fx-text-fill: #ffffff;
 
 }
 .button5:pressed
 {
--fx-background-color : #222022 ;
--fx-text-fill: #ffffff;
+    -fx-background-color : #222022 ;
+    -fx-text-fill: #ffffff;
 
 }
 
-.progress-bar {
-    -fx-accent: #00ff00; /* Зеленый цвет заполнения */
+
+.progress-bar 
+{
+    -fx-accent: #00ff00; 
 }
 
 
-/* Стили для ScrollBar */
-.scroll-bar {
-    -fx-background-color: #f1f1f100; /* Цвет фона ScrollBar */
-    -fx-border-color: #d1d1d1; /* Цвет границы ScrollBar */
-    -fx-border-radius: 10; /* Скругление углов */
-    -fx-pref-width: 250px; /* Ширина ScrollBar */
+.scroll-bar 
+{
+    -fx-background-color: #f1f1f100; 
+    -fx-border-color: #d1d1d1; 
+    -fx-border-radius: 10; 
+    -fx-pref-width: 250px; 
 }
-
-/* Стили для "ползунка" (thumb) в ScrollBar */
-.scroll-bar .thumb {
-    -fx-background-color: #5b289e; /* Цвет ползунка */
-    -fx-background-radius: 10; /* Скругление углов ползунка */
+.scroll-bar .thumb 
+{
+    -fx-background-color: #5b289e; 
+    -fx-background-radius: 10; 
 }
-
-/* Стили для стрелок прокрутки */
 .scroll-bar .increment-arrow-button, 
-.scroll-bar .decrement-arrow-button {
-    -fx-background-color: #ffffff; /* Цвет фона стрелок */
-    -fx-border-color: #0078d7; /* Цвет границы стрелок */
-    -fx-border-radius: 5; /* Скругление углов стрелок */
+.scroll-bar .decrement-arrow-button 
+{
+    -fx-background-color: #ffffff; 
+    -fx-border-color: #0078d7;
+    -fx-border-radius: 5; 
 }
-
-/* Стили для области track (полосы прокрутки) */
-.scroll-bar .track {
-    -fx-background-color: #e0e0e0da; /* Цвет полосы прокрутки */
-    -fx-background-radius: 10; /* Скругление углов полосы прокрутки */
-}
-
-
-/* Стили для TextField */
-.text-field {
-    -fx-background-color: #e0e0e0da; /* Цвет фона */
-    -fx-border-color: #665f6500; /* Цвет границы */
-    -fx-border-radius: 15; /* Скругление углов */
-    -fx-border-width: 1px; /* Толщина границы */
-    -fx-padding: 5px; /* Отступы внутри поля */
-    -fx-font-size: 14px; /* Размер шрифта */
-    -fx-text-fill: #000000; /* Цвет текста */
-}
-
-/* Стили для фокуса (когда поле в фокусе) */
-.text-field:focused {
-    -fx-background-color: #e0e0e0da; /* Цвет фона при фокусе */
-    -fx-border-color: #665f65; /* Цвет границы при фокусе */
-}
-
-/* Стили для текста при вводе */
-.text-field .text {
-    -fx-font-family: Myanmar Text; /* Шрифт текста */
-}
-
-/* Стили для пустого поля */
-.text-field:empty {
-    -fx-text-fill: #ffffff; /* Цвет текста, когда поле пустое */
-}
-
-/* Стили для места для ввода текста (promptText) */
-.text-field .prompt-text {
-    -fx-text-fill: #000000; /* Цвет текста подсказки */
+.scroll-bar .track 
+{
+    -fx-background-color: #e0e0e0da;
+    -fx-background-radius: 10;
 }
 
 
-
-
-/* Убираем фон ScrollPane */
-.scroll-pane {
-    -fx-background: transparent; /* Прозрачный фон */
-    -fx-background-color: transparent; /* Прозрачный цвет фона */
-    -fx-border-color: transparent; /* Прозрачная граница */
+.text-field 
+{
+    -fx-background-color: #e0e0e0da;
+    -fx-border-color: #665f6500;
+    -fx-border-radius: 15;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+}
+.text-field:focused 
+{
+    -fx-background-color: #e0e0e0da; 
+    -fx-border-color: #665f65; 
+}
+.text-field .text 
+{
+    -fx-font-family: Myanmar Text; 
+}
+.text-field:empty 
+{
+    -fx-text-fill: #ffffff; 
 }
 
-/* Полосы прокрутки остаются видимыми */
-.scroll-pane .scroll-bar {
-    -fx-background-color: transparent; /* Прозрачный фон полос прокрутки */
+
+.text-field .prompt-text 
+{
+    -fx-text-fill: #000000;
 }
 
-.scroll-pane .thumb {
-    -fx-background-color: #ffffff; /* Цвет ползунка */
-    -fx-background-radius: 5px; /* Закругление ползунка */
-}
 
-/* Стилизация горизонтальной полосы прокрутки */
-.scroll-pane .scroll-bar:horizontal {
-    -fx-background-color: transparent; /* Цвет полосы */
-    -fx-pref-height: 12px; /* Высота полосы */
+.scroll-pane 
+{
+    -fx-background: transparent;
+    -fx-background-color: transparent; 
+    -fx-border-color: transparent; 
 }
-
-/* Стилизация вертикальной полосы прокрутки */
-.scroll-pane .scroll-bar:vertical {
-    -fx-background-color: transparent; /* Цвет полосы */
-    -fx-pref-width: 12px; /* Ширина полосы */
+.scroll-pane .scroll-bar 
+{
+    -fx-background-color: transparent;
 }
-.scroll-pane .track {
-    -fx-background-color: transparent; /* Прозрачный трек полосы прокрутки */
+.scroll-pane .thumb 
+{
+    -fx-background-color: #ffffff; 
+    -fx-background-radius: 5px; 
+}
+.scroll-pane .scroll-bar:horizontal 
+{
+    -fx-background-color: transparent; 
+    -fx-pref-height: 12px;
+}
+.scroll-pane .scroll-bar:vertical
+{
+    -fx-background-color: transparent; 
+    -fx-pref-width: 12px; 
+}
+.scroll-pane .track 
+{
+    -fx-background-color: transparent;
 }

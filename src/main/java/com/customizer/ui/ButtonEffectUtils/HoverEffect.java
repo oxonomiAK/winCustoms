@@ -6,18 +6,18 @@ import javafx.util.Duration;
 
 public class HoverEffect {
     public static void setupButtonHoverEffect(Button button) {
-        // Создаем анимацию увеличения
-        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(150), button);
-        scaleUp.setToX(1.05); // Увеличение по оси X
-        scaleUp.setToY(1.05); // Увеличение по оси Y
+        // Create zoom animation on buttons
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(150), button); //Button zoom speed in ms
+        scaleUp.setToX(1.05); // Zoom in on the X-axis
+        scaleUp.setToY(1.05); // Zoom in on the Y-axis
 
         // Создаем анимацию уменьшения
-        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(150), button);
-        scaleDown.setToX(1.0); // Возврат к исходному размеру по оси X
-        scaleDown.setToY(1.0); // Возврат к исходному размеру по оси Y
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(150), button); //Button zoom speed in ms
+        scaleDown.setToX(1.0); // Return to the default size in the X axis
+        scaleDown.setToY(1.0); // Return to the default size in the Y axis
 
-        // Устанавливаем обработчики событий
-        button.setOnMouseEntered(e -> scaleUp.play()); // Анимация увеличения при наведении
-        button.setOnMouseExited(e -> scaleDown.play()); // Анимация уменьшения при убирании мыши
+        // Set event handlers when the mouse hovers
+        button.setOnMouseEntered(e -> scaleUp.play()); // Animation of zooming on hover
+        button.setOnMouseExited(e -> scaleDown.play()); // Decrease animation when mouse is removed
     }
 }

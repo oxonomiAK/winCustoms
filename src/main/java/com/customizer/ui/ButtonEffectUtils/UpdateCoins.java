@@ -5,11 +5,8 @@ import com.customizer.ui.UIControllers.MainUI;
 import javafx.scene.control.Label;
 
 public class UpdateCoins {
+    //Updating coins on display after changing
     public void updateCoinsDisplay(Label coinsLabel, MainUI mainApp) {
-        if (coinsLabel != null && mainApp != null) {
             coinsLabel.setText("Coins: " + mainApp.getCoins());
-        } else {
-            System.err.println("coinsLabel или mainApp не инициализирован!");
-        }
     }
 }
