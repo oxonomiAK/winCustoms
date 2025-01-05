@@ -4,6 +4,12 @@ import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.win32.W32APIOptions;
 
+/*                                      DONT TOUCH THIS FILE
+ *                                             KIRILL
+ *                                              GOES
+ *                                    C++ MARATHON FOR 2 MONTHS
+ */
+
 public class User32F {
         // Interface for User32 with SystemParametersInfo methods
         public interface User32 extends Library {

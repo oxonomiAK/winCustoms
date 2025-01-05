@@ -32,23 +32,7 @@ public class ProfileController {
     @FXML
     private ProgressBar ExperienceBar;
 
-    <<<<<<<HEAD
-    // Хранит текущее значение опыта (от 0.0 до 1.0)
-    private double currentProgress = 0.0;
-
-    // Метод, который увеличивает прогресс опыта
-    public void gainExperience(double amount) {
-        // Увеличиваем прогресс, не превышая 1.0
-        currentProgress = Math.min(currentProgress + amount, 1.0);
-        ExperienceBar.setProgress(currentProgress);
-
-        // Проверяем, если шкала заполнена
-        if (currentProgress >= 1.0) {
-            System.out.println("Level up!");
-        }
-    }=======
-
-    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress");>>>>>>>sergo
+    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress"); // серый
 
     @FXML
     private Button BtnHome;
@@ -59,7 +43,7 @@ public class ProfileController {
     @FXML
     private Button BtnUsername;
 
-    private TextField textField; // Текстовое поле для ввода текста
+    private TextField textField; // Text field for text input
     private boolean isTextFieldVisible = false;
 
     @FXML
@@ -137,55 +121,40 @@ public class ProfileController {
     @FXML
     public void initialize() {
         if (!MainUI.FirstProfilePicChange) {
-            dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic));
-            dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));
+            dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic)); // Серый
+            dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));// Серый
         }
-        if(ranks[currentRank].contains("Legend") && currentProgress >= 1.0)
-            ProgressLabel.setText(ranks[currentRank] + " (Max)");
-        else
-            ProgressLabel.setText(ranks[currentRank]);
-        // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
+        if (ranks[currentRank].contains("Legend") && currentProgress >= 1.0) // Серый
+            ProgressLabel.setText(ranks[currentRank] + " (Max)"); // Серый
+        else// Серый
+            ProgressLabel.setText(ranks[currentRank]); // Серый
+
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-        // Устанавливаем начальное значение опыта
+        // Set the initial value of the experience
         ExperienceBar.setProgress(currentProgress);
-<<<<<<< HEAD
 
-        // Получение имени пользователя из ОС
-        String username = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnUsername.setText(username);
+        if (ReadFromJson.ReadFromJSONString("Username").equals("null")) {// Серый
 
-        // Получение имени пользователя из ОС
-        String username1 = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username1);
+            String username = System.getProperty("user.name");// Серый
+            BtnUsername.setText(username);// Серый
+            BtnProfile.setText(username); // Серый
+        } else {
+            String username = ReadFromJson.ReadFromJSONString("Username");// Серый
+            BtnProfile.setText(username);// Серый
+            BtnUsername.setText(username);// Серый
+        } // Серый
 
-=======
-        
-        if(ReadFromJson.ReadFromJSONString("Username").equals("null")){
-
-            String username = System.getProperty("user.name");
-            BtnUsername.setText(username);
-            BtnProfile.setText(username); 
-        }
-        else{
-            String username = ReadFromJson.ReadFromJSONString("Username");
-            BtnProfile.setText(username);
-            BtnUsername.setText(username);
-        }
-        
->>>>>>> sergo
         textField = new TextField();
-        textField.setPromptText("Введите текст...");
-        textField.setOnAction(event -> onTextEntered()); // Обработка нажатия Enter
-        
+        textField.setPromptText("Enter text...");
+        textField.setOnAction(event -> onTextEntered()); // Processing of pressing Enter
+
         textField.setVisible(false);
 
-        // Добавление TextField в родительский контейнер кнопки
+        // Add TextField to the parent container of the button
         ((StackPane) BtnUsername.getParent()).getChildren().add(textField);
 
     }
@@ -195,106 +164,58 @@ public class ProfileController {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
-    @FXML
-    void onIncreaseProgressClicked(ActionEvent event) {
-        gainExperienceWithRanks(0.5); // Увеличиваем прогресс на 10% с анимацией
-    }<<<<<<<HEAD
+    // @FXML
+    // void onIncreaseProgressClicked(ActionEvent event) {
+    // gainExperienceWithRanks(0.5); // Увеличиваем прогресс на 10% с анимацией
+    // }
 
-    private int currentRank = 0; // Индекс текущего ранга
-    private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // Список
-                                                                                                          // рангов
+    private int currentRank = ReadFromJson.ReadFromJSONint("currentRank"); // Current rank index
+    private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // List of
+                                                                                                          // ranks
 
     public void gainExperienceWithRanks(double amount) {
-        double targetProgress = Math.min(currentProgress + amount, 1.0); // Целевой прогресс для текущей шкалы
+        double targetProgress = Math.min(currentProgress + amount, 1.0); // Current progress target for the current
+                                                                         // scale
 
         Timeline timeline = new Timeline(
                 new KeyFrame(
-                        Duration.millis(20), // Обновление каждые 20 мс
+                        Duration.millis(20), // Update every 20 ms
                         event -> {
                             if (currentProgress < targetProgress) {
                                 currentProgress += 0.01;
 
-                                // Исправление для точного достижения 100%
+                                // Corrects for accurate achievement of 100%
                                 if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
                                     currentProgress = targetProgress;
                                 }
 
                                 ExperienceBar.setProgress(currentProgress);
 
-                                // Когда шкала полностью заполнена
+                                // When the scale is completely filled
                                 if (currentProgress >= 1.0) {
                                     if (currentRank < ranks.length - 1) {
-                                        // Повышаем ранг
+                                        // Raise the rank
                                         currentRank++;
-                                        currentProgress = 0; // Сбрасываем прогресс
+                                        currentProgress = 0; // Reset progress
                                         ExperienceBar.setProgress(currentProgress);
                                         ProgressLabel.setText(ranks[currentRank]);
+                                        WriteToJson.WriteToJSON("currentRank", currentRank);
                                         if (mainApp != null) {
                                             mainApp.addCoins(10);
                                             updateCoinsDisplay();
                                         }
                                     } else {
-                                        // Достигнут последний ранг
+                                        // The last rank has been reached
                                         ProgressLabel.setText(ranks[currentRank] + " (Max)");
                                     }
                                 }
                             }
                         }));
 
-        // Устанавливаем количество шагов
+        // Set the number of steps
         timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
         timeline.play();
-=======
-
-    private int currentRank = ReadFromJson.ReadFromJSONint("currentRank"); // Индекс текущего ранга
-    private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // Список
-                                                                                                          // рангов
-
-    public void gainExperienceWithRanks(double amount) {
-    double targetProgress = Math.min(currentProgress + amount, 1.0); // Целевой прогресс для текущей шкалы
-    
-    Timeline timeline = new Timeline(
-        new KeyFrame(
-            Duration.millis(20), // Обновление каждые 20 мс
-            event -> {
-                if (currentProgress < targetProgress) {
-                    currentProgress += 0.01;
-                    
-                    // Исправление для точного достижения 100%
-                    if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
-                        currentProgress = targetProgress;
-                    }
-    
-                    ExperienceBar.setProgress(currentProgress);
-                    
-                    // Когда шкала полностью заполнена
-                    if (currentProgress >= 1.0) {
-                        if (currentRank < ranks.length - 1) {
-                            // Повышаем ранг
-                            currentRank++;
-                            currentProgress = 0; // Сбрасываем прогресс
-                            ExperienceBar.setProgress(currentProgress);
-                            ProgressLabel.setText(ranks[currentRank]);
-                            WriteToJson.WriteToJSON("currentRank", currentRank);
-                            if (mainApp != null) {
-                                mainApp.addCoins(10);
-                                updateCoinsDisplay();
-                            }
-                        } else {
-                            // Достигнут последний ранг
-                            ProgressLabel.setText(ranks[currentRank] + " (Max)");
-                        }
-                    }
-                }
-            }
-        )
-    );
-    
-    // Устанавливаем количество шагов
-    timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
-    timeline.play();
-    timeline.setOnFinished(event -> WriteToJson.WriteToJSON("currentProgress", currentProgress));
->>>>>>> sergo
+        timeline.setOnFinished(event -> WriteToJson.WriteToJSON("currentProgress", currentProgress)); // ceрый
     }
 
     UpdateCoins updateCoins = new UpdateCoins();
@@ -306,26 +227,27 @@ public class ProfileController {
     @FXML
     void BtnChangeUsername(ActionEvent event) {
         if (!isTextFieldVisible) {
-            // Позиционируем TextField поверх кнопки
+            // Position the TextField on top of the button
             textField.setLayoutX(BtnUsername.getLayoutX());
             textField.setLayoutY(BtnUsername.getLayoutY());
-            textField.setPrefWidth(BtnUsername.getWidth()); // Ширина текстового поля как у кнопки
-            textField.setPrefHeight(BtnUsername.getHeight()); // Высота текстового поля как у кнопки
+            textField.setPrefWidth(BtnUsername.getWidth()); // The width of the text field is the same as for the button
+            textField.setPrefHeight(BtnUsername.getHeight()); // The height of the text field is the same as for the
+                                                              // button
 
-            textField.setText(BtnUsername.getText()); // Заполняем текущим текстом кнопки
+            textField.setText(BtnUsername.getText()); // Fill with the current button text
             textField.setVisible(true);
-            textField.requestFocus(); // Фокус на текстовом поле
+            textField.requestFocus(); // Focus on the text field
             isTextFieldVisible = true;
         }
     }
 
     private void onTextEntered() {
-        // Изменяем текст кнопки на введенный текст
+        // Change the button text to the entered text
         String username = textField.getText();
         BtnUsername.setText(username);
         BtnProfile.setText(username);
-        WriteToJson.WriteToJSON("Username", username);
-        // Скрываем TextField
+        WriteToJson.WriteToJSON("Username", username); // серый
+        // Hide TextField
         textField.setVisible(false);
         isTextFieldVisible = false;
     }
@@ -337,12 +259,12 @@ public class ProfileController {
 
     @FXML
     void BtnChangePicture(ActionEvent event) {
-        if (!isWindowOpened) {
-            isWindowOpened = true;
-            picImage = ImageCropperController.chooseImage();
-            isWindowOpened = false;
-            if (picImage != null)
-                mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");
+        if (!isWindowOpened) {// серый
+            isWindowOpened = true;// серый
+            picImage = ImageCropperController.chooseImage();// серый
+            isWindowOpened = false;// серый
+            if (picImage != null)// серый
+                mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");// серый
 
         }
     }
@@ -428,13 +350,6 @@ public class ProfileController {
                 "com/customizer/ui/resources/Wallpaper10.png");
     }
 
-    /**
-     * Обновление текста и изображения.
-     *
-     * @param title     Текст для `TitleLabel`.
-     * @param text      Текст для `TextLabel`.
-     * @param imagePath Путь к изображению.
-     */
     private void updateContent(String title, String text, String imagePath) {
         TitleLable.setText(title);
         TextLable.setText(text);

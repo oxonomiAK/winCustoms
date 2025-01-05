@@ -11,7 +11,7 @@ import java.io.OutputStreamWriter;
  *                                 !!!!
  */
 
-public class AchReqChecker {
+public class XpParser {
 
     private BufferedWriter writer;
     private BufferedReader reader;
@@ -19,7 +19,7 @@ public class AchReqChecker {
 
     public static int progressParser = 0;
 
-    public AchReqChecker() throws IOException {
+    public XpParser() throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("C:\\Users\\kirill\\Desktop\\DBemulation\\dbemulation.exe");
 
         process = processBuilder.start();
@@ -29,12 +29,12 @@ public class AchReqChecker {
 
     }
 
-    public boolean isReqComplited(int achievementId) throws IOException {
-        writer.write("CHECK_STATUS ach " + achievementId + "\n");
+    public int getXp(int achievementId) throws IOException {
+        writer.write("CHECK_XP ach " + achievementId + "\n");
         writer.flush();
         String response = reader.readLine();
-        int ans = Integer.parseInt(response);
-        return progressParser >= ans;
+        int xp = Integer.parseInt(response);
+        return xp;
     }
 
     public void close() throws IOException {
