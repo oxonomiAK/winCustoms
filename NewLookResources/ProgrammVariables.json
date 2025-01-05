@@ -1,18 +1,12 @@
 {
-<<<<<<< HEAD
   "FirstProfilePicChange" : false,
-  "Coins" : 70,
+  "Coins" : 0,
+  "Username" : "dbsdfb",
   "WallpaperAnime" : true,
-=======
-  "FirstProfilePicChange" : true,
-  "Coins" : 60,
-  "Username" : "null",
-  "WallpaperAnime" : false,
->>>>>>> sergo
-  "WallpaperPinkVilage" : false,
+  "WallpaperPinkVilage" : true,
   "WallpaperRetro" : false,
   "WallpaperRabbit" : false,
-  "WallpapermilkyWay" : false,
+  "WallpapermilkyWay" : true,
   "WallpaperRaccoon" : false,
   "WallpaperMoon" : false,
   "WallpaperRails" : false,
@@ -20,6 +14,8 @@
   "WallpaperFlover" : false,
   "Wallpapersquirrel" : false,
   "WallpaperSunset" : false,
-  "currentProgress" : 1.0,
-  "currentRank" : 5
+  "FirstIconsControllerLaunch" : false,
+  "currentProgress" : 0,
+  "currentRank" : 0,
+  "defaultIconSize" : 48
 }

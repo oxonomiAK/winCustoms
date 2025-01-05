@@ -60,8 +60,9 @@ public class BoostController  {
 
     @FXML
     public void initialize() {
+        //Checking profile picture changes
         ProfilePicController.CheckProfilePic(dynamicImageView1);
-        // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
+        // Add hover magnification effect for all buttons except closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnIcons);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
@@ -69,7 +70,7 @@ public class BoostController  {
         HoverEffect.setupButtonHoverEffect(BtnCompComponents);
         HoverEffect.setupButtonHoverEffect(BtnRocket);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
-
+        //Checking Username changes
         ProfileNameController.ProfileName(BtnProfile);
     }
 

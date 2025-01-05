@@ -63,18 +63,18 @@ public class RocketController {
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);
-        // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
+
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
     
-        // Устанавливаем Tooltip для BtnToolTip с задержкой 50 мс
-        ToolTip.setText("You need administrator rights to run it"); // Ваш текст подсказки
-        ToolTip.setShowDelay(javafx.util.Duration.millis(200)); // Устанавливаем задержку 50 мс
-        ToolTip.setShowDuration(javafx.util.Duration.seconds(3)); // Время отображения 2 секунды
-        ToolTip.setHideDelay(javafx.util.Duration.millis(100)); // Задержка перед скрытием 100 мс
-        BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к кнопке
+        // Set Tooltip for BtnToolTip with a delay of 50ms
+        ToolTip.setText("You need administrator rights to run it"); // Tooltip text
+        ToolTip.setShowDelay(javafx.util.Duration.millis(200)); // Set the delay to 200 ms
+        ToolTip.setShowDuration(javafx.util.Duration.seconds(3)); // Display time 3 seconds
+        ToolTip.setHideDelay(javafx.util.Duration.millis(100)); // Delay before hiding 100 ms
+        BtnPerformances.setTooltip(ToolTip); // Bind Tooltip to the button
 
         ProfileNameController.ProfileName(BtnProfile);
     }
@@ -101,11 +101,11 @@ public class RocketController {
 
     @FXML
     void BtnPerformancesClicked(ActionEvent event) throws Exception {
-        RequestAdmin.RequestAdminRights();
-        if (mainApp != null) {
-            mainApp.addCoins(10);
-            updateCoinsDisplay();
-        }
+        RequestAdmin.RequestAdminRights(); //серый
+        if (mainApp != null) { //серый
+            mainApp.addCoins(10); //серый
+            updateCoinsDisplay(); //серый
+        } 
     }
 
     @FXML

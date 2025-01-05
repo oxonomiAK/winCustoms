@@ -1,7 +1,6 @@
 package com.customizer.core;
 
 import java.io.File;
-
 import com.customizer.core.utils.WallpaperUtils;
 import com.customizer.ui.UIControllers.MainUI;
 

@@ -69,7 +69,7 @@ public class IconsController  {
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);
-        // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
+
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
@@ -78,39 +78,39 @@ public class IconsController  {
         IcnScrollBar1.getStyleClass().add("scroll-bar");
         ScrollBarValue1.getStyleClass().add("text-field");
 
-         // Инициализация ScrollBar и синхронизация с TextField
-    ScrollBarValue1.setText(String.valueOf((int) IcnScrollBar1.getValue()));
+        // Initialization of ScrollBar and synchronization with TextField
+        ScrollBarValue1.setText(String.valueOf((int) IcnScrollBar1.getValue()));
 
-    // Обновляем TextField при изменении ScrollBar
-    IcnScrollBar1.valueProperty().addListener((observable, oldValue, newValue) -> {
+        // Update TextField when ScrollBar is changed
+        IcnScrollBar1.valueProperty().addListener((observable, oldValue, newValue) -> {
         ScrollBarValue1.setText(String.valueOf(newValue.intValue()));
-    });
+        });
 
-    // Слушатель для TextField
-    ScrollBarValue1.textProperty().addListener((observable, oldValue, newValue) -> { //addListner требует использование лямбда функции
+        // Listener for TextField
+        ScrollBarValue1.textProperty().addListener((observable, oldValue, newValue) -> { //addListner requires the use of a lambda function
         if (newValue.isEmpty()) {
-            return; // Если поле пустое, ничего не делаем
+            return; // If the field is empty, do nothing
         }
 
         try {
-            int value = Integer.parseInt(newValue); // Пробуем преобразовать в число
+                int value = Integer.parseInt(newValue); // Try to convert to a number
 
-            if (value < IcnScrollBar1.getMin()) {
-                value = (int) IcnScrollBar1.getMin(); // Ограничиваем значение минимумом
-            } else if (value > IcnScrollBar1.getMax()) {
-                value = (int) IcnScrollBar1.getMax(); // Ограничиваем значение максимумом
+                if (value < IcnScrollBar1.getMin()) {
+                    value = (int) IcnScrollBar1.getMin(); // Limit the value to the minimum
+                } else if (value > IcnScrollBar1.getMax()) {
+                    value = (int) IcnScrollBar1.getMax(); // Limit the value to the maximum
+                }
+
+                IcnScrollBar1.setValue(value); // Set ScrollBar value
+                ScrollBarValue1.setText(String.valueOf(value)); // Update TextField
+            } catch (NumberFormatException e) {
+                // If the value is incorrect, return the old value
+                ScrollBarValue1.setText(oldValue);
             }
-
-            IcnScrollBar1.setValue(value); // Устанавливаем значение ScrollBar
-            ScrollBarValue1.setText(String.valueOf(value)); // Обновляем TextField
-        } catch (NumberFormatException e) {
-            // Если некорректное значение, возвращаем старое
-            ScrollBarValue1.setText(oldValue);
-        }
-    });
+        });
 
         ProfileNameController.ProfileName(BtnProfile);
-}
+    }
 
    UpdateCoins updateCoins = new UpdateCoins();
     public void updateCoinsDisplay() {
@@ -122,21 +122,21 @@ public class IconsController  {
         mainApp.loadScene("/com/customizer/ui/fxml/Boost.fxml");
     }
 
-    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch");
+    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch"); //серый
     @FXML
-    void BtnSetDefaultSize(ActionEvent event) {
-        if(FirstIconsControllerLaunch) {
-            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
-            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
-            FirstIconsControllerLaunch = false;
+    void BtnSetDefaultSize(ActionEvent event) {//серый
+        if(FirstIconsControllerLaunch) {//серый
+            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());//серый
+            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);//серый
+            FirstIconsControllerLaunch = false;//серый
         }
-        int defaultIconSize = ReadFromJson.ReadFromJSONint("defaultIconSize");
+        int defaultIconSize = ReadFromJson.ReadFromJSONint("defaultIconSize");//серый
 
-        RegistryUtils.setIconSize(defaultIconSize);
-        RestartExplorer.restartExplorer();
-        int defaultValue = defaultIconSize; // Значение по умолчанию
-        IcnScrollBar1.setValue(defaultValue); // Устанавливаем значение на ползунке
-        ScrollBarValue1.setText(String.valueOf(defaultValue)); // Обновляем текст в текстовом поле
+        RegistryUtils.setIconSize(defaultIconSize);//серый
+        RestartExplorer.restartExplorer();//серый
+        int defaultValue = defaultIconSize; // Default value
+        IcnScrollBar1.setValue(defaultValue); // Set the value on the slider
+        ScrollBarValue1.setText(String.valueOf(defaultValue)); // Update the text in the text field
         if (mainApp != null) {
             mainApp.addCoins(10);
             updateCoinsDisplay();
@@ -145,15 +145,15 @@ public class IconsController  {
 
       @FXML
     void BtnSetIconSize(ActionEvent event) {
-        if(FirstIconsControllerLaunch) {
-            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
-            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
-            FirstIconsControllerLaunch = false;
-        }
-        int confirmedValue = (int) IcnScrollBar1.getValue();
-        System.out.println("Confirmed value: " + confirmedValue);
-        RegistryUtils.setIconSize(confirmedValue);
-        RestartExplorer.restartExplorer();
+        if(FirstIconsControllerLaunch) {//серый
+            WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());//серый
+            WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);//серый
+            FirstIconsControllerLaunch = false;//серый
+        }//серый
+        int confirmedValue = (int) IcnScrollBar1.getValue(); //серый
+        System.out.println("Confirmed value: " + confirmedValue);//серый
+        RegistryUtils.setIconSize(confirmedValue);//серый
+        RestartExplorer.restartExplorer();//серый
         if (mainApp != null) {
             mainApp.addCoins(10);
             updateCoinsDisplay();
@@ -166,16 +166,16 @@ public class IconsController  {
         try {
             String input = ScrollBarValue1.getText();
             if (input.isEmpty()) {
-                return; // Если поле пустое, не делаем ничего
+                return; // If the field is empty, do nothing
             }
             int value = Integer.parseInt(input);
             if (value >= IcnScrollBar1.getMin() && value <= IcnScrollBar1.getMax()) {
-                IcnScrollBar1.setValue(value); // Обновляем ScrollBar
+                IcnScrollBar1.setValue(value); // Update ScrollBar
             } else {
-                ScrollBarValue1.setText(String.valueOf((int) IcnScrollBar1.getValue())); // Возвращаем корректное значение
+                ScrollBarValue1.setText(String.valueOf((int) IcnScrollBar1.getValue())); // Return the correct value
             }
         } catch (NumberFormatException e) {
-            ScrollBarValue1.setText(String.valueOf((int) IcnScrollBar1.getValue())); // Возвращаем последнее значение
+            ScrollBarValue1.setText(String.valueOf((int) IcnScrollBar1.getValue())); // Return the last value
         }
 
     }

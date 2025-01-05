@@ -1,7 +1,5 @@
 package com.customizer.ui.ButtonEffectUtils;
 
-
-
 import com.customizer.services.ReadFromJson;
 import com.customizer.services.WriteToJson;
 

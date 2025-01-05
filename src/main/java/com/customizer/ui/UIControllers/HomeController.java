@@ -24,11 +24,9 @@ public class HomeController {
 
     @FXML
     public void initialize() {
-        // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
     }
 
-   
     @FXML
     void BtnWallpapersClicked(ActionEvent event) {
         mainApp.loadScene("/com/customizer/ui/fxml/Wallpapers.fxml");

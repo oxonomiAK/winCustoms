@@ -46,7 +46,7 @@ public class SettingsController {
 
     private MainUI mainApp;
 
-    // Новый элемент для форматированного текста
+    // New element for formatted text
     private TextFlow formattedInfo;
 
     public void setMainApp(MainUI mainApp) {
@@ -57,18 +57,15 @@ public class SettingsController {
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);
 
-        // Добавляем эффект увеличения при наведении
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-        // Установка имени пользователя на кнопку профиля
         ProfileNameController.ProfileName(BtnProfile);
 
         InfoPane.getStyleClass().add("scroll-pane");
 
-        // Заменяем InfoLabel на форматированный текст в ScrollPane
         setupFormattedInfo();
     }
 
@@ -111,7 +108,7 @@ public class SettingsController {
     private void setupFormattedInfo() {
         formattedInfo = new TextFlow();
     
-        // Создаём текстовые элементы
+        // Create text elements
         Text title = new Text("NewLook\n");
         title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: white;");
     
@@ -169,16 +166,16 @@ public class SettingsController {
         Text subheading6 = new Text("Application version: 0.0.1");
         subheading6.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
 
-        // Добавляем текст в TextFlow
+        // Add text to TextFlow
         formattedInfo.getChildren().addAll(title, paragraph1, subheading1, paragraph2, subheading2, paragraph3, subheading3, paragraph4, paragraph5, paragraph6, paragraph7, paragraph8, subheading4, paragraph9, subheading5, paragraph10, subheading6);
     
-        // Обеспечиваем перенос текста и задаем общие стили
+        // Provide text translation and set common styles
         formattedInfo.setStyle("-fx-font-size: 14px; -fx-line-spacing: 5px;");
-        formattedInfo.setPrefWidth(800); // Устанавливаем ширину для автоматического переноса
+        formattedInfo.setPrefWidth(800); // Set the width for automatic transfer
     
-        // Оборачиваем TextFlow в VBox (если нужен отступ)
+        // Wrap TextFlow in VBox
         VBox contentBox = new VBox(formattedInfo);
-        contentBox.setSpacing(10); // Отступы между элементами
+        contentBox.setSpacing(10); // Indents between elements
         InfoPane.setContent(contentBox);
     }
 }
