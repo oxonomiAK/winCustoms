@@ -163,11 +163,9 @@ public class SettingsController {
                 "We are a small team of students who are studying at RTU in Liepaja. We have been developing the application for 3 months. It was a very interesting experience for us, which we would be happy to share.\n\n");
         paragraph10.setStyle("-fx-fill: white;");
 
-        Text subheading6 = new Text("Application version: 0.0.1");
-        subheading6.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
 
         // Add text to TextFlow
-        formattedInfo.getChildren().addAll(title, paragraph1, subheading1, paragraph2, subheading2, paragraph3, subheading3, paragraph4, paragraph5, paragraph6, paragraph7, paragraph8, subheading4, paragraph9, subheading5, paragraph10, subheading6);
+        formattedInfo.getChildren().addAll(title, paragraph1, subheading1, paragraph2, subheading2, paragraph3, subheading3, paragraph4, paragraph5, paragraph6, paragraph7, paragraph8, subheading4, paragraph9, subheading5, paragraph10);
     
         // Provide text translation and set common styles
         formattedInfo.setStyle("-fx-font-size: 14px; -fx-line-spacing: 5px;");

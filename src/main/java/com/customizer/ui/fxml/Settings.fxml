@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane  prefHeight="684.0" prefWidth="1213.0" xmlns="http://javafx.com/javafx/8.0.401" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.UIControllers.SettingsController">
+<AnchorPane prefHeight="684.0" prefWidth="1213.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customizer.ui.UIControllers.SettingsController">
    <children>
       <ImageView fitHeight="684.0" fitWidth="1220.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -102,7 +102,7 @@
                         </Button>
                      </children>
                   </StackPane>
-                  <Label fx:id="coinsLabel" layoutX="67.0" layoutY="633.0" text="Coins:" textFill="WHITE">
+                  <Label fx:id="coinsLabel" layoutX="68.0" layoutY="625.0" text="Coins:" textFill="WHITE">
                      <font>
                         <Font name="Myanmar Text Bold" size="15.0" />
                      </font>
@@ -114,6 +114,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
+                  <Label layoutX="78.0" layoutY="662.0" text="version: 0.0.1" textFill="#323232" />
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="229.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About Us">

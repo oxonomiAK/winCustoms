@@ -28,17 +28,17 @@ public class SystemInfoExample {
 
         // Информация об оперативной памяти
         GlobalMemory memory = systemInfo.getHardware().getMemory();
-        info.append("\nTotal RAM: ").append(memory.getTotal() / 1024 / 1024 / 1024 + 1  ).append(" GB\n");
+        info.append("\nRAM: ");
          HardwareAbstractionLayer hardware = systemInfo.getHardware();
         GlobalMemory globalMemory = hardware.getMemory();
 
         List<PhysicalMemory> physicalMemories = globalMemory.getPhysicalMemory();
         for (PhysicalMemory physicalMemory : physicalMemories) {
-            info.append("\nManufacturer: " + physicalMemory.getManufacturer());
-            info.append("\nMemory type: " + physicalMemory.getMemoryType());
+            info.append("\n  Manufacturer: " + physicalMemory.getManufacturer());
+            info.append("\n  Memory type: " + physicalMemory.getMemoryType());
             break;
         } 
-        info.append("\nBank/slot label: "); 
+        info.append("\n  Bank/slot label: "); 
         for (int i = 0; i < physicalMemories.size(); i++) {
             info.append(physicalMemories.get(i).getBankLabel());
             if (i < physicalMemories.size() - 1) {
@@ -46,8 +46,9 @@ public class SystemInfoExample {
             }
         }
         for (PhysicalMemory physicalMemory : physicalMemories) {
-            info.append("\nCapacity: " + FormatUtil.formatBytes(physicalMemory.getCapacity()));
-            info.append("\nClock speed: " + FormatUtil.formatHertz(physicalMemory.getClockSpeed()));
+            info.append("\n  Capacity: " + FormatUtil.formatBytes(physicalMemory.getCapacity()));
+            info.append("\n  Total RAM: ").append(memory.getTotal() / 1024 / 1024 / 1024 + 1  ).append(" GB");
+            info.append("\n  Clock speed: " + FormatUtil.formatHertz(physicalMemory.getClockSpeed()));
             break;
         }
 
