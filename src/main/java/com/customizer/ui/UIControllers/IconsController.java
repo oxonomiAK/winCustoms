@@ -127,8 +127,6 @@ public class IconsController {
 
     private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch");
 
-    private boolean FirstIconsControllerLaunch = ReadFromJson.ReadFromJSONBooleanT("FirstIconsControllerLaunch");
-
     @FXML
     void BtnSetDefaultSize(ActionEvent event) {
         if (FirstIconsControllerLaunch) {
