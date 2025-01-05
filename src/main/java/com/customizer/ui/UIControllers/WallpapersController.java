@@ -3,8 +3,12 @@ package com.customizer.ui.UIControllers;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.customizer.core.WallpaperApply;
+import com.customizer.core.WallpaperTransfer;
 import com.customizer.core.utils.WallpaperUtils;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -86,10 +90,10 @@ public class WallpapersController {
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-        wallpaperPaths.put(BtnWallpapers1, "src/main/java/com/customizer/ui/resources/Horses.jpg");
-        wallpaperPaths.put(BtnWallpapers2, "src/main/java/com/customizer/ui/resources/gori.png");
-        wallpaperPaths.put(BtnWallpapers3, "src/main/java/com/customizer/ui/resources/pole.png");
-        wallpaperPaths.put(BtnWallpapers4, "src/main/java/com/customizer/ui/resources/japan.png");
+        wallpaperPaths.put(BtnWallpapers1, "/com/customizer/ui/resources/Horses.jpg");
+        wallpaperPaths.put(BtnWallpapers2, "/com/customizer/ui/resources/gori.png");
+        wallpaperPaths.put(BtnWallpapers3, "/com/customizer/ui/resources/pole.png");
+        wallpaperPaths.put(BtnWallpapers4, "/com/customizer/ui/resources/japan.png");
 
         // Сохраняем исходные позиции кнопок
         originalPositions.put(BtnWallpapers1,
@@ -107,10 +111,7 @@ public class WallpapersController {
         buttonStates.put(BtnWallpapers3, false);
         buttonStates.put(BtnWallpapers4, false);
 
-        // Получение имени пользователя из ОС
-        String username = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username);
+        ProfileNameController.ProfileName(BtnProfile);
     }
 
     @FXML
@@ -198,13 +199,7 @@ public class WallpapersController {
                     "-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-family: 'Myanmar Text'; -fx-font-size: 12px; -fx-font-weight: bold;");
 
             setWallpaperButton.setOnAction(ev -> {
-                File f = new File(imagePath);
-                String absolutePath = f.getAbsolutePath();
-                System.out.println("Устанавливаем обои: " + absolutePath);
-
-                if (wall != null) {
-                    WallpaperUtils.setWallpaper(absolutePath);
-                }
+                WallpaperApply.WallApply(mainApp, imagePath);
 
                 if (mainApp != null) {
                     mainApp.addCoins(10);

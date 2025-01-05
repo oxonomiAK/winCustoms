@@ -3,6 +3,7 @@ package com.customizer.ui.UIControllers;
 
 import com.customizer.services.RequestAdmin;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -75,10 +76,7 @@ public class RocketController {
         ToolTip.setHideDelay(javafx.util.Duration.millis(100)); // Задержка перед скрытием 100 мс
         BtnPerformances.setTooltip(ToolTip); // Привязываем Tooltip к кнопке
 
-        // Получение имени пользователя из ОС
-        String username = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username);
+        ProfileNameController.ProfileName(BtnProfile);
     }
 
      UpdateCoins updateCoins = new UpdateCoins();

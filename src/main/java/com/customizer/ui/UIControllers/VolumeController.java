@@ -2,6 +2,7 @@ package com.customizer.ui.UIControllers;
 
 import com.customizer.core.DeviceInfo;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 
 import javafx.application.Platform;
@@ -70,19 +71,13 @@ public class VolumeController {
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-        BtnProfile.setText(System.getProperty("user.name"));
-
         // Привязываем действие к кнопке ApplyButton
         ApplyButton.setOnAction(event -> openMicrophoneSettings());
 
         ConectedDevices.setText(DeviceInfo.getHeadphonesInfo());
         ConectedDevices1.setText(DeviceInfo.getMicrophoneInfo());
 
-        // // Получение имени пользователя из ОС
-        // String username = System.getProperty("user.name");
-        // // Установка имени пользователя как текста кнопки
-        // BtnProfile.setText(username);
-
+        ProfileNameController.ProfileName(BtnProfile);
     }
 
     @FXML

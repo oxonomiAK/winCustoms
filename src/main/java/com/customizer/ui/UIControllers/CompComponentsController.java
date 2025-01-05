@@ -3,6 +3,7 @@ package com.customizer.ui.UIControllers;
 
 import com.customizer.core.SystemInfoExample;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -66,10 +67,7 @@ public class CompComponentsController  {
         
         SystemInfoArea.setText(SystemInfoExample.displaySystemInfo()); //Обращение к файлу SystemInfoExample
 
-        // Получение имени пользователя из ОС
-        String username = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username);
+    ProfileNameController.ProfileName(BtnProfile);
     }
     
     @FXML

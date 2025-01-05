@@ -78,4 +78,25 @@ public class WriteToJson {
         }
     }
 
+    public static void WriteToJSON(String variableName, double value) {
+
+        CheckForExist();
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> jsonData = new HashMap<>();
+
+        try {
+            if (JsonFile.exists() && JsonFile.length() > 0) {
+                jsonData = mapper.readValue(JsonFile, new TypeReference<Map<String, Object>>() {});
+            }
+
+            jsonData.put(variableName, value);
+
+            // Записываем измененный объект обратно в JSON-файл
+            mapper.writerWithDefaultPrettyPrinter().writeValue(JsonFile, jsonData);
+            System.out.println("Значение обновлено и сохранено в файл.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

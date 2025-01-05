@@ -4,11 +4,14 @@ package com.customizer.ui.UIControllers;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.customizer.core.WallpaperApply;
 import com.customizer.core.utils.WallpaperUtils;
 import com.customizer.services.ReadFromJson;
 import com.customizer.ui.ButtonEffectUtils.HoverEffect;
 import com.customizer.ui.ButtonEffectUtils.LockManager;
 import com.customizer.ui.ButtonEffectUtils.NotificationManager;
+import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
 import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
 import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 
@@ -111,10 +114,10 @@ public class WallpapersController2  {
         HoverEffect.setupButtonHoverEffect(BtnHome);
         HoverEffect.setupButtonHoverEffect(BtnSettings);
 
-        wallpaperPaths.put(BtnWallpapers1, "src/main/java/com/customizer/ui/resources/anime.png" );
-        wallpaperPaths.put(BtnWallpapers2, "src/main/java/com/customizer/ui/resources/PinkVilage.png");
-        wallpaperPaths.put(BtnWallpapers3, "src/main/java/com/customizer/ui/resources/Retro.png");
-        wallpaperPaths.put(BtnWallpapers4, "src/main/java/com/customizer/ui/resources/Rabbit.png");
+        wallpaperPaths.put(BtnWallpapers1, "/com/customizer/ui/resources/anime.png" );
+        wallpaperPaths.put(BtnWallpapers2, "/com/customizer/ui/resources/PinkVilage.png");
+        wallpaperPaths.put(BtnWallpapers3, "/com/customizer/ui/resources/Retro.png");
+        wallpaperPaths.put(BtnWallpapers4, "/com/customizer/ui/resources/Rabbit.png");
 
         // Сохраняем исходные позиции кнопок
         originalPositions.put(BtnWallpapers1, new Double[]{BtnWallpapers1.getLayoutX(), BtnWallpapers1.getLayoutY()});
@@ -128,10 +131,8 @@ public class WallpapersController2  {
         buttonStates.put(BtnWallpapers3, false);
         buttonStates.put(BtnWallpapers4, false);
 
-        // Получение имени пользователя из ОС
-        String username = System.getProperty("user.name");
-        // Установка имени пользователя как текста кнопки
-        BtnProfile.setText(username);
+
+        ProfileNameController.ProfileName(BtnProfile);
     }
     
         private final Map<Button, Boolean> buttonStates = new HashMap<>();
@@ -249,15 +250,9 @@ public class WallpapersController2  {
                 setWallpaperButton.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-family: 'Myanmar Text'; -fx-font-size: 12px; -fx-font-weight: bold;");
                 
                 setWallpaperButton.setOnAction(ev -> {
-                    File f = new File(imagePath);
-                    String absolutePath = f.getAbsolutePath();
-                    System.out.println("Устанавливаем обои: " + absolutePath);
+                    WallpaperApply.WallApply(mainApp, imagePath);
                 
-                    if (wall != null) {
-                        WallpaperUtils.setWallpaper(absolutePath);
-                    }
-                
-            });
+                });
             
             goBackButton.setOnAction(ev -> {
                 resetButton(button);
@@ -321,7 +316,7 @@ public class WallpapersController2  {
         scaleDown.play();
     }
     
-     UpdateCoins updateCoins = new UpdateCoins();
+    UpdateCoins updateCoins = new UpdateCoins();
     public void updateCoinsDisplay() {
        updateCoins.updateCoinsDisplay(coinsLabel, mainApp);
     }
