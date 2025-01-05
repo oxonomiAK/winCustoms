@@ -68,6 +68,7 @@ public class MainUI extends Application {
                 ((ProfileController) controller).updateCoinsDisplay();
             } else if (controller instanceof VolumeController) {
                 ((VolumeController) controller).setMainApp(this);
+                ((VolumeController) controller).updateCoinsDisplay();
             } else if (controller instanceof RocketController) {
                 ((RocketController) controller).setMainApp(this);
                 ((RocketController) controller).updateCoinsDisplay();

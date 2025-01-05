@@ -1,21 +1,7 @@
 {
-  "FirstProfilePicChange" : false,
+  "FirstProfilePicChange" : true,
   "Coins" : 0,
-  "Username" : "dbsdfb",
-  "WallpaperAnime" : true,
-  "WallpaperPinkVilage" : true,
-  "WallpaperRetro" : false,
-  "WallpaperRabbit" : false,
-  "WallpapermilkyWay" : true,
-  "WallpaperRaccoon" : false,
-  "WallpaperMoon" : false,
-  "WallpaperRails" : false,
-  "WallpaperWorkSpase" : false,
-  "WallpaperFlover" : false,
-  "Wallpapersquirrel" : false,
-  "WallpaperSunset" : false,
-  "FirstIconsControllerLaunch" : false,
+  "Username" : "null",
   "currentProgress" : 0,
-  "currentRank" : 0,
-  "defaultIconSize" : 48
+  "currentRank" : 0
 }
