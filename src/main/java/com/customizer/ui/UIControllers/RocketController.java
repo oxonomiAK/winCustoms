@@ -101,10 +101,12 @@ public class RocketController {
 
     @FXML
     void BtnPerformancesClicked(ActionEvent event) throws Exception {
-        RequestAdmin.RequestAdminRights(); //серый
-        if (mainApp != null) { //серый
-            mainApp.addCoins(10); //серый
-            updateCoinsDisplay(); //серый
+        //Request admin rights for executing SystemPropertiesPerformance.exe
+        RequestAdmin.RequestAdminRights(); 
+        //Add some coins for function using
+        if (mainApp != null) { 
+            mainApp.addCoins(10); 
+            updateCoinsDisplay(); 
         } 
     }
 

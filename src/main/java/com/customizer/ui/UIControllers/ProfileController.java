@@ -33,7 +33,7 @@ public class ProfileController  {
     @FXML
     private ProgressBar ExperienceBar;
 
-    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress"); //серый
+    double currentProgress = ReadFromJson.ReadFromJSONDouble("currentProgress"); 
 
     @FXML
     private Button BtnHome;
@@ -248,7 +248,8 @@ public class ProfileController  {
         String username = textField.getText();
         BtnUsername.setText(username);
         BtnProfile.setText(username);
-        WriteToJson.WriteToJSON("Username", username); //серый
+        //Write to .json file new username
+        WriteToJson.WriteToJSON("Username", username);
         // Hide TextField
         textField.setVisible(false);
         isTextFieldVisible = false;
@@ -261,12 +262,14 @@ public class ProfileController  {
     
     @FXML
     void BtnChangePicture(ActionEvent event) {
-        if(!isWindowOpened){//серый
-            isWindowOpened = true;//серый
-            picImage = ImageCropperController.chooseImage();//серый
-            isWindowOpened = false;//серый
-            if(picImage != null)//серый
-                mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");//серый
+        //Preventing from opening multiple logs with image choosing
+        if(!isWindowOpened){
+            isWindowOpened = true;
+            picImage = ImageCropperController.chooseImage();
+            isWindowOpened = false;
+        //Do not proceed if the user has not selected anything
+            if(picImage != null)
+                mainApp.loadScene("/com/customizer/ui/fxml/ImageCropper.fxml");
 
         }
     }
