@@ -1,7 +1,7 @@
 {
   "FirstProfilePicChange" : true,
   "Coins" : 0,
-  "Username" : "dbsdfb",
+  "Username" : "km",
   "WallpaperAnime" : true,
   "WallpaperPinkVilage" : true,
   "WallpaperRetro" : false,
@@ -18,21 +18,18 @@
   "currentProgress" : 0.223543,
   "currentRank" : 0,
   "defaultIconSize" : 48,
-<<<<<<< HEAD
-  "Wallpaper100Ach" : false,
-  "growdownAch" : false,
-  "binAch" : false,
-  "Wallpaper1Ach" : false,
-  "growupAch" : false,
+  "FirstLaunch" : false,
   "Wallpaper10Ach" : false,
-  "adventurerAch" : false,
-  "maxlvlAch" : false,
-  "iconchangeAch" : false,
-  "boostAch" : false,
-  "icondefaultAch" : false,
+  "growupAch" : false,
+  "growdownAch" : false,
+  "Wallpaper1Ach" : false,
+  "binAch" : false,
   "ProfilePicAch" : false,
+  "iconchangeAch" : false,
+  "maxlvlAch" : false,
+  "adventurerAch" : false,
+  "icondefaultAch" : false,
+  "boostAch" : false,
+  "Wallpaper100Ach" : false,
   "DeletedFileCount" : 0
-=======
-  "FirstLaunch" : false
->>>>>>> kirill
 }

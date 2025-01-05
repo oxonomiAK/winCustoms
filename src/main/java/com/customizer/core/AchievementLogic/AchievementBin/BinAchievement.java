@@ -19,7 +19,7 @@ public class BinAchievement {
         if (status == false)
         {
             AchReqChecker achReq = new AchReqChecker();
-            AchReqChecker.progressParser = ...;
+            //AchReqChecker.progressParser = ...;
             reqComplited = achReq.isReqComplited(achId);
             achReq.close();
 
