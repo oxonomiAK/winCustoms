@@ -2,7 +2,6 @@ package com.customizer.ui.UIControllers;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
-import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -15,27 +14,18 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DesktopNotification extends Application {
+public class DesktopNotification {
 
-    private List<Achievement> achievements = new ArrayList<>(); // Очередь достижений
+    private final List<Achievement> achievements = new ArrayList<>(); // Очередь достижений
     private boolean isShowing = false; // Флаг отображения уведомления
 
-    @Override
-    public void start(Stage primaryStage) {
-        // Добавляем достижения в очередь
-        addAchievement("First Blood", "You unlocked the First Blood achievement!");
-        addAchievement("Double Kill", "You achieved a Double Kill!");
-        addAchievement("Triple Kill", "You achieved a Triple Kill!");
-        addAchievement("Victory", "Congratulations on your victory!");
-
-        // Показываем уведомления
+    // Метод для добавления уведомления в очередь
+    public void getAchievement(String title, String message) {
+        achievements.add(new Achievement(title, message));
         showNextAchievement();
     }
 
-    public void addAchievement(String title, String message) {
-        achievements.add(new Achievement(title, message));
-    }
-
+    // Метод для отображения следующего уведомления
     private void showNextAchievement() {
         if (isShowing || achievements.isEmpty()) return;
 
@@ -44,6 +34,7 @@ public class DesktopNotification extends Application {
         showNotification(achievement.getTitle(), achievement.getMessage());
     }
 
+    // Метод для отображения одного уведомления
     public void showNotification(String title, String message) {
         // Создание нового окна для уведомления
         Stage stage = new Stage();
@@ -52,12 +43,13 @@ public class DesktopNotification extends Application {
 
         // Контент уведомления
         Label label = new Label(title + "\n" + message);
+        label.setWrapText(true);
         label.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-padding: 20; -fx-font-size: 14; -fx-border-radius: 10; -fx-background-radius: 10;");
 
         StackPane root = new StackPane(label);
         root.setStyle("-fx-background-color: transparent;"); // Прозрачный фон контейнера
 
-        Scene scene = new Scene(root, 300, 100);
+        Scene scene = new Scene(root, 350, 150);
         scene.setFill(null); // Убираем фон сцены
         stage.setScene(scene);
 
@@ -69,8 +61,8 @@ public class DesktopNotification extends Application {
         // Устанавливаем позицию окна в правом нижнем углу
         double notificationWidth = 300; // Ширина уведомления
         double notificationHeight = 100; // Высота уведомления
-        stage.setX(screenBounds.getMinX() + screenWidth - notificationWidth - 10); // 10 px отступ от края
-        stage.setY(screenBounds.getMinY() + screenHeight - notificationHeight - 10); // 10 px отступ от края
+        stage.setX(screenBounds.getMinX() + screenWidth - notificationWidth - 50); // 50 px отступ от края
+        stage.setY(screenBounds.getMinY() + screenHeight - notificationHeight - 50); // 50 px отступ от края
 
         // Анимация появления (Fade In)
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), root);
@@ -102,10 +94,6 @@ public class DesktopNotification extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     // Класс для хранения достижений
     static class Achievement {
         private final String title;
@@ -125,4 +113,3 @@ public class DesktopNotification extends Application {
         }
     }
 }
-
