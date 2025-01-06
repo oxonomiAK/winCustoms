@@ -30,7 +30,7 @@ public class BinAchievement {
                 achUnlck.close();
 
                 XpParser xp_parser = new XpParser();
-                double xp = xp_parser.getXp(achId);
+                // double xp = xp_parser.getXp(achId);
 
                 // logic to convert xp to lvl
                 //...........................
