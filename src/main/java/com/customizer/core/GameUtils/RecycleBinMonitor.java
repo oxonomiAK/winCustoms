@@ -1,7 +1,7 @@
 package com.customizer.core.GameUtils;
 
 import java.io.File;
-import java.io.IOException;
+
 import java.nio.file.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import com.customizer.core.utils.GetSID;
 import com.customizer.services.ReadFromJson;
 import com.customizer.services.WriteToJson;
+
 
 public class RecycleBinMonitor {
     private static final ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -40,11 +41,18 @@ public class RecycleBinMonitor {
                 //Define that we need to monitor changes in directory "path" and watch for deletions only
                 path.register(watchService, StandardWatchEventKinds.ENTRY_DELETE);
                 //Start cycle for monitoring
-                while (!(DeletedFileCount >= 100)) {
+                while (!(DeletedFileCount >= 50)) {
                     //Event listener
-                    WatchKey key = watchService.take();
+                    WatchKey key;
+                    try {
+                        key = watchService.take(); 
+                    } catch (InterruptedException e) {
+                        
+                        Thread.currentThread().interrupt(); 
+                        break;
+                    }
                     //Little pause to let program take more than 1 event
-                    Thread.sleep(100);      
+                    Thread.sleep(200);      
                     //Watch only files that starts with "$R"
                     Pattern pattern = Pattern.compile("^\\$R.*", Pattern.CASE_INSENSITIVE);
 
@@ -59,16 +67,20 @@ public class RecycleBinMonitor {
                     WriteToJson.WriteToJSON("DeletedFileCount", DeletedFileCount);
                     //reset listener for taking new events
                     key.reset();
-                }       
-
-            } catch (IOException | InterruptedException e) {
+                }
+                if(DeletedFileCount >= 50){
+                    //functionality for checking achievement here and giving 
+                    AchievementController.UlockBin();                   
+                    stop();
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
 
     public static void stop() throws Exception {
-        executorService.shutdownNow(); // Остановка фонового потока при закрытии приложения
+        executorService.shutdownNow(); 
     }
 
 }

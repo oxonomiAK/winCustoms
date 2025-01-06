@@ -2,14 +2,18 @@ package com.customizer.ui.UIControllers;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.customizer.Main;
 import com.customizer.core.WallpaperApply;
+import com.customizer.core.GameUtils.AchievementController;
 import com.customizer.services.ReadFromJson;
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.LockManager;
-import com.customizer.ui.ButtonEffectUtils.NotificationManager;
-import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
-import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.LockManager;
+import com.customizer.ui.UiManagers.NotificationManager;
+import com.customizer.ui.UiManagers.ProfileNameController;
+import com.customizer.ui.UiManagers.ProfilePicController;
+import com.customizer.ui.UiManagers.UpdateCoins;
+
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -78,9 +82,9 @@ public class WallpapersController3  {
 
     private final Map<Button, String> wallpaperPaths = new HashMap<>();
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -98,8 +102,11 @@ public class WallpapersController3  {
         boolean RaccoonUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperRaccoon");
         boolean MoonUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperMoon");
         boolean RailsUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperRails");
+        public static boolean Wallpaper3page = false;
     @FXML
     public void initialize() {
+        if(milkyWayUnlocked && RaccoonUnlocked && MoonUnlocked && RailsUnlocked) Wallpaper3page = true;
+        AchievementController.UnlockAllWallp();
         ProfilePicController.CheckProfilePic(dynamicImageView1);
 
         String lockIncon = "com/customizer/ui/resources/lock.png";
@@ -144,7 +151,7 @@ public class WallpapersController3  {
     @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
 
-        LockManager.CheckAndUnlock(milkyWayStatus, milkyWayUnlocked, milkyWayCond, "WallpapermilkyWay", true, "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
+        LockManager.CheckAndUnlock(milkyWayStatus, milkyWayUnlocked, milkyWayCond, "WallpapermilkyWay", "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
 
         if (milkyWayUnlocked){
             handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
@@ -155,7 +162,7 @@ public class WallpapersController3  {
     
     @FXML
     void BtnWallpapers2Clicked(ActionEvent event) {
-        LockManager.CheckAndUnlock(RaccoonStatus, RaccoonUnlocked, RaccoonCond, "WallpaperRaccoon", true, "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
+        LockManager.CheckAndUnlock(RaccoonStatus, RaccoonUnlocked, RaccoonCond, "WallpaperRaccoon", "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
 
         if (RaccoonUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
@@ -166,7 +173,7 @@ public class WallpapersController3  {
     
     @FXML
     void BtnWallpapers3Clicked(ActionEvent event) {
-        LockManager.CheckAndUnlock(MoonStatus, MoonUnlocked, MoonCond, "WallpaperMoon", true, "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
+        LockManager.CheckAndUnlock(MoonStatus, MoonUnlocked, MoonCond, "WallpaperMoon", "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
         
         if (MoonUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
@@ -177,7 +184,7 @@ public class WallpapersController3  {
     
     @FXML
     void BtnWallpapers4Clicked(ActionEvent event) {
-        LockManager.CheckAndUnlock(RailsStatus, RailsUnlocked, RailsCond, "WallpaperRails", true, "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
+        LockManager.CheckAndUnlock(RailsStatus, RailsUnlocked, RailsCond, "WallpaperRails", "/com/customizer/ui/fxml/Wallpapers3.fxml", mainApp);
 
         if (RailsUnlocked)
             handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
@@ -241,7 +248,8 @@ public class WallpapersController3  {
     
             setWallpaperButton.setOnAction(ev -> {
                 WallpaperApply.WallApply(mainApp, imagePath);
-    
+                AchievementController.CountWallpaper(mainApp, coinsLabel);
+                updateCoinsDisplay();
             });
     
             goBackButton.setOnAction(ev -> {

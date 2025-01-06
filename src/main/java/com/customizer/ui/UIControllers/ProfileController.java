@@ -1,13 +1,15 @@
 package com.customizer.ui.UIControllers;
 
+
+import com.customizer.Main;
+import com.customizer.core.GameUtils.AchievementController;
 import com.customizer.services.ReadFromJson;
 import com.customizer.services.WriteToJson;
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.UpdateCoins;
 
-import javafx.animation.KeyFrame;
 
-import javafx.animation.Timeline;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
+
 
 public class ProfileController {
     boolean isWindowOpened;
@@ -136,9 +138,9 @@ public class ProfileController {
     @FXML
     private Button btnYouHaveTaste;
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
     String lockIncon = "com/customizer/ui/resources/lock.png";
@@ -170,7 +172,7 @@ public class ProfileController {
     String imageWallpaper100 = Wallpaper100Ach ? "com/customizer/ui/resources/Wallpaper100.png" : lockIncon;
 
     @FXML
-    public void initialize() {
+    public void initialize(){
         Wallpaper10.setImage(new Image(imageWallpaper10));
         growup.setImage(new Image(imageGrowup));
         growdown.setImage(new Image(imageGrowdown));
@@ -184,13 +186,15 @@ public class ProfileController {
         boostach.setImage(new Image(imageboost));
         Wallpaper100.setImage(new Image(imageWallpaper100));
         //Functions to take profile picture from another location
-        if(!MainUI.FirstProfilePicChange){
+        if(!Main.FirstProfilePicChange){
             dynamicImageView.setImage(new Image(ImageCropperController.UserProfilePic)); 
             dynamicImageView1.setImage(new Image(ImageCropperController.UserProfilePic));
         }
         // Check if the last rank has been reached
-        if (ranks[currentRank].contains("Legend") && currentProgress >= 1.0)
+        if (ranks[currentRank].contains("Legend") && currentProgress >= 1.0){
             ProgressLabel.setText(ranks[currentRank] + " (Max)");
+            AchievementController.UnlockMaxlvl();
+        }
         else
             ProgressLabel.setText(ranks[currentRank]);
 
@@ -239,50 +243,7 @@ public class ProfileController {
     private final String[] ranks = { "Beginner", "Adept", "Master", "Expert", "Professional", "Legend" }; // List of
                                                                                                           // ranks
 
-    public void gainExperienceWithRanks(double amount) {
-        double targetProgress = Math.min(currentProgress + amount, 1.0); // Current progress target for the current
-                                                                         // scale
-
-        Timeline timeline = new Timeline(
-                new KeyFrame(
-                        Duration.millis(20), // Update every 20 ms
-                        event -> {
-                            if (currentProgress < targetProgress) {
-                                currentProgress += 0.01;
-
-                                // Corrects for accurate achievement of 100%
-                                if (currentProgress >= targetProgress || targetProgress - currentProgress < 0.01) {
-                                    currentProgress = targetProgress;
-                                }
-
-                                ExperienceBar.setProgress(currentProgress);
-
-                                // When the scale is completely filled
-                                if (currentProgress >= 1.0) {
-                                    if (currentRank < ranks.length - 1) {
-                                        // Raise the rank
-                                        currentRank++;
-                                        currentProgress = 0; // Reset progress
-                                        ExperienceBar.setProgress(currentProgress);
-                                        ProgressLabel.setText(ranks[currentRank]);
-                                        WriteToJson.WriteToJSON("currentRank", currentRank);
-                                        if (mainApp != null) {
-                                            mainApp.addCoins(10);
-                                            updateCoinsDisplay();
-                                        }
-                                    } else {
-                                        // The last rank has been reached
-                                        ProgressLabel.setText(ranks[currentRank] + " (Max)");
-                                    }
-                                }
-                            }
-                        }));
-
-        // Set the number of steps
-        timeline.setCycleCount((int) ((targetProgress - currentProgress) * 100));
-        timeline.play();
-        timeline.setOnFinished(event -> WriteToJson.WriteToJSON("currentProgress", currentProgress)); // ceрый
-    }
+    
 
     UpdateCoins updateCoins = new UpdateCoins();
 

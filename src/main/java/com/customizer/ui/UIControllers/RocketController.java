@@ -1,11 +1,12 @@
 package com.customizer.ui.UIControllers;
 
 
+import com.customizer.Main;
 import com.customizer.services.RequestAdmin;
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
-import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.ProfileNameController;
+import com.customizer.ui.UiManagers.ProfilePicController;
+import com.customizer.ui.UiManagers.UpdateCoins;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -54,9 +55,9 @@ public class RocketController {
     @FXML
     private Button closeButton;
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -102,12 +103,7 @@ public class RocketController {
     @FXML
     void BtnPerformancesClicked(ActionEvent event) throws Exception {
         //Request admin rights for executing SystemPropertiesPerformance.exe
-        RequestAdmin.RequestAdminRights(); 
-        //Add some coins for function using
-        if (mainApp != null) { 
-            mainApp.addCoins(10); 
-            updateCoinsDisplay(); 
-        } 
+        RequestAdmin.RequestAdminRights(mainApp, coinsLabel); 
     }
 
     @FXML

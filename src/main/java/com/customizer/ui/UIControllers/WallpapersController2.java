@@ -2,14 +2,18 @@ package com.customizer.ui.UIControllers;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.customizer.Main;
 import com.customizer.core.WallpaperApply;
+import com.customizer.core.GameUtils.AchievementController;
 import com.customizer.services.ReadFromJson;
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.LockManager;
-import com.customizer.ui.ButtonEffectUtils.NotificationManager;
-import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
-import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.LockManager;
+import com.customizer.ui.UiManagers.NotificationManager;
+import com.customizer.ui.UiManagers.ProfileNameController;
+import com.customizer.ui.UiManagers.ProfilePicController;
+import com.customizer.ui.UiManagers.UpdateCoins;
+
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -78,9 +82,9 @@ public class WallpapersController2  {
 
     private final Map<Button, String> wallpaperPaths = new HashMap<>();
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
         //Wallpapers prices
@@ -100,9 +104,11 @@ public class WallpapersController2  {
         boolean PinkVilageUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperPinkVilage");
         boolean RetroUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperRetro");
         boolean RabbitUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperRabbit");
-
+        public static boolean Wallpaper2page  = false;
     @FXML
     public void initialize() {
+        if(AnimeUnlocked && PinkVilageUnlocked && RetroUnlocked && RabbitUnlocked) Wallpaper2page = true;
+        AchievementController.UnlockAllWallp();
         ProfilePicController.CheckProfilePic(dynamicImageView1);
         //Replace wallpaper with lock icon if hasn't been purhcased
         String lockIncon = "com/customizer/ui/resources/lock.png";
@@ -147,7 +153,7 @@ public class WallpapersController2  {
     @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
         //Unlocking wallpapers
-        LockManager.CheckAndUnlock(AnimeStatus, AnimeUnlocked, AnimeCond, "WallpaperAnime", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
+        LockManager.CheckAndUnlock(AnimeStatus, AnimeUnlocked, AnimeCond, "WallpaperAnime", "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
         //Get notigication if wallpapers are locked
         if (AnimeUnlocked){
             handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
@@ -159,7 +165,7 @@ public class WallpapersController2  {
     @FXML
     void BtnWallpapers2Clicked(ActionEvent event) {
 
-        LockManager.CheckAndUnlock(PinkVilageStatus, PinkVilageUnlocked, PinkVilageCond, "WallpaperPinkVilage", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
+        LockManager.CheckAndUnlock(PinkVilageStatus, PinkVilageUnlocked, PinkVilageCond, "WallpaperPinkVilage", "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
 
         if (PinkVilageUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
@@ -170,7 +176,7 @@ public class WallpapersController2  {
     @FXML
     void BtnWallpapers3Clicked(ActionEvent event) {
 
-        LockManager.CheckAndUnlock(RetroStatus, RetroUnlocked, RetroCond, "WallpaperRetro", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
+        LockManager.CheckAndUnlock(RetroStatus, RetroUnlocked, RetroCond, "WallpaperRetro", "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
         
         if (RetroUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
@@ -181,7 +187,7 @@ public class WallpapersController2  {
     @FXML
     void BtnWallpapers4Clicked(ActionEvent event) {
 
-        LockManager.CheckAndUnlock(RabbitStatus, RabbitUnlocked, RabbitCond, "WallpaperRabbit", true, "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
+        LockManager.CheckAndUnlock(RabbitStatus, RabbitUnlocked, RabbitCond, "WallpaperRabbit", "/com/customizer/ui/fxml/Wallpapers2.fxml", mainApp);
 
         if (RabbitUnlocked)
             handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
@@ -250,7 +256,8 @@ public class WallpapersController2  {
                 
                 setWallpaperButton.setOnAction(ev -> {
                     WallpaperApply.WallApply(mainApp, imagePath);
-                
+                    AchievementController.CountWallpaper(mainApp, coinsLabel);
+
                 });
             
             goBackButton.setOnAction(ev -> {
