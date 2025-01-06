@@ -162,7 +162,7 @@ public class SettingsController {
         subheading5.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
 
         Text paragraph10 = new Text(
-                "We are a small team of students who are studying at RTU in Liepaja. We have been developing the application for 3 months. It was a very interesting experience for us, which we would be happy to share.\n\n");
+                "We are a small team of students who are studying at RTU in Liepaja. We have been developing the application for 2 months. It was a very interesting experience for us, which we would be happy to share.\n\n");
         paragraph10.setStyle("-fx-fill: white;");
 
 
