@@ -1,11 +1,12 @@
 package com.customizer.core;
 
 import java.io.File;
+
+import com.customizer.Main;
 import com.customizer.core.utils.WallpaperUtils;
-import com.customizer.ui.UIControllers.MainUI;
 
 public class WallpaperApply {
-    public static void WallApply(MainUI mainApp, String imagePath){
+    public static void WallApply(Main mainApp, String imagePath){
         //Getting wallpaper name from path
         int lastSlash = imagePath.lastIndexOf('/');
         int lastDot = imagePath.lastIndexOf('.');

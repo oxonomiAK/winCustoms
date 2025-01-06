@@ -1,10 +1,12 @@
 package com.customizer.ui.UIControllers;
 
+import com.customizer.Main;
 import com.customizer.core.DeviceInfo;
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
-import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.ProfileNameController;
+import com.customizer.ui.UiManagers.ProfilePicController;
+import com.customizer.ui.UiManagers.UpdateCoins;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,14 +57,15 @@ public class VolumeController {
     @FXML
     private Button closeButton;
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
     @FXML
     public void initialize() {
+        
         ProfilePicController.CheckProfilePic(dynamicImageView1);
         // Добавляем эффект увеличения при наведении для всех кнопок, кроме closeButton
         HoverEffect.setupButtonHoverEffect(BtnBoost);

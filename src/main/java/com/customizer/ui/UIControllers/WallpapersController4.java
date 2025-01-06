@@ -2,14 +2,18 @@ package com.customizer.ui.UIControllers;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.customizer.Main;
 import com.customizer.core.WallpaperApply;
+import com.customizer.core.GameUtils.AchievementController;
 import com.customizer.services.ReadFromJson;
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.LockManager;
-import com.customizer.ui.ButtonEffectUtils.NotificationManager;
-import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
-import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.LockManager;
+import com.customizer.ui.UiManagers.NotificationManager;
+import com.customizer.ui.UiManagers.ProfileNameController;
+import com.customizer.ui.UiManagers.ProfilePicController;
+import com.customizer.ui.UiManagers.UpdateCoins;
+
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -75,9 +79,9 @@ public class WallpapersController4  {
 
     private final Map<Button, String> wallpaperPaths = new HashMap<>();
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -95,10 +99,12 @@ public class WallpapersController4  {
         boolean FloverUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperFlover");
         boolean squirrelUnlocked = ReadFromJson.ReadFromJSONBooleanF("Wallpapersquirrel");
         boolean SunsetUnlocked = ReadFromJson.ReadFromJSONBooleanF("WallpaperSunset");
+        public static boolean Wallpaper4page = false;
     @FXML
     public void initialize() {
+        if(WorkSpaseUnlocked && FloverUnlocked && squirrelUnlocked && SunsetUnlocked) Wallpaper4page = true;
         ProfilePicController.CheckProfilePic(dynamicImageView1);
-
+        AchievementController.UnlockAllWallp();
         String lockIncon = "com/customizer/ui/resources/lock.png";
         if(!WorkSpaseUnlocked) Wall1.setImage(new Image(lockIncon));
         if(!FloverUnlocked) Wall2.setImage(new Image(lockIncon));
@@ -140,7 +146,7 @@ public class WallpapersController4  {
      @FXML
     void BtnWallpapers1Clicked(ActionEvent event) {
 
-        LockManager.CheckAndUnlock(WorkSpaseStatus, WorkSpaseUnlocked, WorkSpaseCond, "WallpaperWorkSpase", true, "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
+        LockManager.CheckAndUnlock(WorkSpaseStatus, WorkSpaseUnlocked, WorkSpaseCond, "WallpaperWorkSpase", "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
 
         if (WorkSpaseUnlocked){
             handleWallpaperButtonClick(BtnWallpapers1, Wall1, event);
@@ -151,7 +157,7 @@ public class WallpapersController4  {
     
     @FXML
     void BtnWallpapers2Clicked(ActionEvent event) {
-        LockManager.CheckAndUnlock(FloverStatus, FloverUnlocked, FloverCond, "WallpaperFlover", true, "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
+        LockManager.CheckAndUnlock(FloverStatus, FloverUnlocked, FloverCond, "WallpaperFlover", "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
 
         if (FloverUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers2, Wall2, event);
@@ -162,7 +168,7 @@ public class WallpapersController4  {
     
     @FXML
     void BtnWallpapers3Clicked(ActionEvent event) {
-        LockManager.CheckAndUnlock(squirrelStatus, squirrelUnlocked, squirrelCond, "Wallpapersquirrel", true, "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
+        LockManager.CheckAndUnlock(squirrelStatus, squirrelUnlocked, squirrelCond, "Wallpapersquirrel", "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
         
         if (squirrelUnlocked) 
             handleWallpaperButtonClick(BtnWallpapers3, Wall3, event);
@@ -173,7 +179,7 @@ public class WallpapersController4  {
     
     @FXML
     void BtnWallpapers4Clicked(ActionEvent event) {
-        LockManager.CheckAndUnlock(SunsetStatus, SunsetUnlocked, SunsetCond, "WallpaperSunset", true, "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
+        LockManager.CheckAndUnlock(SunsetStatus, SunsetUnlocked, SunsetCond, "WallpaperSunset", "/com/customizer/ui/fxml/Wallpapers4.fxml", mainApp);
 
         if (SunsetUnlocked)
             handleWallpaperButtonClick(BtnWallpapers4, Wall4, event);
@@ -236,7 +242,7 @@ public class WallpapersController4  {
     
             setWallpaperButton.setOnAction(ev -> {
                 WallpaperApply.WallApply(mainApp, imagePath);
-
+                AchievementController.CountWallpaper(mainApp, coinsLabel);
             });
     
             goBackButton.setOnAction(ev -> {

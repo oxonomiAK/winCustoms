@@ -1,13 +1,15 @@
 package com.customizer.ui.UIControllers;
 
+import com.customizer.Main;
+import com.customizer.core.GameUtils.AchievementController;
 import com.customizer.core.utils.RegistryUtils;
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
-import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
 import com.customizer.services.ReadFromJson;
 import com.customizer.services.RestartExplorer;
 import com.customizer.services.WriteToJson;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.ProfileNameController;
+import com.customizer.ui.UiManagers.ProfilePicController;
+import com.customizer.ui.UiManagers.UpdateCoins;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -59,9 +61,9 @@ public class IconsController {
     @FXML
     private Button closeButton;
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -132,8 +134,8 @@ public class IconsController {
         if (FirstIconsControllerLaunch) {
             WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
             WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
-            FirstIconsControllerLaunch = false;
         }
+        AchievementController.UnlockIcondefault(mainApp, coinsLabel);
         // Getting original icon size
         int defaultIconSize = ReadFromJson.ReadFromJSONint("defaultIconSize");
         // Setting default size
@@ -156,10 +158,19 @@ public class IconsController {
             WriteToJson.WriteToJSON("defaultIconSize", RegistryUtils.getIconSize());
             WriteToJson.WriteToJSON("FirstIconsControllerLaunch", false);
             FirstIconsControllerLaunch = false;
+            AchievementController.UnlockIconchange(mainApp, coinsLabel);
         }
-
+        
         int confirmedValue = (int) IcnScrollBar1.getValue();
+        if(confirmedValue == 0) confirmedValue = 1;
         // Setting new size value
+        if(confirmedValue == 256) {
+            AchievementController.UnlockGrowup(mainApp, coinsLabel);
+        }
+        if(confirmedValue == 1) {
+            AchievementController.UnlockGrowdown(mainApp, coinsLabel);
+        }
+        System.out.println(confirmedValue);
         RegistryUtils.setIconSize(confirmedValue);
         // Restarting explorer.exe to see chachges
         RestartExplorer.restartExplorer();

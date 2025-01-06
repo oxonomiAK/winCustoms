@@ -13,6 +13,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.scene.effect.*;
 import javax.imageio.ImageIO;
+
+import com.customizer.Main;
+import com.customizer.core.GameUtils.AchievementController;
 import com.customizer.services.WriteToJson;
 import java.io.File;
 
@@ -37,9 +40,9 @@ public class ImageCropperController {
     static File outputFile = new File("NewLookResources/user.png");
     private final double CIRCLE_RADIUS = 150; // Cutting circle radius
     public static String UserProfilePic = outputFile.toURI().toString();;
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -152,16 +155,17 @@ public class ImageCropperController {
             ImageIO.write(SwingFXUtils.fromFXImage(croppedImage, null), "png", outputFile);
 
             // If this is the first time the user changes the profile picture
-            if (MainUI.FirstProfilePicChange) {
+            if (Main.FirstProfilePicChange) {
                 WriteToJson.WriteToJSON("FirstProfilePicChange", false);// Update the value in JSON
-                MainUI.FirstProfilePicChange = false; // Update the variable in the program
+                Main.FirstProfilePicChange = false; // Update the variable in the program
             }
             // Pause while before updating the profile
             Thread.sleep(600);
             // Update user profile image
             UserProfilePic = outputFile.toURI().toString();
+            AchievementController.UnlockProfilePic();
             mainApp.loadScene("/com/customizer/ui/fxml/Profile.fxml");
-
+           
         } catch (Exception e) {
             e.printStackTrace();
         }

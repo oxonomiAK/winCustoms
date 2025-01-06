@@ -1,9 +1,11 @@
 package com.customizer.ui.UIControllers;
 
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
-import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.Main;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.ProfileNameController;
+import com.customizer.ui.UiManagers.ProfilePicController;
+import com.customizer.ui.UiManagers.UpdateCoins;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,12 +46,12 @@ public class SettingsController {
     @FXML
     private ImageView dynamicImageView1;
 
-    private MainUI mainApp;
+    private Main mainApp;
 
     // New element for formatted text
     private TextFlow formattedInfo;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -160,7 +162,7 @@ public class SettingsController {
         subheading5.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-fill: white;");
 
         Text paragraph10 = new Text(
-                "We are a small team of students who are studying at RTU in Liepaja. We have been developing the application for 3 months. It was a very interesting experience for us, which we would be happy to share.\n\n");
+                "We are a small team of students who are studying at RTU in Liepaja. We have been developing the application for 2 months. It was a very interesting experience for us, which we would be happy to share.\n\n");
         paragraph10.setStyle("-fx-fill: white;");
 
 

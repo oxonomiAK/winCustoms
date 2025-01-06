@@ -2,11 +2,15 @@ package com.customizer.ui.UIControllers;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.customizer.Main;
 import com.customizer.core.WallpaperApply;
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
-import com.customizer.ui.ButtonEffectUtils.ProfileNameController;
-import com.customizer.ui.ButtonEffectUtils.ProfilePicController;
-import com.customizer.ui.ButtonEffectUtils.UpdateCoins;
+import com.customizer.core.GameUtils.AchievementController;
+import com.customizer.ui.UiManagers.HoverEffect;
+import com.customizer.ui.UiManagers.ProfileNameController;
+import com.customizer.ui.UiManagers.ProfilePicController;
+import com.customizer.ui.UiManagers.UpdateCoins;
+
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -73,16 +77,16 @@ public class WallpapersController {
     private final Map<Button, Boolean> buttonStates = new HashMap<>();
     private final Map<Button, Double[]> originalPositions = new HashMap<>();
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
     @FXML
     public void initialize() {
         ProfilePicController.CheckProfilePic(dynamicImageView1);
-
+        AchievementController.UnlockAllWallp();
         HoverEffect.setupButtonHoverEffect(BtnBoost);
         HoverEffect.setupButtonHoverEffect(BtnWallpapers);
         HoverEffect.setupButtonHoverEffect(BtnHome);
@@ -197,11 +201,8 @@ public class WallpapersController {
 
             setWallpaperButton.setOnAction(ev -> {
                 WallpaperApply.WallApply(mainApp, imagePath);
-
-                if (mainApp != null) {
-                    mainApp.addCoins(10);
-                    updateCoinsDisplay();
-                }
+                AchievementController.CountWallpaper(mainApp, coinsLabel);
+                updateCoinsDisplay();
             });
 
             goBackButton.setOnAction(ev -> {

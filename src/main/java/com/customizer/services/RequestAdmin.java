@@ -2,11 +2,16 @@ package com.customizer.services;
 
 import java.io.File;
 
+import com.customizer.Main;
+import com.customizer.core.GameUtils.AchievementController;
+
+import javafx.scene.control.Label;
+
 
 
 public class RequestAdmin {
     
-    public static void RequestAdminRights() throws Exception {
+    public static void RequestAdminRights(Main mainApp, Label coinsLabel) throws Exception {
         if (!isAdmin()) {
             //Getting the path to the current EXE-file
             String path = new File(System.getProperty("java.class.path")).getAbsolutePath();
@@ -23,7 +28,7 @@ public class RequestAdmin {
         }
         
         // If program already with elevated permissions
-        runFunctionality();
+        runFunctionality(mainApp, coinsLabel);
     }
 
 
@@ -38,8 +43,9 @@ public class RequestAdmin {
         }
     }
 
-    // Основной функционал программы
-    public static void runFunctionality() {
+
+    private static void runFunctionality(Main mainApp, Label coinsLabel) { 
+        WriteToJson.WriteToJSON("PerformanceOpened", true);
         try {
             String systemPropertiesPath = "C:\\Windows\\System32\\SystemPropertiesPerformance.exe";
             ProcessBuilder sysPropPb = new ProcessBuilder(systemPropertiesPath);
@@ -47,7 +53,7 @@ public class RequestAdmin {
             //Starting SystemPropertiesPerformance.exe
             Process sysPropProcess = sysPropPb.start();
             sysPropProcess.waitFor();
-
+            AchievementController.UnlockBoost(mainApp, coinsLabel);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package com.customizer.ui.UIControllers;
 
-import com.customizer.ui.ButtonEffectUtils.HoverEffect;
+import com.customizer.Main;
+import com.customizer.ui.UiManagers.HoverEffect;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -16,9 +17,9 @@ public class HomeController {
     private Button closeButton;
 
 
-    private MainUI mainApp;
+    private Main mainApp;
 
-    public void setMainApp(MainUI mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
