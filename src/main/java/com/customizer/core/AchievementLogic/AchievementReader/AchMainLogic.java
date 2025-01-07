@@ -4,7 +4,6 @@ public class AchMainLogic {
 
     public AchMainLogic(int achievementId, int data) throws Exception {
         int achId = achievementId;
-
         AchievementChecker achChecker = new AchievementChecker();
         boolean status = achChecker.isAchEarned(achId);
         achChecker.close();
@@ -30,7 +29,6 @@ public class AchMainLogic {
 
                 xp_parser.close();
             }
-
         }
 
     }
